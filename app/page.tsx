@@ -4,7 +4,7 @@ import Topbar from "./components/Topbar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 
 /* ─── Animation helper ───────────────────────────────────── */
@@ -29,6 +29,32 @@ function FadeUp({
     >
       {children}
     </motion.div>
+  );
+}
+
+/* ─── CountUp ────────────────────────────────────────────── */
+function CountUp({ to, duration = 1.8 }: { to: number; duration?: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const start = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / (duration * 1000), 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * to));
+      if (progress < 1) requestAnimationFrame(step);
+      else setCount(to);
+    };
+    requestAnimationFrame(step);
+  }, [inView, to, duration]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString("pt-BR")}
+    </span>
   );
 }
 
@@ -187,7 +213,7 @@ function Hero() {
                 <img src={IMG_CAR_FRONT} alt="" className="w-5 h-5 shrink-0" />
                 <span className="text-[16px] text-[#0052e6]" style={{ fontFamily: "var(--font-dm-sans)", lineHeight: "23.94px" }}>N° Veículos Ativos</span>
               </div>
-              <span className="text-[32px] font-bold text-[#333] leading-none" style={{ fontFamily: "var(--font-dm-sans)" }}>14.019</span>
+              <span className="text-[32px] font-bold text-[#333] leading-none" style={{ fontFamily: "var(--font-dm-sans)" }}><CountUp to={14019} /></span>
             </div>
             {/* Divider */}
             <div className="w-full shrink-0" style={{ height: 1, background: "#e5e5e5" }} />
@@ -197,7 +223,7 @@ function Hero() {
                 <img src={IMG_USER_CHECK} alt="" className="w-5 h-5 shrink-0" />
                 <span className="text-[16px] text-[#0052e6]" style={{ fontFamily: "var(--font-dm-sans)", lineHeight: "23.94px" }}>N° Associados Ativos</span>
               </div>
-              <span className="text-[32px] font-bold text-[#333] leading-none" style={{ fontFamily: "var(--font-dm-sans)" }}>11.623</span>
+              <span className="text-[32px] font-bold text-[#333] leading-none" style={{ fontFamily: "var(--font-dm-sans)" }}><CountUp to={11623} /></span>
             </div>
           </div>
         </motion.div>
@@ -221,13 +247,17 @@ function Hero() {
                 { label: "2020 3", w: 92 },
                 { label: "2020 4", w: 113 },
                 { label: "2020 5", w: 133 },
-              ].map((b) => (
+              ].map((b, i) => (
                 <div key={b.label} className="flex flex-col items-center justify-end gap-2.5 flex-1">
                   <div className="flex items-center justify-center" style={{ height: b.w, width: 20 }}>
                     <div className="-rotate-90" style={{ width: b.w }}>
-                      <div
+                      <motion.div
                         className="rounded-full h-5"
-                        style={{ width: b.w, background: "#66a3ff", border: "1px solid #cce0ff" }}
+                        style={{ background: "#66a3ff", border: "1px solid #cce0ff" }}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: b.w }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 1.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
                       />
                     </div>
                   </div>
@@ -282,17 +312,31 @@ function Hero() {
             </div>
             <div className="flex flex-col gap-1.5">
               <span className="text-[12px] font-semibold text-[#333]" style={{ fontFamily: "var(--font-dm-sans)" }}>Plano Personalizado</span>
-              <div className="h-5 rounded-full flex items-center justify-end px-3" style={{ width: 215, background: "#66a3ff", border: "1px solid #cce0ff" }}>
-                <span className="text-[12px] text-white" style={{ fontFamily: "var(--font-dm-sans)" }}>9.063</span>
-              </div>
+              <motion.div
+                className="h-5 rounded-full flex items-center justify-end px-3 overflow-hidden"
+                style={{ background: "#66a3ff", border: "1px solid #cce0ff" }}
+                initial={{ width: 0 }}
+                whileInView={{ width: 215 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 1.57, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="text-[12px] text-white whitespace-nowrap" style={{ fontFamily: "var(--font-dm-sans)" }}>9.063</span>
+              </motion.div>
             </div>
             {/* Divider */}
             <div className="w-full shrink-0" style={{ height: 1, background: "#e5e5e5" }} />
             <div className="flex flex-col gap-1.5">
               <span className="text-[12px] font-semibold text-[#333]" style={{ fontFamily: "var(--font-dm-sans)" }}>Plano Premium</span>
-              <div className="h-5 rounded-full flex items-center justify-end px-3" style={{ width: 88, background: "#66a3ff", border: "1px solid #cce0ff" }}>
-                <span className="text-[12px] text-white" style={{ fontFamily: "var(--font-dm-sans)" }}>3.045</span>
-              </div>
+              <motion.div
+                className="h-5 rounded-full flex items-center justify-end px-3 overflow-hidden"
+                style={{ background: "#66a3ff", border: "1px solid #cce0ff" }}
+                initial={{ width: 0 }}
+                whileInView={{ width: 88 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 1.67, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <span className="text-[12px] text-white whitespace-nowrap" style={{ fontFamily: "var(--font-dm-sans)" }}>3.045</span>
+              </motion.div>
             </div>
           </div>
         </motion.div>
