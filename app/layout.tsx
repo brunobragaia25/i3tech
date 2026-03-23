@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Inter } from "next/font/google";
 import "./globals.css";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -69,6 +70,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
       >
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );
