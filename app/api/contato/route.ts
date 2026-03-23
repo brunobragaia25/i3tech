@@ -1,8 +1,6 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const { nome, email, celular, endereco, empresa, produto, mensagem } = body;
@@ -10,6 +8,8 @@ export async function POST(req: NextRequest) {
   if (!nome || !email || !mensagem) {
     return NextResponse.json({ error: "Campos obrigatórios ausentes." }, { status: 400 });
   }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
     from: "i3TECH Site <contato@i3tech.com.br>",
