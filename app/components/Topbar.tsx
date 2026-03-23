@@ -4,18 +4,19 @@ import Link from "next/link";
 
 export default function Topbar() {
   return (
-    <div className="hidden md:block w-full bg-[#111111] border-b border-white/5 py-2 px-6">
-      <div className="max-w-[1280px] mx-auto px-5 flex items-center justify-between text-[13px] text-[#737373]">
+    <div className="hidden md:block w-full bg-[#1956f3] py-2 px-6">
+      <div className="max-w-[1280px] mx-auto px-5 flex items-center justify-between text-[13px] text-white">
         <div className="flex items-center gap-6">
           <span>+55 11 99999 9999</span>
+          <span className="opacity-40">|</span>
           <span>Sua Seu endereço aqui, 000</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-[#737373]">Siga nas redes</span>
+          <span className="text-white">Siga nas redes</span>
           {/* Facebook */}
           <Link
             href="#"
-            className="w-7 h-7 rounded-full bg-[#1956f3] flex items-center justify-center hover:bg-[#1444cc] transition-colors"
+            className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
             aria-label="Facebook"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
@@ -25,7 +26,7 @@ export default function Topbar() {
           {/* Instagram */}
           <Link
             href="#"
-            className="w-7 h-7 rounded-full bg-[#1956f3] flex items-center justify-center hover:bg-[#1444cc] transition-colors"
+            className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
             aria-label="Instagram"
           >
             <svg
@@ -44,7 +45,7 @@ export default function Topbar() {
           {/* LinkedIn */}
           <Link
             href="#"
-            className="w-7 h-7 rounded-full bg-[#1956f3] flex items-center justify-center hover:bg-[#1444cc] transition-colors"
+            className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
             aria-label="LinkedIn"
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
