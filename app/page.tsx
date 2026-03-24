@@ -445,14 +445,14 @@ function About() {
 function Services() {
   const rows = [
     [
-      { prefix: "I3", name: "CRM", italic: true, href: "/solucoes#crm" },
-      { prefix: "I3", name: "Gestão", italic: true, href: "/solucoes#gestao" },
-      { prefix: "I3", name: "Mga", italic: true, href: "/solucoes#mga" },
+      { logo: "/i3crm.png", name: "i3CRM", href: "/solucoes#crm" },
+      { logo: "/i3gestao.png", name: "i3Gestão", href: "/solucoes#gestao" },
+      { logo: "/i3mga.png", name: "i3Mga", href: "/solucoes#mga" },
     ],
     [
-      { prefix: "I3", name: "Track", italic: true, href: "/solucoes#track" },
-      { prefix: "I3", name: "Expansão", italic: true, href: "/solucoes#expansao" },
-      { prefix: "", name: "Aplicativos", italic: true, href: "/solucoes#apps" },
+      { logo: "/i3track.png", name: "i3Track", href: "/solucoes#track" },
+      { logo: "/i3expansao.png", name: "i3Expansão", href: "/solucoes#expansao" },
+      { logo: "/i3app.png", name: "Aplicativos", href: "/solucoes#apps" },
     ],
   ];
 
@@ -475,11 +475,9 @@ function Services() {
                     {/* bg-[#262626] outer border card, h-[287px], p-[12px], rounded-[16px] */}
                     <div className="flex items-center justify-center p-3 rounded-2xl h-auto md:h-[287px]" style={{ background: "#262626" }}>
                       {/* bg-[#171717] inner card, h-[263px], p-[40px], rounded-[8px] */}
-                      <div className="flex flex-col justify-between flex-1 h-auto md:h-[263px] p-6 md:p-10 rounded-lg" style={{ background: "#171717" }}>
-                        <span className="text-[24px] font-semibold leading-[1.2]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                          {card.prefix && <span className="text-white">{card.prefix}</span>}
-                          <span className="italic" style={{ color: "#0066ff" }}>{card.name}</span>
-                        </span>
+                      <div className="flex flex-col justify-between items-start flex-1 h-auto md:h-[263px] p-6 md:p-10 rounded-lg" style={{ background: "#171717" }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={card.logo} alt={card.name} className="h-10 w-auto object-contain" />
                         <Link
                           href={card.href}
                           className="self-start text-[14px] text-[#f7f7f7] px-5 py-[10px] rounded-lg transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:brightness-110"
