@@ -269,7 +269,7 @@ function CTABanner() {
         <FadeUp>
           <div
             className="relative overflow-hidden rounded-2xl px-6 py-10 md:px-16 md:py-14 flex items-center justify-between gap-10"
-            style={{ background: "#1956f3" }}
+            style={{ background: "#1956f3", minHeight: 430 }}
           >
             <div className="flex flex-col gap-6 max-w-[540px]">
               <h2

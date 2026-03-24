@@ -192,7 +192,7 @@ const diferenciais = [
 function DiferenciaisSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:pt-16 md:pb-[128px] flex flex-col gap-10">
+      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:pt-16 md:pb-[64px] flex flex-col gap-10">
         <div className="flex flex-col gap-5 items-center text-center">
           <h2
             className="text-[28px] md:text-[40px] font-semibold leading-[1.2] max-w-[430px]"
@@ -243,6 +243,7 @@ function DiferenciaisSection() {
 const modules = [
   {
     id: "crm",
+    logo: "/i3crm.png",
     name: "CRM",
     subtitle: "Gestão comercial inteligente",
     lead: "O i3 CRM é o núcleo comercial da plataforma. Ele organiza leads, acompanha negociações e oferece controle total do funil de vendas.",
@@ -251,6 +252,7 @@ const modules = [
   },
   {
     id: "gestao",
+    logo: "/i3gestao.png",
     name: "Gestão",
     subtitle: "Controle operacional e administrativo",
     lead: "O i3 Gestão centraliza informações de clientes, contratos, veículos e processos internos.",
@@ -259,6 +261,7 @@ const modules = [
   },
   {
     id: "mga",
+    logo: "/i3mga.png",
     name: "Mga",
     subtitle: "Gestão para operações de MGA, seguros e produtos estruturados",
     lead: "O i3 MGA é o módulo voltado para empresas que operam com modelos de gestão mais completos, como MGA, seguros e estruturas similares no setor veicular.",
@@ -267,6 +270,7 @@ const modules = [
   },
   {
     id: "track",
+    logo: "/i3track.png",
     name: "Track",
     subtitle: "Monitoramento e acompanhamento estratégico",
     lead: "O i3 Track conecta a operação comercial à gestão de contratos e ativos veiculares, permitindo acompanhamento estruturado e controle de informações relacionadas ao veículo e ao cliente.",
@@ -275,6 +279,7 @@ const modules = [
   },
   {
     id: "expansao",
+    logo: "/i3expansao.png",
     name: "Expansão",
     subtitle: "Escala e crescimento estruturado",
     lead: "O i3 Expansão foi pensado para operações que desejam crescer com controle.",
@@ -283,6 +288,7 @@ const modules = [
   },
   {
     id: "apps",
+    logo: "/i3app.png",
     name: null,
     subtitle: "Mobilidade e acesso em qualquer lugar",
     lead: "Os aplicativos da i3TECH permitem que equipes comerciais e operacionais acessem informações em tempo real, atualizem dados e acompanhem atividades diretamente pelo celular.",
@@ -301,23 +307,8 @@ function ModuleCard({ mod }: { mod: typeof modules[0] }) {
 
   const textBlock = (
     <div className="flex-1 flex flex-col gap-8">
-      <div>
-        {mod.name !== null ? (
-          <h3
-            className="text-[40px] font-semibold leading-[1.2]"
-            style={{ fontFamily: "var(--font-dm-sans), sans-serif", color: "#f7f7f7" }}
-          >
-            i3<span className="italic" style={{ color: "#0066ff" }}>{mod.name}</span>
-          </h3>
-        ) : (
-          <h3
-            className="text-[40px] font-semibold italic leading-[1.2]"
-            style={{ fontFamily: "var(--font-dm-sans), sans-serif", color: "#0066ff" }}
-          >
-            Aplicativos
-          </h3>
-        )}
-      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={mod.logo} alt={mod.name ?? "Aplicativos"} className="h-14 w-auto object-contain self-start" />
       <p
         className="text-[24px] font-semibold leading-[1.4]"
         style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
@@ -341,28 +332,16 @@ function ModuleCard({ mod }: { mod: typeof modules[0] }) {
 
   return (
     <FadeUp id={mod.id}>
-      <div
-        className="rounded-[20px] p-4"
-        style={{ background: "#171717" }}
-      >
-        <div
-          className="rounded-[16px] p-3"
-          style={{ background: "#262626" }}
-        >
+      <div className="rounded-[20px] p-4" style={{ background: "#171717" }}>
+        <div className="rounded-[16px] p-3" style={{ background: "#262626" }}>
           <div
             className="rounded-[8px] p-6 md:p-10 flex flex-col md:flex-row gap-8 md:gap-12 items-start"
             style={{ background: "#171717" }}
           >
             {mod.imageLeft ? (
-              <>
-                {imagePlaceholder}
-                {textBlock}
-              </>
+              <>{imagePlaceholder}{textBlock}</>
             ) : (
-              <>
-                {textBlock}
-                {imagePlaceholder}
-              </>
+              <>{textBlock}{imagePlaceholder}</>
             )}
           </div>
         </div>
@@ -374,7 +353,7 @@ function ModuleCard({ mod }: { mod: typeof modules[0] }) {
 function ModulesSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[128px] pb-16">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-8 md:pt-[64px] pb-16">
         <FadeUp className="flex flex-col gap-5 items-center text-center mb-10">
           <h2
             className="text-[28px] md:text-[40px] font-semibold leading-[1.2] max-w-[430px]"
@@ -407,7 +386,7 @@ function CTABanner() {
         <FadeUp>
           <div
             className="relative overflow-hidden rounded-2xl px-6 py-10 md:px-16 md:py-14 flex items-center justify-between gap-10"
-            style={{ background: "#1956f3" }}
+            style={{ background: "#1956f3", minHeight: 430 }}
           >
             <div className="flex flex-col gap-6 max-w-[540px]">
               <h2
