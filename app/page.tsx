@@ -78,18 +78,18 @@ const IMG_FEAT_CLIENTS    = "/dollar-sign.svg";
 const IMG_FEAT_FIN        = "/users.svg";
 const IMG_FEAT_REPORTS    = "/layers.svg";
 // Differentials
-const IMG_DIFF_BOT        = "https://www.figma.com/api/mcp/asset/a765d049-1394-40b9-ab3b-2d904edaf414";
-const IMG_DIFF_BLOCKS     = "https://www.figma.com/api/mcp/asset/5261cf8c-bc6e-4759-a075-11035a51329a";
-const IMG_DIFF_SPARKLES   = "https://www.figma.com/api/mcp/asset/a3f61d2c-58b3-49fe-a9ee-8e5220e4dba5";
-const IMG_DIFF_GAUGE      = "https://www.figma.com/api/mcp/asset/c364263a-8ba9-4498-95d1-2cadf4314d1e";
-const IMG_DIFF_COMBINE    = "https://www.figma.com/api/mcp/asset/2c2a8c5c-004b-4a0c-be5f-feb32ce365bc";
-const IMG_DIFF_SHIELD     = "https://www.figma.com/api/mcp/asset/6738431b-3b41-4943-8af5-0ea86a41e2dd";
+const IMG_DIFF_BOT        = "/bot.svg";
+const IMG_DIFF_BLOCKS     = "/blocks.svg";
+const IMG_DIFF_SPARKLES   = "/sparkles.svg";
+const IMG_DIFF_GAUGE      = "/circle-gauge.svg";
+const IMG_DIFF_COMBINE    = "/combine.svg";
+const IMG_DIFF_SHIELD     = "/shield-check.svg";
 const IMG_DIFF_DIV        = "https://www.figma.com/api/mcp/asset/0737b004-f143-47a2-b0a4-6ac9a4f92127";
 // Target Audience
-const IMG_AUD_1           = "https://www.figma.com/api/mcp/asset/35044c7e-acca-4215-aaa1-797797c1a24a";
-const IMG_AUD_2           = "https://www.figma.com/api/mcp/asset/6beda39c-0aff-4beb-98f5-77b7b05273e7";
-const IMG_AUD_3           = "https://www.figma.com/api/mcp/asset/4ffd3806-9348-4bff-a20f-a0caa6d62c06";
-const IMG_AUD_4           = "https://www.figma.com/api/mcp/asset/2264e298-5767-49f3-b94b-e337c7c564c1";
+const IMG_AUD_1           = "/tags.svg";
+const IMG_AUD_2           = "/map-pinned.svg";
+const IMG_AUD_3           = "/clipboard-list.svg";
+const IMG_AUD_4           = "/car-front-01.svg";
 
 /* ─── Hero ───────────────────────────────────────────────── */
 function Hero() {
@@ -686,8 +686,10 @@ function TargetAudience() {
           {audiences.map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1}>
               <div className="flex flex-col gap-7 p-10" style={{ border: "1px dashed #626262" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={a.icon} alt="" className="w-11 h-11" />
+                <div className="flex items-center justify-center shrink-0" style={{ width: 44, height: 44, background: "#0052e6", borderRadius: "50%" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={a.icon} alt="" className="w-6 h-6" />
+                </div>
                 <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
                   {a.title}
                 </h3>

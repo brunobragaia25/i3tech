@@ -4,10 +4,39 @@ import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
-const IMG_ELLIPSE = "https://www.figma.com/api/mcp/asset/477ca69d-e379-402e-9531-484f97e49724";
+const IMG_STATS_LEADS = "/target.svg";
+const IMG_STATS_CLIENTES = "/users.svg";
+const IMG_STATS_CONTRATOS = "/clipboard-list.svg";
 const IMG_ICON_UNIFIED = "https://www.figma.com/api/mcp/asset/efbcf2cb-ec1c-42d7-9698-15cf2ab543df";
+
+/* ─── CountUp Animation ────────────────────────────── */
+function CountUp({ to, duration = 1.8 }: { to: number; duration?: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) return;
+    const start = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min((now - start) / (duration * 1000), 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(eased * to));
+      if (progress < 1) requestAnimationFrame(step);
+      else setCount(to);
+    };
+    requestAnimationFrame(step);
+  }, [inView, to, duration]);
+
+  return (
+    <span ref={ref}>
+      +{count.toLocaleString("pt-BR")}
+    </span>
+  );
+}
 const IMG_ICON_AUTOMATION = "https://www.figma.com/api/mcp/asset/96ba31d1-06d0-456d-89ed-86ce6b27f511";
 const IMG_ICON_VISION = "https://www.figma.com/api/mcp/asset/7eed85fe-0818-4539-bf19-8c77425e6dc3";
 const IMG_ICON_SECURITY = "https://www.figma.com/api/mcp/asset/90e5a39d-9bc5-416f-8265-473b94754935";
@@ -70,9 +99,9 @@ function Hero() {
 /* ─── Stats Section ─────────────────────────────── */
 function StatsSection() {
   const stats = [
-    { label: "Leads", value: "+380" },
-    { label: "Clientes", value: "+110" },
-    { label: "Contratos", value: "+270" },
+    { label: "Leads", value: 380, icon: IMG_STATS_LEADS },
+    { label: "Clientes", value: 110, icon: IMG_STATS_CLIENTES },
+    { label: "Contratos", value: 270, icon: IMG_STATS_CONTRATOS },
   ];
 
   return (
@@ -104,8 +133,10 @@ function StatsSection() {
               }}
             >
               <div className="flex items-center gap-2.5">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={IMG_ELLIPSE} alt="" className="w-7 h-7 shrink-0" />
+                <div className="flex items-center justify-center shrink-0" style={{ width: 32, height: 32, background: "white", borderRadius: "50%" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={stat.icon} alt="" className="w-4 h-4" />
+                </div>
                 <span
                   className="text-[16px] font-semibold"
                   style={{ color: "#66a3ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
@@ -117,7 +148,7 @@ function StatsSection() {
                 className="text-[34px] font-bold leading-none"
                 style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
               >
-                {stat.value}
+                <CountUp to={stat.value} />
               </span>
             </div>
           ))}
@@ -156,78 +187,139 @@ function CRMSection() {
 }
 
 /* ─── Diferenciais Section ───────────────────────── */
+// Icons for diferenciais
+const IMG_DIFF_1 = "/component.svg";
+const IMG_DIFF_2 = "/workflow.svg";
+const IMG_DIFF_3 = "/scan.svg";
+const IMG_DIFF_4 = "/lock.svg";
+const IMG_DIFF_5 = "/expand.svg";
+const IMG_DIFF_6 = "/chart-column.svg";
+
 const diferenciais = [
   {
-    icon: IMG_ICON_UNIFIED,
-    title: "Automação inteligente de processos",
-    body: "Fluxos automatizados que reduzem tarefas manuais e aumentam a eficiência da operação.",
+    icon: IMG_DIFF_1,
+    title: "Plataforma Unificada",
+    body: "Enquanto muitas empresas utilizam ferramentas separadas para vendas, gestão e controle financeiro, a i3TECH centraliza toda a operação em um único ambiente. Isso reduz falhas, melhora a comunicação interna e aumenta a eficiência operacional.",
   },
   {
-    icon: IMG_ICON_AUTOMATION,
-    title: "Interface simples e intuitiva",
-    body: "Uma plataforma fácil de usar, pensada para produtividade desde o primeiro acesso.",
+    icon: IMG_DIFF_2,
+    title: "Automação Inteligente",
+    body: "Automatizamos tarefas repetitivas, fluxos comerciais e processos internos, permitindo que a equipe foque em decisões estratégicas e no relacionamento com o cliente. Menos retrabalho, mais produtividade.",
   },
   {
-    icon: IMG_ICON_VISION,
-    title: "Centralização total da operação",
-    body: "Vendas, clientes, financeiro e dados reunidos em um único ambiente.",
+    icon: IMG_DIFF_3,
+    title: "Visão Estratégica em Tempo Real",
+    body: "Dashboards e relatórios claros oferecem uma visão completa da operação, com indicadores que ajudam gestores a identificar oportunidades, corrigir gargalos e planejar o crescimento com mais segurança.",
   },
   {
-    icon: IMG_ICON_SCALE,
-    title: "Sistema modular e escalável",
-    body: "Adapte o sistema ao tamanho e à complexidade do seu negócio, sem limitações.",
+    icon: IMG_DIFF_4,
+    title: "Segurança e Confiabilidade",
+    body: "Proteção de dados, estabilidade e organização da informação garantem que a empresa tenha controle e confiança em todas as etapas da operação.",
   },
   {
-    icon: IMG_ICON_PERFORMANCE,
-    title: "Performance comercial real",
-    body: "Dados claros para acompanhar resultados, corrigir rotas e vender com mais consistência.",
+    icon: IMG_DIFF_5,
+    title: "Escalabilidade Estruturada",
+    body: "A i3TECH foi projetada para crescer junto com a empresa. Seja expandindo equipe, unidades ou volume de clientes, o sistema acompanha a evolução do negócio sem perder organização ou controle.",
   },
   {
-    icon: IMG_ICON_SECURITY,
-    title: "Segurança e confiabilidade dos dados",
-    body: "Informações protegidas, com controle, estabilidade e total confiabilidade.",
+    icon: IMG_DIFF_6,
+    title: "Foco em Performance Comercial",
+    body: "Não é apenas gestão — é performance. A plataforma foi pensada para melhorar conversão, organização do funil e acompanhamento de metas comerciais.",
   },
 ];
 
 function DiferenciaisSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:pt-16 md:pb-[64px] flex flex-col gap-10">
+      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[64px] pb-16 md:pb-[128px] flex flex-col gap-10 items-center">
+        {/* Header */}
         <div className="flex flex-col gap-5 items-center text-center">
           <h2
             className="text-[28px] md:text-[40px] font-semibold leading-[1.2] max-w-[430px]"
             style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
           >
-            Saiba sobre os diferenciais do CRM
+            Principais Diferenciais do I3TECH
           </h2>
+          <p
+            className="text-[20px] font-light leading-[1.4] max-w-[752px]"
+            style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
+          >
+            Enquanto muitas empresas utilizam ferramentas separadas para vendas, gestão e controle financeiro, a i3TECH centraliza toda a operação em um único ambiente. Isso reduz falhas, melhora a comunicação interna e aumenta a eficiência operacional.
+          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          {diferenciais.map((item, i) => (
-            <div
-              key={item.title}
-              className="flex flex-col gap-8 p-8"
-              style={{
-                borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
-              }}
-            >
-              <div className="flex items-center gap-2.5">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.icon} alt="" className="w-6 h-6 shrink-0" />
-                <span
-                  className="text-[16px] font-semibold leading-[1.2]"
-                  style={{ color: "#e6f0ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
-                >
-                  {item.title}
-                </span>
+
+        {/* Grid 3x2 */}
+        <div className="w-full">
+          {/* Top row */}
+          <div className="flex relative pb-12 md:pb-16">
+            {diferenciais.slice(0, 3).map((item, idx) => (
+            <>
+            {idx > 0 && <div className="hidden md:block absolute" style={{ left: `calc(${(100 / 3) * idx}%)`, top: 0, bottom: 0, width: 1, borderLeft: "1px dashed rgba(255,255,255,0.2)" }} />}
+            <FadeUp key={item.title} className="flex flex-col gap-8 flex-1 px-6" style={{ marginLeft: idx > 0 ? 0 : 0 }}>
+              {/* Icon */}
+              <div className="shrink-0 flex items-center justify-center" style={{ width: 72, height: 72, borderRadius: "50%", border: "1px solid rgba(0, 82, 230, 0.3)" }}>
+                <div className="flex items-center justify-center" style={{ width: 44, height: 44, background: "rgba(0, 82, 230, 0.1)", border: "2px solid #0052e6", borderRadius: "50%" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.icon} alt="" className="w-5 h-5" style={{ filter: "brightness(0) invert(1)" }} />
+                </div>
               </div>
+
+              {/* Title */}
+              <h3
+                className="text-[20px] font-medium leading-[1.4]"
+                style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {item.title}
+              </h3>
+
+              {/* Description */}
               <p
                 className="text-[14px] font-light leading-[1.6]"
-                style={{ color: "#ffffff", fontFamily: "var(--font-dm-sans), sans-serif" }}
+                style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
               >
                 {item.body}
               </p>
-            </div>
-          ))}
+            </FadeUp>
+            </>
+            ))}
+          </div>
+
+          {/* Horizontal divider */}
+          <div className="hidden md:block" style={{ height: 1, borderTop: "1px dashed rgba(255,255,255,0.2)" }} />
+
+          {/* Bottom row */}
+          <div className="flex relative pt-12 md:pt-16">
+            {diferenciais.slice(3, 6).map((item, idx) => (
+            <>
+            {idx > 0 && <div className="hidden md:block absolute" style={{ left: `calc(${(100 / 3) * idx}%)`, top: 0, bottom: 0, width: 1, borderLeft: "1px dashed rgba(255,255,255,0.2)" }} />}
+            <FadeUp key={item.title} className="flex flex-col gap-8 flex-1 px-6" style={{ marginLeft: idx > 0 ? 0 : 0 }}>
+              {/* Icon */}
+              <div className="shrink-0 flex items-center justify-center" style={{ width: 72, height: 72, borderRadius: "50%", border: "1px solid rgba(0, 82, 230, 0.3)" }}>
+                <div className="flex items-center justify-center" style={{ width: 44, height: 44, background: "rgba(0, 82, 230, 0.1)", border: "2px solid #0052e6", borderRadius: "50%" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={item.icon} alt="" className="w-5 h-5" style={{ filter: "brightness(0) invert(1)" }} />
+                </div>
+              </div>
+
+              {/* Title */}
+              <h3
+                className="text-[20px] font-medium leading-[1.4]"
+                style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {item.title}
+              </h3>
+
+              {/* Description */}
+              <p
+                className="text-[14px] font-light leading-[1.6]"
+                style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {item.body}
+              </p>
+            </FadeUp>
+            </>
+            ))}
+          </div>
         </div>
       </FadeUp>
     </section>

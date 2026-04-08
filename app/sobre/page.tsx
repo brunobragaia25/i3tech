@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-const IMG_CHECK = "https://www.figma.com/api/mcp/asset/96e8226e-d912-4853-8868-25853034b2c6";
+const IMG_CHECK = "/Check Circle.svg";
 
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
@@ -65,7 +65,7 @@ function Hero() {
 function IntroSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[128px] pb-16 flex flex-col md:flex-row items-start md:items-end gap-8 md:gap-16">
+      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[128px] pb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-16">
         <p
           className="text-[36px] leading-normal w-full md:max-w-[640px]"
           style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
@@ -131,8 +131,10 @@ function ContentBlock({
         <div className="flex flex-col gap-8">
           {checklist.map((item) => (
             <div key={item} className="flex items-center gap-5">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_CHECK} alt="" className="w-6 h-6 shrink-0" />
+              <div className="flex items-center justify-center shrink-0" style={{ width: 24, height: 24, background: "#3385ff", borderRadius: "50%" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={IMG_CHECK} alt="" className="w-4 h-4" />
+              </div>
               <span
                 className="text-[20px] leading-[1.4]"
                 style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}

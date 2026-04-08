@@ -12,7 +12,7 @@ const IMG_ICON_1        = "/send.svg";
 const IMG_ICON_2        = "/users.svg";
 const IMG_ICON_3        = "/dollar-sign.svg";
 const IMG_ICON_4        = "/layers.svg";
-const IMG_CHECK         = "https://www.figma.com/api/mcp/asset/25edea5f-bc1e-4a11-8378-35d4a5cd9b16";
+const IMG_CHECK         = "/check-white.svg";
 const IMG_DIVIDER       = "https://www.figma.com/api/mcp/asset/fb7df162-0031-473c-93c1-fa333cbc1c14";
 
 /* ─── Animation helper ──────────────────────────────────── */
@@ -41,9 +41,8 @@ const features = [
       "Com visualização clara do funil, histórico completo de interações e distribuição inteligente de leads, a operação ganha eficiência e mais controle sobre resultados.",
     ],
     recursos: [
-      ["Funil de vendas visual e personalizável", "Histórico completo de interações"],
+      ["Funil de vendas visual e personalizável", "Histórico completo de interações", "Distribuição automática de oportunidades"],
       ["Gestão e qualificação de leads", "Acompanhamento de metas e performance"],
-      ["Distribuição automática de oportunidades"],
     ],
     id: "gestao-comercial",
     imageLeft: true,
@@ -56,9 +55,8 @@ const features = [
       "Isso aumenta a produtividade da equipe e melhora a taxa de conversão.",
     ],
     recursos: [
-      ["Follow-ups automáticos", "Formulários inteligentes para captação de leads"],
+      ["Follow-ups automáticos", "Formulários inteligentes para captação de leads", "Comunicação integrada (WhatsApp e outros canais)"],
       ["Envio de propostas e documentos", "Fluxos personalizados de atendimento"],
-      ["Comunicação integrada (WhatsApp e outros canais)"],
     ],
     id: "automacao-vendas",
     imageLeft: false,
@@ -71,9 +69,8 @@ const features = [
       "Ideal para operações que precisam manter controle constante da base ativa.",
     ],
     recursos: [
-      ["Cadastro completo de clientes e veículos", "Atualizações automáticas"],
+      ["Cadastro completo de clientes e veículos", "Atualizações automáticas", "Histórico de movimentações"],
       ["Controle de contratos e status", "Organização da base ativa"],
-      ["Histórico de movimentações"],
     ],
     id: "gestao-clientes",
     imageLeft: true,
@@ -86,9 +83,8 @@ const features = [
       "Isso reduz erros, aumenta a transparência e melhora a gestão estratégica do negócio.",
     ],
     recursos: [
-      ["Controle de pagamentos e recebimentos", "Integração com meios de pagamento"],
+      ["Controle de pagamentos e recebimentos", "Integração com meios de pagamento", "Relatórios financeiros"],
       ["Gestão de comissões por consultor", "Acompanhamento de metas financeiras"],
-      ["Relatórios financeiros"],
     ],
     id: "financeiro",
     imageLeft: false,
@@ -101,9 +97,8 @@ const features = [
       "Com dashboards em tempo real, indicadores claros e integrações automatizadas, a plataforma oferece uma visão completa do negócio, reduz falhas de informação e garante que todos os setores trabalhem com dados atualizados e confiáveis. Você acompanha resultados e mantém tudo conectado — em um único ambiente.",
     ],
     recursos: [
-      ["Dashboards em tempo real", "Integração com WhatsApp e canais digitais"],
-      ["KPIs comerciais e operacionais", "Conexão com sites, landing pages e APIs"],
-      ["Análise de conversão e origem de leads", "Sincronização com sistemas internos"],
+      ["Dashboards em tempo real", "Integração com WhatsApp e canais digitais", "Análise de conversão e origem de leads"],
+      ["KPIs comerciais e operacionais", "Conexão com sites, landing pages e APIs", "Sincronização com sistemas internos"],
     ],
     id: "relatorios",
     imageLeft: true,

@@ -8,7 +8,7 @@ import { useRef } from "react";
 import Link from "next/link";
 
 /* ─── Figma assets ───────────────────────────────────────── */
-const IMG_CHECK = "https://www.figma.com/api/mcp/asset/c52b93e4-e8f2-4051-8eeb-ea0df63fb69c";
+const IMG_CHECK = "/check-white.svg";
 const IMG_CTA_GRAPHIC = "https://www.figma.com/api/mcp/asset/240265d9-52b6-46a9-9b3f-568e635f49a2";
 
 /* ─── animation helper ───────────────────────────────────── */
