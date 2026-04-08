@@ -8,10 +8,10 @@ import { motion } from "framer-motion";
 
 const IMG_ELLIPSE = "https://www.figma.com/api/mcp/asset/477ca69d-e379-402e-9531-484f97e49724";
 const IMG_ICON_UNIFIED = "/bot.svg";
-const IMG_ICON_AUTOMATION = "/blocks.svg";
-const IMG_ICON_VISION = "/sparkles.svg";
+const IMG_ICON_AUTOMATION = "/sparkles.svg";
+const IMG_ICON_VISION = "/combine.svg";
 const IMG_ICON_SECURITY = "/shield-check.svg";
-const IMG_ICON_SCALE = "/combine.svg";
+const IMG_ICON_SCALE = "/blocks.svg";
 const IMG_ICON_PERFORMANCE = "/circle-gauge.svg";
 
 function FadeUp({ children, delay = 0, className = "", id }: { children: React.ReactNode; delay?: number; className?: string; id?: string }) {
