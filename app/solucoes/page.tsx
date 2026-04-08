@@ -255,7 +255,7 @@ function DiferenciaisSection() {
             {diferenciais.slice(0, 3).map((item, idx) => (
             <>
             {idx > 0 && <div className="hidden md:block absolute" style={{ left: `calc(${(100 / 3) * idx}%)`, top: 0, bottom: 0, width: 1, borderLeft: "1px dashed rgba(255,255,255,0.2)" }} />}
-            <FadeUp key={item.title} className="flex flex-col gap-8 flex-1 px-6" style={{ marginLeft: idx > 0 ? 0 : 0 }}>
+            <FadeUp key={item.title} className="flex flex-col gap-8 flex-1 px-6">
               {/* Icon */}
               <div className="shrink-0 flex items-center justify-center" style={{ width: 72, height: 72, borderRadius: "50%", border: "1px solid rgba(0, 82, 230, 0.3)" }}>
                 <div className="flex items-center justify-center" style={{ width: 44, height: 44, background: "rgba(0, 82, 230, 0.1)", border: "2px solid #0052e6", borderRadius: "50%" }}>
@@ -292,7 +292,7 @@ function DiferenciaisSection() {
             {diferenciais.slice(3, 6).map((item, idx) => (
             <>
             {idx > 0 && <div className="hidden md:block absolute" style={{ left: `calc(${(100 / 3) * idx}%)`, top: 0, bottom: 0, width: 1, borderLeft: "1px dashed rgba(255,255,255,0.2)" }} />}
-            <FadeUp key={item.title} className="flex flex-col gap-8 flex-1 px-6" style={{ marginLeft: idx > 0 ? 0 : 0 }}>
+            <FadeUp key={item.title} className="flex flex-col gap-8 flex-1 px-6">
               {/* Icon */}
               <div className="shrink-0 flex items-center justify-center" style={{ width: 72, height: 72, borderRadius: "50%", border: "1px solid rgba(0, 82, 230, 0.3)" }}>
                 <div className="flex items-center justify-center" style={{ width: 44, height: 44, background: "rgba(0, 82, 230, 0.1)", border: "2px solid #0052e6", borderRadius: "50%" }}>
