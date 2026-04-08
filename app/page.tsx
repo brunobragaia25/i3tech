@@ -58,16 +58,14 @@ function CountUp({ to, duration = 1.8 }: { to: number; duration?: number }) {
   );
 }
 
-/* ─── MCP asset URLs (fresh from Figma) ─────────────────── */
+/* ─── Asset URLs ─────────────────────────────────────────── */
 // Hero / Dashboard cards
-const IMG_CAR_FRONT       = "https://www.figma.com/api/mcp/asset/72d201be-937d-4c45-99e3-1a7aec9cd857";
-const IMG_USER_CHECK      = "https://www.figma.com/api/mcp/asset/5670ec71-f16e-4317-82bc-257e8c9aa84a";
-const IMG_CHART_SPLINE    = "https://www.figma.com/api/mcp/asset/4ccb2318-64a2-4201-a432-bb97ff27a0fe";
-const IMG_FOLDER_PEN      = "https://www.figma.com/api/mcp/asset/e29da469-6e18-4678-addd-b93f290daf4f";
-const IMG_TARGET          = "https://www.figma.com/api/mcp/asset/668803e6-0384-40e4-93db-2daa4abd771e";
-const IMG_USER_PLUS       = "https://www.figma.com/api/mcp/asset/8976ec13-465f-4c02-81fc-d1ab18852d07";
-const IMG_DIVIDER_H       = "https://www.figma.com/api/mcp/asset/6fc9487e-e9e4-40f6-a55e-ae571a02b27f";
-const IMG_DIVIDER_H2      = "https://www.figma.com/api/mcp/asset/ba45009f-6907-4a80-8973-cbf2b05d5681";
+const IMG_CAR_FRONT       = "/car-front.svg";
+const IMG_USER_CHECK      = "/user-round-check.svg";
+const IMG_CHART_SPLINE    = "/chart-spline.svg";
+const IMG_FOLDER_PEN      = "/folder-pen.svg";
+const IMG_TARGET          = "/target.svg";
+const IMG_USER_PLUS       = "/user-plus.svg";
 // About
 const IMG_GLOBE           = "https://www.figma.com/api/mcp/asset/a154c501-26af-43d6-af21-8def8381abb2";
 const IMG_ABOUT_DIV       = "https://www.figma.com/api/mcp/asset/6f12299d-a4d8-4e88-b253-ce26dbd7adb3";
