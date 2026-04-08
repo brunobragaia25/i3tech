@@ -66,18 +66,17 @@ const IMG_CHART_SPLINE    = "/chart-spline.svg";
 const IMG_FOLDER_PEN      = "/folder-pen.svg";
 const IMG_TARGET          = "/target.svg";
 const IMG_USER_PLUS       = "/user-plus.svg";
-// About
-const IMG_GLOBE           = "https://www.figma.com/api/mcp/asset/a154c501-26af-43d6-af21-8def8381abb2";
+// About - usando graphic-image-01.png
 const IMG_ABOUT_DIV       = "https://www.figma.com/api/mcp/asset/6f12299d-a4d8-4e88-b253-ce26dbd7adb3";
-const IMG_PILLAR_1        = "https://www.figma.com/api/mcp/asset/80ded2f9-c8ca-4640-91e1-8419e6e506fd";
-const IMG_PILLAR_2        = "https://www.figma.com/api/mcp/asset/5bb1d547-c547-4c65-8c41-a3fff1de958d";
-const IMG_PILLAR_3        = "https://www.figma.com/api/mcp/asset/6b851e20-dc95-437d-bb06-03d514a57f7e";
+const IMG_PILLAR_1        = "/list-filter.svg";
+const IMG_PILLAR_2        = "/zap.svg";
+const IMG_PILLAR_3        = "/chart-no-axes-column-increasing.svg";
 // Functionalities
-const IMG_FEAT_CRM        = "https://www.figma.com/api/mcp/asset/82ce8809-4c7c-4cf0-9bb5-4c341d3521a1";
-const IMG_FEAT_AUTO       = "https://www.figma.com/api/mcp/asset/dbdf5e6b-2311-4f72-9aef-5bd634e68cbb";
-const IMG_FEAT_CLIENTS    = "https://www.figma.com/api/mcp/asset/d9c5718a-7aba-4c7f-b066-b574a729f935";
-const IMG_FEAT_FIN        = "https://www.figma.com/api/mcp/asset/5af805a1-bda9-4d7b-b8e4-75c29e14418b";
-const IMG_FEAT_REPORTS    = "https://www.figma.com/api/mcp/asset/1f65eff5-bd2e-40f2-8242-531d81d6447f";
+const IMG_FEAT_CRM        = "/layout-dashboard.svg";
+const IMG_FEAT_AUTO       = "/send.svg";
+const IMG_FEAT_CLIENTS    = "/dollar-sign.svg";
+const IMG_FEAT_FIN        = "/users.svg";
+const IMG_FEAT_REPORTS    = "/layers.svg";
 // Differentials
 const IMG_DIFF_BOT        = "https://www.figma.com/api/mcp/asset/a765d049-1394-40b9-ab3b-2d904edaf414";
 const IMG_DIFF_BLOCKS     = "https://www.figma.com/api/mcp/asset/5261cf8c-bc6e-4759-a075-11035a51329a";
@@ -362,7 +361,7 @@ function About() {
             </span>
           </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_GLOBE} alt="" className="shrink-0 w-[299px] h-[237px] object-cover" />
+          <img src="/graphic-image-01.png" alt="" className="shrink-0 w-[299px] h-[237px] object-cover rounded-lg" />
         </FadeUp>
 
         {/* Bottom: 3 pillars — Figma: flex items-center justify-between, h=240 */}
@@ -370,7 +369,11 @@ function About() {
           {/* Pillar 1 */}
           <FadeUp delay={0} className="flex flex-col justify-between flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMG_PILLAR_1} alt="" className="w-[72px] h-[72px]" />
+            <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
+              <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
+                <img src={IMG_PILLAR_1} alt="" className="w-[24px] h-[24px]" />
+              </div>
+            </div>
             <div className="flex flex-col gap-5">
               <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
                 Mais controle sobre o funil de vendas
@@ -388,7 +391,11 @@ function About() {
           {/* Pillar 2 */}
           <FadeUp delay={0.1} className="flex flex-col justify-between flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMG_PILLAR_2} alt="" className="w-[72px] h-[72px]" />
+            <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
+              <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
+                <img src={IMG_PILLAR_2} alt="" className="w-[20px] h-[20px]" />
+              </div>
+            </div>
             <div className="flex flex-col gap-5">
               <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
                 Menos retrabalho operacional
@@ -406,7 +413,11 @@ function About() {
           {/* Pillar 3 */}
           <FadeUp delay={0.2} className="flex flex-col justify-between flex-1">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMG_PILLAR_3} alt="" className="w-[72px] h-[72px]" />
+            <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
+              <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
+                <img src={IMG_PILLAR_3} alt="" className="w-[20px] h-[20px]" />
+              </div>
+            </div>
             <div className="flex flex-col gap-5">
               <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
                 Mais previsibilidade e crescimento
@@ -426,8 +437,12 @@ function About() {
             { icon: IMG_PILLAR_3, title: "Mais previsibilidade e crescimento", desc: "Com indicadores claros e relatórios em tempo real, sua operação ganha previsibilidade." },
           ].map((p, i) => (
             <FadeUp key={p.title} delay={i * 0.1} className="flex flex-col gap-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.icon} alt="" className="w-14 h-14" />
+              <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
+                <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.icon} alt="" className="w-5 h-5" />
+                </div>
+              </div>
               <h3 className="text-[18px] font-medium" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>{p.title}</h3>
               <p className="text-[14px] font-light leading-[1.6] text-[#f7f7f7]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>{p.desc}</p>
             </FadeUp>
@@ -508,11 +523,11 @@ const functionalities = [
     desc: <>Automatize <strong className="text-[#f7f7f7]">contatos, follow-ups e propostas para vender mais</strong>, com menos esforço operacional.</>,
   },
   {
-    icon: IMG_FEAT_CLIENTS, title: "Gestão de clientes e associados",
+    icon: IMG_FEAT_FIN, title: "Gestão de clientes e associados",
     desc: <>Centralize <strong className="text-[#f7f7f7]">dados de clientes, veículos e contratos</strong> com histórico completo e sempre atualizado.</>,
   },
   {
-    icon: IMG_FEAT_FIN, title: "Financeiro e comissões",
+    icon: IMG_FEAT_CLIENTS, title: "Financeiro e comissões",
     desc: <>Controle <strong className="text-[#f7f7f7]">pagamentos, comissões e resultados financeiros</strong> com mais clareza e segurança.</>,
   },
   {
@@ -528,8 +543,10 @@ function FuncCard({ f, className = "" }: { f: typeof functionalities[0]; classNa
       style={{ background: "#171717", border: "1px solid #2e2e2e" }}
     >
       <div className="flex items-center gap-2.5">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={f.icon} alt="" className="w-7 h-7 shrink-0" />
+        <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={f.icon} alt="" className="w-4 h-4" />
+        </div>
         <span className="text-[16px] font-semibold leading-[1.2]" style={{ color: "#66a3ff", fontFamily: "var(--font-dm-sans), sans-serif" }}>
           {f.title}
         </span>

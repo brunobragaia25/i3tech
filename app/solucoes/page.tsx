@@ -7,12 +7,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const IMG_ELLIPSE = "https://www.figma.com/api/mcp/asset/477ca69d-e379-402e-9531-484f97e49724";
-const IMG_ICON_UNIFIED = "https://www.figma.com/api/mcp/asset/60126111-9c2d-4c4d-8cc1-94a98be61700";
-const IMG_ICON_AUTOMATION = "https://www.figma.com/api/mcp/asset/7ccac001-1aaa-4c20-aad1-54c638ef36ae";
-const IMG_ICON_VISION = "https://www.figma.com/api/mcp/asset/e512ca94-0bd2-40c7-b9ce-6ac33da2e06d";
-const IMG_ICON_SECURITY = "https://www.figma.com/api/mcp/asset/ed62dab9-603f-41be-9549-65c836394113";
-const IMG_ICON_SCALE = "https://www.figma.com/api/mcp/asset/e2d3fe76-56bf-488a-a9c1-029b879e3abc";
-const IMG_ICON_PERFORMANCE = "https://www.figma.com/api/mcp/asset/d3496204-f30c-44ca-90f2-ea1093c7a5ef";
+const IMG_ICON_UNIFIED = "/bot.svg";
+const IMG_ICON_AUTOMATION = "/blocks.svg";
+const IMG_ICON_VISION = "/sparkles.svg";
+const IMG_ICON_SECURITY = "/shield-check.svg";
+const IMG_ICON_SCALE = "/combine.svg";
+const IMG_ICON_PERFORMANCE = "/circle-gauge.svg";
 
 function FadeUp({ children, delay = 0, className = "", id }: { children: React.ReactNode; delay?: number; className?: string; id?: string }) {
   return (
@@ -217,8 +217,10 @@ function DiferenciaisSection() {
                 borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={item.icon} alt="" className="w-[72px] h-[72px]" style={{ filter: "brightness(2)" }} />
+              <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={item.icon} alt="" className="w-4 h-4" />
+              </div>
               <span
                 className="text-[20px] font-medium leading-[1.4]"
                 style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}

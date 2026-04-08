@@ -6,9 +6,12 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-/* ─── Figma assets ───────────────────────────────────────── */
-const IMG_ICON_CRM      = "https://www.figma.com/api/mcp/asset/0dcfead4-296a-4185-9ace-7a5585c4672d";
-const IMG_ICON_DEFAULT  = "https://www.figma.com/api/mcp/asset/2f7fbf8b-8485-4b8c-83b2-005a7178308b";
+/* ─── SVG assets ────────────────────────────────────────── */
+const IMG_ICON_CRM      = "/layout-dashboard.svg";
+const IMG_ICON_1        = "/send.svg";
+const IMG_ICON_2        = "/users.svg";
+const IMG_ICON_3        = "/dollar-sign.svg";
+const IMG_ICON_4        = "/layers.svg";
 const IMG_CHECK         = "https://www.figma.com/api/mcp/asset/25edea5f-bc1e-4a11-8378-35d4a5cd9b16";
 const IMG_DIVIDER       = "https://www.figma.com/api/mcp/asset/fb7df162-0031-473c-93c1-fa333cbc1c14";
 
@@ -46,7 +49,7 @@ const features = [
     imageLeft: true,
   },
   {
-    icon: IMG_ICON_DEFAULT,
+    icon: IMG_ICON_1,
     title: "Automação de Vendas",
     description: [
       "A automação da i3TECH reduz tarefas repetitivas e acelera o processo comercial. O sistema permite criar fluxos automáticos de contato, envio de propostas e acompanhamento de clientes, garantindo agilidade e padronização no atendimento.",
@@ -61,7 +64,7 @@ const features = [
     imageLeft: false,
   },
   {
-    icon: IMG_ICON_DEFAULT,
+    icon: IMG_ICON_2,
     title: "Gestão de Clientes e Associados",
     description: [
       "Centralize todas as informações de clientes, contratos e veículos em um único ambiente. O módulo permite acompanhar toda a jornada do cliente com organização e segurança.",
@@ -76,7 +79,7 @@ const features = [
     imageLeft: true,
   },
   {
-    icon: IMG_ICON_DEFAULT,
+    icon: IMG_ICON_3,
     title: "Financeiro & Comissões",
     description: [
       "O módulo financeiro conecta a operação comercial aos resultados financeiros. Ele permite acompanhar pagamentos, comissões e indicadores de receita com clareza e controle.",
@@ -91,7 +94,7 @@ const features = [
     imageLeft: false,
   },
   {
-    icon: IMG_ICON_DEFAULT,
+    icon: IMG_ICON_4,
     title: "Relatórios & Integrações",
     description: [
       "A i3TECH transforma dados operacionais em inteligência estratégica e conecta sua operação aos principais canais e sistemas do mercado.",
@@ -134,8 +137,10 @@ function FeatureSection({ f, index }: { f: typeof features[0]; index: number }) 
     <div className="flex-1 flex flex-col gap-5 min-w-0">
       {/* Title row */}
       <div className="flex items-center gap-5">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={f.icon} alt="" className="w-10 h-10 shrink-0" />
+        <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={f.icon} alt="" className="w-4 h-4" />
+        </div>
         <h2
           className="text-[24px] md:text-[32px] font-semibold leading-[1.2]"
           style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}

@@ -46,7 +46,8 @@ export default function Navbar() {
       <div
         className="w-full sticky top-0 z-50 transition-all duration-500"
         style={{
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
+          background: pill ? "transparent" : "rgba(13,13,13,0.92)",
+          borderBottom: pill ? "none" : "1px solid rgba(255,255,255,0.06)",
           paddingLeft: pill ? 24 : 0,
           paddingRight: pill ? 24 : 0,
           paddingTop: pill ? 12 : 0,
