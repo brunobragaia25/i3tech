@@ -217,9 +217,9 @@ function DiferenciaisSection() {
                 borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
               }}
             >
-              <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
+              <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.icon} alt="" className="w-4 h-4" />
+                <img src={item.icon} alt="" className="w-5 h-5" />
               </div>
               <span
                 className="text-[20px] font-medium leading-[1.4]"
