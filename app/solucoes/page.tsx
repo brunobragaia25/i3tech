@@ -7,12 +7,12 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 const IMG_ELLIPSE = "https://www.figma.com/api/mcp/asset/477ca69d-e379-402e-9531-484f97e49724";
-const IMG_ICON_UNIFIED = "/bot.svg";
-const IMG_ICON_AUTOMATION = "/sparkles.svg";
-const IMG_ICON_VISION = "/combine.svg";
-const IMG_ICON_SECURITY = "/shield-check.svg";
-const IMG_ICON_SCALE = "/blocks.svg";
-const IMG_ICON_PERFORMANCE = "/circle-gauge.svg";
+const IMG_ICON_UNIFIED = "https://www.figma.com/api/mcp/asset/efbcf2cb-ec1c-42d7-9698-15cf2ab543df";
+const IMG_ICON_AUTOMATION = "https://www.figma.com/api/mcp/asset/96ba31d1-06d0-456d-89ed-86ce6b27f511";
+const IMG_ICON_VISION = "https://www.figma.com/api/mcp/asset/7eed85fe-0818-4539-bf19-8c77425e6dc3";
+const IMG_ICON_SECURITY = "https://www.figma.com/api/mcp/asset/90e5a39d-9bc5-416f-8265-473b94754935";
+const IMG_ICON_SCALE = "https://www.figma.com/api/mcp/asset/07e87baa-d333-4477-9dad-f5bc7d2abbd3";
+const IMG_ICON_PERFORMANCE = "https://www.figma.com/api/mcp/asset/7e6b7585-9513-48b8-82ff-7f4565dc1cd7";
 
 function FadeUp({ children, delay = 0, className = "", id }: { children: React.ReactNode; delay?: number; className?: string; id?: string }) {
   return (
@@ -159,33 +159,33 @@ function CRMSection() {
 const diferenciais = [
   {
     icon: IMG_ICON_UNIFIED,
-    title: "Plataforma Unificada",
-    body: "Enquanto muitas empresas utilizam ferramentas separadas para vendas, gestão e controle financeiro, a i3TECH centraliza toda a operação em um único ambiente. Isso reduz falhas, melhora a comunicação interna e aumenta a eficiência operacional.",
+    title: "Automação inteligente de processos",
+    body: "Fluxos automatizados que reduzem tarefas manuais e aumentam a eficiência da operação.",
   },
   {
     icon: IMG_ICON_AUTOMATION,
-    title: "Automação Inteligente",
-    body: "Automatizamos tarefas repetitivas, fluxos comerciais e processos internos, permitindo que a equipe foque em decisões estratégicas e no relacionamento com o cliente. Menos retrabalho, mais produtividade.",
+    title: "Interface simples e intuitiva",
+    body: "Uma plataforma fácil de usar, pensada para produtividade desde o primeiro acesso.",
   },
   {
     icon: IMG_ICON_VISION,
-    title: "Visão Estratégica em Tempo Real",
-    body: "Dashboards e relatórios claros oferecem uma visão completa da operação, com indicadores que ajudam gestores a identificar oportunidades, corrigir gargalos e planejar o crescimento com mais segurança.",
-  },
-  {
-    icon: IMG_ICON_SECURITY,
-    title: "Segurança e Confiabilidade",
-    body: "Proteção de dados, estabilidade e organização da informação garantem que a empresa tenha controle e confiança em todas as etapas da operação.",
+    title: "Centralização total da operação",
+    body: "Vendas, clientes, financeiro e dados reunidos em um único ambiente.",
   },
   {
     icon: IMG_ICON_SCALE,
-    title: "Escalabilidade Estruturada",
-    body: "A i3TECH foi projetada para crescer junto com a empresa. Seja expandindo equipe, unidades ou volume de clientes, o sistema acompanha a evolução do negócio sem perder organização ou controle.",
+    title: "Sistema modular e escalável",
+    body: "Adapte o sistema ao tamanho e à complexidade do seu negócio, sem limitações.",
   },
   {
     icon: IMG_ICON_PERFORMANCE,
-    title: "Foco em Performance Comercial",
-    body: "Não é apenas gestão — é performance. A plataforma foi pensada para melhorar conversão, organização do funil e acompanhamento de metas comerciais.",
+    title: "Performance comercial real",
+    body: "Dados claros para acompanhar resultados, corrigir rotas e vender com mais consistência.",
+  },
+  {
+    icon: IMG_ICON_SECURITY,
+    title: "Segurança e confiabilidade dos dados",
+    body: "Informações protegidas, com controle, estabilidade e total confiabilidade.",
   },
 ];
 
@@ -198,38 +198,31 @@ function DiferenciaisSection() {
             className="text-[28px] md:text-[40px] font-semibold leading-[1.2] max-w-[430px]"
             style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
           >
-            Principais Diferenciais do i3TECH
+            Saiba sobre os diferenciais do CRM
           </h2>
-          <p
-            className="text-[20px] leading-[1.4] max-w-[752px]"
-            style={{ color: "#a0a0a0", fontFamily: "var(--font-dm-sans), sans-serif" }}
-          >
-            Enquanto muitas empresas utilizam ferramentas separadas para vendas, gestão e controle financeiro, a i3TECH centraliza toda a operação em um único ambiente. Isso reduz falhas, melhora a comunicação interna e aumenta a eficiência operacional.
-          </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {diferenciais.map((item, i) => (
             <div
               key={item.title}
-              className="flex flex-col gap-7 p-10"
+              className="flex flex-col gap-8 p-8"
               style={{
-                borderBottom: "1px solid rgba(255,255,255,0.08)",
                 borderRight: (i + 1) % 3 !== 0 ? "1px solid rgba(255,255,255,0.08)" : "none",
               }}
             >
-              <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
+              <div className="flex items-center gap-2.5">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={item.icon} alt="" className="w-5 h-5" />
+                <img src={item.icon} alt="" className="w-6 h-6 shrink-0" />
+                <span
+                  className="text-[16px] font-semibold leading-[1.2]"
+                  style={{ color: "#e6f0ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
+                >
+                  {item.title}
+                </span>
               </div>
-              <span
-                className="text-[20px] font-medium leading-[1.4]"
-                style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                {item.title}
-              </span>
               <p
                 className="text-[14px] font-light leading-[1.6]"
-                style={{ color: "#888", fontFamily: "var(--font-dm-sans), sans-serif" }}
+                style={{ color: "#ffffff", fontFamily: "var(--font-dm-sans), sans-serif" }}
               >
                 {item.body}
               </p>
