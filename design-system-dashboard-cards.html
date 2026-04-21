@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System - Dashboard Cards i3TECH</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(291px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        /* Outer card with blue background */
+        .card-outer {
+            background: #cce0ff;
+            padding: 10px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Inner white card */
+        .card-inner {
+            background: white;
+            border: 1px solid rgba(51, 133, 255, 0.5);
+            border-radius: 8px;
+            padding: 28px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Card 1: 291×287 */
+        .card-1 {
+            width: 291px;
+            height: 287px;
+        }
+
+        .card-1 .card-inner {
+            justify-content: space-between;
+        }
+
+        /* Card 2: 291×373 */
+        .card-2 {
+            width: 291px;
+            height: 373px;
+        }
+
+        /* Card 3: 291×335 */
+        .card-3 {
+            width: 291px;
+            height: 335px;
+        }
+
+        /* Card 4: 291×315 */
+        .card-4 {
+            width: 291px;
+            height: 315px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .card-header-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .card-header-title {
+            font-size: 16px;
+            color: #0052e6;
+            line-height: 23.94px;
+        }
+
+        .card-metric {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .card-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1;
+        }
+
+        .card-divider {
+            height: 1px;
+            background: #e5e5e5;
+            width: 100%;
+            margin: 16px 0;
+        }
+
+        /* Chart styles */
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            flex: 1;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .chart-bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+
+        .chart-bar {
+            width: 20px;
+            background: #66a3ff;
+            border: 1px solid #cce0ff;
+            border-radius: 20px;
+            animation: growBar 0.7s ease-out forwards;
+        }
+
+        @keyframes growBar {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        .chart-label {
+            font-size: 12px;
+            color: #333;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            white-space: nowrap;
+        }
+
+        /* Table styles */
+        .table-container {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1fr 60px;
+            gap: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e5e5;
+            font-size: 12px;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-label {
+            color: #666;
+        }
+
+        .table-value {
+            color: #333;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .table-row.total {
+            border-top: 2px solid #0052e6;
+            border-bottom: 2px solid #0052e6;
+            font-weight: 600;
+        }
+
+        /* Badge styles */
+        .badge {
+            display: inline-block;
+            background: #0052e6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid">
+            <!-- Card 1: Nº Veículos Ativos -->
+            <div class="card-outer card-1">
+                <div class="card-inner">
+                    <div class="card-metric">
+                        <div class="card-header">
+                            <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5H6.5c-.66 0-1.22.42-1.42 1.01L4 11v10c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1V11l-2.08-4.99zM6.5 7h11l1.96 2.5H4.54L6.5 7zm13 9h-1v2h-2v-2h-2v2h-2v-2h-2v2H9v-2H7v2H6v-2H5v-2h14v2z" fill="#0052e6"/>
+                            </svg>
+                            <span class="card-header-title">Nº Veículos Ativos</span>
+                        </div>
+                        <div class="card-value">14.019</div>
+                    </div>
+
+                    <div class="card-divider"></div>
+
+                    <div class="card-metric">
+                        <div class="card-header">
+                            <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="#0052e6"/>
+                            </svg>
+                            <span class="card-header-title">Nº Associados Ativos</span>
+                        </div>
+                        <div class="card-value">11.623</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Evolução custos eventos -->
+            <div class="card-outer card-2">
+                <div class="card-inner">
+                    <div>
+                        <div class="card-header">
+                            <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-2.12-2.59c-.2-.24-.56-.24-.77 0l-2.39 2.92c-.2.24-.02.61.27.61h11.26c.29 0 .47-.35.27-.61l-3.47-4.24c-.21-.24-.56-.24-.76 0z" fill="#0052e6"/>
+                            </svg>
+                            <span class="card-header-title">Evolução custos<br>eventos</span>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 59px; animation-delay: 1.15s;"></div>
+                            <span class="chart-label">20201</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 73px; animation-delay: 1.25s;"></div>
+                            <span class="chart-label">20202</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 92px; animation-delay: 1.35s;"></div>
+                            <span class="chart-label">20203</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 113px; animation-delay: 1.45s;"></div>
+                            <span class="chart-label">20204</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar" style="height: 133px; animation-delay: 1.55s;"></div>
+                            <span class="chart-label">20205</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Meta table -->
+            <div class="card-outer card-3">
+                <div class="card-inner">
+                    <div class="card-header">
+                        <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z" fill="#0052e6"/>
+                        </svg>
+                        <span class="card-header-title">Nome meta</span>
+                    </div>
+
+                    <div class="table-container">
+                        <div class="table-row">
+                            <span class="table-label">Meta Geral</span>
+                            <span class="table-value">14.453</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Regional INS</span>
+                            <span class="table-value">330</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Regional SIA</span>
+                            <span class="table-value">175</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Regional FSA</span>
+                            <span class="table-value">230</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Regional CRS</span>
+                            <span class="table-value">45</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Regional PLT</span>
+                            <span class="table-value">100</span>
+                        </div>
+                        <div class="table-row total">
+                            <span class="table-label">Total</span>
+                            <span class="table-value">940</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Recuperações</span>
+                            <span class="table-value">230</span>
+                        </div>
+                        <div class="table-row">
+                            <span class="table-label">Faturamento</span>
+                            <span class="table-value" style="color: #0052e6;">R$ 2.547k</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Nº Adesões -->
+            <div class="card-outer card-4">
+                <div class="card-inner">
+                    <div class="card-header">
+                        <svg class="card-header-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="#0052e6"/>
+                        </svg>
+                        <span class="card-header-title">Nº Adesões</span>
+                    </div>
+
+                    <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-around; margin-top: 12px;">
+                        <div class="card-metric">
+                            <span style="font-size: 14px; color: #666; margin-bottom: 4px;">Plano Personalizado</span>
+                            <span class="badge">9.063</span>
+                        </div>
+                        <div class="card-metric">
+                            <span style="font-size: 14px; color: #666; margin-bottom: 4px;">Plano Premium</span>
+                            <span class="badge">3.045</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
