@@ -305,7 +305,7 @@ function Counter({ target, duration = 2 }: { target: number; duration?: number }
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isInView && !hasStartedRef.current) {
+          if (entry.isIntersecting && !hasStartedRef.current) {
             hasStartedRef.current = true;
             observer.disconnect();
 
