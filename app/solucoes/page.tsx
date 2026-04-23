@@ -42,6 +42,14 @@ const IMG_ICON_VISION = "https://www.figma.com/api/mcp/asset/7eed85fe-0818-4539-
 const IMG_ICON_SECURITY = "https://www.figma.com/api/mcp/asset/90e5a39d-9bc5-416f-8265-473b94754935";
 const IMG_ICON_SCALE = "https://www.figma.com/api/mcp/asset/07e87baa-d333-4477-9dad-f5bc7d2abbd3";
 const IMG_ICON_PERFORMANCE = "https://www.figma.com/api/mcp/asset/7e6b7585-9513-48b8-82ff-7f4565dc1cd7";
+const IMG_VECTOR_DIVIDER = "https://www.figma.com/api/mcp/asset/e76d9892-c424-429e-a356-87b95ab8c2bf";
+const IMG_CAR_ICON = "https://www.figma.com/api/mcp/asset/12745f47-9eeb-421c-8922-402be189286d";
+const IMG_USER_ICON = "https://www.figma.com/api/mcp/asset/d4126c8f-7027-4795-a77b-4959a02dc41e";
+const IMG_CALENDAR_ICON = "https://www.figma.com/api/mcp/asset/b189055c-0680-4933-ba84-d9c5c59594f7";
+const IMG_CRM_DIVIDER = "https://www.figma.com/api/mcp/asset/18abb266-e76d-4c71-a93b-1328e0174460";
+const IMG_CRM_CAR = "https://www.figma.com/api/mcp/asset/7357e275-9330-4d18-ba79-4d127c1c5eac";
+const IMG_CRM_USER = "https://www.figma.com/api/mcp/asset/3255544a-edf8-4e58-a5ac-c503bafbaa6d";
+const IMG_CRM_CALENDAR = "https://www.figma.com/api/mcp/asset/8d109f11-e429-4c69-959b-10efcf52ea10";
 
 function FadeUp({ children, delay = 0, className = "", id }: { children: React.ReactNode; delay?: number; className?: string; id?: string }) {
   return (
@@ -163,10 +171,89 @@ function CRMSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
       <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col md:flex-row items-center gap-8 md:gap-[60px]">
-        <div
-          className="flex-1 rounded-[12px] shrink-0 h-[200px] md:h-[500px] w-full"
-          style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.06)" }}
-        />
+        {/* CRM Mockup Component */}
+        <div className="flex-1 rounded-[12px] shrink-0 w-full" style={{ background: "white", border: "1px solid rgba(0, 0, 0, 0.08)" }}>
+          <div className="p-6 md:p-8 flex flex-col gap-6">
+            {/* Header */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="text-[12px] font-medium px-3 py-1 rounded" style={{ background: "#f0f0f0", color: "#525252" }}>
+                  Aceite
+                </span>
+                <span className="text-[12px] font-medium px-2 py-1 rounded" style={{ background: "#e0e0e0", color: "#525252", width: 28, textAlign: "center" }}>
+                  1
+                </span>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: 1, background: "#e5e5e5" }} />
+
+            {/* Customer Card */}
+            <div>
+              <p className="text-[12px] font-medium" style={{ color: "#525252" }}>
+                Cliente
+              </p>
+              <p className="text-[14px] font-semibold mt-1" style={{ color: "#171717" }}>
+                Abc Cliente
+              </p>
+              <p className="text-[12px] mt-1" style={{ color: "#737373" }}>
+                facebook
+              </p>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: 1, background: "#e5e5e5" }} />
+
+            {/* Vehicle Details */}
+            <div className="flex items-start gap-3">
+              <img src={IMG_CAR_ICON} alt="car" className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-[12px] font-medium" style={{ color: "#525252" }}>
+                  Veículo
+                </p>
+                <p className="text-[14px] font-semibold mt-1" style={{ color: "#171717" }}>
+                  Fiat - Toro Freedom
+                </p>
+              </div>
+            </div>
+
+            {/* Consultant Details */}
+            <div className="flex items-start gap-3">
+              <img src={IMG_USER_ICON} alt="user" className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-[12px] font-medium" style={{ color: "#525252" }}>
+                  Consultor
+                </p>
+                <p className="text-[14px] font-semibold mt-1" style={{ color: "#171717" }}>
+                  CONSULTOR EXTERNO
+                </p>
+              </div>
+            </div>
+
+            {/* Created Date */}
+            <div className="flex items-start gap-3">
+              <img src={IMG_CALENDAR_ICON} alt="calendar" className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-[12px] mt-1" style={{ color: "#737373" }}>
+                  Criado em: 26/01/2026
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div style={{ height: 1, background: "#e5e5e5" }} />
+
+            {/* Status Badge */}
+            <div>
+              <span className="text-[12px] font-medium px-3 py-1 rounded" style={{ background: "#fce7f3", color: "#be185d" }}>
+                Não aceita
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right side content */}
         <div className="flex-1 flex flex-col gap-5">
           <h2
             className="text-[28px] md:text-[40px] font-semibold leading-[1.2]"
@@ -385,12 +472,80 @@ const modules = [
 ];
 
 function ModuleCard({ mod }: { mod: typeof modules[0] }) {
-  const imagePlaceholder = (
-    <div
-      className="flex-1 rounded-[16px] self-stretch min-h-[200px] md:min-h-0"
-      style={{ background: "#f7f7f7" }}
-    />
-  );
+  const imagePlaceholder =
+    mod.id === "crm" ? (
+      <div className="flex-1 rounded-[16px] self-stretch min-h-[200px] md:min-h-0 p-[10px] flex justify-center items-center" style={{ background: "#e6f0ff" }}>
+        <div className="flex flex-col gap-6" style={{ width: 460 }}>
+          {/* Header */}
+          <div className="flex items-center justify-between px-3 py-2 rounded-[12px]" style={{ background: "#f7f7f7" }}>
+            <span className="text-[16px] font-light" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+              Aceite
+            </span>
+            <span className="text-[14px] font-light px-3 py-2 rounded-[6px] text-white" style={{ background: "#66a3ff", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+              1
+            </span>
+          </div>
+
+          {/* Main Card */}
+          <div className="rounded-[16px] p-[10px]" style={{ background: "#cce0ff" }}>
+            <div className="rounded-[8px] p-7 flex flex-col gap-4" style={{ background: "white", border: "1px solid rgba(51, 133, 255, 0.5)" }}>
+              {/* Customer Section */}
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[16px] font-normal" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Abc Cliente
+                  </span>
+                  <span className="text-[12px] font-light px-3 py-1 rounded-[6px]" style={{ background: "#f0f0f0", color: "#333", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    facebook
+                  </span>
+                </div>
+                <div style={{ height: 1, background: "#ccc" }} />
+              </div>
+
+              {/* Details Section */}
+              <div className="flex flex-col gap-3">
+                {/* Vehicle */}
+                <div className="flex gap-2 items-start">
+                  <img src={IMG_CRM_CAR} alt="car" className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-[12px] font-normal" style={{ color: "#333", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Fiat - Toro Freedom 1.8 16V Flex Aut. - 2021/Flex
+                  </span>
+                </div>
+
+                {/* Consultant */}
+                <div className="flex gap-2 items-start">
+                  <img src={IMG_CRM_USER} alt="user" className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-[12px] font-normal" style={{ color: "#333", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    CONSULTOR EXTERNO
+                  </span>
+                </div>
+
+                {/* Date */}
+                <div className="flex gap-2 items-start">
+                  <img src={IMG_CRM_CALENDAR} alt="calendar" className="w-5 h-5 flex-shrink-0" />
+                  <span className="text-[12px] font-normal" style={{ color: "#333", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Criado em: 26/01/2026
+                  </span>
+                </div>
+              </div>
+
+              {/* Divider */}
+              <div style={{ height: 1, background: "#ccc" }} />
+
+              {/* Status Badge */}
+              <span className="text-[12px] font-semibold px-3 py-1.5 rounded-full w-fit" style={{ background: "#f8d7da", color: "#93204b", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                Não aceita
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div
+        className="flex-1 rounded-[16px] self-stretch min-h-[200px] md:min-h-0"
+        style={{ background: "#f7f7f7" }}
+      />
+    );
 
   const textBlock = (
     <div className="flex-1 flex flex-col gap-8">
