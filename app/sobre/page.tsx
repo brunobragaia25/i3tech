@@ -5,8 +5,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 const IMG_CHECK = "/Check Circle.svg";
+const IMG_DIVIDER = "https://www.figma.com/api/mcp/asset/d3604ced-bb6c-474f-ad6d-a4040ea1238e";
+const IMG_VINICIUS = "https://www.figma.com/api/mcp/asset/3615e55c-8ce3-40d9-b040-26107b5fab28";
 
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   return (
@@ -65,31 +68,31 @@ function Hero() {
 function IntroSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[128px] pb-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 md:gap-16">
-        <p
-          className="text-[36px] leading-normal w-full md:max-w-[640px]"
-          style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          Criamos sistemas que{" "}
-          <span className="font-semibold" style={{ color: "#0052e6" }}>
-            conectam vendas, gestão e dados em um único ambiente
-          </span>
-          , ajudando empresas a organizar processos, ganhar eficiência e crescer com mais controle.
-        </p>
-        <p
-          className="text-right text-[24px] leading-normal font-light"
-          style={{ maxWidth: 424, color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          Atuamos ao lado de negócios que{" "}
-          <span style={{ color: "#888" }}>
-            precisam de mais do que ferramentas isoladas — precisam de uma plataforma confiável
-          </span>{" "}
-          para sustentar a operação e a tomada de decisão.
-        </p>
+      <FadeUp className="max-w-[1280px] mx-auto px-5 py-16 md:py-32 flex flex-col gap-16 items-center">
+        {/* Top: Two columns */}
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between w-full gap-8 md:gap-16">
+          {/* Left column - larger text */}
+          <div className="flex-1 max-w-[640px]">
+            <p className="text-[28px] md:text-[32px] leading-[1.4]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+              Somos uma empresa de tecnologia do Grupo Brasil Atuarial, com o{" "}
+              <span className="font-semibold" style={{ color: "#0052e6" }}>
+                foco no desenvolvimento de inovações e produtos tecnológicos que envolvem a regra atuarial
+              </span>
+              .
+            </p>
+          </div>
+
+          {/* Right column - smaller text */}
+          <div className="text-right" style={{ width: 380 }}>
+            <p className="text-[20px] leading-[1.4] font-light" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+              Desenvolvemos sistemas e aplicativos que conectam gestão empresarial, vendas e rastreamento inteligente para o nosso segmento.
+            </p>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <img src={IMG_DIVIDER} alt="" className="w-full" style={{ height: 1 }} />
       </FadeUp>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5">
-        <div style={{ height: 1, background: "rgba(255,255,255,0.08)" }} />
-      </div>
     </section>
   );
 }
@@ -182,6 +185,224 @@ function ContentBlock({
   );
 }
 
+/* ─── Video Section ──────────────────────────────── */
+function VideoSection() {
+  return (
+    <section style={{ background: "#0d0d0d" }}>
+      <FadeUp className="max-w-[1280px] mx-auto px-5 pb-16 md:pb-20 flex items-center justify-center">
+        <div
+          className="w-full rounded-[16px] flex items-center justify-center p-2.5"
+          style={{ background: "#cce0ff", minHeight: 680 }}
+        >
+          <div
+            className="w-full rounded-lg flex items-center justify-center"
+            style={{ background: "#242424", border: "1px solid rgba(51, 133, 255, 0.5)", minHeight: 660 }}
+          >
+            <button
+              className="w-16 h-16 rounded-full flex items-center justify-center hover:scale-110 transition-transform"
+              style={{ background: "#3385ff" }}
+              aria-label="Play video"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                <polygon points="5 3 19 12 5 21" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </FadeUp>
+    </section>
+  );
+}
+
+/* ─── Directors Section ──────────────────────────── */
+function DirectorsSection() {
+  return (
+    <section style={{ background: "#0d0d0d" }}>
+      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 pb-16 md:pb-32 flex flex-col gap-16 items-center">
+        <h2
+          className="text-[40px] font-semibold text-center"
+          style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
+        >
+          Nossa Diretoria
+        </h2>
+
+        <div className="w-full flex flex-col md:flex-row gap-6">
+          {/* Enrico Neto */}
+          <div
+            className="flex-1 rounded-[20px] p-4 flex flex-col overflow-hidden"
+            style={{ background: "#171717" }}
+          >
+            <div
+              className="w-full h-[360px] rounded-[8px] mb-6"
+              style={{ background: "#d9d9d9" }}
+            />
+            <div className="px-6 pb-6">
+              <h3
+                className="text-[24px] font-medium mb-3"
+                style={{ color: "#3385ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                Enrico Neto
+              </h3>
+              <p
+                className="text-[12px] uppercase"
+                style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                Sócio e fundador da i3Tech (Em Execução)
+              </p>
+            </div>
+          </div>
+
+          {/* Vinicius da Costa */}
+          <div
+            className="flex-1 rounded-[20px] p-4 flex flex-col overflow-hidden"
+            style={{ background: "#171717" }}
+          >
+            <div
+              className="w-full h-[360px] rounded-[8px] mb-6 overflow-hidden"
+              style={{ background: "#d9d9d9" }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={IMG_VINICIUS}
+                alt="Vinicius da Costa"
+                className="w-full h-full object-cover"
+                style={{ objectPosition: "center 20%" }}
+              />
+            </div>
+            <div className="px-6 pb-6">
+              <h3
+                className="text-[24px] font-medium mb-3"
+                style={{ color: "#3385ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                Vinicius da Costa
+              </h3>
+              <p
+                className="text-[12px] uppercase"
+                style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                Sócio e Diretor Comercial da i3Tech (Em Execução)
+              </p>
+            </div>
+          </div>
+        </div>
+      </FadeUp>
+    </section>
+  );
+}
+
+/* ─── Counter Component ──────────────────────────── */
+function Counter({ target, duration = 2 }: { target: number; duration?: number }) {
+  const [count, setCount] = useState(0);
+  const containerRef = useRef<HTMLSpanElement>(null);
+  const hasStartedRef = useRef(false);
+
+  useEffect(() => {
+    if (hasStartedRef.current) return;
+
+    const element = containerRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isInView && !hasStartedRef.current) {
+            hasStartedRef.current = true;
+            observer.disconnect();
+
+            let start: number | null = null;
+            const startAnimation = (timestamp: number) => {
+              if (start === null) start = timestamp;
+              const progress = Math.min((timestamp - start) / (duration * 1000), 1);
+              const currentCount = Math.floor(progress * target);
+              setCount(currentCount);
+
+              if (progress < 1) {
+                requestAnimationFrame(startAnimation);
+              } else {
+                setCount(target);
+              }
+            };
+
+            requestAnimationFrame(startAnimation);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [target, duration]);
+
+  return <span ref={containerRef}>{count.toLocaleString("pt-BR")}</span>;
+}
+
+/* ─── Stats Section ──────────────────────────────── */
+function StatsSection() {
+  const stats = [
+    {
+      target: 2300,
+      prefix: "+ de ",
+      description: "entidade de proteção patrimonial mutualista;",
+    },
+    {
+      target: 60000,
+      prefix: "+ de ",
+      description: "itens na gestão administrativa;",
+    },
+    {
+      target: 3,
+      prefix: "+ de ",
+      description: "atendidos;",
+    },
+    {
+      target: 45,
+      prefix: "+ de ",
+      description: "centrais utilizando nosso sistema.",
+    },
+  ];
+
+  return (
+    <section style={{ background: "#0d0d0d" }}>
+      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 pb-16 flex flex-col gap-16 items-center">
+        <h2
+          className="text-[40px] font-semibold text-center"
+          style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
+        >
+          Nossa números falam por si só
+        </h2>
+
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {stats.map((stat) => (
+            <div
+              key={stat.target}
+              className="rounded-[12px] p-8 flex flex-col justify-between min-h-[200px]"
+              style={{ border: "1px solid #99c2ff", background: "#0d0d0d" }}
+            >
+              <h3
+                className="text-[34px] font-bold"
+                style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {stat.prefix}
+                <Counter target={stat.target} duration={2} />
+              </h3>
+              <p
+                className="text-[16px] font-semibold"
+                style={{ color: "#66a3ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {stat.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </FadeUp>
+    </section>
+  );
+}
+
 /* ─── CTA Banner ─────────────────────────────────── */
 function CTABanner() {
   return (
@@ -197,14 +418,8 @@ function CTABanner() {
                 className="text-[24px] md:text-[36px] font-semibold leading-[1.2] text-white"
                 style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
               >
-                Pronto para transformar sua operação?
+                Pronto para se conectar no que a de mais inovador no segmento.
               </h2>
-              <p
-                className="text-[18px] leading-[1.4] text-white/80"
-                style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                Agende uma demonstração e veja como a i3TECH pode impulsionar seu negócio.
-              </p>
               <Link
                 href="/#contato"
                 className="inline-flex items-center px-6 py-3 rounded-lg text-[15px] font-medium transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:shadow-lg"
@@ -233,36 +448,9 @@ export default function SobrePage() {
       <main className="flex-1">
         <Hero />
         <IntroSection />
-        <ContentBlock
-          title="O que nós fazemos?"
-          paragraphs={[
-            "Desenvolvemos uma plataforma completa de CRM e gestão voltada para empresas do setor veicular, com foco em:",
-          ]}
-          imageLeft={true}
-          checklist={[
-            "Organização da operação comercial",
-            "Automação de processos",
-            "Centralização de dados",
-            "Visão estratégica do negócio",
-          ]}
-          footnote="Tudo isso de forma simples, integrada e escalável."
-        />
-        <ContentBlock
-          title="Tecnologia e propósito"
-          paragraphs={[
-            "Acreditamos que tecnologia deve simplificar, não complicar. Por isso, nossos sistemas são pensados para reduzir retrabalho, eliminar processos manuais e oferecer informações claras para decisões mais inteligentes.",
-            "Nosso propósito é transformar a forma como empresas veiculares gerenciam suas operações, usando tecnologia como aliada do crescimento sustentável.",
-          ]}
-          imageLeft={false}
-        />
-        <ContentBlock
-          title="Por que criamos a i3TECH"
-          paragraphs={[
-            "A i3TECH nasceu da observação de dores reais do mercado veicular: sistemas fragmentados, falta de controle sobre vendas, dificuldade de gestão e pouca visibilidade dos dados.",
-            "Criamos a i3TECH para resolver esses problemas com uma plataforma única, capaz de integrar pessoas, processos e informações, permitindo que empresas cresçam com mais previsibilidade, segurança e eficiência.",
-          ]}
-          imageLeft={true}
-        />
+        <VideoSection />
+        <DirectorsSection />
+        <StatsSection />
         <CTABanner />
       </main>
       <Footer />

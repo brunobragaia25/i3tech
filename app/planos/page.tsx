@@ -3,15 +3,9 @@
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
-import Link from "next/link";
 
-/* ─── Figma assets ───────────────────────────────────────── */
-const IMG_CHECK = "/check-white.svg";
-const IMG_CTA_GRAPHIC = "https://www.figma.com/api/mcp/asset/240265d9-52b6-46a9-9b3f-568e635f49a2";
-
-/* ─── animation helper ───────────────────────────────────── */
 function FadeUp({
   children,
   delay = 0,
@@ -22,13 +16,13 @@ function FadeUp({
   className?: string;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
       {children}
@@ -36,268 +30,56 @@ function FadeUp({
   );
 }
 
-/* ─── Plan data ──────────────────────────────────────────── */
-const plans = [
-  {
-    name: "Plano Gestão Comercial",
-    price: "R$0",
-    period: "/mês",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-  },
-  {
-    name: "Plano Gestão para Associações",
-    price: "R$0",
-    period: "/mês",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-  },
-  {
-    name: "Plano MGA / Seguros",
-    price: "R$0",
-    period: "/mês",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-  },
-  {
-    name: "Plano Rastreamento",
-    price: "R$0",
-    period: "/mês",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-  },
-  {
-    name: "Plano Expansão",
-    price: "R$0",
-    period: "/mês",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    features: [
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-      "Lorem ipsum dolor sit amet",
-    ],
-  },
-];
-
-/* ─── Plan card (fiel ao Figma: bg branco, tipografia exata) */
-function PlanCard({ plan, delay = 0 }: { plan: (typeof plans)[0]; delay?: number }) {
-  return (
-    <FadeUp delay={delay} className="h-full">
-      <motion.div
-        whileHover={{ y: -4, boxShadow: "0 20px 60px rgba(0,0,0,0.25)" }}
-        className="bg-white rounded-2xl p-10 flex flex-col justify-between h-full"
-        style={{ minHeight: 580 }}
-      >
-        {/* Plan name */}
-        <p
-          className="text-[20px] text-black font-normal"
-          style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          {plan.name}
-        </p>
-
-        {/* Price block */}
-        <div className="flex flex-col gap-2.5 mt-6">
-          <div className="flex items-end">
-            <span
-              className="text-[48px] font-semibold text-[#171717] leading-[1.1]"
-              style={{ letterSpacing: "-1.92px", fontFamily: "var(--font-dm-sans), sans-serif" }}
-            >
-              {plan.price}
-            </span>
-            <span
-              className="text-[16px] text-[#737373] mb-1 ml-1"
-              style={{ letterSpacing: "-0.32px", fontFamily: "var(--font-dm-sans), sans-serif" }}
-            >
-              {plan.period}
-            </span>
-          </div>
-          <p
-            className="text-[18px] font-medium text-[#737373] leading-[1.5]"
-            style={{ letterSpacing: "-0.36px", fontFamily: "var(--font-dm-sans), sans-serif" }}
-          >
-            {plan.desc}
-          </p>
-        </div>
-
-        {/* Features */}
-        <div className="flex flex-col gap-3 mt-6 flex-1">
-          {plan.features.map((feat, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <div
-                className="w-5 h-5 rounded-[4px] flex items-center justify-center shrink-0"
-                style={{ background: "#0066ff" }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={IMG_CHECK} alt="" className="w-3 h-3" />
-              </div>
-              <span
-                className="text-[16px] text-[#737373]"
-                style={{
-                  letterSpacing: "-0.36px",
-                  fontFamily: "var(--font-inter), sans-serif",
-                  fontWeight: 500,
-                }}
-              >
-                {feat}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* CTA button */}
-        <button
-          className="w-full py-[10px] rounded-lg text-[14px] text-[#f7f7f7] mt-8 hover:bg-[#1444cc] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:brightness-110 hover:shadow-[0_8px_24px_rgba(25,86,243,0.4)]"
-          style={{
-            background: "#1956f3",
-            border: "1px solid rgba(255,255,255,0.08)",
-            boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
-            fontFamily: "var(--font-dm-sans), sans-serif",
-          }}
-        >
-          Teste de graça
-        </button>
-      </motion.div>
-    </FadeUp>
-  );
-}
-
-/* ─── Hero ───────────────────────────────────────────────── */
-function PlansHero() {
+/* ─── Hero ─────────────────────────────────────── */
+function Hero() {
   return (
     <section
-      className="relative overflow-hidden flex flex-col items-center justify-center text-center"
-      style={{
-        background: "linear-gradient(180deg, #1340cc 0%, #0a2080 40%, #0d0d0d 100%)",
-        minHeight: 320,
-      }}
+      className="relative w-full overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #1340cc 0%, #0a2080 45%, #0d0d0d 100%)" }}
     >
-      {/* Dot grid overlay */}
       <div
         className="absolute inset-0 pointer-events-none"
-        aria-hidden
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
-          opacity: 0.4,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='57' height='57'%3E%3Cpath d='M28.5 22v13M22 28.5h13' stroke='rgba(255,255,255,0.1)' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E")`,
+          backgroundSize: "57px 57px",
         }}
       />
-
-      <div className="relative z-10 max-w-2xl mx-auto px-5 py-28 flex flex-col items-center gap-4">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-5 pt-16 pb-16 md:pt-[108px] md:pb-[128px] flex flex-col gap-[10px] items-center text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[28px] md:text-[48px] font-normal leading-[1.1]"
+          className="text-[32px] md:text-[48px] leading-normal font-normal"
           style={{ color: "#3385ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
         >
-          Visão geral dos planos
+          Escolha o plano sob medida para a sua empresa
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[20px] text-white leading-normal"
-          style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          Planos flexíveis de acordo com o tamanho e a complexidade da sua operação.
-        </motion.p>
       </div>
     </section>
   );
 }
 
-/* ─── Pricing grid ───────────────────────────────────────── */
-function PricingGrid() {
+/* ─── Info section ─────────────────────────────– */
+function InfoSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <div className="max-w-[1280px] mx-auto px-5 py-16 flex flex-col gap-5">
-        {/* Row 1 — 3 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {plans.slice(0, 3).map((plan, i) => (
-            <PlanCard key={plan.name} plan={plan} delay={i * 0.08} />
-          ))}
-        </div>
-        {/* Row 2 — 2 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {plans.slice(3).map((plan, i) => (
-            <PlanCard key={plan.name} plan={plan} delay={i * 0.08} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── CTA banner (fiel: gráfico ASCII + botão) ───────────── */
-function CTABanner() {
-  return (
-    <section className="px-5 py-6" style={{ background: "#0d0d0d" }}>
-      <FadeUp>
-        <div
-          className="max-w-[1280px] mx-auto rounded-2xl overflow-hidden relative flex flex-col md:flex-row items-center justify-between"
-          style={{ background: "#1956f3", minHeight: 320 }}
-        >
-          {/* Text side */}
-          <div className="relative z-10 flex flex-col gap-4 px-6 py-10 md:px-16 md:py-16 max-w-lg">
-            <h2
-              className="text-[24px] md:text-[36px] font-semibold text-white leading-tight"
-              style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </h2>
+      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 py-16 md:py-24 flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
+          <div>
             <p
-              className="text-white/80 text-[16px] leading-relaxed"
-              style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
+              className="text-[18px] leading-[1.6]"
+              style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Optando pelo combo i3Gestão + Qualquer outra tecnologia (o valor da segunda solução será por valor adicional)
             </p>
-            <div className="mt-4">
-              <Link
-                href="/#contato"
-                className="inline-block bg-white font-semibold text-[14px] px-6 py-3 rounded-lg hover:bg-blue-50 transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:shadow-lg"
-                style={{ color: "#1956f3", fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                Solicitar orçamento personalizado
-              </Link>
-            </div>
           </div>
-
-          {/* Graphic side — ASCII art from Figma */}
-          <div className="relative flex-1 h-full min-h-[320px] flex items-center justify-center overflow-hidden">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={IMG_CTA_GRAPHIC}
-              alt=""
-              className="absolute right-0 top-0 h-full object-cover opacity-60"
-              style={{ width: "438px", maxWidth: "100%" }}
-            />
+          <div>
+            <p
+              className="text-[18px] leading-[1.6]"
+              style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
+            >
+              Optando somente por 1 tecnologia abaixo, o valor seguirá conforme o plano escolhido.
+            </p>
           </div>
         </div>
       </FadeUp>
@@ -305,18 +87,191 @@ function CTABanner() {
   );
 }
 
-/* ─── Page ───────────────────────────────────────────────── */
+/* ─── Pricing card ─────────────────────────────– */
+function PricingCard({
+  title,
+  subtitle,
+  rows,
+  delay = 0,
+}: {
+  title: string;
+  subtitle: string;
+  rows: Array<{ label: string; price: string }>;
+  delay?: number;
+}) {
+  return (
+    <FadeUp delay={delay} className="h-full">
+      <div className="bg-white rounded-2xl p-8 md:p-10 flex flex-col h-full">
+        <h3
+          className="text-[20px] font-semibold mb-2"
+          style={{ color: "#171717", fontFamily: "var(--font-dm-sans), sans-serif" }}
+        >
+          {title}
+        </h3>
+        <p
+          className="text-[14px] mb-8 leading-[1.5]"
+          style={{ color: "#737373", fontFamily: "var(--font-dm-sans), sans-serif" }}
+        >
+          {subtitle}
+        </p>
+
+        <div className="flex flex-col gap-0 flex-1">
+          {rows.map((row, i) => (
+            <div key={i} className="flex justify-between items-center py-3 border-b border-[#e5e5e5] last:border-b-0">
+              <span
+                className="text-[14px]"
+                style={{ color: "#737373", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {row.label}
+              </span>
+              <span
+                className="text-[16px] font-semibold"
+                style={{ color: "#1956f3", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                {row.price}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </FadeUp>
+  );
+}
+
+/* ─── Pricing section ──────────────────────────– */
+function PricingSection() {
+  const products = [
+    {
+      title: "I3Gestão",
+      subtitle: "Para a sua associação (Valor mínimo e adesão dentro do combo)",
+      rows: [
+        { label: "0 a 1.000 itens", price: "R$1,35" },
+        { label: "1.000 a 3.000 itens", price: "R$1,10" },
+        { label: "Acima de 5.000 itens", price: "R$0,90" },
+      ],
+    },
+    {
+      title: "I3CRM (Todas as Versões)",
+      subtitle: "Para a sua associação (Valor mínimo + adesão ou valor avulso dentro do combo)",
+      rows: [
+        { label: "0 a 10 usuários", price: "R$50,00" },
+        { label: "11 a 50 usuários", price: "R$40,00" },
+        { label: "Acima de 50 usuários", price: "R$30,00" },
+      ],
+    },
+    {
+      title: "I3Mga",
+      subtitle: "Para a sua seguradora (Produto fora do combo)",
+      rows: [
+        { label: "Implantação", price: "R$200.000,00" },
+        { label: "Mensalidade", price: "R$5.000,00" },
+        { label: "Valor garantido", price: "R$50.000,00" },
+      ],
+    },
+    {
+      title: "I3Aplicativos",
+      subtitle: "Para a sua associação e central de rastreamento (Valor mínimo + adesão dentro do combo)",
+      rows: [
+        { label: "App Consultor (Personalizado)", price: "R$200,00" },
+        { label: "App Associado (Personalizado)", price: "R$200,00" },
+        { label: "App Rastreamento (Personalizado)", price: "R$200,00" },
+        { label: "Customizado em Loja", price: "R$2.000,00" },
+      ],
+    },
+    {
+      title: "I3Track",
+      subtitle: "Para a sua central de rastreamento (Valor mínimo + adesão ou valor avulso dentro do combo)",
+      rows: [
+        { label: "0 a 500 veículos", price: "R$4,00" },
+        { label: "501 a 1.000 veículos", price: "R$3,00" },
+        { label: "Acima de 1.000 veículos", price: "R$2,00" },
+      ],
+    },
+    {
+      title: "I3Integrações",
+      subtitle: "Para a sua associação (Valor mínimo dentro do combo)",
+      rows: [
+        { label: "Chatbot sem IA", price: "R$300,00" },
+        { label: "Chatbot com IA", price: "R$600,00" },
+      ],
+    },
+  ];
+
+  return (
+    <section style={{ background: "#0d0d0d" }}>
+      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-16 md:py-32">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {products.map((product, i) => (
+            <PricingCard
+              key={product.title}
+              title={product.title}
+              subtitle={product.subtitle}
+              rows={product.rows}
+              delay={i * 0.08}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CTA Banner ───────────────────────────────– */
+function CTABanner() {
+  return (
+    <section style={{ background: "#0d0d0d" }}>
+      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16">
+        <FadeUp>
+          <div
+            className="relative overflow-hidden rounded-2xl px-6 py-10 md:px-16 md:py-14 flex items-center justify-between gap-10"
+            style={{ background: "#1956f3", minHeight: 430 }}
+          >
+            <div className="flex flex-col gap-6 max-w-[540px]">
+              <h2
+                className="text-[24px] md:text-[36px] font-semibold leading-[1.2] text-white"
+                style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                Tem dúvidas sobre qual plano escolher?
+              </h2>
+              <p
+                className="text-[18px] leading-[1.4] text-white/80"
+                style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
+              >
+                Entre em contato conosco para um orçamento personalizado.
+              </p>
+              <a
+                href="/#contato"
+                className="inline-flex items-center px-6 py-3 rounded-lg text-[15px] font-medium transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:shadow-lg"
+                style={{
+                  background: "white",
+                  color: "#1956f3",
+                  fontFamily: "var(--font-dm-sans), sans-serif",
+                  width: "fit-content",
+                }}
+              >
+                Solicitar orçamento
+              </a>
+            </div>
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Page ──────────────────────────────────────– */
 export default function PlanosPage() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
       <Topbar />
       <Navbar />
-      <main>
-        <PlansHero />
-        <PricingGrid />
+      <main className="flex-1">
+        <Hero />
+        <InfoSection />
+        <PricingSection />
         <CTABanner />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

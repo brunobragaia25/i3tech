@@ -7,25 +7,17 @@ export default function Topbar() {
     <div className="hidden md:block w-full bg-[#1956f3] py-2 px-6">
       <div className="max-w-[1280px] mx-auto px-5 flex items-center justify-between text-[13px] text-white">
         <div className="flex items-center gap-6">
-          <span>+55 11 99999 9999</span>
+          <span>+55 (31) 2510-8536</span>
           <span className="opacity-40">|</span>
-          <span>Sua Seu endereço aqui, 000</span>
+          <span>R. Batista Santiago, 81 - Liberdade, Belo Horizonte - MG, 31270-230</span>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-white">Siga nas redes</span>
-          {/* Facebook */}
-          <Link
-            href="#"
-            className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
-            aria-label="Facebook"
-          >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="white">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-            </svg>
-          </Link>
           {/* Instagram */}
           <Link
-            href="#"
+            href="https://www.instagram.com/i3tech.digital/?hl=pt"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
             aria-label="Instagram"
           >
@@ -44,7 +36,9 @@ export default function Topbar() {
           </Link>
           {/* LinkedIn */}
           <Link
-            href="#"
+            href="https://www.linkedin.com/company/i3tech-digital/?viewAsMember=true"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center hover:bg-white/30 transition-colors"
             aria-label="LinkedIn"
           >

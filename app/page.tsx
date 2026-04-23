@@ -71,7 +71,19 @@ const IMG_ABOUT_DIV       = "https://www.figma.com/api/mcp/asset/6f12299d-a4d8-4
 const IMG_PILLAR_1        = "/list-filter.svg";
 const IMG_PILLAR_2        = "/zap.svg";
 const IMG_PILLAR_3        = "/chart-no-axes-column-increasing.svg";
-// Functionalities
+// About Section
+const IMG_ABOUT_GRAPHIC = "https://www.figma.com/api/mcp/asset/5e589dfc-fbba-4170-a0ea-a1433fc527de";
+const IMG_ABOUT_ICON_1 = "https://www.figma.com/api/mcp/asset/e48a363e-0260-4365-87df-085eff33434f";
+const IMG_ABOUT_DIVIDER = "https://www.figma.com/api/mcp/asset/278d03d6-cd3e-4c71-a51c-c13977dabe3a";
+const IMG_ABOUT_ICON_2 = "https://www.figma.com/api/mcp/asset/409783bb-9dd3-4084-8c25-f0e897ebd27b";
+const IMG_ABOUT_ICON_3 = "https://www.figma.com/api/mcp/asset/5c3f7373-364f-4ed8-8f55-8c4dfabba091";
+// Functionalities — Products/Solutions
+const IMG_I3_GESTAO = "https://www.figma.com/api/mcp/asset/11f7dbd5-de9b-41e6-a15c-e4e9f4ba5ef8";
+const IMG_I3_CRM = "https://www.figma.com/api/mcp/asset/7e2e0715-83f3-48c6-8e83-315feff2d7ef";
+const IMG_I3_MGA = "https://www.figma.com/api/mcp/asset/6507f8f0-e793-41e4-858f-74e2e499dc58";
+const IMG_I3_APP = "https://www.figma.com/api/mcp/asset/13768d7e-877b-4f4d-af05-efb8f1c000fc";
+const IMG_I3_TRACK = "https://www.figma.com/api/mcp/asset/3725b471-f84b-4699-b4ac-92d6b3673393";
+// Old Functionalities
 const IMG_FEAT_CRM        = "/layout-dashboard.svg";
 const IMG_FEAT_AUTO       = "/send.svg";
 const IMG_FEAT_CLIENTS    = "/dollar-sign.svg";
@@ -117,15 +129,15 @@ function Hero() {
       {/* Hero text — Figma node 32:2: pt-[108px] pb-[32px] px-[20px], items-center, gap-[40px] */}
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[108px] pb-8 flex flex-col gap-10 items-center text-center">
         <div className="flex flex-col gap-5 items-center">
-          {/* Title word-by-word */}
+          {/* Title */}
           <motion.h1
             variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
             initial="hidden"
             animate="visible"
-            className="text-[28px] md:text-[48px] leading-[1.3] font-normal text-white max-w-[782px] text-center"
+            className="text-[28px] md:text-[48px] leading-[1.3] font-normal text-white w-full text-center"
             style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
           >
-            {["CRM", "inteligente", "para", "operações", "veiculares", "que"].map((word, i) => (
+            {["Tecnologias", "inteligentes", "para", "a", "gestão", "e", "controle", "da", "sua"].map((word, i) => (
               <span key={i} className="inline-block overflow-hidden align-bottom mr-[0.25em]">
                 <motion.span
                   variants={{
@@ -138,7 +150,7 @@ function Hero() {
                 </motion.span>
               </span>
             ))}
-            {["precisam", "vender,", "organizar", "e", "escalar."].map((word, i) => (
+            {["entidade", "de", "proteção", "patrimonial", "mutualista,", "centrais", "de", "rastreamento", "e", "seguradoras."].map((word, i) => (
               <span key={`b-${i}`} className="inline-block overflow-hidden align-bottom mr-[0.25em]">
                 <motion.span
                   variants={{
@@ -158,12 +170,11 @@ function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.85, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.6, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="text-[16px] leading-[1.4] text-white max-w-[782px]"
             style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
           >
-            Centralize vendas, clientes e processos em uma única plataforma.{"\n"}
-            A i3TECH conecta sua operação comercial à gestão completa do negócio.
+            Com a i3Tech, a sua empresa conseguirá otimizar operações comerciais, gestão administrativa e financeira e gestão de ativos em campo.
           </motion.p>
         </div>
 
@@ -346,107 +357,62 @@ function Hero() {
 function About() {
   return (
     <section className="w-full" style={{ background: "#0d0d0d" }}>
-      {/* Figma: px-[20px] py-[64px], flex flex-col gap-[40px] */}
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
+      <div className="max-w-[1280px] mx-auto px-5 py-16 md:py-20 flex flex-col gap-10">
 
-        {/* Top: paragraph left + globe right */}
+        {/* Top: paragraph left + graphic right */}
         <FadeUp className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <p
-            className="text-[20px] md:text-[24px] font-light text-white leading-[1.4]"
-            style={{ fontFamily: "var(--font-dm-sans), sans-serif", maxWidth: 666 }}
-          >
-            A i3TECH é um sistema de CRM e gestão desenvolvido para empresas do{" "}
-            <span className="font-semibold">
-              setor veicular que precisam de controle, automação e visão estratégica em tempo real.
-            </span>
+          <p className="text-[24px] font-light text-white leading-[1.4]" style={{ fontFamily: "var(--font-dm-sans), sans-serif", width: 708 }}>
+            A i3Tech é a 1º empresa do mercado brasileiro, a desenvolver tecnologias de origem atuarial, para sua proteção patrimonial mutualista, central de rastreamento e seguradoras.
           </p>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/graphic-image-01.png" alt="" className="shrink-0 w-[299px] h-[237px] object-cover rounded-lg" />
+          <img src={IMG_ABOUT_GRAPHIC} alt="" className="shrink-0 w-[299px] h-[237px] object-cover" />
         </FadeUp>
 
-        {/* Bottom: 3 pillars — Figma: flex items-center justify-between, h=240 */}
-        <div className="hidden md:flex items-stretch" style={{ height: 240 }}>
-          {/* Pillar 1 */}
+        {/* Bottom: 3 columns with icons and descriptions */}
+        <div className="flex gap-8 items-stretch" style={{ height: 240 }}>
+          {/* Column 1: Proteção Patrimonial Mutualista */}
           <FadeUp delay={0} className="flex flex-col justify-between flex-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
-              <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
-                <img src={IMG_PILLAR_1} alt="" className="w-[24px] h-[24px]" />
-              </div>
-            </div>
+            <img src={IMG_ABOUT_ICON_1} alt="" className="w-[72px] h-[72px]" />
             <div className="flex flex-col gap-5">
-              <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Mais controle sobre o funil de vendas
+              <h3 className="text-[16px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                Para sua proteção patrimonial mutualista
               </h3>
               <p className="text-[14px] font-light leading-[1.6] text-[#f7f7f7]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Tenha visibilidade total de cada oportunidade, desde o primeiro contato até o fechamento. Acompanhe o desempenho da equipe, identifique gargalos e tome decisões com base em dados reais.
+                Com as soluções i3Tech, a sua proteção patrimonial terá total controle em gestão administrativa financeira e comercial. Com as soluções i3Gestão e i3Crm a sua organização estará em outro patamar.
               </p>
             </div>
           </FadeUp>
 
-          {/* Vertical divider SVG */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_ABOUT_DIV} alt="" className="self-stretch mx-8" style={{ width: 1 }} />
+          {/* Divider */}
+          <img src={IMG_ABOUT_DIVIDER} alt="" className="w-px flex-shrink-0" style={{ height: 240 }} />
 
-          {/* Pillar 2 */}
-          <FadeUp delay={0.1} className="flex flex-col justify-between flex-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
-              <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
-                <img src={IMG_PILLAR_2} alt="" className="w-[20px] h-[20px]" />
-              </div>
-            </div>
+          {/* Column 2: Central de Rastreamento */}
+          <FadeUp delay={0.07} className="flex flex-col justify-between flex-1">
+            <img src={IMG_ABOUT_ICON_2} alt="" className="w-[72px] h-[72px]" />
             <div className="flex flex-col gap-5">
-              <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Menos retrabalho operacional
+              <h3 className="text-[16px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                Para sua central de rastreamento
               </h3>
               <p className="text-[14px] font-light leading-[1.6] text-[#f7f7f7]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Automatize tarefas repetitivas e centralize informações em um único sistema. Reduza erros, elimine processos manuais e permita que sua equipe foque no que realmente importa: vender e crescer.
+                Com as soluções i3Tech, a sua central de rastreamento terá total controle dos ativos em campo. Com as soluções i3Track e i3Aplicativos, a sua central estará em outro patamar.
               </p>
             </div>
           </FadeUp>
 
-          {/* Vertical divider SVG */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_ABOUT_DIV} alt="" className="self-stretch mx-8" style={{ width: 1 }} />
+          {/* Divider */}
+          <img src={IMG_ABOUT_DIVIDER} alt="" className="w-px flex-shrink-0" style={{ height: 240 }} />
 
-          {/* Pillar 3 */}
-          <FadeUp delay={0.2} className="flex flex-col justify-between flex-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <div className="w-[72px] h-[72px] rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
-              <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
-                <img src={IMG_PILLAR_3} alt="" className="w-[20px] h-[20px]" />
-              </div>
-            </div>
+          {/* Column 3: Seguradora */}
+          <FadeUp delay={0.14} className="flex flex-col justify-between flex-1">
+            <img src={IMG_ABOUT_ICON_3} alt="" className="w-[72px] h-[72px]" />
             <div className="flex flex-col gap-5">
-              <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Mais previsibilidade e crescimento
+              <h3 className="text-[16px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                Para sua seguradora
               </h3>
               <p className="text-[14px] font-light leading-[1.6] text-[#f7f7f7]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Com indicadores claros e relatórios em tempo real, sua operação ganha previsibilidade. Planeje melhor, escale com segurança e cresça de forma estruturada e sustentável.
+                Com as soluções i3Tech, a sua seguradora terá total controle em gestão administrativa financeira e operacional. Com a solução i3Mga, a sua seguradora estará em outro patamar.
               </p>
             </div>
           </FadeUp>
-        </div>
-
-        {/* Mobile pillars */}
-        <div className="flex flex-col gap-10 md:hidden">
-          {[
-            { icon: IMG_PILLAR_1, title: "Mais controle sobre o funil de vendas", desc: "Tenha visibilidade total de cada oportunidade, desde o primeiro contato até o fechamento." },
-            { icon: IMG_PILLAR_2, title: "Menos retrabalho operacional", desc: "Automatize tarefas repetitivas e centralize informações em um único sistema." },
-            { icon: IMG_PILLAR_3, title: "Mais previsibilidade e crescimento", desc: "Com indicadores claros e relatórios em tempo real, sua operação ganha previsibilidade." },
-          ].map((p, i) => (
-            <FadeUp key={p.title} delay={i * 0.1} className="flex flex-col gap-4">
-              <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ border: "1px solid rgba(153, 194, 255, 0.15)" }}>
-                <div className="w-11 h-11 rounded-full flex items-center justify-center" style={{ border: "2px solid #0052e6", background: "rgba(0, 82, 230, 0.1)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.icon} alt="" className="w-5 h-5" />
-                </div>
-              </div>
-              <h3 className="text-[18px] font-medium" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>{p.title}</h3>
-              <p className="text-[14px] font-light leading-[1.6] text-[#f7f7f7]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>{p.desc}</p>
-            </FadeUp>
-          ))}
         </div>
       </div>
     </section>
@@ -454,23 +420,52 @@ function About() {
 }
 
 /* ─── Services ───────────────────────────────────────────── */
-// Figma: outer bg-[#171717] rounded-[20px] p-[16px], inner rows with bg-[#262626] cards
 function Services() {
-  const rows = [
+  const services = [
     [
-      { logo: "/i3crm.png", name: "i3CRM", href: "/solucoes#crm" },
-      { logo: "/i3gestao.png", name: "i3Gestão", href: "/solucoes#gestao" },
-      { logo: "/i3mga.png", name: "i3Mga", href: "/solucoes#mga" },
+      {
+        logo: IMG_I3_GESTAO,
+        title: "i3 Gestão",
+        desc: "Plataforma ERP (Gestão empresarial) para proteção patrimonial mutualista.",
+        href: "#"
+      },
+      {
+        logo: IMG_I3_CRM,
+        title: "i3 CRM",
+        desc: "Sistema CRM (Gestão Comercial) para proteção patrimonial mutualista",
+        href: "#"
+      },
+      {
+        logo: IMG_I3_MGA,
+        title: "i3 Mga",
+        desc: "Sistema MGA (Gestão completa de Seguros) para seguradoras.",
+        href: "#"
+      },
     ],
     [
-      { logo: "/i3track.png", name: "i3Track", href: "/solucoes#track" },
-      { logo: "/i3expansao.png", name: "i3Expansão", href: "/solucoes#expansao" },
-      { logo: "/i3app.png", name: "Aplicativos", href: "/solucoes#apps" },
+      {
+        logo: IMG_I3_APP,
+        title: "i3 Aplicativos",
+        desc: "Aplicativos personalizados e customizados (Consultor, Associado, Rastreamento) para proteção patrimonial mutualista e centrais de rastreamento.",
+        href: "#"
+      },
+      {
+        logo: IMG_I3_TRACK,
+        title: "i3 Track",
+        desc: "Plataforma de rastreamento completa com o foco na recuperação de ativos em campo, para centrais de rastreamento.",
+        href: "#"
+      },
+      {
+        title: "i3 Integrações",
+        desc: "Integrações de chatbot e Ia para proteção patrimonial mutualista, centrais de rastreamento e seguradoras.",
+        href: "#",
+        isIntegrations: true
+      },
     ],
   ];
 
   return (
-    <section className="w-full" style={{ background: "#161616" }}>
+    <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
         <FadeUp className="text-center">
           <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
@@ -478,23 +473,36 @@ function Services() {
           </h2>
         </FadeUp>
 
-        {/* Outer wrapper: bg-[#171717], rounded-[20px], p-[16px] */}
         <FadeUp>
           <div className="rounded-[20px] p-4 flex flex-col gap-4" style={{ background: "#171717" }}>
-            {rows.map((row, ri) => (
+            {services.map((row, ri) => (
               <div key={ri} className="flex flex-col md:flex-row gap-4">
                 {row.map((card, ci) => (
-                  <FadeUp key={card.name} delay={ri * 0.1 + ci * 0.07} className="flex-1 min-w-0">
-                    {/* bg-[#262626] outer border card, h-[287px], p-[12px], rounded-[16px] */}
-                    <div className="flex items-center justify-center p-3 rounded-2xl h-auto md:h-[287px]" style={{ background: "#262626" }}>
-                      {/* bg-[#171717] inner card, h-[263px], p-[40px], rounded-[8px] */}
-                      <div className="flex flex-col justify-between items-start flex-1 h-auto md:h-[263px] p-6 md:p-10 rounded-lg" style={{ background: "#171717" }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={card.logo} alt={card.name} className="h-10 w-auto object-contain" />
+                  <FadeUp key={card.title} delay={ri * 0.1 + ci * 0.07} className="flex-1">
+                    <div className="flex items-center justify-center p-3 rounded-[16px] h-[320px]" style={{ background: "#262626" }}>
+                      <div className="flex flex-col justify-between items-start w-full h-full p-10 rounded-lg" style={{ background: "#171717" }}>
+                        {card.logo && (
+                          <img src={card.logo} alt={card.title} style={{
+                            height: "39.088px",
+                            width: card.title === "i3 Gestão" ? "162.363px" :
+                                   card.title === "i3 CRM" ? "131.468px" :
+                                   card.title === "i3 Mga" ? "127.068px" :
+                                   card.title === "i3 Aplicativos" ? "215.801px" :
+                                   card.title === "i3 Track" ? "142.88px" : "auto"
+                          }} />
+                        )}
+                        {card.isIntegrations && (
+                          <h3 className="text-[24px] font-semibold text-white" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                            I3<span className="italic text-[#0052e6]">Integrações</span>
+                          </h3>
+                        )}
+                        <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                          {card.desc}
+                        </p>
                         <Link
                           href={card.href}
-                          className="self-start text-[14px] text-[#f7f7f7] px-5 py-[10px] rounded-lg transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:brightness-110"
-                          style={{ background: "#171717", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,36,40,0.25)", fontFamily: "var(--font-dm-sans), sans-serif" }}
+                          className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors"
+                          style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
                         >
                           Saiba mais
                         </Link>
@@ -513,58 +521,6 @@ function Services() {
 
 /* ─── Functionalities ────────────────────────────────────── */
 // Figma: 3 cards row 1 (each size-[400px]), 2 cards row 2 (first 400px, second flex-1)
-const functionalities = [
-  {
-    icon: IMG_FEAT_CRM, title: "Gestão comercial (CRM)",
-    desc: <>Organize <strong className="text-[#f7f7f7]">leads, acompanhe negociações e tenha controle total do funil de vendas</strong> em um só lugar.</>,
-  },
-  {
-    icon: IMG_FEAT_AUTO, title: "Automação de vendas",
-    desc: <>Automatize <strong className="text-[#f7f7f7]">contatos, follow-ups e propostas para vender mais</strong>, com menos esforço operacional.</>,
-  },
-  {
-    icon: IMG_FEAT_FIN, title: "Gestão de clientes e associados",
-    desc: <>Centralize <strong className="text-[#f7f7f7]">dados de clientes, veículos e contratos</strong> com histórico completo e sempre atualizado.</>,
-  },
-  {
-    icon: IMG_FEAT_CLIENTS, title: "Financeiro e comissões",
-    desc: <>Controle <strong className="text-[#f7f7f7]">pagamentos, comissões e resultados financeiros</strong> com mais clareza e segurança.</>,
-  },
-  {
-    icon: IMG_FEAT_REPORTS, title: "Relatórios e integrações",
-    desc: <>Acompanhe <strong className="text-[#f7f7f7]">indicadores em tempo real e conecte a i3TECH</strong> aos principais canais da sua operação.</>,
-  },
-];
-
-function FuncCard({ f, className = "" }: { f: typeof functionalities[0]; className?: string }) {
-  return (
-    <div
-      className={`flex flex-col gap-4 p-8 rounded-xl ${className}`}
-      style={{ background: "#171717", border: "1px solid #2e2e2e" }}
-    >
-      <div className="flex items-center gap-2.5">
-        <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "#CCE0FF" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={f.icon} alt="" className="w-4 h-4" />
-        </div>
-        <span className="text-[16px] font-semibold leading-[1.2]" style={{ color: "#66a3ff", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-          {f.title}
-        </span>
-      </div>
-      <p className="text-[14px] leading-[1.6]" style={{ color: "#888", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-        {f.desc}
-      </p>
-      <div className="mt-auto">
-        <button
-          className="text-[14px] text-[#f7f7f7] px-5 py-[10px] rounded-lg"
-          style={{ background: "#171717", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,36,40,0.25)", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          Saiba mais
-        </button>
-      </div>
-    </div>
-  );
-}
 
 function Functionalities() {
   return (
@@ -577,21 +533,103 @@ function Functionalities() {
         </FadeUp>
 
         <div className="flex flex-col gap-5">
-          {/* Row 1 — 3 equal cards, each flex-1 */}
+          {/* Row 1 — 3 cards */}
           <div className="flex flex-col md:flex-row gap-5">
-            {functionalities.slice(0, 3).map((f, i) => (
-              <FadeUp key={f.title} delay={i * 0.07} className="flex-1 min-w-0">
-                <FuncCard f={f} className="h-auto md:h-[400px]" />
-              </FadeUp>
-            ))}
-          </div>
-          {/* Row 2 — card 4 at ~400px, card 5 takes remaining space */}
-          <div className="flex flex-col md:flex-row gap-5">
-            <FadeUp delay={0.07} className="md:w-[400px] md:shrink-0 w-full">
-              <FuncCard f={functionalities[3]} className="w-full h-auto md:h-[400px]" />
+            {/* i3 Gestão */}
+            <FadeUp delay={0} className="flex-1">
+              <div className="bg-[#171717] border border-[#2e2e2e] rounded-[12px] flex flex-col gap-4 p-8 h-full" style={{ minHeight: 400 }}>
+                <img src={IMG_I3_GESTAO} alt="i3 Gestão" style={{ height: "29.755px", width: "123.597px" }} />
+                <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                  Rateio e precificação configurados em regra atuarial, Faturamento, Relatórios, Gestão de cobranças com i3Pay, Remessa automática com os Bancos, Regra atuarial e Módulo i3Crm habilitado dentro do sistema.
+                </p>
+                <div className="mt-auto">
+                  <Link href="#" className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Saiba mais
+                  </Link>
+                </div>
+              </div>
             </FadeUp>
-            <FadeUp delay={0.14} className="flex-1 min-w-0">
-              <FuncCard f={functionalities[4]} className="w-full h-auto md:h-[400px]" />
+
+            {/* i3 CRM */}
+            <FadeUp delay={0.07} className="flex-1">
+              <div className="bg-[#171717] border border-[#2e2e2e] rounded-[12px] flex flex-col gap-4 p-8 h-full" style={{ minHeight: 400 }}>
+                <img src={IMG_I3_CRM} alt="i3 CRM" style={{ height: "29.755px", width: "100.078px" }} />
+                <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                  Mais Gestão comercial com: Funil de Vendas, Landing Page, Cotações Rápidas, Planos e preços configurados, Pagamentos online, Tabelas de preços, Relatórios, Regionais e Módulo i3Gestão habilitado dentro do sistema.
+                </p>
+                <div className="mt-auto">
+                  <Link href="#" className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Saiba mais
+                  </Link>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* i3 Mga */}
+            <FadeUp delay={0.14} className="flex-1">
+              <div className="bg-[#171717] border border-[#2e2e2e] rounded-[12px] flex flex-col gap-4 p-8 h-full" style={{ minHeight: 400 }}>
+                <img src={IMG_I3_MGA} alt="i3 Mga" style={{ height: "29.755px", width: "96.729px" }} />
+                <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                  Seu Mga conseguirá: Realizar emissões de apólice já integradas com a seguradora, Relatórios, Auditoria online, Pagamentos, Cotações e Planos pré configurados e Gestão dos Faturáveis.
+                </p>
+                <div className="mt-auto">
+                  <Link href="#" className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Saiba mais
+                  </Link>
+                </div>
+              </div>
+            </FadeUp>
+          </div>
+
+          {/* Row 2 — 3 cards (last one spans full height) */}
+          <div className="flex flex-col md:flex-row gap-5">
+            {/* i3 Aplicativos */}
+            <FadeUp delay={0.21} className="flex-1">
+              <div className="bg-[#171717] border border-[#2e2e2e] rounded-[12px] flex flex-col gap-4 p-8 h-full" style={{ minHeight: 400 }}>
+                <img src={IMG_I3_APP} alt="i3 Aplicativos" style={{ height: "29.755px", width: "164.275px" }} />
+                <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                  Aplicativos desenvolvidos e customizados para: Associado, Consultor, Gestão Multinível de comissionamento, Vistoria, Termo de Aceite e Rastreamento Veicular.
+                </p>
+                <div className="mt-auto">
+                  <Link href="#" className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Saiba mais
+                  </Link>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* i3 Track */}
+            <FadeUp delay={0.28} className="flex-1">
+              <div className="bg-[#171717] border border-[#2e2e2e] rounded-[12px] flex flex-col gap-4 p-8 h-full" style={{ minHeight: 400 }}>
+                <img src={IMG_I3_TRACK} alt="i3 Track" style={{ height: "29.755px", width: "108.766px" }} />
+                <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                  Software completo de rastreamento com funcionalidades para prevenção de furto e roubo. Com i3Track, a sua central de rastreamento terá: Relatórios, Histórico, Geocerca, Gestão de sinistros, Alertas, Localização e Dashboard.
+                </p>
+                <div className="mt-auto">
+                  <Link href="#" className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Saiba mais
+                  </Link>
+                </div>
+              </div>
+            </FadeUp>
+
+            {/* i3 Integrações */}
+            <FadeUp delay={0.35} className="flex-1">
+              <div className="bg-[#171717] border border-[#2e2e2e] rounded-[12px] flex flex-col gap-4 p-8 h-full" style={{ minHeight: 400 }}>
+                <div>
+                  <h3 className="text-[24px] font-semibold text-white" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    I3<span className="italic text-[#0052e6]">Integrações</span>
+                  </h3>
+                </div>
+                <p className="text-[14px] leading-[1.6] text-[#888888]" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                  Utilize ferramentas como chatbot e Ia dentro das tecnologias da i3TECH.
+                </p>
+                <div className="mt-auto">
+                  <Link href="#" className="inline-block bg-[#171717] border border-[rgba(255,255,255,0.08)] px-5 py-2.5 rounded-lg text-[#f7f7f7] text-[14px] hover:bg-[#1a1a1a] transition-colors" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    Saiba mais
+                  </Link>
+                </div>
+              </div>
             </FadeUp>
           </div>
         </div>
@@ -665,10 +703,9 @@ function Differentials() {
 /* ─── Target Audience ────────────────────────────────────── */
 // Figma: flex items-center justify-between, 4 cols, border-dashed border-[#626262], p-[40px], gap-[28px]
 const audiences = [
-  { icon: IMG_AUD_1, title: "Associações de proteção veicular",  desc: "Controle total de associados, contratos e vendas com automação e previsibilidade." },
-  { icon: IMG_AUD_2, title: "Centrais de rastreamento",          desc: "Organize vendas, contratos e clientes em uma única plataforma integrada e eficiente." },
-  { icon: IMG_AUD_3, title: "Empresas de gestão veicular",       desc: "Centralize processos, dados e indicadores para ganhar escala e eficiência operacional." },
-  { icon: IMG_AUD_4, title: "Empresas de comércio automotivo",   desc: "Aumente a conversão de leads e tenha mais controle sobre todo o processo comercial." },
+  { icon: IMG_AUD_1, title: "Proteção patrimonial mutualista",  desc: "Associações de proteção veicular." },
+  { icon: IMG_AUD_2, title: "Centrais de Rastreamento",          desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados." },
+  { icon: IMG_AUD_3, title: "Seguradoras",       desc: "Mga que representam as seguradas parceiras e já homologadas." },
 ];
 
 function TargetAudience() {
@@ -677,15 +714,15 @@ function TargetAudience() {
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
         <FadeUp className="text-center">
           <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-            Para quem é o nosso CRM
+            Nosso segmento
           </h2>
         </FadeUp>
 
-        {/* Figma: flex items-center justify-between — 4 dashed-border columns */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+        {/* Figma: flex items-center justify-between — 3 dashed-border columns */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
           {audiences.map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1}>
-              <div className="flex flex-col gap-7 p-10" style={{ border: "1px dashed #626262" }}>
+              <div className="flex flex-col gap-7 p-10" style={{ border: "1px dashed #626262", ...(i === 0 ? { height: "100%" } : {}) }}>
                 <div className="flex items-center justify-center shrink-0" style={{ width: 44, height: 44, background: "#0052e6", borderRadius: "50%" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={a.icon} alt="" className="w-6 h-6" />
@@ -730,16 +767,13 @@ function CTABanner() {
             </div>
 
             {/* Text side */}
-            <div className="relative z-10 flex flex-col gap-4 px-6 py-10 md:px-16 md:py-16 max-w-lg">
+            <div className="relative z-10 flex flex-col gap-4 px-6 py-10 md:px-16 md:py-16 max-w-3xl">
               <h2
                 className="text-[24px] md:text-[36px] font-semibold text-white leading-tight"
-                style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
+                style={{ fontFamily: "var(--font-dm-sans), sans-serif", whiteSpace: "pre-wrap" }}
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Entenda como podemos{"\n"}transformar a sua empresa{"\n"}com tecnologias que irão{"\n"}te colocar em outro patamar.
               </h2>
-              <p className="text-white/80 text-[16px] leading-relaxed" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </p>
               <div className="mt-4">
                 <Link
                   href="/planos"

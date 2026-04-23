@@ -35,19 +35,15 @@ const features = [
   { label: "Relatórios & Integrações", href: "#" },
 ];
 
+const empresasDoGrupo = [
+  { label: "Delta", href: "#" },
+  { label: "Proo Comercial", href: "#" },
+];
+
 const socials = [
   {
-    label: "Facebook",
-    href: "#",
-    icon: (
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-      </svg>
-    ),
-  },
-  {
     label: "Instagram",
-    href: "#",
+    href: "https://www.instagram.com/i3tech.digital/?hl=pt",
     icon: (
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -58,7 +54,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    href: "#",
+    href: "https://www.linkedin.com/company/i3tech-digital/?viewAsMember=true",
     icon: (
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
         <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -73,7 +69,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div className="max-w-[1280px] mx-auto px-5 pt-16 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
             <Logo />
@@ -177,7 +173,7 @@ export default function Footer() {
               Contato
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {["+55 11 99999 9999", "+55 11 99999 9998", "Rua Seu endereço aqui, 000", "contato@i3tech.com.br"].map((c) => (
+              {["+55 (31) 2510-8536", "+55 (31) 99720-4995", "R. Batista Santiago, 81 - Liberdade, Belo Horizonte - MG, 31270-230", "comercial@i3tech.digital"].map((c) => (
                 <li key={c}>
                   <span
                     className="text-[14px]"
@@ -189,6 +185,30 @@ export default function Footer() {
               ))}
             </ul>
           </div>
+
+          {/* Empresas do grupo */}
+          <div>
+            <h4
+              className="font-medium text-[14px] mb-5"
+              style={{ color: "#1956f3", fontFamily: "var(--font-dm-sans), sans-serif" }}
+            >
+              Empresas do grupo
+            </h4>
+            <ul className="flex flex-col gap-3">
+              {empresasDoGrupo.map((e) => (
+                <li key={e.label}>
+                  <Link
+                    href={e.href}
+                    className="text-[14px] text-[#737373] hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
+                    style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
+                  >
+                    {e.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
 
         <div
