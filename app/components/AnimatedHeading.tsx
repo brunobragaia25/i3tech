@@ -25,7 +25,7 @@ function tokenize(children: ReactNode): ReactNode[] {
         else if (part) tokens.push(part); // whitespace — not animated
       });
     } else if (React.isValidElement(child)) {
-      const text = child.props.children;
+      const text = (child.props as { children?: unknown }).children;
       if (typeof text === "string") {
         text.split(/(\s+)/).forEach((part: string, i: number, arr: string[]) => {
           if (part.trim()) {
