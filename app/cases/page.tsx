@@ -262,7 +262,7 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
       {/* Divider */}
       <div className="hidden md:block self-stretch w-px shrink-0" style={{ background: "#d1d1d1" }} />
       {/* Desafio + Solução + Resultado */}
-      <div className="flex-1 flex flex-col justify-between">
+      <div className="flex-1 flex flex-col justify-between" style={{ gap: 40 }}>
         <div className="flex gap-6 items-start">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={IMG_FLAG} alt="" className="w-6 h-6 shrink-0 mt-1" />
