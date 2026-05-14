@@ -4,8 +4,42 @@ import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AnimatedHeading from "../components/AnimatedHeading";
+import CountUp from "../components/CountUp";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const font = "var(--font-roobert), sans-serif";
+
+function ViniciusCard({ font }: { font: string }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div style={{ flex: 1, background: "#262626", borderRadius: 16, padding: 12 }}>
+      <div style={{ background: "#171717", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+        <motion.div
+          animate={{ height: hovered ? 460 : 360 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          style={{ borderRadius: 4, overflow: "hidden", position: "relative", background: "#d9d9d9", flexShrink: 0 }}
+        >
+          <img
+            src="https://www.figma.com/api/mcp/asset/6568e389-49ac-4b9b-be16-8f104aee1cc6"
+            alt="Vinicius da Costa"
+            style={{ position: "absolute", width: "100%", top: "-20.57%", left: 0, maxWidth: "none" }}
+          />
+        </motion.div>
+        <div style={{ padding: 40, display: "flex", flexDirection: "column", gap: 10 }}>
+          <span style={{ color: "#0066ff", fontSize: 24, fontFamily: font, fontWeight: 500, lineHeight: 1 }}>
+            Vinicius da Costa
+          </span>
+          <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, textTransform: "uppercase", lineHeight: 1 }}>
+            Sócio e Diretor Comercial da i3Tech (Em Execução)
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function SobrePage() {
   return (
@@ -75,15 +109,15 @@ export default function SobrePage() {
           {/* Stats */}
           <div style={{ display: "flex", alignItems: "center", gap: 60 }}>
             {[
-              { value: "+ de 2.300",  label: "entidade de proteção patrimonial mutualista;" },
-              { value: "+ de 60.000", label: "itens na gestão administrativa" },
-              { value: "+ de 3 Mga",  label: "atendidos" },
-              { value: "+ de 45",     label: "centrais utilizando nosso sistema" },
+              { to: 2300,  prefix: "+ de ", suffix: "",    label: "entidade de proteção patrimonial mutualista;" },
+              { to: 60000, prefix: "+ de ", suffix: "",    label: "itens na gestão administrativa" },
+              { to: 3,     prefix: "+ de ", suffix: " Mga", label: "atendidos" },
+              { to: 45,    prefix: "+ de ", suffix: "",    label: "centrais utilizando nosso sistema" },
             ].map((stat, i, arr) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 60 }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", textAlign: "center" }}>
                   <span style={{ color: "#f7f7f7", fontSize: 34, fontFamily: font, fontWeight: 700, lineHeight: 1 }}>
-                    {stat.value}
+                    <CountUp to={stat.to} prefix={stat.prefix} suffix={stat.suffix} duration={2} />
                   </span>
                   <span style={{ color: "#66a3ff", fontSize: 16, fontFamily: font, fontWeight: 600, lineHeight: 1.4, maxWidth: 231 }}>
                     {stat.label}
@@ -123,25 +157,7 @@ export default function SobrePage() {
             </div>
 
             {/* Card 2 — Vinicius da Costa */}
-            <div style={{ flex: 1, background: "#262626", borderRadius: 16, padding: 12 }}>
-              <div style={{ background: "#171717", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-                <div style={{ height: 360, borderRadius: 4, overflow: "hidden", position: "relative", background: "#d9d9d9" }}>
-                  <img
-                    src="https://www.figma.com/api/mcp/asset/6568e389-49ac-4b9b-be16-8f104aee1cc6"
-                    alt="Vinicius da Costa"
-                    style={{ position: "absolute", width: "100%", top: "-20.57%", left: 0, maxWidth: "none" }}
-                  />
-                </div>
-                <div style={{ padding: 40, display: "flex", flexDirection: "column", gap: 10 }}>
-                  <span style={{ color: "#0066ff", fontSize: 24, fontFamily: font, fontWeight: 500, lineHeight: 1 }}>
-                    Vinicius da Costa
-                  </span>
-                  <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, textTransform: "uppercase", lineHeight: 1 }}>
-                    Sócio e Diretor Comercial da i3Tech (Em Execução)
-                  </span>
-                </div>
-              </div>
-            </div>
+            <ViniciusCard font={font} />
           </div>
         </div>
 

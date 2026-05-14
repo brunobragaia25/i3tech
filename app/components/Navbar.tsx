@@ -4,14 +4,30 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const solutions = [
-  { label: "I3CRM", desc: "Lorem ipsum dei diet.", href: "/solucoes/crm" },
-  { label: "I3Gestão", desc: "Lorem ipsum dei diet.", href: "/solucoes/gestao" },
-  { label: "I3Mga", desc: "Lorem ipsum dei diet.", href: "/solucoes/mga" },
-  { label: "I3Aplicativos", desc: "Lorem ipsum dei diet.", href: "/solucoes/aplicativos" },
-  { label: "I3Track", desc: "Lorem ipsum dei diet.", href: "/solucoes/track" },
-  { label: "I3Expansão", desc: "Lorem ipsum dei diet.", href: "/solucoes/expansao" },
+const IMG_ICON_BG_BLUE   = "https://www.figma.com/api/mcp/asset/665b4215-3a9b-47bc-a92d-8b441874967a";
+const IMG_ICON_BG_PURPLE = "https://www.figma.com/api/mcp/asset/7d722093-9355-4594-beda-c6b41be4d935";
+const IMG_ICON_GESTAO    = "/Layers 1.svg";
+const IMG_ICON_CRM       = "/Sort.svg";
+const IMG_ICON_MGA       = "/Chart.svg";
+const IMG_ICON_APP       = "/Smartphone 3.svg";
+const IMG_ICON_TRACK     = "/Map Point Wave.svg";
+const IMG_ICON_EXPANSAO  = "/Dialog 3.svg";
+
+const solutionCols = [
+  [
+    { label: "I3Gestão",   desc: "Plataforma ERP (Gestão empresarial)",  href: "/solucoes/gestao",      iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_GESTAO },
+    { label: "I3CRM",      desc: "Sistema CRM (Gestão Comercial)",        href: "/solucoes/crm",         iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_CRM },
+    { label: "I3Mga",      desc: "Sistema MGA (Gestão de Seguros)",       href: "/solucoes/mga",         iconBg: IMG_ICON_BG_PURPLE, icon: IMG_ICON_MGA },
+  ],
+  [
+    { label: "I3Aplicativos", desc: "Apps personalizados e customizados", href: "/solucoes/aplicativos", iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_APP },
+    { label: "I3Track",    desc: "Plataforma de rastreamento completa",   href: "/solucoes/track",       iconBg: IMG_ICON_BG_PURPLE, icon: IMG_ICON_TRACK },
+    { label: "I3Expansão", desc: "Integrações de chatbot e IA",           href: "/solucoes/expansao",    iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_EXPANSAO },
+  ],
 ];
+
+// keep solutions flat for footer/other usages
+const solutions = solutionCols.flat();
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -47,17 +63,11 @@ export default function Navbar() {
 
   useEffect(() => {
     if (dropdownOpen) {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      document.documentElement.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
+      document.documentElement.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.paddingRight = "";
-    };
+    return () => { document.documentElement.style.overflow = ""; };
   }, [dropdownOpen]);
 
   return (
@@ -178,43 +188,31 @@ export default function Navbar() {
                             }}>
                               Soluções
                             </p>
-                            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                              {[0, 1, 2].map((row) => (
-                                <div key={row} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                                    {[0, 1].map((col) => {
-                                      const item = solutions[row * 2 + col];
-                                      return (
-                                        <Link
-                                          key={item.href}
-                                          href={item.href}
-                                          onClick={() => setDropdownOpen(false)}
-                                          className="flex items-center gap-3 group"
-                                          style={{ textDecoration: "none" }}
-                                        >
-                                          <div className="shrink-0 rounded-full" style={{ width: 40, height: 40, background: "#2a2a2a", border: "1px solid #333" }} />
-                                          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                                            <span className="group-hover:text-white transition-colors" style={{
-                                              color: "#f7f7f7",
-                                              fontSize: 14,
-                                              fontFamily: "var(--font-roobert), sans-serif",
-                                              fontWeight: 600,
-                                            }}>
-                                              {item.label}
-                                            </span>
-                                            <span style={{
-                                              color: "#888",
-                                              fontSize: 12,
-                                              fontFamily: "var(--font-roobert), sans-serif",
-                                            }}>
-                                              {item.desc}
-                                            </span>
-                                          </div>
-                                        </Link>
-                                      );
-                                    })}
-                                  </div>
-                                  {row < 2 && <div style={{ height: 1, background: "#242424" }} />}
+                            <div style={{ display: "flex", gap: 60, flex: 1 }}>
+                              {solutionCols.map((col, ci) => (
+                                <div key={ci} style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "space-between", gap: 28 }}>
+                                  {col.map((item) => (
+                                    <Link
+                                      key={item.href}
+                                      href={item.href}
+                                      onClick={() => setDropdownOpen(false)}
+                                      className="flex items-center gap-3 group"
+                                      style={{ textDecoration: "none" }}
+                                    >
+                                      <div className="shrink-0 relative" style={{ width: 40, height: 40 }}>
+                                        <img src={item.iconBg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+                                        <img src={item.icon} alt="" style={{ position: "absolute", inset: "25%", width: "50%", height: "50%" }} />
+                                      </div>
+                                      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                                        <span className="group-hover:text-white transition-colors" style={{ color: "#f7f7f7", fontSize: 14, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
+                                          {item.label}
+                                        </span>
+                                        <span style={{ color: "#888", fontSize: 12, fontFamily: "var(--font-roobert), sans-serif" }}>
+                                          {item.desc}
+                                        </span>
+                                      </div>
+                                    </Link>
+                                  ))}
                                 </div>
                               ))}
                             </div>
@@ -238,14 +236,21 @@ export default function Navbar() {
             </div>
 
             {/* CTA */}
-            <div className="hidden md:block shrink-0">
+            <div className="hidden md:block shrink-0" style={{ position: "relative", borderRadius: 6, padding: 2, overflow: "hidden" }}>
+              <motion.div
+                style={{
+                  position: "absolute",
+                  inset: "-150%",
+                  background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
               <Link
                 href="/contato"
-                className="text-[14px] text-[#f7f7f7] px-5 rounded-[4px] hover:bg-[#1444cc] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:brightness-110 hover:shadow-[0_8px_24px_rgba(25,86,243,0.4)]"
+                className="relative z-10 text-[14px] text-[#f7f7f7] px-5 rounded-[4px] hover:bg-[#1444cc] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:brightness-110"
                 style={{
                   background: "#1956f3",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
                   fontFamily: "var(--font-roobert), sans-serif",
                   height: 42,
                   display: "inline-flex",

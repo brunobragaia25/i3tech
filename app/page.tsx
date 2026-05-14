@@ -213,14 +213,18 @@ const badgeVariants = {
 function DashboardMockup() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const rotateX = useTransform(scrollYProgress, [0, 0.3], [28, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.3], [0.88, 1]);
+  const rotateX = useTransform(scrollYProgress, [0, 0.35], [52, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0.6, 1]);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <div ref={ref} style={{ perspective: 1200, width: 1240 }}>
-      <motion.div style={{ rotateX, scale, opacity, transformOrigin: "top center" }}>
+      <motion.div
+        style={{ rotateX, opacity, transformOrigin: "top center" }}
+        initial={{ scale: 0.72, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+      >
         <div style={{ position: "relative", width: 1240 }}>
           {/* Blue glow — absolute, behind panel */}
           <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: 41, zIndex: 0, overflow: "visible" }}>
@@ -297,8 +301,13 @@ function DashboardMockup() {
 function Hero() {
   return (
     <section className="relative w-full overflow-hidden" style={{ background: "#0d0d0d" }}>
-      {/* Pattern */}
-      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/pattern-hero.png')", backgroundRepeat: "repeat", backgroundSize: "auto" }} />
+      {/* Pattern — fade pulsante */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none"
+        style={{ backgroundImage: "url('/pattern-hero.svg')", backgroundRepeat: "repeat", backgroundSize: "auto" }}
+        animate={{ opacity: [0.4, 1, 0.4] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
 
       <div className="relative z-10 max-w-[1280px] mx-auto px-5 pt-[108px] pb-8 flex flex-col gap-[80px] items-center">
         {/* Text + buttons */}
@@ -308,14 +317,32 @@ function Hero() {
               <span style={{ fontWeight: 400 }}>Tecnologias inteligentes para a gestão e controle da sua </span>
               <span style={{ fontWeight: 600, color: "#0066ff" }}>entidade de proteção patrimonial mutualista, centrais de rastreamento e seguradoras.</span>
             </AnimatedHeading>
-            <p className="text-[16px] leading-[1.6]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 652 }}>
+            <motion.p
+              className="text-[16px] leading-[1.6]"
+              style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 652, color: "white" }}
+              initial={{ opacity: 0, filter: "blur(8px)", y: 10 }}
+              animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
               Com a i3Tech, a sua empresa conseguirá otimizar operações comerciais, gestão administrativa e financeira e gestão de ativos em campo.
-            </p>
+            </motion.p>
           </div>
           <div className="flex gap-5 items-center">
-            <Link href="/solucoes" className="text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "#1956f3", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,36,40,0.25)", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
-              Confira nossas soluções
-            </Link>
+            <div style={{ position: "relative", borderRadius: 6, padding: 2, overflow: "hidden" }}>
+              {/* Spinning ray */}
+              <motion.div
+                style={{
+                  position: "absolute",
+                  inset: "-150%",
+                  background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+              />
+              <Link href="/solucoes" className="relative z-10 text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97]" style={{ display: "inline-block", background: "#1956f3", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
+                Confira nossas soluções
+              </Link>
+            </div>
             <Link href="/planos" className="text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "#333", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,31,31,0.25)", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
               Nossos planos
             </Link>
@@ -460,7 +487,10 @@ function Services() {
               <div key={ri} className="flex flex-col md:flex-row gap-4">
                 {row.map((card, ci) => (
                   <FadeUp key={card.title} delay={ri * 0.1 + ci * 0.07} className="flex-1">
-                    <div className="flex items-center justify-center p-3 rounded-[16px] h-[320px]" style={{ background: "#262626" }}>
+                    <div className="flex items-center justify-center p-3 rounded-[16px] h-[320px] transition-all duration-300" style={{ background: "#262626", border: "1px solid transparent" }}
+                      onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(25,86,243,0.5)")}
+                      onMouseLeave={e => (e.currentTarget.style.borderColor = "transparent")}
+                    >
                       <div className="flex flex-col justify-between items-start w-full h-full p-10 rounded-lg" style={{ background: "#171717" }}>
                         {card.logo && (
                           <img src={card.logo} alt={card.title} style={{ height: "39.088px", width: "auto" }} />
@@ -783,19 +813,28 @@ function CTABanner() {
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
                 </AnimatedHeading>
-                <Link
-                  href="/contato"
-                  className="inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
-                  style={{
-                    background: "#1956f3",
-                    color: "#f7f7f7",
-                    fontFamily: "var(--font-roobert), sans-serif",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    boxShadow: "0px 2px 5px 0px rgba(31,36,40,0.25)",
-                  }}
-                >
-                  Agende uma demonstração
-                </Link>
+                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <motion.div
+                    style={{
+                      position: "absolute",
+                      inset: "-150%",
+                      background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  />
+                  <Link
+                    href="/contato"
+                    className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                    style={{
+                      background: "#1956f3",
+                      color: "#f7f7f7",
+                      fontFamily: "var(--font-roobert), sans-serif",
+                    }}
+                  >
+                    Agende uma demonstração
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

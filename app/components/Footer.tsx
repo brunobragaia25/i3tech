@@ -172,14 +172,22 @@ export default function Footer() {
               Contato
             </h4>
             <ul className="flex flex-col gap-2.5">
-              {["+55 (31) 2510-8536", "+55 (31) 99720-4995", "R. Batista Santiago, 81 - Liberdade, Belo Horizonte - MG, 31270-230", "comercial@i3tech.digital"].map((c) => (
-                <li key={c}>
-                  <span
-                    className="text-[14px]"
-                    style={{ color: "#737373", fontFamily: "var(--font-dm-sans), sans-serif" }}
+              {[
+                { text: "+55 (31) 2510-8536",   href: "tel:+553125108536" },
+                { text: "+55 (31) 99720-4995",  href: "tel:+5531997204995" },
+                { text: "R. Batista Santiago, 81 - Liberdade, Belo Horizonte - MG, 31270-230", href: "https://maps.google.com/?q=R.+Batista+Santiago,+81,+Belo+Horizonte" },
+                { text: "comercial@i3tech.digital", href: "mailto:comercial@i3tech.digital" },
+              ].map((c) => (
+                <li key={c.text}>
+                  <a
+                    href={c.href}
+                    target={c.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    className="text-[14px] text-[#737373] hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
+                    style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
                   >
-                    {c}
-                  </span>
+                    {c.text}
+                  </a>
                 </li>
               ))}
             </ul>
