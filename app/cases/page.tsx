@@ -264,8 +264,9 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
       {/* Desafio + Solução + Resultado */}
       <div className="flex-1 flex flex-col justify-between" style={{ gap: 40 }}>
         <div className="flex gap-6 items-start">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_FLAG} alt="" className="w-6 h-6 shrink-0 mt-1" style={{ filter: "brightness(0)" }} />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0 mt-1">
+            <path d="M4 22V4C4 3.84475 4.03614 3.69164 4.10557 3.55279C4.175 3.41393 4.2758 3.29315 4.4 3.2C5.43858 2.42107 6.70178 2 8 2C11 2 13 4 15.333 4C16.6663 4 17.6887 3.73333 18.4 3.2C18.5486 3.08857 18.7252 3.02072 18.9102 3.00404C19.0952 2.98736 19.2811 3.02252 19.4472 3.10557C19.6133 3.18863 19.753 3.31629 19.8507 3.47427C19.9483 3.63224 20 3.81429 20 4V14C20 14.1552 19.9639 14.3084 19.8944 14.4472C19.825 14.5861 19.7242 14.7069 19.6 14.8C18.5614 15.5789 17.2982 16 16 16C13 16 11 14 8 14C6.52412 14 5.10002 14.544 4 15.528" />
+          </svg>
           <div className="flex flex-col gap-2">
             <span
               className="text-[18px] font-bold"
@@ -282,8 +283,9 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
           </div>
         </div>
         <div className="flex gap-6 items-start">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_CHECK} alt="" className="w-6 h-6 shrink-0" style={{ filter: "brightness(0)" }} />
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+            <path d="M21.8006 9.99999C22.2573 12.2413 21.9318 14.5714 20.8785 16.6018C19.8251 18.6322 18.1075 20.24 16.0121 21.1573C13.9167 22.0746 11.5702 22.2458 9.36391 21.6424C7.15758 21.0389 5.2248 19.6974 3.88789 17.8414C2.55097 15.9854 1.89073 13.7272 2.01728 11.4434C2.14382 9.15952 3.04949 6.98808 4.58326 5.29116C6.11703 3.59424 8.18619 2.47442 10.4457 2.11844C12.7052 1.76247 15.0184 2.19185 16.9996 3.33499M8.99961 11L11.9996 14L21.9996 3.99999" />
+          </svg>
           <div className="flex flex-col gap-2">
             <span
               className="text-[18px] font-bold"
