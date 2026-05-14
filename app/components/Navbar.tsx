@@ -196,7 +196,7 @@ export default function Navbar() {
                                       key={item.href}
                                       href={item.href}
                                       onClick={() => setDropdownOpen(false)}
-                                      className="flex items-center gap-3 group"
+                                      className="flex items-center gap-3 group rounded-[12px] px-3 py-2 -mx-3 transition-all duration-200 hover:bg-white/5"
                                       style={{ textDecoration: "none" }}
                                     >
                                       <div className="shrink-0 relative" style={{ width: 40, height: 40 }}>
