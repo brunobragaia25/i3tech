@@ -62,13 +62,12 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    if (dropdownOpen) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "";
-    }
-    return () => { document.documentElement.style.overflow = ""; };
+    if (!dropdownOpen) return;
+    function handleScroll() { setDropdownOpen(false); }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [dropdownOpen]);
+
 
   return (
     <>
