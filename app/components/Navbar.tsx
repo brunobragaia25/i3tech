@@ -152,27 +152,38 @@ export default function Navbar() {
                             }}>
                               Está interessado em alguma de nossas soluções?
                             </p>
-                            <Link
-                              href="/contato"
-                              onClick={() => setDropdownOpen(false)}
-                              style={{
-                                background: "#f7f7f7",
-                                border: "1px solid rgba(255,255,255,0.08)",
-                                borderRadius: 4,
-                                padding: "14px 20px",
-                                color: "#242424",
-                                fontSize: 14,
-                                fontFamily: "var(--font-roobert), sans-serif",
-                                fontWeight: 600,
-                                textAlign: "center",
-                                display: "inline-block",
-                                boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
-                                whiteSpace: "nowrap",
-                                alignSelf: "flex-start",
-                              }}
-                            >
-                              Agende uma demonstração
-                            </Link>
+                            <div style={{ position: "relative", borderRadius: 6, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
+                              <motion.div
+                                style={{
+                                  position: "absolute",
+                                  inset: "-150%",
+                                  background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                                }}
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                              />
+                              <Link
+                                href="/contato"
+                                onClick={() => setDropdownOpen(false)}
+                                style={{
+                                  position: "relative",
+                                  zIndex: 10,
+                                  background: "#f7f7f7",
+                                  borderRadius: 4,
+                                  padding: "14px 20px",
+                                  color: "#242424",
+                                  fontSize: 14,
+                                  fontFamily: "var(--font-roobert), sans-serif",
+                                  fontWeight: 600,
+                                  textAlign: "center",
+                                  display: "inline-block",
+                                  boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
+                                  whiteSpace: "nowrap",
+                                }}
+                              >
+                                Agende uma demonstração
+                              </Link>
+                            </div>
                           </div>
 
                           {/* Right solutions list */}
