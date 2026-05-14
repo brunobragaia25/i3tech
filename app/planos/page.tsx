@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import AnimatedHeading from "../components/AnimatedHeading";
 
 const font = "var(--font-roobert), sans-serif";
@@ -191,24 +192,36 @@ export default function PlanosPage() {
               </div>
 
               {/* CTA */}
-              <Link
-                href="/contato"
-                style={{
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  background: "#1956f3",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  borderRadius: 4,
-                  padding: 20,
-                  color: "#f7f7f7",
-                  fontSize: 16,
-                  fontFamily: font,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
-                }}
-              >
-                Agende uma demonstração
-              </Link>
+              <div style={{ position: "relative", borderRadius: 6, padding: 2, overflow: "hidden" }}>
+                <motion.div
+                  style={{
+                    position: "absolute",
+                    inset: "-150%",
+                    background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                  }}
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                />
+                <Link
+                  href="/contato"
+                  style={{
+                    position: "relative",
+                    zIndex: 10,
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                    background: "#1956f3",
+                    borderRadius: 4,
+                    padding: 20,
+                    color: "#f7f7f7",
+                    fontSize: 16,
+                    fontFamily: font,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                    boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
+                  }}
+                >
+                  Agende uma demonstração
+                </Link>
+              </div>
             </div>
           ))}
         </div>
