@@ -13,18 +13,17 @@ function Logo() {
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Sobre nós", href: "/sobre" },
-  { label: "Soluções", href: "/solucoes" },
   { label: "Planos", href: "/planos" },
   { label: "Cases", href: "/cases" },
 ];
 
 const solutions = [
-  { label: "i3 CRM", href: "#" },
-  { label: "i3 Gestão", href: "#" },
-  { label: "i3 Mga", href: "#" },
-  { label: "i3 Truck", href: "#" },
-  { label: "i3 Expansão", href: "#" },
-  { label: "Aplicativos", href: "#" },
+  { label: "i3 CRM",       href: "/solucoes/crm" },
+  { label: "i3 Gestão",    href: "/solucoes/gestao" },
+  { label: "i3 Mga",       href: "/solucoes/mga" },
+  { label: "i3 Track",     href: "/solucoes/track" },
+  { label: "i3 Expansão",  href: "/solucoes/expansao" },
+  { label: "i3 Aplicativos",  href: "/solucoes/aplicativos" },
 ];
 
 const features = [
@@ -33,6 +32,7 @@ const features = [
   { label: "Gestão de Clientes", href: "#" },
   { label: "Financeiro & Comissões", href: "#" },
   { label: "Relatórios & Integrações", href: "#" },
+  { label: "ChatBot", href: "#" },
 ];
 
 const empresasDoGrupo = [
@@ -69,16 +69,15 @@ export default function Footer() {
   return (
     <footer style={{ background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div className="max-w-[1280px] mx-auto px-5 pt-16 pb-8">
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-10 mb-12">
+        <div className="grid grid-cols-2 gap-10 mb-12" style={{ gridTemplateColumns: "200px repeat(5, 1fr)" }}>
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-4">
+          <div className="col-span-2 md:col-span-1 flex flex-col gap-4" style={{ maxWidth: 200 }}>
             <Logo />
             <p
               className="text-[14px] leading-relaxed max-w-[220px]"
               style={{ color: "#737373", fontFamily: "var(--font-dm-sans), sans-serif" }}
             >
-              CRM inteligente para operações veiculares que precisam{" "}
-              <span style={{ color: "#3385ff" }}>vender, organizar e escalar</span>
+              Com a i3Tech, a sua empresa conseguirá otimizar operações comerciais, gestão administrativa e financeira e gestão de ativos em campo.
             </p>
             <div className="flex items-center gap-3 mt-1">
               {socials.map((s) => (

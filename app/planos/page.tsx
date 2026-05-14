@@ -3,274 +3,215 @@
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-import { useRef } from "react";
+import Link from "next/link";
+import { useState } from "react";
 
-function FadeUp({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  const ref = useRef(null);
+const font = "var(--font-roobert), sans-serif";
+
+const IMG_DIVIDER = "https://www.figma.com/api/mcp/asset/d46e6838-f32e-4357-a92a-9a09de57136c";
+
+const plans = [
+  {
+    logo: "/i3gestao.svg", logoW: 211, logoH: 51,
+    subtitleMaxW: 392,
+    subtitle: "Para a sua associação (Valor mínimo e adesão dentro do combo)",
+    tiers: [
+      { label: "0 a 1.000 itens",      price: "R$1,35" },
+      { label: "1.000 a 3.000 itens",  price: "R$1,10" },
+      { label: "Acima de 5.000 itens", price: "R$0,90" },
+    ],
+  },
+  {
+    logo: "/i3crm.svg", logoW: 171, logoH: 51,
+    subtitle: "Para a sua associação (Valor mínimo + adesão ou valor avulso dentro do combo)",
+    tiers: [
+      { label: "0 a 10 usuários",      price: "R$50" },
+      { label: "11 a 50 usuários",     price: "R$40" },
+      { label: "Acima de 50 usuários", price: "R$30" },
+    ],
+  },
+  {
+    logo: "/i3mga.svg", logoW: 165, logoH: 51,
+    subtitle: "Para a sua seguradora (Produto fora do combo)",
+    tiers: [
+      { label: "Implantação",    price: "R$200.000" },
+      { label: "Mensalidade",    price: "R$2.000" },
+      { label: "Valor garantido", price: "R$50.000" },
+    ],
+  },
+  {
+    logo: "/i3app.svg", logoW: 281, logoH: 51,
+    subtitle: "Para a sua associação e central de rastreamento (Valor mínimo + adesão dentro do combo)",
+    tiers: [
+      { label: "App Consultor",      price: "R$200", note: "Personalizado" },
+      { label: "App Associado",      price: "R$200", note: "Personalizado" },
+      { label: "App Rastreamento",   price: "R$200", note: "Personalizado" },
+      { label: "Customizado em Loja", price: "R$200", note: "Personalizado" },
+    ],
+  },
+];
+
+function CheckIcon() {
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
+      <path d="M4 10l4 4 8-8" stroke="#0066ff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }
 
-/* ─── Hero ─────────────────────────────────────── */
-function Hero() {
-  return (
-    <section
-      className="relative w-full overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #1340cc 0%, #0a2080 45%, #0d0d0d 100%)" }}
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='57' height='57'%3E%3Cpath d='M28.5 22v13M22 28.5h13' stroke='rgba(255,255,255,0.1)' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E")`,
-          backgroundSize: "57px 57px",
-        }}
-      />
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-5 pt-16 pb-16 md:pt-[108px] md:pb-[128px] flex flex-col gap-[10px] items-center text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[32px] md:text-[48px] leading-normal font-normal"
-          style={{ color: "#3385ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          Escolha o plano sob medida para a sua empresa
-        </motion.h1>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Info section ─────────────────────────────– */
-function InfoSection() {
-  return (
-    <section style={{ background: "#0d0d0d" }}>
-      <FadeUp className="max-w-[1280px] mx-auto px-4 md:px-5 py-16 md:py-24 flex flex-col gap-8">
-        <div className="flex flex-col gap-6">
-          <div>
-            <p
-              className="text-[18px] leading-[1.6]"
-              style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
-            >
-              Optando pelo combo i3Gestão + Qualquer outra tecnologia (o valor da segunda solução será por valor adicional)
-            </p>
-          </div>
-          <div>
-            <p
-              className="text-[18px] leading-[1.6]"
-              style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}
-            >
-              Optando somente por 1 tecnologia abaixo, o valor seguirá conforme o plano escolhido.
-            </p>
-          </div>
-        </div>
-      </FadeUp>
-    </section>
-  );
-}
-
-/* ─── Pricing card ─────────────────────────────– */
-function PricingCard({
-  title,
-  subtitle,
-  rows,
-  delay = 0,
-}: {
-  title: string;
-  subtitle: string;
-  rows: Array<{ label: string; price: string }>;
-  delay?: number;
-}) {
-  return (
-    <FadeUp delay={delay} className="h-full">
-      <div className="bg-white rounded-2xl p-8 md:p-10 flex flex-col h-full">
-        <h3
-          className="text-[20px] font-semibold mb-2"
-          style={{ color: "#171717", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          {title}
-        </h3>
-        <p
-          className="text-[14px] mb-8 leading-[1.5]"
-          style={{ color: "#737373", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
-          {subtitle}
-        </p>
-
-        <div className="flex flex-col gap-0 flex-1">
-          {rows.map((row, i) => (
-            <div key={i} className="flex justify-between items-center py-3 border-b border-[#e5e5e5] last:border-b-0">
-              <span
-                className="text-[14px]"
-                style={{ color: "#737373", fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                {row.label}
-              </span>
-              <span
-                className="text-[16px] font-semibold"
-                style={{ color: "#1956f3", fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                {row.price}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </FadeUp>
-  );
-}
-
-/* ─── Pricing section ──────────────────────────– */
-function PricingSection() {
-  const products = [
-    {
-      title: "I3Gestão",
-      subtitle: "Para a sua associação (Valor mínimo e adesão dentro do combo)",
-      rows: [
-        { label: "0 a 1.000 itens", price: "R$1,35" },
-        { label: "1.000 a 3.000 itens", price: "R$1,10" },
-        { label: "Acima de 5.000 itens", price: "R$0,90" },
-      ],
-    },
-    {
-      title: "I3CRM (Todas as Versões)",
-      subtitle: "Para a sua associação (Valor mínimo + adesão ou valor avulso dentro do combo)",
-      rows: [
-        { label: "0 a 10 usuários", price: "R$50,00" },
-        { label: "11 a 50 usuários", price: "R$40,00" },
-        { label: "Acima de 50 usuários", price: "R$30,00" },
-      ],
-    },
-    {
-      title: "I3Mga",
-      subtitle: "Para a sua seguradora (Produto fora do combo)",
-      rows: [
-        { label: "Implantação", price: "R$200.000,00" },
-        { label: "Mensalidade", price: "R$5.000,00" },
-        { label: "Valor garantido", price: "R$50.000,00" },
-      ],
-    },
-    {
-      title: "I3Aplicativos",
-      subtitle: "Para a sua associação e central de rastreamento (Valor mínimo + adesão dentro do combo)",
-      rows: [
-        { label: "App Consultor (Personalizado)", price: "R$200,00" },
-        { label: "App Associado (Personalizado)", price: "R$200,00" },
-        { label: "App Rastreamento (Personalizado)", price: "R$200,00" },
-        { label: "Customizado em Loja", price: "R$2.000,00" },
-      ],
-    },
-    {
-      title: "I3Track",
-      subtitle: "Para a sua central de rastreamento (Valor mínimo + adesão ou valor avulso dentro do combo)",
-      rows: [
-        { label: "0 a 500 veículos", price: "R$4,00" },
-        { label: "501 a 1.000 veículos", price: "R$3,00" },
-        { label: "Acima de 1.000 veículos", price: "R$2,00" },
-      ],
-    },
-    {
-      title: "I3Integrações",
-      subtitle: "Para a sua associação (Valor mínimo dentro do combo)",
-      rows: [
-        { label: "Chatbot sem IA", price: "R$300,00" },
-        { label: "Chatbot com IA", price: "R$600,00" },
-      ],
-    },
-  ];
-
-  return (
-    <section style={{ background: "#0d0d0d" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-16 md:py-32">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {products.map((product, i) => (
-            <PricingCard
-              key={product.title}
-              title={product.title}
-              subtitle={product.subtitle}
-              rows={product.rows}
-              delay={i * 0.08}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ─── CTA Banner ───────────────────────────────– */
-function CTABanner() {
-  return (
-    <section style={{ background: "#0d0d0d" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16">
-        <FadeUp>
-          <div
-            className="relative overflow-hidden rounded-2xl px-6 py-10 md:px-16 md:py-14 flex items-center justify-between gap-10"
-            style={{ background: "#1956f3", minHeight: 430 }}
-          >
-            <div className="flex flex-col gap-6 max-w-[540px]">
-              <h2
-                className="text-[24px] md:text-[36px] font-semibold leading-[1.2] text-white"
-                style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                Tem dúvidas sobre qual plano escolher?
-              </h2>
-              <p
-                className="text-[18px] leading-[1.4] text-white/80"
-                style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-              >
-                Entre em contato conosco para um orçamento personalizado.
-              </p>
-              <a
-                href="/#contato"
-                className="inline-flex items-center px-6 py-3 rounded-lg text-[15px] font-medium transition-all duration-200 hover:scale-[1.03] active:scale-[0.97] hover:shadow-lg"
-                style={{
-                  background: "white",
-                  color: "#1956f3",
-                  fontFamily: "var(--font-dm-sans), sans-serif",
-                  width: "fit-content",
-                }}
-              >
-                Solicitar orçamento
-              </a>
-            </div>
-          </div>
-        </FadeUp>
-      </div>
-    </section>
-  );
-}
-
-/* ─── Page ──────────────────────────────────────– */
 export default function PlanosPage() {
+  const [index, setIndex] = useState(0);
+  const canPrev = index > 0;
+  const canNext = index < plans.length - 2;
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
       <Topbar />
       <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <InfoSection />
-        <PricingSection />
-        <CTABanner />
+      <main className="flex-1 relative overflow-hidden">
+        {/* Hero bg */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/bg-pages.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+            borderBottomLeftRadius: 60,
+            borderBottomRightRadius: 60,
+          }}
+        />
+
+        {/* Hero text */}
+        <div
+          className="relative z-10 flex flex-col items-center justify-center text-center"
+          style={{ height: 540, paddingLeft: 20, paddingRight: 20, gap: 20 }}
+        >
+          <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+            Visão geral dos planos
+          </h1>
+          <p style={{ color: "#fff", fontSize: 20, fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
+            Planos flexíveis de acordo com o tamanho e a complexidade da sua operação.
+          </p>
+        </div>
       </main>
+      {/* Nav buttons — constrained */}
+      <div className="max-w-[1280px] mx-auto px-5 w-full" style={{ paddingTop: 80, paddingBottom: 40 }}>
+        <div style={{ display: "flex", gap: 20 }}>
+          {[{ dir: -1, disabled: !canPrev }, { dir: 1, disabled: !canNext }].map(({ dir, disabled }, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex((v) => v + dir)}
+              disabled={disabled}
+              style={{
+                width: 73, height: 73,
+                background: "#f7f7f7",
+                border: "none",
+                borderRadius: 12,
+                cursor: disabled ? "not-allowed" : "pointer",
+                opacity: disabled ? 0.3 : 1,
+                display: "flex", alignItems: "center", justifyContent: "center",
+                transition: "opacity 0.2s",
+              }}
+            >
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {dir === -1 ? <path d="M15 18l-6-6 6-6" /> : <path d="M9 18l6-6-6-6" />}
+              </svg>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Cards — full width */}
+      <div style={{ width: "100%", overflow: "hidden", paddingBottom: 128 }}>
+        <div
+          style={{
+            display: "flex",
+            gap: 20,
+            paddingLeft: 20,
+            paddingRight: 20,
+            transition: "transform 0.4s cubic-bezier(0.22,1,0.36,1)",
+            transform: `translateX(calc(-${index} * (610px + 20px)))`,
+          }}
+        >
+          {plans.map((plan, i) => (
+            <div
+              key={i}
+              style={{
+                width: 610, minWidth: 610, height: 750,
+                background: "#171717",
+                border: "1px solid #242424",
+                borderRadius: 32,
+                padding: 72,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                opacity: i === index || i === index + 1 ? 1 : 0.6,
+                transition: "opacity 0.3s",
+              }}
+            >
+              {/* Top */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                <img src={plan.logo} alt="" style={{ height: plan.logoH, width: plan.logoW, objectFit: "contain", objectPosition: "left" }} />
+                <p style={{ color: "#f7f7f7", fontSize: 20, fontFamily: font, fontWeight: 500, lineHeight: 1.4, letterSpacing: "-0.36px", margin: 0 }}>
+                  {plan.subtitle}
+                </p>
+              </div>
+
+              {/* Tiers */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                {plan.tiers.map((tier, ti) => (
+                  <div key={ti} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                      <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                        <CheckIcon />
+                        <span style={{ color: "#f7f7f7", fontSize: 16, fontFamily: font, fontWeight: 500, letterSpacing: "-0.36px" }}>
+                          {tier.label}
+                        </span>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                        {"note" in tier && tier.note && (
+                          <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, fontWeight: 500 }}>{tier.note}</span>
+                        )}
+                        <span style={{ color: "#0066ff", fontSize: 40, fontFamily: font, fontWeight: 700, letterSpacing: "-0.36px", lineHeight: 1 }}>
+                          {tier.price}
+                        </span>
+                      </div>
+                    </div>
+                    {ti < plan.tiers.length - 1 && (
+                      <div style={{ height: 1, position: "relative" }}>
+                        <div style={{ position: "absolute", inset: "-0.5px 0" }}>
+                          <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <Link
+                href="/contato"
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  background: "#1956f3",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  borderRadius: 4,
+                  padding: 20,
+                  color: "#f7f7f7",
+                  fontSize: 16,
+                  fontFamily: font,
+                  fontWeight: 600,
+                  textDecoration: "none",
+                  boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
+                }}
+              >
+                Agende uma demonstração
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div>
       <Footer />
     </div>
   );

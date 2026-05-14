@@ -29,36 +29,25 @@ function FadeUp({ children, delay = 0, className = "" }: { children: React.React
 /* ─── Hero ─────────────────────────────────────── */
 function Hero() {
   return (
-    <section
-      className="relative w-full overflow-hidden"
-      style={{ background: "linear-gradient(180deg, #1340cc 0%, #0a2080 45%, #0d0d0d 100%)" }}
-    >
+    <section className="relative w-full overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='57' height='57'%3E%3Cpath d='M28.5 22v13M22 28.5h13' stroke='rgba(255,255,255,0.1)' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E")`,
-          backgroundSize: "57px 57px",
+          backgroundImage: "url('/bg-pages.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          borderBottomLeftRadius: 60,
+          borderBottomRightRadius: 60,
         }}
       />
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 md:px-5 pt-16 pb-16 md:pt-[108px] md:pb-[128px] flex flex-col gap-[10px] items-center text-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[32px] md:text-[48px] leading-normal font-normal"
-          style={{ color: "#3385ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
+      <div className="relative z-10 flex flex-col items-center justify-center text-center" style={{ height: 540, padding: "0 20px", gap: 20 }}>
+        <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
           Cases de clientes
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-          className="text-[16px] md:text-[20px] text-white"
-          style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
-        >
+        </h1>
+        <p style={{ color: "#fff", fontSize: 20, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
           Conheça empresas que transformaram sua operação com a i3TECH.
-        </motion.p>
+        </p>
       </div>
     </section>
   );

@@ -3,45 +3,33 @@
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
 import { useState } from "react";
 
-const IMG_PHONE    = "https://www.figma.com/api/mcp/asset/ab932fa4-06d6-4465-a365-1b6362f7b2e5";
-const IMG_EMAIL    = "https://www.figma.com/api/mcp/asset/9eee197b-33ce-40bd-b615-5cc088af3dfc";
-const IMG_LOCATION = "https://www.figma.com/api/mcp/asset/98cdcb81-8143-4149-a793-d66c7d5e1d71";
-
-function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  );
-}
+const IMG_ICON_PHONE    = "https://www.figma.com/api/mcp/asset/7eb443ea-0c30-4e6e-8090-5ea464c53698";
+const IMG_ICON_EMAIL    = "https://www.figma.com/api/mcp/asset/b63549cc-6846-48c8-b7da-ddd2c63b3a3d";
+const IMG_ICON_LOCATION = "https://www.figma.com/api/mcp/asset/ae2d8a6a-fbb0-4af8-b833-e1a5fa77e461";
+const IMG_DIVIDER       = "https://www.figma.com/api/mcp/asset/a9f02d6e-2204-4509-8bb8-bff0bbe9bd90";
 
 const produtos = ["i3 CRM", "i3 Gestão", "i3 Mga", "i3 Track", "i3 Expansão", "Aplicativos"];
 
+const font = "var(--font-roobert), sans-serif";
+
 const inputStyle: React.CSSProperties = {
   background: "transparent",
-  border: "1px solid #f7f7f7",
-  borderRadius: 4,
+  border: "1px solid #333",
+  borderRadius: 300,
   height: 48,
   width: "100%",
-  padding: "0 12px",
+  padding: "0 20px",
   color: "#f7f7f7",
-  fontFamily: "var(--font-dm-sans), sans-serif",
-  fontSize: 16,
+  fontFamily: font,
+  fontSize: 14,
   outline: "none",
 };
 
 const labelStyle: React.CSSProperties = {
   color: "#f7f7f7",
-  fontFamily: "var(--font-dm-sans), sans-serif",
+  fontFamily: font,
   fontSize: 16,
 };
 
@@ -54,7 +42,6 @@ export default function ContatoPage() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-
     const form = e.currentTarget;
     const data = {
       nome:     (form.elements.namedItem("nome")     as HTMLInputElement).value,
@@ -65,7 +52,6 @@ export default function ContatoPage() {
       produto,
       mensagem: (form.elements.namedItem("mensagem") as HTMLTextAreaElement).value,
     };
-
     try {
       const res = await fetch("/api/contato", {
         method: "POST",
@@ -82,142 +68,163 @@ export default function ContatoPage() {
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
       <Topbar />
       <Navbar />
-      <main className="flex-1">
-        <section style={{ background: "#0d0d0d" }}>
-          <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[108px] pb-16 flex flex-col gap-16">
+      <main className="flex-1 relative overflow-hidden">
+        {/* Hero bg */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage: "url('/bg-pages.png')",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+            backgroundPosition: "center top",
+            borderBottomLeftRadius: 60,
+            borderBottomRightRadius: 60,
+          }}
+        />
 
-            {/* Header + contact info */}
-            <FadeUp className="flex flex-col gap-10">
-              <div className="flex flex-col gap-2.5 items-center text-center">
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-[28px] md:text-[48px] leading-[1.1] text-center max-w-[764px]"
-                  style={{ color: "#e6f0ff", fontFamily: "var(--font-dm-sans), sans-serif" }}
-                >
-                  Entre em contato conosco e agende uma demonstração
-                </motion.h1>
-                <p className="text-[20px]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                  Entraremos em contato com você em até 48h.
-                </p>
-              </div>
+        {/* Hero text */}
+        <div
+          className="relative z-10 flex flex-col items-center justify-center text-center"
+          style={{ height: 540, paddingLeft: 20, paddingRight: 20, gap: 20, display: "flex", flexDirection: "column", alignItems: "center" }}
+        >
+          <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+            Fale conosco
+          </h1>
+          <p style={{ color: "#fff", fontSize: 20, fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
+            Entre em contato conosco e agende a sua demonstração
+          </p>
+        </div>
 
-              {/* Contact info columns */}
-              <div className="flex flex-col gap-0">
-                <div className="flex flex-col md:flex-row items-start md:items-center md:h-[240px]">
-                  {/* Phone */}
-                  <div className="flex-1 flex flex-col gap-10 py-8">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={IMG_PHONE} alt="Telefone" className="w-[72px] h-[72px]" />
-                    <div className="flex flex-col gap-5">
-                      <span className="text-[14px] font-light leading-[1.6]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>+55 31 99999 9999</span>
-                      <span className="text-[14px] font-light leading-[1.6]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>+55 31 99999 9999</span>
-                    </div>
-                  </div>
-                  <div className="hidden md:block self-stretch w-px shrink-0" style={{ background: "rgba(255,255,255,0.1)" }} />
-                  {/* Email */}
-                  <div className="flex-1 flex flex-col gap-10 py-8 px-10">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={IMG_EMAIL} alt="Email" className="w-[72px] h-[72px]" />
-                    <div className="flex flex-col gap-5">
-                      <span className="text-[14px] font-light leading-[1.6]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>contato@i3tech.com.br</span>
-                      <span className="text-[14px] font-light leading-[1.6]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>adm@i3tech.com.br</span>
-                    </div>
-                  </div>
-                  <div className="hidden md:block self-stretch w-px shrink-0" style={{ background: "rgba(255,255,255,0.1)" }} />
-                  {/* Location */}
-                  <div className="flex-1 flex flex-col gap-10 py-8 px-10">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={IMG_LOCATION} alt="Endereço" className="w-[72px] h-[72px]" />
-                    <span className="text-[14px] leading-[1.1]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>Rua Seu endereço aqui, 000</span>
+      </main>
+
+      {/* Form section */}
+      <div className="max-w-[1280px] mx-auto px-5 w-full" style={{ paddingTop: 80, paddingBottom: 128 }}>
+          <div style={{ display: "flex", gap: 20, alignItems: "flex-start" }}>
+
+            {/* Left — info cards */}
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, flexShrink: 0, alignSelf: "stretch" }}>
+              {/* Phone */}
+              <div style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 32, display: "flex", flexDirection: "column", gap: 28, flex: 1 }}>
+                <img src={IMG_ICON_PHONE} alt="" style={{ width: 72, height: 72 }} />
+                <div style={{ height: 1, position: "relative" }}>
+                  <div style={{ position: "absolute", inset: "-0.5px 0" }}>
+                    <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
                   </div>
                 </div>
-                <div style={{ height: 1, background: "rgba(255,255,255,0.1)" }} />
+                <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                  <span style={{ color: "#f7f7f7", fontSize: 14, fontFamily: font }}>+55 (31) 2510-8536</span>
+                  <span style={{ color: "#f7f7f7", fontSize: 14, fontFamily: font }}>+55 (31) 99720-4995</span>
+                </div>
               </div>
-            </FadeUp>
 
-            {/* Form heading */}
-            <FadeUp>
-              <p className="text-[24px]" style={{ color: "#0066ff", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                Ou preencha nosso formulário abaixo
-              </p>
-            </FadeUp>
+              {/* Email */}
+              <div style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 32, display: "flex", flexDirection: "column", gap: 28, flex: 1 }}>
+                <img src={IMG_ICON_EMAIL} alt="" style={{ width: 72, height: 72 }} />
+                <div style={{ height: 1, position: "relative" }}>
+                  <div style={{ position: "absolute", inset: "-0.5px 0" }}>
+                    <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
+                  </div>
+                </div>
+                <span style={{ color: "#f7f7f7", fontSize: 14, fontFamily: font }}>comercial@i3tech.digital</span>
+              </div>
 
-            {/* Form */}
-            <FadeUp>
+              {/* Location */}
+              <div style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 32, display: "flex", flexDirection: "column", gap: 28, flex: 1 }}>
+                <img src={IMG_ICON_LOCATION} alt="" style={{ width: 72, height: 72 }} />
+                <div style={{ height: 1, position: "relative" }}>
+                  <div style={{ position: "absolute", inset: "-0.5px 0" }}>
+                    <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
+                  </div>
+                </div>
+                <p style={{ color: "#f7f7f7", fontSize: 14, fontFamily: font, lineHeight: 1.8, margin: 0, whiteSpace: "pre-line" }}>
+                  R. Batista Santiago, 81 - Liberdade,{"\n"}Belo Horizonte - MG, 31270-230
+                </p>
+              </div>
+            </div>
+
+            {/* Right — form card */}
+            <div style={{ flex: 1, background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 32, display: "flex", flexDirection: "column", gap: 28, minWidth: 0 }}>
               {status === "success" ? (
-                <div className="flex flex-col items-center gap-6 py-16 text-center">
-                  <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "#1956f3" }}>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "64px 0", textAlign: "center" }}>
+                  <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#1956f3", display: "flex", alignItems: "center", justifyContent: "center" }}>
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
-                  <h3 className="text-[28px] font-semibold text-white" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                    Mensagem enviada!
-                  </h3>
-                  <p className="text-[18px]" style={{ color: "#a0a0a0", fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                    Entraremos em contato em até 48h.
-                  </p>
+                  <h3 style={{ color: "#fff", fontSize: 28, fontFamily: font, fontWeight: 600, margin: 0 }}>Mensagem enviada!</h3>
+                  <p style={{ color: "#a0a0a0", fontSize: 18, fontFamily: font, margin: 0 }}>Entraremos em contato em até 48h.</p>
                 </div>
               ) : (
-                <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
-                  {/* Row 1 */}
-                  <div className="flex flex-col md:flex-row gap-10">
-                    <div className="flex-1 flex flex-col gap-5">
-                      <label style={labelStyle}>Nome completo*</label>
-                      <input name="nome" type="text" required style={inputStyle} />
+                <form style={{ display: "flex", flexDirection: "column", gap: 28, flex: 1 }} onSubmit={handleSubmit}>
+                  {/* Nome */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                    <label style={labelStyle}>Nome completo*</label>
+                    <input name="nome" type="text" required placeholder="Digite seu nome completo" style={inputStyle} />
+                  </div>
+
+                  {/* Email + Celular */}
+                  <div style={{ display: "flex", gap: 20 }}>
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20 }}>
+                      <label style={labelStyle}>E-mail</label>
+                      <input name="email" type="email" placeholder="Digite seu e-mail" style={inputStyle} />
                     </div>
-                    <div className="flex-1 flex flex-col gap-5">
-                      <label style={labelStyle}>Seu e-mail*</label>
-                      <input name="email" type="email" required style={inputStyle} />
-                    </div>
-                    <div className="flex-1 flex flex-col gap-5">
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20 }}>
                       <label style={labelStyle}>Celular*</label>
-                      <input name="celular" type="tel" style={inputStyle} />
+                      <input name="celular" type="tel" required placeholder="Digite seu DDD+Celular" style={inputStyle} />
                     </div>
                   </div>
-                  {/* Row 2 */}
-                  <div className="flex flex-col md:flex-row gap-10">
-                    <div className="flex-1 flex flex-col gap-5">
-                      <label style={labelStyle}>Seu endereço*</label>
-                      <input name="endereco" type="text" style={inputStyle} />
+
+                  {/* Endereço */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+                    <label style={labelStyle}>Seu endereço</label>
+                    <input name="endereco" type="text" placeholder="Digite seu endereço" style={inputStyle} />
+                  </div>
+
+                  {/* Empresa + Produto */}
+                  <div style={{ display: "flex", gap: 20 }}>
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20 }}>
+                      <label style={labelStyle}>Nome da sua empresa</label>
+                      <input name="empresa" type="text" placeholder="Digite o nome da sua empresa" style={inputStyle} />
                     </div>
-                    <div className="flex-1 flex flex-col gap-5">
-                      <label style={labelStyle}>Nome da sua empresa*</label>
-                      <input name="empresa" type="text" style={inputStyle} />
-                    </div>
-                    <div className="flex-1 flex flex-col gap-5">
-                      <label style={labelStyle}>Escolha o produto*</label>
-                      <div className="relative" style={{ height: 48 }}>
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 20 }}>
+                      <label style={labelStyle}>Escolha o produto</label>
+                      <div style={{ position: "relative" }}>
                         <select
                           value={produto}
                           onChange={(e) => setProduto(e.target.value)}
-                          style={{ ...inputStyle, appearance: "none", WebkitAppearance: "none", paddingRight: 40, cursor: "pointer" }}
+                          style={{ ...inputStyle, appearance: "none", WebkitAppearance: "none", paddingRight: 44, cursor: "pointer", background: "transparent" }}
                         >
-                          <option value="" disabled style={{ background: "#1a1a1a" }}></option>
+                          <option value="" disabled style={{ background: "#1a1a1a" }}>Selecione um produto</option>
                           {produtos.map((p) => (
                             <option key={p} value={p} style={{ background: "#1a1a1a" }}>{p}</option>
                           ))}
                         </select>
-                        <svg className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2">
+                        <svg style={{ position: "absolute", right: 16, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2">
                           <path d="m6 9 6 6 6-6" />
                         </svg>
                       </div>
                     </div>
                   </div>
-                  {/* Message */}
-                  <div className="flex flex-col gap-5">
-                    <label style={labelStyle}>Escreva a sua mensagem*</label>
+
+                  {/* Mensagem */}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 20, flex: 1 }}>
+                    <label style={labelStyle}>Escreva sua mensagem</label>
                     <textarea
                       name="mensagem"
                       required
-                      style={{ ...inputStyle, height: 164, padding: "12px", resize: "vertical" }}
+                      placeholder="Digite sua mensagem ou dúvida"
+                      style={{
+                        ...inputStyle,
+                        height: 160,
+                        borderRadius: 20,
+                        padding: 20,
+                        resize: "vertical",
+                      }}
                     />
                   </div>
 
                   {status === "error" && (
-                    <p className="text-[14px] text-red-400" style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
+                    <p style={{ color: "#f87171", fontSize: 14, fontFamily: font, margin: 0 }}>
                       Erro ao enviar. Por favor, tente novamente.
                     </p>
                   )}
@@ -225,23 +232,28 @@ export default function ContatoPage() {
                   <button
                     type="submit"
                     disabled={status === "loading"}
-                    className="w-full py-2.5 rounded-lg text-[14px] transition-all duration-200 hover:bg-[#1444cc] hover:scale-[1.03] active:scale-[0.97] hover:brightness-110 hover:shadow-[0_8px_24px_rgba(25,86,243,0.4)] disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
                     style={{
                       background: "#1956f3",
                       border: "1px solid rgba(255,255,255,0.08)",
-                      boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
+                      borderRadius: 4,
+                      padding: 20,
                       color: "#f7f7f7",
-                      fontFamily: "var(--font-dm-sans), sans-serif",
+                      fontSize: 16,
+                      fontFamily: font,
+                      fontWeight: 600,
+                      width: "100%",
+                      cursor: status === "loading" ? "not-allowed" : "pointer",
+                      opacity: status === "loading" ? 0.6 : 1,
+                      boxShadow: "0px 2px 5px rgba(31,36,40,0.25)",
                     }}
                   >
                     {status === "loading" ? "Enviando..." : "Envie sua mensagem"}
                   </button>
                 </form>
               )}
-            </FadeUp>
+            </div>
           </div>
-        </section>
-      </main>
+      </div>
       <Footer />
     </div>
   );
