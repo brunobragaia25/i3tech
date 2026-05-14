@@ -367,19 +367,29 @@ function CTABanner() {
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
                 </AnimatedHeading>
-                <Link
-                  href="/contato"
-                  className="inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
-                  style={{
-                    background: "#f7f7f7",
-                    color: "#000",
-                    fontFamily: "var(--font-dm-sans), sans-serif",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    boxShadow: "0px 2px 5px 0px rgba(31,36,40,0.25)",
-                  }}
-                >
-                  Agende uma demonstração
-                </Link>
+                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <motion.div
+                    style={{
+                      position: "absolute",
+                      inset: "-150%",
+                      background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  />
+                  <Link
+                    href="/contato"
+                    className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                    style={{
+                      background: "#f7f7f7",
+                      color: "#000",
+                      fontFamily: "var(--font-dm-sans), sans-serif",
+                      boxShadow: "0px 2px 5px 0px rgba(31,36,40,0.25)",
+                    }}
+                  >
+                    Agende uma demonstração
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
