@@ -116,14 +116,9 @@ export default function PlanosPage() {
                 transition: "opacity 0.2s",
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={dir === -1 ? "/arrow-left.svg" : "/arrow-right.svg"}
-                alt=""
-                width={28}
-                height={28}
-                style={{ filter: "brightness(0)" }}
-              />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                {dir === -1 ? <path d="M15 18L9 12L15 6" /> : <path d="M9 18L15 12L9 6" />}
+              </svg>
             </button>
           ))}
         </div>

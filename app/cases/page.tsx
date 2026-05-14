@@ -338,8 +338,9 @@ function TestimonialsSlider() {
               style={{ background: "#0052e6", opacity: canPrev ? 1 : 0.3, cursor: canPrev ? "pointer" : "not-allowed" }}
               aria-label="Anterior"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_ARROW_PREV} alt="" className="w-6 h-6" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M15 18L9 12L15 6" />
+              </svg>
             </button>
             <button
               onClick={next}
@@ -348,8 +349,9 @@ function TestimonialsSlider() {
               style={{ background: "#0052e6", opacity: canNext ? 1 : 0.3, cursor: canNext ? "pointer" : "not-allowed" }}
               aria-label="Próximo"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMG_ARROW_NEXT} alt="" className="w-6 h-6" />
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 18L15 12L9 6" />
+              </svg>
             </button>
           </div>
         </div>
