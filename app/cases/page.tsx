@@ -265,7 +265,7 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
       <div className="flex-1 flex flex-col justify-between" style={{ gap: 40 }}>
         <div className="flex gap-6 items-start">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_FLAG} alt="" className="w-6 h-6 shrink-0 mt-1" />
+          <img src={IMG_FLAG} alt="" className="w-6 h-6 shrink-0 mt-1" style={{ filter: "brightness(0)" }} />
           <div className="flex flex-col gap-2">
             <span
               className="text-[18px] font-bold"
@@ -283,7 +283,7 @@ function TestimonialCard({ t }: { t: typeof testimonials[0] }) {
         </div>
         <div className="flex gap-6 items-start">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={IMG_CHECK} alt="" className="w-6 h-6 shrink-0" />
+          <img src={IMG_CHECK} alt="" className="w-6 h-6 shrink-0" style={{ filter: "brightness(0)" }} />
           <div className="flex flex-col gap-2">
             <span
               className="text-[18px] font-bold"
