@@ -357,9 +357,10 @@ function Hero() {
 }
 
 /* ─── About assets ───────────────────────────────────────── */
-const IMG_ABOUT_ICON_1 = "https://www.figma.com/api/mcp/asset/6f6319e1-4d62-4196-9393-a61f8757c2b6";
-const IMG_ABOUT_ICON_2 = "https://www.figma.com/api/mcp/asset/d6652917-c37c-4821-9dbf-020a6aa806cb";
-const IMG_ABOUT_ICON_3 = "https://www.figma.com/api/mcp/asset/7fb7aeea-2764-40e3-98d0-8fa8c301d2b3";
+const IMG_ABOUT_CIRCLE = "https://www.figma.com/api/mcp/asset/af498df2-1a9c-45fa-be50-fbbcef7e779e";
+const IMG_ABOUT_ICON_1 = "/shield-check.svg";
+const IMG_ABOUT_ICON_2 = "/radar.svg";
+const IMG_ABOUT_ICON_3 = "/file-check-corner.svg";
 const IMG_ABOUT_DIVIDER = "https://www.figma.com/api/mcp/asset/f6d4e907-2b9d-4fde-a693-e4d7db9da5ff";
 
 const aboutColumns = [
@@ -408,8 +409,15 @@ function About() {
           {aboutColumns.map((col, i) => (
             <FadeUp key={col.title} delay={i * 0.1} className="flex flex-col gap-5 flex-1">
               <div style={{ width: 86, height: 86, position: "relative", flexShrink: 0 }}>
+                {/* Circle glow from Figma */}
                 <div style={{ position: "absolute", inset: "-5.28% -12.22% -19.17% -12.22%" }}>
-                  <img src={col.icon} alt="" style={{ display: "block", maxWidth: "none", width: "100%", height: "100%" }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={IMG_ABOUT_CIRCLE} alt="" style={{ display: "block", maxWidth: "none", width: "100%", height: "100%" }} />
+                </div>
+                {/* Local icon centered on top */}
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={col.icon} alt="" style={{ width: 28, height: 28, filter: "brightness(0) invert(1)" }} />
                 </div>
               </div>
               <AnimatedHeading as="h3" className="text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6" }}>
