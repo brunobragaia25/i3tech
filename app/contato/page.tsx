@@ -4,6 +4,7 @@ import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import AnimatedHeading from "../components/AnimatedHeading";
 
 const IMG_ICON_PHONE    = "https://www.figma.com/api/mcp/asset/7eb443ea-0c30-4e6e-8090-5ea464c53698";
 const IMG_ICON_EMAIL    = "https://www.figma.com/api/mcp/asset/b63549cc-6846-48c8-b7da-ddd2c63b3a3d";
@@ -87,9 +88,9 @@ export default function ContatoPage() {
           className="relative z-10 flex flex-col items-center justify-center text-center"
           style={{ height: 540, paddingLeft: 20, paddingRight: 20, gap: 20, display: "flex", flexDirection: "column", alignItems: "center" }}
         >
-          <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+          <AnimatedHeading as="h1" style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
             Fale conosco
-          </h1>
+          </AnimatedHeading>
           <p style={{ color: "#fff", fontSize: 20, fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
             Entre em contato conosco e agende a sua demonstração
           </p>

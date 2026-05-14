@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import AnimatedHeading from "../components/AnimatedHeading";
 
 const IMG_ARROW_PREV = "https://www.figma.com/api/mcp/asset/44cb6d13-e65d-45c8-a74d-1c07349be3e8";
 const IMG_ARROW_NEXT = "https://www.figma.com/api/mcp/asset/77205470-99b0-4432-986d-6af2ca0812fd";
@@ -42,9 +43,9 @@ function Hero() {
         }}
       />
       <div className="relative z-10 flex flex-col items-center justify-center text-center" style={{ height: 540, padding: "0 20px", gap: 20 }}>
-        <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+        <AnimatedHeading as="h1" style={{ color: "#3385ff", fontSize: 48, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
           Cases de clientes
-        </h1>
+        </AnimatedHeading>
         <p style={{ color: "#fff", fontSize: 20, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
           Conheça empresas que transformaram sua operação com a i3TECH.
         </p>

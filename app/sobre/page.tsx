@@ -3,6 +3,7 @@
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import AnimatedHeading from "../components/AnimatedHeading";
 
 const font = "var(--font-roobert), sans-serif";
 
@@ -30,9 +31,9 @@ export default function SobrePage() {
           className="relative z-10 flex flex-col items-center justify-center text-center"
           style={{ height: 540, paddingLeft: 20, paddingRight: 20, gap: 20 }}
         >
-          <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+          <AnimatedHeading as="h1" style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
             Sobre a i3TECH
-          </h1>
+          </AnimatedHeading>
           <p style={{ color: "#fff", fontSize: 20, fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
             Somos uma empresa de tecnologia especializada no desenvolvimento de soluções para operações veiculares.
           </p>
@@ -43,10 +44,10 @@ export default function SobrePage() {
 
         {/* Text block */}
         <div style={{ display: "flex", flexDirection: "column", gap: 40, alignItems: "center", textAlign: "center" }}>
-          <p style={{ color: "#f7f7f7", fontSize: 32, fontFamily: font, fontWeight: 400, lineHeight: "normal", maxWidth: 1008, margin: 0 }}>
+          <AnimatedHeading as="p" style={{ color: "#f7f7f7", fontSize: 32, fontFamily: font, fontWeight: 400, lineHeight: "normal", maxWidth: 1008, margin: 0 }}>
             Somos uma empresa de tecnologia do Grupo Brasil Atuarial, com o{" "}
             <span style={{ fontWeight: 600, color: "#0066ff" }}>foco no desenvolvimento de inovações e produtos tecnológicos que envolvem a regra atuarial</span>.
-          </p>
+          </AnimatedHeading>
           <p style={{ color: "#f7f7f7", fontSize: 24, fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 840, margin: 0 }}>
             Desenvolvemos sistemas e aplicativos que conectam gestão empresarial, vendas e rastreamento inteligente para o nosso segmento.
           </p>
@@ -100,9 +101,9 @@ export default function SobrePage() {
       {/* Nossa Diretoria */}
       <div className="max-w-[1280px] mx-auto px-5 w-full" style={{ paddingTop: 64, paddingBottom: 64, display: "flex", flexDirection: "column", gap: 40, alignItems: "center" }}>
 
-        <h2 style={{ color: "#0052e6", fontSize: 40, fontFamily: font, fontWeight: 600, lineHeight: 1.2, textAlign: "center", margin: 0 }}>
+        <AnimatedHeading as="h2" style={{ color: "#0052e6", fontSize: 40, fontFamily: font, fontWeight: 600, lineHeight: 1.2, textAlign: "center", margin: 0 }}>
           Nossa Diretoria
-        </h2>
+        </AnimatedHeading>
 
         <div style={{ background: "#171717", borderRadius: 20, padding: 16, width: "100%" }}>
           <div style={{ display: "flex", gap: 16 }}>

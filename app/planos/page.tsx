@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { useState } from "react";
+import AnimatedHeading from "../components/AnimatedHeading";
 
 const font = "var(--font-roobert), sans-serif";
 
@@ -87,9 +88,9 @@ export default function PlanosPage() {
           className="relative z-10 flex flex-col items-center justify-center text-center"
           style={{ height: 540, paddingLeft: 20, paddingRight: 20, gap: 20 }}
         >
-          <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+          <AnimatedHeading as="h1" style={{ color: "#3385ff", fontSize: 48, fontFamily: font, fontWeight: 400, lineHeight: "normal", margin: 0 }}>
             Visão geral dos planos
-          </h1>
+          </AnimatedHeading>
           <p style={{ color: "#fff", fontSize: 20, fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
             Planos flexíveis de acordo com o tamanho e a complexidade da sua operação.
           </p>

@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import AnimatedHeading from "../components/AnimatedHeading";
 
 /* ─── Assets ────────────────────────────────────────────── */
 const IMG_CHECK        = "/check-white.svg";
@@ -243,12 +244,13 @@ function FeatureSection({ f }: { f: typeof features[0] }) {
   const textContent = (
     <div className="flex-1 flex flex-col gap-[28px] min-w-0">
       <div className="flex flex-col gap-[20px]">
-        <h2
+        <AnimatedHeading
+          as="h2"
           className="text-[24px] md:text-[32px] font-semibold leading-[1.2]"
           style={{ color: "#0052e6", fontFamily: "var(--font-dm-sans), sans-serif" }}
         >
           {f.title}
-        </h2>
+        </AnimatedHeading>
         <div className="flex flex-col gap-[16px]">
           {f.description.map((p, i) => (
             <p key={i} className="text-[16px] font-light leading-[1.6]" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>
@@ -307,9 +309,9 @@ function Hero() {
         }}
       />
       <div className="relative z-10 flex flex-col items-center justify-center text-center" style={{ height: 540, padding: "0 20px", gap: 20 }}>
-        <h1 style={{ color: "#3385ff", fontSize: 48, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+        <AnimatedHeading as="h1" style={{ color: "#3385ff", fontSize: 48, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
           Funcionalidades
-        </h1>
+        </AnimatedHeading>
         <p style={{ color: "#fff", fontSize: 20, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
           A i3TECH é uma plataforma completa de CRM e gestão criada para organizar, automatizar e escalar operações veiculares.
         </p>
@@ -358,12 +360,13 @@ function CTABanner() {
 
               {/* Content */}
               <div className="relative flex flex-col gap-[40px] items-center w-full">
-                <h2
+                <AnimatedHeading
+                  as="h2"
                   className="text-[32px] md:text-[39px] font-semibold leading-[48px] text-center text-white max-w-[848px]"
                   style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
-                </h2>
+                </AnimatedHeading>
                 <Link
                   href="/contato"
                   className="inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"

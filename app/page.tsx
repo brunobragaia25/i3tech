@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
+import AnimatedHeading from "./components/AnimatedHeading";
 
 /* ─── Animation helper ───────────────────────────────────── */
 function FadeUp({
@@ -136,14 +137,17 @@ const kanbanColumns = [
 function KanbanCard({ name, source, status, statusColor }: { name: string; source: string; status: string; statusColor: string }) {
   return (
     <div style={{ background: "#cce0ff", borderRadius: 16, padding: 8, height: 260 }}>
-      <div style={{ background: "white", border: "1px solid rgba(51,133,255,0.5)", borderRadius: 8, height: "100%", padding: 24, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <motion.div
+        variants={cardChildVariants}
+        style={{ background: "white", border: "1px solid rgba(51,133,255,0.5)", borderRadius: 8, height: "100%", padding: 24, display: "flex", flexDirection: "column", justifyContent: "space-between" }}
+      >
         {/* Top */}
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <span style={{ color: "#0052e6", fontSize: 16, fontFamily: "var(--font-roobert), sans-serif" }}>{name}</span>
-            <span style={{ background: "#f0f0f0", borderRadius: 6, padding: "2px 12px", fontSize: 12, color: "#333", fontFamily: "var(--font-roobert), sans-serif" }}>{source}</span>
+            <motion.span variants={textVariants} style={{ color: "#0052e6", fontSize: 16, fontFamily: "var(--font-roobert), sans-serif" }}>{name}</motion.span>
+            <motion.span variants={badgeVariants} style={{ background: "#f0f0f0", borderRadius: 6, padding: "2px 12px", fontSize: 12, color: "#333", fontFamily: "var(--font-roobert), sans-serif" }}>{source}</motion.span>
           </div>
-          <div style={{ height: 1, background: "#e5e5e5" }} />
+          <motion.div variants={textVariants} style={{ height: 1, background: "#e5e5e5" }} />
         </div>
         {/* Middle */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -152,23 +156,58 @@ function KanbanCard({ name, source, status, statusColor }: { name: string; sourc
             { icon: IMG_HERO_ICON_USER, text: "CONSULTOR EXTERNO" },
             { icon: IMG_HERO_ICON_CALENDAR, text: "Criado em: 26/01/2026" },
           ].map(({ icon, text }) => (
-            <div key={text} style={{ display: "flex", gap: 10, alignItems: "center" }}>
+            <motion.div key={text} variants={textVariants} style={{ display: "flex", gap: 10, alignItems: "center" }}>
               <img src={icon} alt="" style={{ width: 16, height: 16, flexShrink: 0 }} />
               <span style={{ fontSize: 12, color: "#333", fontFamily: "var(--font-roobert), sans-serif", lineHeight: 1 }}>{text}</span>
-            </div>
+            </motion.div>
           ))}
         </div>
         {/* Bottom */}
         <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <div style={{ height: 1, background: "#e5e5e5" }} />
-          <span style={{ background: statusColor, borderRadius: 300, padding: "6px 12px", fontSize: 12, color: statusColor === "#888" ? "#f7f7f7" : "white", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600, alignSelf: "flex-start" }}>
+          <motion.div variants={textVariants} style={{ height: 1, background: "#e5e5e5" }} />
+          <motion.span variants={badgeVariants} style={{ background: statusColor, borderRadius: 300, padding: "6px 12px", fontSize: 12, color: statusColor === "#888" ? "#f7f7f7" : "white", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600, alignSelf: "flex-start" }}>
             {status}
-          </span>
+          </motion.span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
+
+/* ─── Dashboard animation variants ──────────────────────── */
+const ease = [0.22, 1, 0.36, 1] as const;
+const dashboardVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.4 } },
+};
+const toolbarVariants = {
+  hidden: { opacity: 0, y: -14 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+};
+const colVariants = {
+  hidden: { opacity: 0, y: 44 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease } },
+};
+const colChildrenVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.14, delayChildren: 0.15 } },
+};
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease } },
+};
+const cardChildVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.09, delayChildren: 0.1 } },
+};
+const textVariants = {
+  hidden: { opacity: 0, y: 8 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease } },
+};
+const badgeVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease } },
+};
 
 /* ─── Dashboard Mockup ───────────────────────────────────── */
 function DashboardMockup() {
@@ -177,6 +216,7 @@ function DashboardMockup() {
   const rotateX = useTransform(scrollYProgress, [0, 0.3], [28, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3], [0.88, 1]);
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0.6, 1]);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <div ref={ref} style={{ perspective: 1200, width: 1240 }}>
@@ -197,9 +237,14 @@ function DashboardMockup() {
               </div>
             </div>
             {/* White content area */}
-            <div style={{ background: "white", borderRadius: 8, padding: 20 }}>
+            <motion.div
+              style={{ background: "white", borderRadius: 8, padding: 20 }}
+              variants={dashboardVariants}
+              initial="hidden"
+              animate={inView ? "visible" : "hidden"}
+            >
               {/* Toolbar */}
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: 40, marginBottom: 12 }}>
+              <motion.div variants={toolbarVariants} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: 40, marginBottom: 12 }}>
                 <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
                   <div style={{ border: "1px solid #888", borderRadius: 6, padding: "8px 12px", width: 280 }}>
                     <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>Buscar</span>
@@ -217,24 +262,30 @@ function DashboardMockup() {
                     <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500 }}>Nova Cotação</span>
                   </div>
                 </div>
-              </div>
+              </motion.div>
               {/* Kanban */}
               <div style={{ display: "flex", gap: 12 }}>
                 {kanbanColumns.map((col) => (
-                  <div key={col.title} style={{ flex: 1, background: "#e6f0ff", borderRadius: 12, padding: 10, display: "flex", flexDirection: "column", gap: 12 }}>
-                    <div style={{ background: "white", borderRadius: 6, padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <motion.div
+                    key={col.title}
+                    variants={colVariants}
+                    style={{ flex: 1, background: "#e6f0ff", borderRadius: 12, padding: 10, display: "flex", flexDirection: "column", gap: 12 }}
+                  >
+                    <motion.div variants={textVariants} style={{ background: "white", borderRadius: 6, padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500 }}>{col.title}</span>
-                      <span style={{ background: "#66a3ff", borderRadius: 6, padding: "0 12px", fontSize: 12, color: "white", fontWeight: 300, fontFamily: "var(--font-roobert), sans-serif", lineHeight: "32px" }}>{col.count}</span>
-                    </div>
-                    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                      <motion.span variants={badgeVariants} style={{ background: "#66a3ff", borderRadius: 6, padding: "0 12px", fontSize: 12, color: "white", fontWeight: 300, fontFamily: "var(--font-roobert), sans-serif", lineHeight: "32px" }}>{col.count}</motion.span>
+                    </motion.div>
+                    <motion.div variants={colChildrenVariants} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                       {col.cards.map((card) => (
-                        <KanbanCard key={card.name} {...card} />
+                        <motion.div key={card.name} variants={cardVariants}>
+                          <KanbanCard {...card} />
+                        </motion.div>
                       ))}
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
@@ -253,10 +304,10 @@ function Hero() {
         {/* Text + buttons */}
         <div className="flex flex-col gap-[40px] items-center">
           <div className="flex flex-col gap-5 items-center text-center text-white">
-            <p className="text-[40px] leading-[1.25]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 1004 }}>
+            <AnimatedHeading as="p" className="text-[40px] leading-[1.25]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 1004 }}>
               <span style={{ fontWeight: 400 }}>Tecnologias inteligentes para a gestão e controle da sua </span>
               <span style={{ fontWeight: 600, color: "#0066ff" }}>entidade de proteção patrimonial mutualista, centrais de rastreamento e seguradoras.</span>
-            </p>
+            </AnimatedHeading>
             <p className="text-[16px] leading-[1.6]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 652 }}>
               Com a i3Tech, a sua empresa conseguirá otimizar operações comerciais, gestão administrativa e financeira e gestão de ativos em campo.
             </p>
@@ -310,12 +361,12 @@ function About() {
 
         {/* Headline */}
         <FadeUp>
-          <p className="text-[32px] leading-[1.4] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
+          <AnimatedHeading as="p" className="text-[32px] leading-[1.4] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
             A i3Tech é a 1º empresa do mercado brasileiro,{" "}
             <span style={{ fontWeight: 600, color: "#0052e6" }}>
               a desenvolver tecnologias de origem atuarial, para sua proteção patrimonial mutualista, central de rastreamento e seguradoras.
             </span>
-          </p>
+          </AnimatedHeading>
         </FadeUp>
 
         {/* Divider */}
@@ -334,9 +385,9 @@ function About() {
                   <img src={col.icon} alt="" style={{ display: "block", maxWidth: "none", width: "100%", height: "100%" }} />
                 </div>
               </div>
-              <h3 className="text-[32px] leading-[1.4] whitespace-pre-line" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6" }}>
+              <AnimatedHeading as="h3" className="text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6" }}>
                 {col.title}
-              </h3>
+              </AnimatedHeading>
               <p className="text-[16px] leading-[1.8] text-[#f7f7f7]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>
                 {col.desc}
               </p>
@@ -398,9 +449,9 @@ function Services() {
     <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
         <FadeUp className="text-center">
-          <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
-            Veja todos os<br />nossos serviços
-          </h2>
+          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+            Veja todos os nossos serviços
+          </AnimatedHeading>
         </FadeUp>
 
         <FadeUp>
@@ -569,9 +620,9 @@ function Functionalities() {
     <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-5 pt-16 pb-16">
         <FadeUp className="text-center pb-10">
-          <h2 className="text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+          <AnimatedHeading as="h2" className="text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
             Conheça todas as nossas funcionalidades
-          </h2>
+          </AnimatedHeading>
         </FadeUp>
 
         <div>
@@ -606,9 +657,9 @@ function Differentials() {
     <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
         <FadeUp className="text-center">
-          <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
-            Saiba sobre os<br />diferenciais do CRM
-          </h2>
+          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+            Saiba sobre os diferenciais do CRM
+          </AnimatedHeading>
         </FadeUp>
 
         {/* Single card, 3 columns — exact Figma layout */}
@@ -660,9 +711,9 @@ function TargetAudience() {
     <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-[64px] flex flex-col gap-[40px]">
         <FadeUp className="text-center">
-          <h2 className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
             Nosso segmento
-          </h2>
+          </AnimatedHeading>
         </FadeUp>
 
         <div className="flex flex-col md:flex-row gap-[20px]">
@@ -679,9 +730,9 @@ function TargetAudience() {
                     <img src={IMG_SEGMENT_ICON} alt="" className="w-full h-full" />
                   </div>
                   <div className="flex flex-col gap-[12px]">
-                    <h3 className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+                    <AnimatedHeading as="h3" className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
                       {a.title}
-                    </h3>
+                    </AnimatedHeading>
                     <p className="text-[14px] leading-[1.6] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif" }}>
                       {a.desc}
                     </p>
@@ -725,12 +776,13 @@ function CTABanner() {
 
               {/* Content */}
               <div className="relative flex flex-col gap-[40px] items-center w-full">
-                <h2
+                <AnimatedHeading
+                  as="h2"
                   className="text-[32px] md:text-[39px] font-semibold leading-[48px] text-center max-w-[848px]"
                   style={{ color: "#0047cc", fontFamily: "var(--font-roobert), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
-                </h2>
+                </AnimatedHeading>
                 <Link
                   href="/contato"
                   className="inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
