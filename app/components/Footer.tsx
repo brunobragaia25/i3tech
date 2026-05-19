@@ -69,9 +69,9 @@ export default function Footer() {
   return (
     <footer style={{ background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div className="max-w-[1280px] mx-auto px-5 pt-16 pb-8">
-        <div className="grid grid-cols-2 gap-10 mb-12" style={{ gridTemplateColumns: "200px repeat(5, 1fr)" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[200px_repeat(5,1fr)] gap-6 md:gap-10 mb-12">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1 flex flex-col gap-4" style={{ maxWidth: 200 }}>
+          <div className="flex flex-col gap-4" style={{ maxWidth: 200 }}>
             <Logo />
             <p
               className="text-[14px] leading-relaxed max-w-[220px]"

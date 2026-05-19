@@ -49,6 +49,7 @@ function Logo() {
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [mobileSolOpen, setMobileSolOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -308,17 +309,67 @@ export default function Navbar() {
             className="md:hidden fixed inset-0 top-16 z-50 flex flex-col px-5 pt-8 pb-10 gap-6 overflow-y-auto"
             style={{ background: "#111" }}
           >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-[18px] py-1 transition-all duration-200 hover:text-white hover:translate-x-1"
-                style={{ color: "#a0a0a0", fontFamily: "var(--font-roobert), sans-serif" }}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.dropdown ? (
+                <div key={link.href}>
+                  <button
+                    onClick={() => setMobileSolOpen((v) => !v)}
+                    className="w-full flex items-center justify-between text-[18px] py-1 transition-colors duration-200 hover:text-white"
+                    style={{ color: "#a0a0a0", fontFamily: "var(--font-roobert), sans-serif", background: "none", border: "none", cursor: "pointer", padding: "4px 0" }}
+                  >
+                    {link.label}
+                    <svg
+                      width="14" height="14" viewBox="0 0 12 12" fill="none"
+                      style={{ transition: "transform 0.25s", transform: mobileSolOpen ? "rotate(180deg)" : "rotate(0deg)", flexShrink: 0 }}
+                    >
+                      <path d="M2 4L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <AnimatePresence>
+                    {mobileSolOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                        style={{ overflow: "hidden" }}
+                      >
+                        <div className="flex flex-col gap-1 pt-3 pl-3">
+                          {solutions.map((s) => (
+                            <Link
+                              key={s.href}
+                              href={s.href}
+                              onClick={() => { setMobileOpen(false); setMobileSolOpen(false); }}
+                              className="flex items-center gap-3 py-2 px-3 rounded-xl transition-colors duration-200 hover:bg-white/5"
+                              style={{ textDecoration: "none" }}
+                            >
+                              <div className="shrink-0 relative" style={{ width: 36, height: 36 }}>
+                                <img src={s.iconBg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+                                <img src={s.icon} alt="" style={{ position: "absolute", inset: "25%", width: "50%", height: "50%" }} />
+                              </div>
+                              <div className="flex flex-col gap-0.5">
+                                <span className="text-[15px] font-semibold" style={{ color: "#f7f7f7", fontFamily: "var(--font-roobert), sans-serif" }}>{s.label}</span>
+                                <span className="text-[12px]" style={{ color: "#888", fontFamily: "var(--font-roobert), sans-serif" }}>{s.desc}</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-[18px] py-1 transition-all duration-200 hover:text-white hover:translate-x-1"
+                  style={{ color: "#a0a0a0", fontFamily: "var(--font-roobert), sans-serif" }}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <Link
               href="/contato"
               onClick={() => setMobileOpen(false)}

@@ -8,6 +8,18 @@ import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import AnimatedHeading from "./components/AnimatedHeading";
 
+/* ─── Mobile breakpoint hook ─────────────────────────────── */
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+  return isMobile;
+}
+
 /* ─── Animation helper ───────────────────────────────────── */
 function FadeUp({
   children,
@@ -209,19 +221,54 @@ const badgeVariants = {
   visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease } },
 };
 
+/* ─── Dashboard scaled wrapper ───────────────────────────── */
+const MOCKUP_W = 1240;
+const MOCKUP_H = 760; // estimated rendered height
+
+function DashboardScaled() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    function update() {
+      if (!containerRef.current) return;
+      const w = containerRef.current.offsetWidth;
+      setScale(w / MOCKUP_W);
+    }
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [isMobile]);
+
+  if (!isMobile) return <DashboardMockup />;
+
+  return (
+    <div ref={containerRef} style={{ width: "100%" }}>
+      <div style={{ height: MOCKUP_H * scale, overflow: "hidden" }}>
+        <div style={{ transform: `scale(${scale})`, transformOrigin: "top left", width: MOCKUP_W }}>
+          <DashboardMockup />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ─── Dashboard Mockup ───────────────────────────────────── */
 function DashboardMockup() {
   const ref = useRef(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
   const rotateX = useTransform(scrollYProgress, [0, 0.35], [52, 0]);
   const opacity = useTransform(scrollYProgress, [0, 0.1], [0.6, 1]);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <div ref={ref} style={{ perspective: 1200, width: 1240 }}>
+    <div ref={ref} style={{ perspective: isMobile ? undefined : 1200, width: 1240 }}>
       <motion.div
-        style={{ rotateX, opacity, transformOrigin: "top center" }}
-        initial={{ scale: 0.72, opacity: 0 }}
+        style={{ rotateX: isMobile ? 0 : rotateX, opacity: isMobile ? 1 : opacity, transformOrigin: "top center" }}
+        initial={{ scale: isMobile ? 1 : 0.72, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
       >
@@ -309,11 +356,11 @@ function Hero() {
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div className="relative z-10 max-w-[1280px] mx-auto px-5 pt-[108px] pb-8 flex flex-col gap-[80px] items-center">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-5 pt-20 md:pt-[108px] pb-8 flex flex-col gap-10 md:gap-[80px] items-center">
         {/* Text + buttons */}
         <div className="flex flex-col gap-[40px] items-center">
           <div className="flex flex-col gap-5 items-center text-center text-white">
-            <AnimatedHeading as="p" className="text-[40px] leading-[1.25]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 1004 }}>
+            <AnimatedHeading as="p" className="text-[22px] md:text-[40px] leading-[1.25]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 1004 }}>
               <span style={{ fontWeight: 400 }}>Tecnologias inteligentes para a gestão e controle da sua </span>
               <span style={{ fontWeight: 600, color: "#0066ff" }}>entidade de proteção patrimonial mutualista, centrais de rastreamento e seguradoras.</span>
             </AnimatedHeading>
@@ -327,7 +374,7 @@ function Hero() {
               Com a i3Tech, a sua empresa conseguirá otimizar operações comerciais, gestão administrativa e financeira e gestão de ativos em campo.
             </motion.p>
           </div>
-          <div className="flex gap-5 items-center">
+          <div className="flex flex-col md:flex-row gap-4 md:gap-5 items-stretch md:items-center w-full md:w-auto">
             <div style={{ position: "relative", borderRadius: 6, padding: 2, overflow: "hidden" }}>
               {/* Spinning ray */}
               <motion.div
@@ -339,18 +386,18 @@ function Hero() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               />
-              <Link href="/solucoes" className="relative z-10 text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97]" style={{ display: "inline-block", background: "#1956f3", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
+              <Link href="/solucoes" className="relative z-10 text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] block text-center" style={{ background: "#1956f3", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
                 Confira nossas soluções
               </Link>
             </div>
-            <Link href="/planos" className="text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "#333", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,31,31,0.25)", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
+            <Link href="/planos" className="text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] text-center" style={{ background: "#333", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,31,31,0.25)", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
               Nossos planos
             </Link>
           </div>
         </div>
 
-        {/* Dashboard mockup */}
-        <DashboardMockup />
+        {/* Dashboard mockup — scaled to fit any viewport */}
+        <DashboardScaled />
       </div>
     </section>
   );
@@ -389,7 +436,7 @@ function About() {
 
         {/* Headline */}
         <FadeUp>
-          <AnimatedHeading as="p" className="text-[32px] leading-[1.4] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
+          <AnimatedHeading as="p" className="text-[20px] md:text-[32px] leading-[1.4] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
             A i3Tech é a 1º empresa do mercado brasileiro,{" "}
             <span style={{ fontWeight: 600, color: "#0052e6" }}>
               a desenvolver tecnologias de origem atuarial, para sua proteção patrimonial mutualista, central de rastreamento e seguradoras.
@@ -405,7 +452,7 @@ function About() {
         </div>
 
         {/* 3 columns */}
-        <div className="flex gap-[52px] items-start">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-[52px] items-start">
           {aboutColumns.map((col, i) => (
             <FadeUp key={col.title} delay={i * 0.1} className="flex flex-col gap-5 flex-1">
               <div style={{ width: 86, height: 86, position: "relative", flexShrink: 0 }}>
@@ -419,7 +466,7 @@ function About() {
                   {col.icon}
                 </div>
               </div>
-              <AnimatedHeading as="h3" className="text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6" }}>
+              <AnimatedHeading as="h3" className="text-[22px] md:text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6" }}>
                 {col.title}
               </AnimatedHeading>
               <p className="text-[16px] leading-[1.8] text-[#f7f7f7]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>
@@ -576,11 +623,61 @@ const CARD_EXTRA_SCROLL = 220;
 
 function FuncCard({ card, index, isLast }: { card: typeof funcCards[0]; index: number; isLast: boolean }) {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const isMobile = useIsMobile();
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
     offset: ["start start", "end start"],
   });
   const scale = useTransform(scrollYProgress, [0.3, 1], [1, 0.88]);
+
+  if (isMobile) {
+    return (
+      <div ref={wrapperRef} className="mb-4">
+        <div
+          style={{
+            background: "#171717",
+            border: "1px solid #242424",
+            borderRadius: 24,
+            overflow: "hidden",
+          }}
+        >
+          <div style={{ padding: "36px 24px 28px", display: "flex", flexDirection: "column", gap: 20 }}>
+            <img
+              src={card.logo}
+              alt=""
+              style={{ height: card.logoH * 0.65, width: "auto", objectFit: "contain", objectPosition: "left" }}
+            />
+            <p style={{ color: "#f7f7f7", fontSize: 14, lineHeight: 1.8, fontFamily: "var(--font-roobert), sans-serif" }}>
+              {card.desc}
+            </p>
+            <Link
+              href={card.href}
+              style={{
+                display: "inline-block",
+                background: "#171717",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: 4,
+                padding: "10px 20px",
+                color: "#f7f7f7",
+                fontSize: 14,
+                fontFamily: "var(--font-roobert), sans-serif",
+                alignSelf: "flex-start",
+              }}
+            >
+              Saiba mais
+            </Link>
+          </div>
+          <div style={{ width: "100%", height: 220, overflow: "hidden" }}>
+            <img
+              src={card.mockup}
+              alt=""
+              style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left" }}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={wrapperRef} style={{ height: isLast ? CARD_H : CARD_H + CARD_EXTRA_SCROLL }}>
@@ -657,7 +754,7 @@ function Functionalities() {
     <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-5 pt-16 pb-16">
         <FadeUp className="text-center pb-10">
-          <AnimatedHeading as="h2" className="text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+          <AnimatedHeading as="h2" className="text-[26px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
             Conheça todas as nossas funcionalidades
           </AnimatedHeading>
         </FadeUp>
@@ -804,8 +901,8 @@ function CTABanner() {
           >
             {/* Inner white card */}
             <div
-              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-[80px]"
-              style={{ background: "white", height: 600 }}
+              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
+              style={{ background: "white", minHeight: 400 }}
             >
               {/* Background pattern */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -815,7 +912,7 @@ function CTABanner() {
               <div className="relative flex flex-col gap-[40px] items-center w-full">
                 <AnimatedHeading
                   as="h2"
-                  className="text-[32px] md:text-[39px] font-semibold leading-[48px] text-center max-w-[848px]"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] text-center max-w-[848px]"
                   style={{ color: "#0047cc", fontFamily: "var(--font-roobert), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
