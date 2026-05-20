@@ -8,6 +8,7 @@ import CountUp from "../components/CountUp";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import MuxPlayer from "@mux/mux-player-react";
+import type MuxPlayerElement from "@mux/mux-player";
 
 const font = "var(--font-roobert), sans-serif";
 
@@ -15,7 +16,7 @@ const MUX_PLAYBACK_ID = "HnpffWGQ6UmotVIoBbjibc00VHv801e2V2Yjm00knbdLac";
 
 function VideoPlayer() {
   const [playing, setPlaying] = useState(false);
-  const playerRef = useRef<HTMLElement & { play: () => void }>(null);
+  const playerRef = useRef<MuxPlayerElement>(null);
 
   function handlePlay() {
     setPlaying(true);
