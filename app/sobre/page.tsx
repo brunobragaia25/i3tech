@@ -5,10 +5,94 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import AnimatedHeading from "../components/AnimatedHeading";
 import CountUp from "../components/CountUp";
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 
 const font = "var(--font-roobert), sans-serif";
+
+function VideoPlayer() {
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  function handlePlay() {
+    setPlaying(true);
+    videoRef.current?.play();
+  }
+
+  return (
+    <div className="w-full rounded-[40px] overflow-hidden relative" style={{ background: "#000", aspectRatio: "16/9" }}>
+      <video
+        ref={videoRef}
+        src="/video-sobrenos.mp4"
+        playsInline
+        controls={playing}
+        style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }}
+      />
+
+      <AnimatePresence>
+        {!playing && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, scale: 1.04 }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 flex flex-col items-center justify-center cursor-pointer"
+            style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%)" }}
+            onClick={handlePlay}
+          >
+            {/* Outer ring pulse */}
+            <div className="relative flex items-center justify-center">
+              <motion.div
+                animate={{ scale: [1, 1.18, 1], opacity: [0.25, 0.08, 0.25] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+                style={{ position: "absolute", width: 140, height: 140, borderRadius: "50%", background: "rgba(255,255,255,0.15)" }}
+              />
+              <motion.div
+                animate={{ scale: [1, 1.1, 1], opacity: [0.35, 0.15, 0.35] }}
+                transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
+                style={{ position: "absolute", width: 108, height: 108, borderRadius: "50%", background: "rgba(255,255,255,0.15)" }}
+              />
+
+              {/* Button */}
+              <motion.div
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.94 }}
+                transition={{ duration: 0.2 }}
+                style={{
+                  width: 80,
+                  height: 80,
+                  borderRadius: "50%",
+                  background: "#1956f3",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 8px 32px rgba(25,86,243,0.5), 0 2px 8px rgba(0,0,0,0.4)",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ marginLeft: 4 }}>
+                  <polygon points="5,3 19,12 5,21" />
+                </svg>
+              </motion.div>
+            </div>
+
+            {/* Label */}
+            <motion.span
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.4 }}
+              className="mt-6 text-[14px] font-semibold tracking-widest uppercase"
+              style={{ color: "rgba(255,255,255,0.7)", fontFamily: font, letterSpacing: "0.12em" }}
+            >
+              Assistir vídeo
+            </motion.span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 function ViniciusCard({ font }: { font: string }) {
   const [hovered, setHovered] = useState(false);
@@ -100,17 +184,7 @@ export default function SobrePage() {
         <div className="flex flex-col gap-12 md:gap-[72px] items-center w-full">
 
           {/* Video placeholder */}
-          <div className="w-full rounded-[40px] p-2.5" style={{ background: "#cce0ff", height: "clamp(240px, 45vw, 680px)" }}>
-            <div style={{ width: "100%", height: "100%", background: "#242424", border: "1px solid rgba(51,133,255,0.5)", borderRadius: 32, display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <div style={{ width: 120, height: 120, borderRadius: "50%", background: "#cce0ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <div style={{ width: 96, height: 96, borderRadius: "50%", background: "#1956f3", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="white">
-                    <polygon points="5,3 19,12 5,21" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-          </div>
+          <VideoPlayer />
 
           {/* Stats — 2×2 on mobile, 4 in a row on desktop */}
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-[60px] w-full">
