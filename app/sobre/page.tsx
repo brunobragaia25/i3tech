@@ -7,26 +7,28 @@ import AnimatedHeading from "../components/AnimatedHeading";
 import CountUp from "../components/CountUp";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import MuxPlayer from "@mux/mux-player-react";
 
 const font = "var(--font-roobert), sans-serif";
 
+const MUX_PLAYBACK_ID = "HnpffWGQ6UmotVIoBbjibc00VHv801e2V2Yjm00knbdLac";
+
 function VideoPlayer() {
   const [playing, setPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const playerRef = useRef<HTMLElement & { play: () => void }>(null);
 
   function handlePlay() {
     setPlaying(true);
-    videoRef.current?.play();
+    setTimeout(() => playerRef.current?.play(), 50);
   }
 
   return (
     <div className="w-full rounded-[40px] overflow-hidden relative" style={{ background: "#000", aspectRatio: "16/9" }}>
-      <video
-        ref={videoRef}
-        src="/video-sobrenos.mp4"
-        playsInline
-        controls={playing}
-        style={{ width: "100%", height: "100%", display: "block", objectFit: "cover" }}
+      <MuxPlayer
+        ref={playerRef}
+        playbackId={MUX_PLAYBACK_ID}
+        style={{ width: "100%", height: "100%", display: "block", ["--controls" as string]: playing ? undefined : "none" }}
+        accentColor="#1956f3"
       />
 
       <AnimatePresence>
@@ -40,7 +42,6 @@ function VideoPlayer() {
             style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%)" }}
             onClick={handlePlay}
           >
-            {/* Outer ring pulse */}
             <div className="relative flex items-center justify-center">
               <motion.div
                 animate={{ scale: [1, 1.18, 1], opacity: [0.25, 0.08, 0.25] }}
@@ -52,37 +53,22 @@ function VideoPlayer() {
                 transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
                 style={{ position: "absolute", width: 108, height: 108, borderRadius: "50%", background: "rgba(255,255,255,0.15)" }}
               />
-
-              {/* Button */}
               <motion.div
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.94 }}
                 transition={{ duration: 0.2 }}
-                style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: "50%",
-                  background: "#1956f3",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  boxShadow: "0 8px 32px rgba(25,86,243,0.5), 0 2px 8px rgba(0,0,0,0.4)",
-                  position: "relative",
-                  zIndex: 1,
-                }}
+                style={{ width: 80, height: 80, borderRadius: "50%", background: "#1956f3", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 8px 32px rgba(25,86,243,0.5), 0 2px 8px rgba(0,0,0,0.4)", position: "relative", zIndex: 1 }}
               >
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="white" style={{ marginLeft: 4 }}>
                   <polygon points="5,3 19,12 5,21" />
                 </svg>
               </motion.div>
             </div>
-
-            {/* Label */}
             <motion.span
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.4 }}
-              className="mt-6 text-[14px] font-semibold tracking-widest uppercase"
+              className="mt-6 text-[14px] font-semibold uppercase"
               style={{ color: "rgba(255,255,255,0.7)", fontFamily: font, letterSpacing: "0.12em" }}
             >
               Assistir vídeo
