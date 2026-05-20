@@ -201,7 +201,7 @@ function CRMMockup() {
       </div>
 
       {/* Card 2 — José Amaral (cropped) */}
-      <div className="flex-1 rounded-tl-[16px] rounded-tr-[16px] pt-[8px] px-[8px]" style={{ background: "#cce0ff" }}>
+      <div className="hidden md:flex flex-1 rounded-tl-[16px] rounded-tr-[16px] pt-[8px] px-[8px]" style={{ background: "#cce0ff" }}>
         <div className="flex flex-col gap-[20px] h-full rounded-tl-[8px] rounded-tr-[8px] p-[24px]" style={{ background: "white", borderTop: "1px solid rgba(51,133,255,0.5)", borderLeft: "1px solid rgba(51,133,255,0.5)", borderRight: "1px solid rgba(51,133,255,0.5)" }}>
           <div className="flex flex-col gap-[16px] shrink-0 w-full">
             <div className="flex items-center justify-between shrink-0 w-full">
@@ -223,7 +223,7 @@ function CRMMockup() {
 function FeatureImage({ hasCrmMockup }: { hasCrmMockup: boolean }) {
   return (
     <div
-      className="shrink-0 w-full md:w-[588px] h-[400px] md:h-[640px] rounded-[20px] flex items-center justify-center p-[20px]"
+      className="shrink-0 w-full md:w-[588px] h-[280px] md:h-[640px] rounded-[20px] flex items-center justify-center p-[20px] overflow-hidden"
       style={{ background: "#66a3ff" }}
     >
       {hasCrmMockup ? (
@@ -285,7 +285,7 @@ function FeatureSection({ f }: { f: typeof features[0] }) {
 
   return (
     <FadeUp id={f.id}>
-      <div className={`flex flex-col ${f.imageLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-[64px] items-center`}>
+      <div className={`flex flex-col ${f.imageLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-8 md:gap-[64px] items-center`}>
         <FeatureImage hasCrmMockup={f.hasCrmMockup} />
         {textContent}
       </div>
@@ -308,11 +308,11 @@ function Hero() {
           borderBottomRightRadius: 60,
         }}
       />
-      <div className="relative z-10 flex flex-col items-center justify-center text-center" style={{ height: 540, padding: "0 20px", gap: 20 }}>
-        <AnimatedHeading as="h1" style={{ color: "#3385ff", fontSize: 48, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
+      <div className="relative z-10 flex flex-col items-center justify-center text-center px-5 py-20 md:py-0 gap-5" style={{ minHeight: 400 }}>
+        <AnimatedHeading as="h1" className="text-[32px] md:text-[48px]" style={{ color: "#3385ff", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: "normal", margin: 0 }}>
           Funcionalidades
         </AnimatedHeading>
-        <p style={{ color: "#fff", fontSize: 20, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
+        <p className="text-[16px] md:text-[20px]" style={{ color: "#fff", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
           A i3TECH é uma plataforma completa de CRM e gestão criada para organizar, automatizar e escalar operações veiculares.
         </p>
       </div>
@@ -324,7 +324,7 @@ function Hero() {
 function FeaturesSection() {
   return (
     <section style={{ background: "#0d0d0d" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-[108px] pb-16 flex flex-col gap-[64px]">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-16 md:pt-[108px] pb-16 flex flex-col gap-12 md:gap-[64px]">
         {features.map((f) => (
           <FeatureSection key={f.title} f={f} />
         ))}
@@ -351,8 +351,8 @@ function CTABanner() {
           >
             {/* Inner blue card */}
             <div
-              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-[80px]"
-              style={{ background: "#1956f3", height: 600 }}
+              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
+              style={{ background: "#1956f3", minHeight: 400 }}
             >
               {/* Background pattern */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -362,7 +362,7 @@ function CTABanner() {
               <div className="relative flex flex-col gap-[40px] items-center w-full">
                 <AnimatedHeading
                   as="h2"
-                  className="text-[32px] md:text-[39px] font-semibold leading-[48px] text-center text-white max-w-[848px]"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] text-center text-white max-w-[848px]"
                   style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
