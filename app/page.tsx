@@ -466,7 +466,7 @@ function About() {
                   {col.icon}
                 </div>
               </div>
-              <AnimatedHeading as="h3" className="text-[22px] md:text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6" }}>
+              <AnimatedHeading as="h3" className="text-[22px] md:text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6", whiteSpace: "pre-line" }}>
                 {col.title}
               </AnimatedHeading>
               <p className="text-[16px] leading-[1.8] text-[#f7f7f7]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>
@@ -835,9 +835,9 @@ function Differentials() {
 const IMG_SEGMENT_ICON = "https://www.figma.com/api/mcp/asset/c1b6d077-302b-4148-a871-0d1a41460d47";
 
 const audiences = [
-  { title: "Proteção patrimonial mutualista", desc: "Associações de proteção veicular." },
-  { title: "Centrais de Rastreamento",        desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados." },
-  { title: "Seguradoras",                     desc: "Mga que representam as seguradas parceiras e já homologadas." },
+  { title: "Proteção patrimonial mutualista", desc: "Associações de proteção veicular.",                                                                    icon: "/shield-check-2.svg", image: "/image-protecao.png" },
+  { title: "Centrais de Rastreamento",        desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados.",                           icon: "/map-pin.svg",         image: null },
+  { title: "Seguradoras",                     desc: "Mga que representam as seguradas parceiras e já homologadas.",                                         icon: "/building-2.svg",      image: null },
 ];
 
 function TargetAudience() {
@@ -853,21 +853,27 @@ function TargetAudience() {
         <div className="flex flex-col md:flex-row gap-[20px]">
           {audiences.map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1} className="flex-1">
-              <div className="flex flex-col gap-[40px]">
-                {/* Image placeholder */}
-                <div className="w-full rounded-[32px] shrink-0" style={{ background: "#d9d9d9", height: 480 }} />
+              <div className="w-full rounded-[32px] overflow-hidden relative" style={{ background: "#1a1a1a", height: 600 }}>
+                {/* Image */}
+                {a.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={a.image} alt={a.title} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+                )}
 
-                {/* Text */}
-                <div className="flex flex-col gap-[28px]">
-                  <div className="shrink-0" style={{ width: 44, height: 44 }}>
+                {/* Gradient overlay */}
+                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)" }} />
+
+                {/* Content */}
+                <div style={{ position: "absolute", inset: 0, display: "flex", flexDirection: "column", justifyContent: "flex-end", padding: 32, gap: 16 }}>
+                  <div className="flex items-center justify-center rounded-full" style={{ width: 44, height: 44, background: "#1956f3", flexShrink: 0 }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={IMG_SEGMENT_ICON} alt="" className="w-full h-full" />
+                    <img src={a.icon} alt="" width={24} height={24} />
                   </div>
-                  <div className="flex flex-col gap-[12px]">
-                    <AnimatedHeading as="h3" className="text-[20px] font-medium leading-[1.4]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+                  <div className="flex flex-col gap-[8px]">
+                    <AnimatedHeading as="h3" className="text-[20px] font-medium leading-[1.4]" style={{ color: "#fff", fontFamily: "var(--font-roobert), sans-serif" }}>
                       {a.title}
                     </AnimatedHeading>
-                    <p className="text-[14px] leading-[1.6] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif" }}>
+                    <p className="text-[14px] leading-[1.6]" style={{ color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-roobert), sans-serif" }}>
                       {a.desc}
                     </p>
                   </div>
