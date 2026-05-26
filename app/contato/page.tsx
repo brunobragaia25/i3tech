@@ -6,9 +6,26 @@ import Footer from "../components/Footer";
 import { useState } from "react";
 import AnimatedHeading from "../components/AnimatedHeading";
 
-const IMG_ICON_PHONE    = "https://www.figma.com/api/mcp/asset/7eb443ea-0c30-4e6e-8090-5ea464c53698";
-const IMG_ICON_EMAIL    = "https://www.figma.com/api/mcp/asset/b63549cc-6846-48c8-b7da-ddd2c63b3a3d";
-const IMG_ICON_LOCATION = "https://www.figma.com/api/mcp/asset/ae2d8a6a-fbb0-4af8-b833-e1a5fa77e461";
+function IconCircle({ children }: { children: React.ReactNode }) {
+  return (
+    <div style={{ position: "relative", width: 72, height: 72, flexShrink: 0 }}>
+      {/* Outer ring — stroke #C2FFFF at 15% opacity */}
+      <div style={{
+        position: "absolute", inset: 0, borderRadius: "50%",
+        border: "1px solid rgba(153,194,255,0.15)",
+      }} />
+      {/* Inner circle — 44px, #0052E6 glow */}
+      <div style={{
+        position: "absolute", inset: 14, borderRadius: "50%",
+        border: "1px solid #0052E6",
+      }} />
+      {/* Icon */}
+      <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        {children}
+      </div>
+    </div>
+  );
+}
 const IMG_DIVIDER       = "https://www.figma.com/api/mcp/asset/a9f02d6e-2204-4509-8bb8-bff0bbe9bd90";
 
 const produtos = ["i3 CRM", "i3 Gestão", "i3 Mga", "i3 Track", "i3 Integrações", "Aplicativos"];
@@ -102,7 +119,11 @@ export default function ContatoPage() {
           <div className="flex flex-col gap-4 md:gap-5 md:flex-shrink-0 order-2 md:order-1">
             {/* Phone */}
             <div style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 24, display: "flex", flexDirection: "column", gap: 20 }}>
-              <img src={IMG_ICON_PHONE} alt="" style={{ width: 48, height: 48 }} />
+              <IconCircle>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </IconCircle>
               <div style={{ height: 1, position: "relative" }}>
                 <div style={{ position: "absolute", inset: "-0.5px 0" }}>
                   <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
@@ -116,7 +137,12 @@ export default function ContatoPage() {
 
             {/* Email */}
             <div style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 24, display: "flex", flexDirection: "column", gap: 20 }}>
-              <img src={IMG_ICON_EMAIL} alt="" style={{ width: 48, height: 48 }} />
+              <IconCircle>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </IconCircle>
               <div style={{ height: 1, position: "relative" }}>
                 <div style={{ position: "absolute", inset: "-0.5px 0" }}>
                   <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
@@ -127,7 +153,12 @@ export default function ContatoPage() {
 
             {/* Location — hidden on mobile to save space */}
             <div style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 24, display: "flex", flexDirection: "column", gap: 20 }}>
-              <img src={IMG_ICON_LOCATION} alt="" style={{ width: 48, height: 48 }} />
+              <IconCircle>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f7f7f7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </IconCircle>
               <div style={{ height: 1, position: "relative" }}>
                 <div style={{ position: "absolute", inset: "-0.5px 0" }}>
                   <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
