@@ -16,7 +16,7 @@ export default function ExpansaoPage() {
             style={{ backgroundImage: "url('/pattern-services.png')", backgroundRepeat: "repeat", backgroundSize: "auto" }}
           />
           <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full flex items-center" style={{ height: "100%" }}>
-            <img src="/i3expansao-white.svg" alt="i3Expansão" />
+            <img src="/i3integracoes-white.svg" alt="i3Integrações" style={{ height: 110, width: "auto" }} />
           </div>
         </section>
       </main>

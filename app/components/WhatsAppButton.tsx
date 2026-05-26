@@ -1,11 +1,11 @@
 "use client";
 
-const WHATSAPP_NUMBER = "5511999999999"; // TODO: trocar pelo número real
+const WHATSAPP_NUMBER = "5531972104274";
 
 export default function WhatsAppButton() {
   return (
     <a
-      href={`https://wa.me/${WHATSAPP_NUMBER}`}
+      href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Olá! Vim pelo site da i3Tech e gostaria de saber mais sobre as soluções. Pode me ajudar?")}`}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Falar no WhatsApp"

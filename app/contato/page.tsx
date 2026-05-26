@@ -11,7 +11,7 @@ const IMG_ICON_EMAIL    = "https://www.figma.com/api/mcp/asset/b63549cc-6846-48c
 const IMG_ICON_LOCATION = "https://www.figma.com/api/mcp/asset/ae2d8a6a-fbb0-4af8-b833-e1a5fa77e461";
 const IMG_DIVIDER       = "https://www.figma.com/api/mcp/asset/a9f02d6e-2204-4509-8bb8-bff0bbe9bd90";
 
-const produtos = ["i3 CRM", "i3 Gestão", "i3 Mga", "i3 Track", "i3 Expansão", "Aplicativos"];
+const produtos = ["i3 CRM", "i3 Gestão", "i3 Mga", "i3 Track", "i3 Integrações", "Aplicativos"];
 
 const font = "var(--font-roobert), sans-serif";
 

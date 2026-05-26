@@ -26,28 +26,45 @@ const plans = [
     logo: "/i3crm.svg", logoW: 171, logoH: 51,
     subtitle: "Para a sua associação (Valor mínimo + adesão ou valor avulso dentro do combo)",
     tiers: [
-      { label: "0 a 10 usuários",      price: "R$50" },
-      { label: "11 a 50 usuários",     price: "R$40" },
-      { label: "Acima de 50 usuários", price: "R$30" },
+      { label: "0 a 10 usuários",      price: "R$50,00" },
+      { label: "11 a 50 usuários",     price: "R$40,00" },
+      { label: "Acima de 50 usuários", price: "R$30,00" },
     ],
   },
   {
     logo: "/i3mga.svg", logoW: 165, logoH: 51,
     subtitle: "Para a sua seguradora (Produto fora do combo)",
     tiers: [
-      { label: "Implantação",    price: "R$200.000" },
-      { label: "Mensalidade",    price: "R$2.000" },
-      { label: "Valor garantido", price: "R$50.000" },
+      { label: "Implantação",    price: "R$200.000,00" },
+      { label: "Mensalidade",    price: "R$5.000,00" },
+      { label: "Valor garantido", price: "R$50.000,00" },
     ],
   },
   {
     logo: "/i3app.svg", logoW: 281, logoH: 51,
     subtitle: "Para a sua associação e central de rastreamento (Valor mínimo + adesão dentro do combo)",
     tiers: [
-      { label: "App Consultor",       price: "R$200", note: "Personalizado" },
-      { label: "App Associado",       price: "R$200", note: "Personalizado" },
-      { label: "App Rastreamento",    price: "R$200", note: "Personalizado" },
-      { label: "Customizado em Loja", price: "R$200", note: "Personalizado" },
+      { label: "App Consultor",       price: "R$200,00", note: "Personalizado" },
+      { label: "App Associado",       price: "R$200,00", note: "Personalizado" },
+      { label: "App Rastreamento",    price: "R$200,00", note: "Personalizado" },
+      { label: "Customizado em Loja", price: "R$2.000,00" },
+    ],
+  },
+  {
+    logo: "/i3track.svg", logoW: 200, logoH: 51,
+    subtitle: "Para a sua central de rastreamento (Valor mínimo + adesão ou valor avulso dentro do combo)",
+    tiers: [
+      { label: "0 a 500 veículos",          price: "R$4,00" },
+      { label: "501 a 1.000 veículos",      price: "R$3,00" },
+      { label: "Acima de 1.000 veículos",   price: "R$2,00" },
+    ],
+  },
+  {
+    name: "i3Integrações",
+    subtitle: "Para a sua associação (Valor mínimo dentro do combo) — Produto adicional",
+    tiers: [
+      { label: "Chatbot sem IA", price: "R$300,00" },
+      { label: "Chatbot com IA", price: "R$600,00" },
     ],
   },
 ];
@@ -102,36 +119,49 @@ export default function PlanosPage() {
             Visão geral dos planos
           </AnimatedHeading>
           <p className="text-[16px] md:text-[20px]" style={{ color: "#fff", fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
-            Planos flexíveis de acordo com o tamanho e a complexidade da sua operação.
+            Escolha o plano sob medida para a sua empresa
           </p>
         </div>
       </main>
 
-      {/* Nav buttons */}
-      <div className="max-w-[1280px] mx-auto px-5 w-full pt-12 md:pt-20 pb-8 md:pb-10">
-        <div style={{ display: "flex", gap: 16 }}>
-          {[{ dir: -1, disabled: !canPrev }, { dir: 1, disabled: !canNext }].map(({ dir, disabled }, i) => (
-            <button
-              key={i}
-              onClick={() => setIndex((v) => v + dir)}
-              disabled={disabled}
-              style={{
-                width: 56, height: 56,
-                background: "#f7f7f7",
-                border: "none",
-                borderRadius: 12,
-                cursor: disabled ? "not-allowed" : "pointer",
-                opacity: disabled ? 0.3 : 1,
-                display: "flex", alignItems: "center", justifyContent: "center",
-                transition: "opacity 0.2s",
-                flexShrink: 0,
-              }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                {dir === -1 ? <path d="M15 18L9 12L15 6" /> : <path d="M9 18L15 12L9 6" />}
-              </svg>
-            </button>
-          ))}
+      {/* Nav buttons + combo info */}
+      <div className="max-w-[1280px] mx-auto px-5 w-full pt-12 md:pt-20 pb-16">
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
+          {/* Combo info */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <p style={{ color: "#f7f7f7", fontSize: isMobile ? 15 : 20, fontFamily: font, fontWeight: 400, lineHeight: 1.5, margin: 0 }}>
+              <span style={{ color: "#3385ff", fontWeight: 600 }}>Optando pelo combo i3Gestão + Qualquer outra tecnologia</span> — o valor da 2ª solução será por valor adicional.
+            </p>
+            <p style={{ color: "#f7f7f7", fontSize: isMobile ? 15 : 20, fontFamily: font, fontWeight: 400, lineHeight: 1.5, margin: 0 }}>
+              Optando somente por <span style={{ color: "#3385ff", fontWeight: 600 }}>1 tecnologia abaixo</span>, o valor seguirá conforme o plano escolhido.
+            </p>
+          </div>
+
+          {/* Arrows */}
+          <div style={{ display: "flex", gap: 16, flexShrink: 0 }}>
+            {[{ dir: -1, disabled: !canPrev }, { dir: 1, disabled: !canNext }].map(({ dir, disabled }, i) => (
+              <button
+                key={i}
+                onClick={() => setIndex((v) => v + dir)}
+                disabled={disabled}
+                style={{
+                  width: 56, height: 56,
+                  background: "#f7f7f7",
+                  border: "none",
+                  borderRadius: 12,
+                  cursor: disabled ? "not-allowed" : "pointer",
+                  opacity: disabled ? 0.3 : 1,
+                  display: "flex", alignItems: "center", justifyContent: "center",
+                  transition: "opacity 0.2s",
+                  flexShrink: 0,
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0d0d0d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  {dir === -1 ? <path d="M15 18L9 12L15 6" /> : <path d="M9 18L15 12L9 6" />}
+                </svg>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -167,15 +197,21 @@ export default function PlanosPage() {
             >
               {/* Top */}
               <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                <img
-                  src={plan.logo} alt=""
-                  style={{
-                    height: isMobile ? plan.logoH * 0.75 : plan.logoH,
-                    width: "auto",
-                    objectFit: "contain",
-                    objectPosition: "left",
-                  }}
-                />
+                {"logo" in plan && plan.logo ? (
+                  <img
+                    src={plan.logo} alt=""
+                    style={{
+                      height: isMobile ? (plan.logoH ?? 51) * 0.75 : (plan.logoH ?? 51),
+                      width: "auto",
+                      objectFit: "contain",
+                      objectPosition: "left",
+                    }}
+                  />
+                ) : (
+                  <span style={{ color: "#f7f7f7", fontSize: isMobile ? 22 : 32, fontFamily: font, fontWeight: 700, letterSpacing: "-0.5px" }}>
+                    {"name" in plan ? plan.name : ""}
+                  </span>
+                )}
                 <p style={{ color: "#f7f7f7", fontSize: isMobile ? 15 : 20, fontFamily: font, fontWeight: 500, lineHeight: 1.4, letterSpacing: "-0.36px", margin: 0 }}>
                   {plan.subtitle}
                 </p>

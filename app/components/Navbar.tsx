@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const IMG_ICON_BG_BLUE   = "https://www.figma.com/api/mcp/asset/665b4215-3a9b-47bc-a92d-8b441874967a";
-const IMG_ICON_BG_PURPLE = "https://www.figma.com/api/mcp/asset/7d722093-9355-4594-beda-c6b41be4d935";
+const ICON_BG_BLUE   = "blue";
+const ICON_BG_PURPLE = "purple";
 const IMG_ICON_GESTAO    = "/Layers 1.svg";
 const IMG_ICON_CRM       = "/Sort.svg";
 const IMG_ICON_MGA       = "/Chart.svg";
@@ -15,14 +15,14 @@ const IMG_ICON_EXPANSAO  = "/Dialog 3.svg";
 
 const solutionCols = [
   [
-    { label: "I3Gestão",   desc: "Plataforma ERP (Gestão empresarial)",  href: "/solucoes/gestao",      iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_GESTAO },
-    { label: "I3CRM",      desc: "Sistema CRM (Gestão Comercial)",        href: "/solucoes/crm",         iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_CRM },
-    { label: "I3Mga",      desc: "Sistema MGA (Gestão de Seguros)",       href: "/solucoes/mga",         iconBg: IMG_ICON_BG_PURPLE, icon: IMG_ICON_MGA },
+    { label: "I3Gestão",   desc: "Plataforma ERP (Gestão empresarial)",  href: "/solucoes/gestao",      iconBg: ICON_BG_BLUE,   icon: IMG_ICON_GESTAO },
+    { label: "I3CRM",      desc: "Sistema CRM (Gestão Comercial)",        href: "/solucoes/crm",         iconBg: ICON_BG_BLUE,   icon: IMG_ICON_CRM },
+    { label: "I3Mga",      desc: "Sistema MGA (Gestão de Seguros)",       href: "/solucoes/mga",         iconBg: ICON_BG_BLUE, icon: IMG_ICON_MGA },
   ],
   [
-    { label: "I3Aplicativos", desc: "Apps personalizados e customizados", href: "/solucoes/aplicativos", iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_APP },
-    { label: "I3Track",    desc: "Plataforma de rastreamento completa",   href: "/solucoes/track",       iconBg: IMG_ICON_BG_PURPLE, icon: IMG_ICON_TRACK },
-    { label: "I3Expansão", desc: "Integrações de chatbot e IA",           href: "/solucoes/expansao",    iconBg: IMG_ICON_BG_BLUE,   icon: IMG_ICON_EXPANSAO },
+    { label: "I3Aplicativos", desc: "Apps personalizados e customizados", href: "/solucoes/aplicativos", iconBg: ICON_BG_BLUE,   icon: IMG_ICON_APP },
+    { label: "I3Track",    desc: "Plataforma de rastreamento completa",   href: "/solucoes/track",       iconBg: ICON_BG_BLUE, icon: IMG_ICON_TRACK },
+    { label: "I3Integrações", desc: "Integrações de chatbot e IA",         href: "/solucoes/expansao",    iconBg: ICON_BG_BLUE,   icon: IMG_ICON_EXPANSAO },
   ],
 ];
 
@@ -211,7 +211,12 @@ export default function Navbar() {
                                       style={{ textDecoration: "none" }}
                                     >
                                       <div className="shrink-0 relative" style={{ width: 40, height: 40 }}>
-                                        <img src={item.iconBg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+                                        <div style={{
+                                          position: "absolute", inset: 0, borderRadius: "50%",
+                                          border: `1.5px solid ${item.iconBg === "blue" ? "rgba(55,135,255,0.7)" : "rgba(160,80,255,0.7)"}`,
+                                          background: item.iconBg === "blue" ? "rgba(55,135,255,0.08)" : "rgba(160,80,255,0.08)",
+                                          boxShadow: item.iconBg === "blue" ? "0 0 8px 2px rgba(55,135,255,0.15)" : "0 0 8px 2px rgba(160,80,255,0.15)",
+                                        }} />
                                         <img src={item.icon} alt="" style={{ position: "absolute", inset: "25%", width: "50%", height: "50%" }} />
                                       </div>
                                       <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -344,7 +349,12 @@ export default function Navbar() {
                               style={{ textDecoration: "none" }}
                             >
                               <div className="shrink-0 relative" style={{ width: 36, height: 36 }}>
-                                <img src={s.iconBg} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }} />
+                                <div style={{
+                                  position: "absolute", inset: 0, borderRadius: "50%",
+                                  border: `1.5px solid ${s.iconBg === "blue" ? "rgba(55,135,255,0.7)" : "rgba(160,80,255,0.7)"}`,
+                                  background: s.iconBg === "blue" ? "rgba(55,135,255,0.08)" : "rgba(160,80,255,0.08)",
+                                  boxShadow: s.iconBg === "blue" ? "0 0 8px 2px rgba(55,135,255,0.15)" : "0 0 8px 2px rgba(160,80,255,0.15)",
+                                }} />
                                 <img src={s.icon} alt="" style={{ position: "absolute", inset: "25%", width: "50%", height: "50%" }} />
                               </div>
                               <div className="flex flex-col gap-0.5">

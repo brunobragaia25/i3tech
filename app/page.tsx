@@ -106,12 +106,12 @@ const IMG_AUD_3           = "/clipboard-list.svg";
 const IMG_AUD_4           = "/car-front-01.svg";
 
 /* ─── Hero assets ────────────────────────────────────────── */
-const IMG_HERO_BROWSER_DOTS   = "https://www.figma.com/api/mcp/asset/59163ff3-0330-4eb7-974c-1ca12cca4583";
-const IMG_HERO_LOGO_BAR       = "https://www.figma.com/api/mcp/asset/038c5a2d-a5df-4c88-87b1-580606067663";
-const IMG_HERO_ICON_FILTERS   = "https://www.figma.com/api/mcp/asset/fa30c42a-572e-43ab-b87d-b2ce5b1f6b1b";
-const IMG_HERO_ICON_DOWNLOAD  = "https://www.figma.com/api/mcp/asset/44d59985-789b-43ee-a592-869acae59132";
-const IMG_HERO_ICON_EYE       = "https://www.figma.com/api/mcp/asset/2b2bc2ba-3b5a-40b9-92f3-bc101db74347";
-const IMG_HERO_ICON_PLUS      = "https://www.figma.com/api/mcp/asset/d11f33fe-62d6-4e31-96e5-950246afec89";
+const IMG_HERO_BROWSER_DOTS   = "/glow-back-dashboard.png";
+const IMG_HERO_LOGO_BAR       = "/close-open-dash.png";
+const IMG_HERO_ICON_FILTERS   = "/sliders-horizontal.png";
+const IMG_HERO_ICON_DOWNLOAD  = "/download.png";
+const IMG_HERO_ICON_EYE       = "/eye.png";
+const IMG_HERO_ICON_PLUS      = "/plus.png";
 const IMG_HERO_DIVIDER        = "https://www.figma.com/api/mcp/asset/ef5f6cac-f85e-473b-a2ce-894467d4299d";
 const IMG_HERO_ICON_CAR       = "https://www.figma.com/api/mcp/asset/054b6fb3-8fb6-4267-b0a9-977965776283";
 const IMG_HERO_ICON_USER      = "https://www.figma.com/api/mcp/asset/5c5206f4-ce81-4649-b569-d909de80a89e";
@@ -404,7 +404,6 @@ function Hero() {
 }
 
 /* ─── About assets ───────────────────────────────────────── */
-const IMG_ABOUT_CIRCLE = "https://www.figma.com/api/mcp/asset/af498df2-1a9c-45fa-be50-fbbcef7e779e";
 const ICON_ABOUT_1 = <img src="/shield-check-2.svg" width={28} height={28} alt="" />;
 const ICON_ABOUT_2 = <img src="/map-pin.svg" width={28} height={28} alt="" />;
 const ICON_ABOUT_3 = <img src="/building-2.svg" width={28} height={28} alt="" />;
@@ -413,17 +412,17 @@ const IMG_ABOUT_DIVIDER = "https://www.figma.com/api/mcp/asset/f6d4e907-2b9d-4fd
 const aboutColumns = [
   {
     icon: ICON_ABOUT_1,
-    title: "Para sua proteção patrimonial mutualista",
+    title: "Para sua proteção patrimonial mutualista PPM",
     desc: "Com as soluções i3Tech, a sua proteção patrimonial terá total controle em gestão administrativa financeira e comercial. Com as soluções i3Gestão e i3Crm a sua organização estará em outro patamar.",
   },
   {
     icon: ICON_ABOUT_2,
-    title: "Para a sua central de rastreamento",
+    title: "Para sua central de rastreamento",
     desc: "Com as soluções i3Tech, a sua central de rastreamento terá total controle dos ativos em campo. Com as soluções i3Track e i3Aplicativos, a sua central estará em outro patamar.",
   },
   {
     icon: ICON_ABOUT_3,
-    title: "Para a sua\nseguradora",
+    title: "Para sua\nseguradora",
     desc: "Com as soluções i3Tech, a sua seguradora terá total controle em gestão administrativa financeira e operacional. Com a solução i3Mga, a sua seguradora estará em outro patamar.",
   },
 ];
@@ -439,34 +438,40 @@ function About() {
           <AnimatedHeading as="p" className="text-[20px] md:text-[32px] leading-[1.4] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
             A i3Tech é a 1º empresa do mercado brasileiro,{" "}
             <span style={{ fontWeight: 600, color: "#0052e6" }}>
-              a desenvolver tecnologias de origem atuarial, para sua proteção patrimonial mutualista, central de rastreamento e seguradoras.
+              a desenvolver tecnologias de cálculo atuarial, para sua proteção patrimonial mutualista, central de rastreamento e seguradoras.
             </span>
           </AnimatedHeading>
         </FadeUp>
 
         {/* Divider */}
-        <div style={{ height: 1, position: "relative" }}>
-          <div style={{ position: "absolute", inset: "-0.5px 0" }}>
-            <img src={IMG_ABOUT_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
-          </div>
-        </div>
+        <div style={{ height: 1, background: "#242424", width: "100%" }} />
 
         {/* 3 columns */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-[52px] items-start">
           {aboutColumns.map((col, i) => (
             <FadeUp key={col.title} delay={i * 0.1} className="flex flex-col gap-5 flex-1">
               <div style={{ width: 86, height: 86, position: "relative", flexShrink: 0 }}>
-                {/* Circle glow from Figma */}
-                <div style={{ position: "absolute", inset: "-5.28% -12.22% -19.17% -12.22%" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={IMG_ABOUT_CIRCLE} alt="" style={{ display: "block", maxWidth: "none", width: "100%", height: "100%" }} />
-                </div>
+                {/* Ellipse maior — node 0:285 — 86x86, inset 0 */}
+                <div style={{
+                  position: "absolute",
+                  inset: 0,
+                  borderRadius: "50%",
+                  border: "1px solid transparent",
+                  background: "linear-gradient(#000, #000) padding-box, linear-gradient(180deg, rgba(55,135,255,0.3) 0%, rgba(55,135,255,0) 100%) border-box",
+                }} />
+                {/* Ellipse menor — node 0:284 — drop shadow apenas */}
+                <div style={{
+                  position: "absolute",
+                  inset: "16.72px",
+                  borderRadius: "50%",
+                  boxShadow: "0px 5.97px 27.23px 0px rgba(0,82,230,0.6)",
+                }} />
                 {/* Local icon centered on top */}
                 <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {col.icon}
                 </div>
               </div>
-              <AnimatedHeading as="h3" className="text-[22px] md:text-[32px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6", whiteSpace: "pre-line" }}>
+              <AnimatedHeading as="h3" className="text-[22px] md:text-[28px] leading-[1.4]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, color: "#0052e6", whiteSpace: "pre-line" }}>
                 {col.title}
               </AnimatedHeading>
               <p className="text-[16px] leading-[1.8] text-[#f7f7f7]" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>
@@ -511,17 +516,17 @@ function Services() {
         href: "/solucoes/aplicativos"
       },
       {
+        title: "i3 Integrações",
+        desc: "Integrações de chatbot e Ia para proteção patrimonial mutualista, centrais de rastreamento e seguradoras.",
+        href: "/solucoes/expansao",
+        logo: "/i3integracoes.svg",
+        isIntegrations: true
+      },
+      {
         logo: IMG_I3_TRACK,
         title: "i3 Track",
         desc: "Plataforma de rastreamento completa com o foco na recuperação de ativos em campo, para centrais de rastreamento.",
         href: "/solucoes/track"
-      },
-      {
-        title: "i3 Integrações",
-        desc: "Integrações de chatbot e Ia para proteção patrimonial mutualista, centrais de rastreamento e seguradoras.",
-        href: "/solucoes/expansao",
-        logo: "/i3expansao.svg",
-        isIntegrations: true
       },
     ],
   ];
@@ -603,18 +608,18 @@ const funcCards = [
     href: "/solucoes/aplicativos",
   },
   {
+    logo: "/i3integracoes.svg",
+    logoH: 51.11, logoW: 272.754,
+    desc: "Utilize ferramentas como chatbot e Ia dentro das tecnologias da i3Tech.",
+    mockup: "https://www.figma.com/api/mcp/asset/f01e5928-f2d8-4be4-9089-a02aac6ddb8c",
+    href: "/funcionalidades#relatorios",
+  },
+  {
     logo: IMG_I3_TRACK,
     logoH: 51.11, logoW: 186.824,
     desc: "Software completo de rastreamento com funcionalidades para prevenção de furto e roubo. Com i3Track, a sua central de rastreamento terá: Relatórios, Histórico, Geocerca, Gestão de sinistros, Alertas, Localização e Dashboard.",
     mockup: "https://www.figma.com/api/mcp/asset/377b0e68-0125-4571-b5ab-b6de5b348a6b",
     href: "/funcionalidades#automacao-vendas",
-  },
-  {
-    logo: "/i3expansao.svg",
-    logoH: 51.11, logoW: 272.754,
-    desc: "Utilize ferramentas como chatbot e Ia dentro das tecnologias da i3Tech.",
-    mockup: "https://www.figma.com/api/mcp/asset/f01e5928-f2d8-4be4-9089-a02aac6ddb8c",
-    href: "/funcionalidades#relatorios",
   },
 ];
 
@@ -773,16 +778,15 @@ function Functionalities() {
 // Figma: single bg-[#171717] card with 3 columns × 2 items each
 const diffCols = [
   [
-    { icon: IMG_DIFF_BOT,     title: "Automação inteligente de processos", desc: "Fluxos automatizados que reduzem tarefas manuais e aumentam a eficiência da operação." },
-    { icon: IMG_DIFF_BLOCKS,  title: "Sistema modular e escalável",        desc: "Adapte o sistema ao tamanho e à complexidade do seu negócio, sem limitações." },
+    { icon: IMG_DIFF_BOT,      title: "Automação inteligente na gestão empresarial",               desc: "Erp e Crm totalmente interligados em um único ambiente, como regras de pagamento via remessa automática nos bancos homologados." },
+    { icon: IMG_DIFF_SPARKLES, title: "Interface simples e intuitiva na gestão comercial",         desc: "Crm totalmente unificado com as regras de vistoria, assinatura de contrato e com fluxos e processos de comissionamento e gestão." },
   ],
   [
-    { icon: IMG_DIFF_SPARKLES, title: "Interface simples e intuitiva",   desc: "Uma plataforma fácil de usar, pensada para produtividade desde o primeiro acesso." },
-    { icon: IMG_DIFF_GAUGE,    title: "Performance comercial real",       desc: "Dados claros para acompanhar resultados, corrigir rotas e vender com mais consistência." },
+    { icon: IMG_DIFF_BLOCKS,   title: "Aplicações mobile para Android e Ios",                      desc: "Aplicativos desenvolvidos sob medida, e personalizados em loja." },
+    { icon: IMG_DIFF_COMBINE,  title: "Sistema personalizado de ativos em campo",                  desc: "Focado para prevenção de furtos e roubos na sua operação de rastreamento." },
   ],
   [
-    { icon: IMG_DIFF_COMBINE, title: "Centralização total da operação",    desc: "Vendas, clientes, financeiro e dados reunidos em um único ambiente." },
-    { icon: IMG_DIFF_SHIELD,  title: "Segurança e confiabilidade dos dados", desc: "Informações protegidas, com controle, estabilidade e total confiabilidade." },
+    { icon: IMG_DIFF_SHIELD,   title: "Integrações inovadoras para o seu negócio ficar inteligente", desc: "Ia e chatbot adaptado dentro da sua regra de negócio, seja financeiro ou comercial." },
   ],
 ];
 
@@ -791,12 +795,12 @@ function Differentials() {
     <section className="w-full" style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
         <FadeUp className="text-center">
-          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
-            Saiba sobre os diferenciais do CRM
+          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "pre-line" }}>
+            {`Entenda os nossos diferenciais\ne faça parte dessa nova era`}
           </AnimatedHeading>
         </FadeUp>
 
-        {/* Single card, 3 columns — exact Figma layout */}
+        {/* 3 colunas — 2, 2, 1 */}
         <FadeUp>
           <div className="flex flex-col md:flex-row gap-8 p-8 rounded-xl" style={{ background: "#171717", border: "1px solid #2e2e2e" }}>
             {diffCols.map((col, ci) => (
@@ -815,10 +819,8 @@ function Differentials() {
                         {item.desc}
                       </p>
                     </div>
-                    {/* Horizontal divider between rows */}
                     {ii < col.length - 1 && (
-                      /* eslint-disable-next-line @next/next/no-img-element */
-                      <img src={IMG_DIFF_DIV} alt="" className="w-full" style={{ height: 1 }} />
+                      <div style={{ height: 1, background: "#2e2e2e" }} />
                     )}
                   </div>
                 ))}
@@ -835,9 +837,9 @@ function Differentials() {
 const IMG_SEGMENT_ICON = "https://www.figma.com/api/mcp/asset/c1b6d077-302b-4148-a871-0d1a41460d47";
 
 const audiences = [
-  { title: "Proteção patrimonial mutualista", desc: "Associações de proteção veicular.",                                                                    icon: "/shield-check-2.svg", image: "/image-protecao.png" },
-  { title: "Centrais de Rastreamento",        desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados.",                           icon: "/map-pin.svg",         image: null },
-  { title: "Seguradoras",                     desc: "Mga que representam as seguradas parceiras e já homologadas.",                                         icon: "/building-2.svg",      image: null },
+  { title: "Proteção patrimonial\nmutualista PPM", desc: "Associações de proteção veicular.",                                                               icon: "/shield-check-2.svg", image: "/image-protecao.png", titleWidth: 160 },
+  { title: "Centrais de Rastreamento",             desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados.",                    icon: "/map-pin.svg",         image: null },
+  { title: "Seguradoras",                          desc: "Mga que representam as seguradas parceiras e já homologadas.",                                  icon: "/building-2.svg",      image: null },
 ];
 
 function TargetAudience() {
@@ -870,7 +872,7 @@ function TargetAudience() {
                     <img src={a.icon} alt="" width={24} height={24} />
                   </div>
                   <div className="flex flex-col gap-[8px]">
-                    <AnimatedHeading as="h3" className="text-[20px] font-medium leading-[1.4]" style={{ color: "#fff", fontFamily: "var(--font-roobert), sans-serif" }}>
+                    <AnimatedHeading as="h3" className="text-[16px] font-medium leading-[1.4]" style={{ color: "#fff", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "pre-line", maxWidth: "titleWidth" in a ? a.titleWidth : undefined }}>
                       {a.title}
                     </AnimatedHeading>
                     <p className="text-[14px] leading-[1.6]" style={{ color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-roobert), sans-serif" }}>
@@ -888,7 +890,7 @@ function TargetAudience() {
 }
 
 /* ─── CTA Banner ─────────────────────────────────────────── */
-const IMG_HOME_CTA_BG = "https://www.figma.com/api/mcp/asset/006a7ff6-0139-4194-b02c-ab46d6450f64";
+const IMG_HOME_CTA_BG = "/pattern-hero.png";
 
 function CTABanner() {
   return (

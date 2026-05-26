@@ -3,6 +3,7 @@
 import Topbar from "../components/Topbar";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Link from "next/link";
 import AnimatedHeading from "../components/AnimatedHeading";
 import CountUp from "../components/CountUp";
 import { motion, AnimatePresence } from "framer-motion";
@@ -102,7 +103,7 @@ function ViniciusCard({ font }: { font: string }) {
           style={{ borderRadius: 4, overflow: "hidden", position: "relative", background: "#d9d9d9", flexShrink: 0 }}
         >
           <img
-            src="https://www.figma.com/api/mcp/asset/6568e389-49ac-4b9b-be16-8f104aee1cc6"
+            src="/FOTO VINICIUS DA COSTA (3).jpeg"
             alt="Vinicius da Costa"
             style={{ position: "absolute", width: "100%", top: "-20.57%", left: 0, maxWidth: "none" }}
           />
@@ -176,10 +177,10 @@ export default function SobrePage() {
           {/* Stats — 2×2 on mobile, 4 in a row on desktop */}
           <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-[60px] w-full">
             {[
-              { to: 2300,  prefix: "+ de ", suffix: "",      label: "entidade de proteção patrimonial mutualista;" },
-              { to: 60000, prefix: "+ de ", suffix: "",      label: "itens na gestão administrativa" },
-              { to: 3,     prefix: "+ de ", suffix: " Mga",  label: "atendidos" },
-              { to: 45,    prefix: "+ de ", suffix: "",      label: "centrais utilizando nosso sistema" },
+              { to: 2300,  prefix: "+ De ", suffix: "",     label: "entidade de proteção patrimonial mutualista;" },
+              { to: 60000, prefix: "+ De ", suffix: "",     label: "itens na gestão administrativa;" },
+              { to: 3,     prefix: "+ De ", suffix: " Mga", label: "atendidos;" },
+              { to: 45,    prefix: "+ De ", suffix: "",     label: "centrais utilizando nosso sistema." },
             ].map((stat, i, arr) => (
               <div key={i} className="flex items-center gap-8 md:gap-[60px]">
                 <div className="flex flex-col gap-3 items-center text-center flex-1">
@@ -227,6 +228,57 @@ export default function SobrePage() {
 
             {/* Card 2 — Vinicius da Costa */}
             <ViniciusCard font={font} />
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-[64px] w-full">
+          {/* Outer glass card */}
+          <div
+            className="rounded-[12px] p-[12px]"
+            style={{
+              background: "linear-gradient(180deg, rgba(102,163,255,0.4) 0%, rgba(102,163,255,0) 100%)",
+              border: "1px solid rgba(102,163,255,0.5)",
+              boxShadow: "0px 0px 15.4px 0px rgba(0,0,0,0.35)",
+              backdropFilter: "blur(5.45px)",
+            }}
+          >
+            {/* Inner white card */}
+            <div
+              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
+              style={{ background: "white", minHeight: 400 }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
+              <div className="relative flex flex-col gap-[40px] items-center w-full">
+                <AnimatedHeading
+                  as="h2"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] text-center max-w-[848px]"
+                  style={{ color: "#0047cc", fontFamily: "var(--font-roobert), sans-serif" }}
+                >
+                  Pronto para se conectar no que há de mais inovador no segmento.
+                </AnimatedHeading>
+                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <motion.div
+                    style={{
+                      position: "absolute",
+                      inset: "-150%",
+                      background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
+                    }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  />
+                  <Link
+                    href="/contato"
+                    className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                    style={{ background: "#1956f3", color: "#f7f7f7", fontFamily: "var(--font-roobert), sans-serif" }}
+                  >
+                    Agende uma demonstração
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

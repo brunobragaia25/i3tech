@@ -454,10 +454,10 @@ const modules = [
   },
   {
     id: "expansao",
-    logo: "/i3expansao.png",
-    name: "Expansão",
+    logo: "/i3integracoes.svg",
+    name: "Integrações",
     subtitle: "Escala e crescimento estruturado",
-    lead: "O i3 Expansão foi pensado para operações que desejam crescer com controle.",
+    lead: "O i3 Integrações foi pensado para operações que desejam crescer com controle.",
     body: "Permite gestão de equipes externas, unidades, representantes ou parceiros comerciais, com acompanhamento de metas, performance e indicadores estratégicos. É o módulo voltado para empresas que querem crescer sem perder organização.",
     imageLeft: true,
   },
