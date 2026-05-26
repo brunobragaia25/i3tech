@@ -739,12 +739,12 @@ function FuncCard({ card, index, isLast }: { card: typeof funcCards[0]; index: n
           </div>
 
           {/* Right — mockup */}
-          <div style={{ width: 660, flexShrink: 0, display: "flex", alignItems: "flex-end", overflow: "hidden" }}>
-            <div style={{ width: "100%", height: 560, overflow: "hidden" }}>
+          <div style={{ flex: 1, display: "flex", alignItems: "flex-end", justifyContent: "flex-end", overflow: "hidden" }}>
+            <div style={{ height: 664, overflow: "hidden", display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
               <img
                 src={card.mockup}
                 alt=""
-                style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top left" }}
+                style={{ display: "block", height: 660, width: "auto", objectFit: "contain", objectPosition: "bottom right" }}
               />
             </div>
           </div>
