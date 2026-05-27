@@ -117,7 +117,7 @@ export default function AplicativosPage() {
             {/* 2 colunas: imagem + lista */}
             <div className="flex flex-col md:flex-row gap-12 items-center">
               {/* Imagem */}
-              <FadeUp className="flex-1 min-w-0 flex" style={{ background: "#171717", border: "1px solid #242424", borderRadius: 24, alignSelf: "stretch", minHeight: 360 }} />
+              <div className="flex-1 min-w-0 flex" style={{ background: "#171717", border: "1px solid #242424", borderRadius: 24, alignSelf: "stretch", minHeight: 360 }} />
 
               {/* Lista de funcionalidades */}
               <div className="flex-1 min-w-0 flex flex-col gap-8">
