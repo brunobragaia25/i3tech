@@ -106,7 +106,7 @@ export default function TrackPage() {
               </p>
             </FadeUp>
 
-            <div className="flex flex-col md:flex-row gap-12 items-center">
+            <div className="flex flex-col md:flex-row gap-12 items-stretch">
               <FadeUp className="flex-1 min-w-0" style={{ alignSelf: "stretch" }}>
                 <img src="/inside-track.png" alt="i3Track" className="w-full object-cover object-bottom rounded-[24px]" style={{ height: "100%", minHeight: 360, display: "block" }} />
               </FadeUp>

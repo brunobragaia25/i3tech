@@ -115,7 +115,7 @@ export default function CrmPage() {
             </FadeUp>
 
             {/* 2 colunas: imagem + lista */}
-            <div className="flex flex-col md:flex-row gap-12 items-center">
+            <div className="flex flex-col md:flex-row gap-12 items-stretch">
               {/* Imagem */}
               <FadeUp className="flex-1 min-w-0" style={{ alignSelf: "stretch" }}>
                 <img src="/inside-crm.png" alt="i3 CRM" className="w-full object-cover object-bottom rounded-[24px]" style={{ height: "100%", minHeight: 360, display: "block" }} />
