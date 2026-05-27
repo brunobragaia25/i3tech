@@ -3,8 +3,8 @@
 import Topbar from "./components/Topbar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion, useInView, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import AnimatedHeading from "./components/AnimatedHeading";
 import HeroDashboard from "./components/HeroDashboard";
@@ -844,6 +844,96 @@ function TargetAudience() {
   );
 }
 
+/* ─── FAQ ────────────────────────────────────────────────── */
+const faqs = [
+  {
+    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+  },
+  {
+    question: "Ut enim ad minim veniam, quis nostrud exercitation?",
+    answer: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+  },
+  {
+    question: "Quis nostrud exercitation ullamco laboris nisi ut aliquip?",
+    answer: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.",
+  },
+  {
+    question: "Duis aute irure dolor in reprehenderit in voluptate?",
+    answer: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+  },
+  {
+    question: "Excepteur sint occaecat cupidatat non proident deserunt?",
+    answer: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.",
+  },
+];
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [open, setOpen] = React.useState(false);
+  return (
+    <motion.div
+      style={{ borderBottom: "1px solid #242424", cursor: "pointer", overflow: "hidden" }}
+      onClick={() => setOpen((o) => !o)}
+    >
+      <div className="flex items-center justify-between py-5 gap-4">
+        <motion.span
+          animate={{ color: open ? "#3385ff" : "#f7f7f7" }}
+          transition={{ duration: 0.2 }}
+          style={{ fontSize: 16, fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500, lineHeight: 1.5 }}
+        >
+          {question}
+        </motion.span>
+        <motion.div
+          animate={{ rotate: open ? 45 : 0, borderColor: open ? "#3385ff" : "#333" }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          style={{ width: 28, height: 28, borderRadius: "50%", border: "1px solid #333", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}
+        >
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 1v10M1 6h10" stroke="#f7f7f7" strokeWidth="1.5" strokeLinecap="round"/>
+          </svg>
+        </motion.div>
+      </div>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ overflow: "hidden" }}
+          >
+            <p style={{ color: "#a0a0a0", fontSize: 15, fontFamily: "var(--font-roobert), sans-serif", lineHeight: 1.7, paddingBottom: 20, margin: 0 }}>
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+function FAQ() {
+  return (
+    <section className="w-full" style={{ background: "#0d0d0d" }}>
+      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-[64px] flex flex-col gap-[48px]">
+        <FadeUp className="text-center">
+          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif" }}>
+            Perguntas frequentes
+          </AnimatedHeading>
+        </FadeUp>
+        <FadeUp>
+          <div style={{ borderTop: "1px solid #242424" }}>
+            {faqs.map((f) => (
+              <FAQItem key={f.question} question={f.question} answer={f.answer} />
+            ))}
+          </div>
+        </FadeUp>
+      </div>
+    </section>
+  );
+}
+
 /* ─── CTA Banner ─────────────────────────────────────────── */
 const IMG_HOME_CTA_BG = "/pattern-hero.png";
 
@@ -924,6 +1014,7 @@ export default function HomePage() {
         <Functionalities />
         <Differentials />
         <TargetAudience />
+        <FAQ />
         <CTABanner />
       </main>
       <Footer />
