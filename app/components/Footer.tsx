@@ -22,7 +22,7 @@ const solutions = [
   { label: "i3 Gestão",    href: "/solucoes/gestao" },
   { label: "i3 Mga",       href: "/solucoes/mga" },
   { label: "i3 Track",     href: "/solucoes/track" },
-  { label: "i3 Integrações",  href: "/solucoes/expansao" },
+  { label: "i3 Integrações",  href: "/solucoes/integracoes" },
   { label: "i3 Aplicativos",  href: "/solucoes/aplicativos" },
 ];
 

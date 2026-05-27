@@ -7,6 +7,7 @@ import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import AnimatedHeading from "./components/AnimatedHeading";
+import HeroDashboard from "./components/HeroDashboard";
 
 /* ─── Mobile breakpoint hook ─────────────────────────────── */
 function useIsMobile() {
@@ -279,64 +280,8 @@ function DashboardMockup() {
               <img src={IMG_HERO_BROWSER_DOTS} alt="" style={{ display: "block", maxWidth: "none", width: "100%", height: "100%" }} />
             </div>
           </div>
-          {/* Main window */}
-          <div style={{ width: 1240, position: "relative", zIndex: 1, background: "linear-gradient(to bottom, rgba(102,163,255,0.4), rgba(102,163,255,0.2))", backdropFilter: "blur(5.45px)", border: "1px solid rgba(102,163,255,0.5)", borderRadius: 12, padding: 12, boxShadow: "0px 0px 15.4px rgba(0,0,0,0.35)", gap: 10, display: "flex", flexDirection: "column" }}>
-            {/* Browser bar */}
-            <div style={{ padding: "8px", display: "flex", alignItems: "center" }}>
-              <div style={{ width: 65.547, height: 16, position: "relative", flexShrink: 0 }}>
-                <img src={IMG_HERO_LOGO_BAR} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "contain", objectPosition: "left" }} />
-              </div>
-            </div>
-            {/* White content area */}
-            <motion.div
-              style={{ background: "white", borderRadius: 8, padding: 20 }}
-              variants={dashboardVariants}
-              initial="hidden"
-              animate={inView ? "visible" : "hidden"}
-            >
-              {/* Toolbar */}
-              <motion.div variants={toolbarVariants} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: 40, marginBottom: 12 }}>
-                <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-                  <div style={{ border: "1px solid #888", borderRadius: 6, padding: "8px 12px", width: 280 }}>
-                    <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>Buscar</span>
-                  </div>
-                  <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-                    <img src={IMG_HERO_ICON_FILTERS} alt="" style={{ width: 20, height: 20 }} />
-                    <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300 }}>Filtros</span>
-                  </div>
-                </div>
-                <div style={{ display: "flex", gap: 20, alignItems: "center" }}>
-                  <img src={IMG_HERO_ICON_DOWNLOAD} alt="" style={{ width: 20, height: 20 }} />
-                  <img src={IMG_HERO_ICON_EYE} alt="" style={{ width: 20, height: 20 }} />
-                  <div style={{ background: "#e6f0ff", borderRadius: 6, padding: "8px 12px", display: "flex", gap: 10, alignItems: "center" }}>
-                    <img src={IMG_HERO_ICON_PLUS} alt="" style={{ width: 20, height: 20 }} />
-                    <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500 }}>Nova Cotação</span>
-                  </div>
-                </div>
-              </motion.div>
-              {/* Kanban */}
-              <div style={{ display: "flex", gap: 12 }}>
-                {kanbanColumns.map((col) => (
-                  <motion.div
-                    key={col.title}
-                    variants={colVariants}
-                    style={{ flex: 1, background: "#e6f0ff", borderRadius: 12, padding: 10, display: "flex", flexDirection: "column", gap: 12 }}
-                  >
-                    <motion.div variants={textVariants} style={{ background: "white", borderRadius: 6, padding: "8px 12px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                      <span style={{ fontSize: 14, color: "#333", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 500 }}>{col.title}</span>
-                      <motion.span variants={badgeVariants} style={{ background: "#66a3ff", borderRadius: 6, padding: "0 12px", fontSize: 12, color: "white", fontWeight: 300, fontFamily: "var(--font-roobert), sans-serif", lineHeight: "32px" }}>{col.count}</motion.span>
-                    </motion.div>
-                    <motion.div variants={colChildrenVariants} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-                      {col.cards.map((card) => (
-                        <motion.div key={card.name} variants={cardVariants}>
-                          <KanbanCard {...card} />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <HeroDashboard />
           </div>
         </div>
       </motion.div>
@@ -518,7 +463,7 @@ function Services() {
       {
         title: "i3 Integrações",
         desc: "Integrações de chatbot e Ia para proteção patrimonial mutualista, centrais de rastreamento e seguradoras.",
-        href: "/solucoes/expansao",
+        href: "/solucoes/integracoes",
         logo: "/i3integracoes.svg",
         isIntegrations: true
       },
@@ -776,56 +721,66 @@ function Functionalities() {
 
 /* ─── Differentials ──────────────────────────────────────── */
 // Figma: single bg-[#171717] card with 3 columns × 2 items each
-const diffCols = [
-  [
-    { icon: IMG_DIFF_BOT,      title: "Automação inteligente na gestão empresarial",               desc: "Erp e Crm totalmente interligados em um único ambiente, como regras de pagamento via remessa automática nos bancos homologados." },
-    { icon: IMG_DIFF_SPARKLES, title: "Interface simples e intuitiva na gestão comercial",         desc: "Crm totalmente unificado com as regras de vistoria, assinatura de contrato e com fluxos e processos de comissionamento e gestão." },
-  ],
-  [
-    { icon: IMG_DIFF_BLOCKS,   title: "Aplicações mobile para Android e Ios",                      desc: "Aplicativos desenvolvidos sob medida, e personalizados em loja." },
-    { icon: IMG_DIFF_COMBINE,  title: "Sistema personalizado de ativos em campo",                  desc: "Focado para prevenção de furtos e roubos na sua operação de rastreamento." },
-  ],
-  [
-    { icon: IMG_DIFF_SHIELD,   title: "Integrações inovadoras para o seu negócio ficar inteligente", desc: "Ia e chatbot adaptado dentro da sua regra de negócio, seja financeiro ou comercial." },
-  ],
+const diffItems = [
+  {
+    icon: "/bot.svg",
+    title: "Automação inteligente na gestão empresarial",
+    desc: "Erp e Crm totalmente interligados em um único ambiente, como regras de pagamento via remessa automática nos bancos homologados.\nInterface simples e intuitiva na gestão comercial\n\nCrm totalmente unificado com as regras de vistoria, assinatura de contrato e com fluxos e processos de comissionamento e gestão.",
+  },
+  {
+    icon: "/sparkles.svg",
+    title: "Operação de seguros 100% otimizada",
+    desc: "Mga totalmente integrado com a regra da seguradora, visando uma gestão efetiva com indicadores facilitados.",
+  },
+  {
+    icon: "/combine.svg",
+    title: "Aplicações mobile para Android e Ios",
+    desc: "Aplicativos desenvolvidos sob medida, e personalizados em loja.",
+  },
+  {
+    icon: "/blocks.svg",
+    title: "Sistema personalizado de ativos em campo",
+    desc: "Focado para prevenção de furtos e roubos na sua operação de rastreamento.",
+  },
+  {
+    icon: "/circle-gauge.svg",
+    title: "Integrações inovadoras para o seu negócio ficar inteligente",
+    desc: "Ia e chatbot adaptado dentro da sua regra de negócio, seja financeiro ou comercial.",
+  },
 ];
 
 function Differentials() {
   return (
     <section className="w-full" style={{ background: "#0d0d0d" }}>
-      <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-10 md:py-16 flex flex-col gap-10">
+      <div className="max-w-[1280px] mx-auto px-5 py-[64px] flex flex-col gap-[40px]">
         <FadeUp className="text-center">
-          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2]" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "pre-line" }}>
-            {`Entenda os nossos diferenciais\ne faça parte dessa nova era`}
+          <AnimatedHeading as="h2" className="text-[28px] md:text-[40px] font-semibold leading-[1.2] text-center" style={{ color: "#0052e6", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "pre-line" }}>
+            {`Entenda os nossos diferenciais e\nfaça parte dessa nova era`}
           </AnimatedHeading>
         </FadeUp>
 
-        {/* 3 colunas — 2, 2, 1 */}
         <FadeUp>
-          <div className="flex flex-col md:flex-row gap-8 p-8 rounded-xl" style={{ background: "#171717", border: "1px solid #2e2e2e" }}>
-            {diffCols.map((col, ci) => (
-              <div key={ci} className="flex flex-col gap-8 flex-1 min-w-0">
-                {col.map((item, ii) => (
-                  <div key={item.title} className="flex flex-col gap-8">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center gap-2.5">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={item.icon} alt="" className="w-6 h-6 shrink-0" />
-                        <span className="text-[16px] font-semibold" style={{ color: "#e6f0ff", fontFamily: "var(--font-roobert), sans-serif" }}>
-                          {item.title}
-                        </span>
-                      </div>
-                      <p className="text-[14px] leading-[1.6] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif" }}>
-                        {item.desc}
-                      </p>
-                    </div>
-                    {ii < col.length - 1 && (
-                      <div style={{ height: 1, background: "#2e2e2e" }} />
-                    )}
+          <div className="flex flex-col md:flex-row gap-[40px] items-center">
+            {/* Left — image placeholder */}
+            <div className="flex-1 min-w-0 shrink-0 hidden md:block" style={{ background: "#d9d9d9", height: 640, borderRadius: 40 }} />
+
+            {/* Right — differentials list */}
+            <div className="flex-1 min-w-0 flex flex-col gap-[28px]">
+              {diffItems.map((item) => (
+                <div key={item.title} className="flex flex-col gap-[12px]">
+                  <div className="flex items-center gap-[10px]">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={item.icon} alt="" style={{ width: 24, height: 24, flexShrink: 0 }} />
+                    <span className="text-[16px] font-semibold" style={{ color: "#e6f0ff", fontFamily: "var(--font-roobert), sans-serif" }}>
+                      {item.title}
+                    </span>
                   </div>
-                ))}
-              </div>
-            ))}
+                  <p className="text-[14px] leading-[1.6] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "pre-line", maxWidth: 571 }}>
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </FadeUp>
       </div>

@@ -453,7 +453,7 @@ const modules = [
     imageLeft: false,
   },
   {
-    id: "expansao",
+    id: "integracoes",
     logo: "/i3integracoes.svg",
     name: "Integrações",
     subtitle: "Escala e crescimento estruturado",
