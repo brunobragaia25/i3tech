@@ -9,7 +9,7 @@ import AnimatedHeading from "../components/AnimatedHeading";
 
 /* ─── Assets ────────────────────────────────────────────── */
 const IMG_CHECK        = "/check-white.svg";
-const IMG_CTA_BG       = "https://www.figma.com/api/mcp/asset/4627d6a1-bcaa-4d50-af61-185a9d45bb5d";
+const IMG_CTA_BG       = "/pattern-hero.png";
 const IMG_CRM_CAR      = "https://www.figma.com/api/mcp/asset/29791492-bfb5-4141-a4d8-8d235750a2fc";
 const IMG_CRM_USER     = "https://www.figma.com/api/mcp/asset/a8dd3949-aa09-4ef2-9833-123d1b6b97b2";
 const IMG_CRM_CALENDAR = "https://www.figma.com/api/mcp/asset/55ceb886-9ce5-4494-a1bc-a73f37eefb30";
@@ -48,6 +48,7 @@ const features = [
     id: "gestao-comercial",
     imageLeft: true,
     hasCrmMockup: true,
+    image: "/img-crm.png",
   },
   {
     title: "Automação de vendas",
@@ -65,6 +66,7 @@ const features = [
     id: "automacao-vendas",
     imageLeft: false,
     hasCrmMockup: false,
+    image: "/img-crm-2.png",
   },
   {
     title: "Gestão de clientes associados",
@@ -82,6 +84,7 @@ const features = [
     id: "gestao-clientes",
     imageLeft: true,
     hasCrmMockup: false,
+    image: "/img-gestao.png",
   },
   {
     title: "Financeiro e Comissões",
@@ -99,6 +102,7 @@ const features = [
     id: "financeiro",
     imageLeft: false,
     hasCrmMockup: false,
+    image: "/img-gestao-1.png",
   },
   {
     title: "Relatórios e Integrações",
@@ -220,22 +224,22 @@ function CRMMockup() {
 }
 
 /* ─── Feature image ─────────────────────────────────────── */
-function FeatureImage({ hasCrmMockup }: { hasCrmMockup: boolean }) {
+function FeatureImage({ image }: { image?: string }) {
   return (
-    <div
-      className="shrink-0 w-full md:w-[588px] h-[280px] md:h-[640px] rounded-[20px] flex items-center justify-center p-[20px] overflow-hidden"
-      style={{ background: "#66a3ff" }}
-    >
-      {hasCrmMockup ? (
-        <div className="flex-1 h-full rounded-[16px] p-[10px]" style={{ background: "#e6f0ff" }}>
-          <CRMMockup />
-        </div>
+    <>
+      {image ? (
+        <img src={image} alt="" className="shrink-0 w-full md:w-[588px] h-[280px] md:h-[640px] rounded-[20px] object-cover object-bottom" />
       ) : (
-        <div className="flex-1 h-full rounded-[16px] p-[10px]" style={{ background: "#cce0ff" }}>
-          <div className="w-full h-full rounded-[8px]" style={{ background: "white", border: "1px solid rgba(51,133,255,0.5)" }} />
+        <div
+          className="shrink-0 w-full md:w-[588px] h-[280px] md:h-[640px] rounded-[20px] flex items-center justify-center p-[20px] overflow-hidden"
+          style={{ background: "#66a3ff" }}
+        >
+          <div className="flex-1 h-full rounded-[16px] p-[10px]" style={{ background: "#cce0ff" }}>
+            <div className="w-full h-full rounded-[8px]" style={{ background: "white", border: "1px solid rgba(51,133,255,0.5)" }} />
+          </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
@@ -286,7 +290,7 @@ function FeatureSection({ f }: { f: typeof features[0] }) {
   return (
     <FadeUp id={f.id}>
       <div className={`flex flex-col ${f.imageLeft ? "md:flex-row" : "md:flex-row-reverse"} gap-8 md:gap-[64px] items-center`}>
-        <FeatureImage hasCrmMockup={f.hasCrmMockup} />
+        <FeatureImage image={f.image} />
         {textContent}
       </div>
     </FadeUp>
