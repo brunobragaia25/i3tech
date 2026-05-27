@@ -112,9 +112,9 @@ export default function IntegracoesPage() {
             {/* 2 colunas: imagem + lista */}
             <div className="flex flex-col md:flex-row gap-12 items-stretch">
               {/* Imagem */}
-              <FadeUp className="flex-1 min-w-0" style={{ alignSelf: "stretch" }}>
-                <img src="/inside-integracoes.png" alt="i3 Integrações" className="w-full object-cover object-bottom rounded-[24px]" style={{ height: "100%", minHeight: 360, display: "block" }} />
-              </FadeUp>
+              <div className="flex-1 min-w-0" style={{ alignSelf: "stretch" }}>
+                <img src="/inside-integracoes.png" alt="i3 Integrações" style={{ width: "100%", height: "100%", minHeight: 360, objectFit: "cover", objectPosition: "bottom", borderRadius: 24, display: "block" }} />
+              </div>
 
               {/* Lista de funcionalidades */}
               <div className="flex-1 min-w-0 flex flex-col gap-8">
