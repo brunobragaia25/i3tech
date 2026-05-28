@@ -331,8 +331,8 @@ function Hero() {
                 animate={{ rotate: 360 }}
                 transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
               />
-              <Link href="/solucoes" className="relative z-10 text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] block text-center" style={{ background: "#1956f3", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
-                Confira nossas soluções
+              <Link href="/funcionalidades" className="relative z-10 text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] block text-center" style={{ background: "#1956f3", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
+                Confira nossas funcionalidades
               </Link>
             </div>
             <Link href="/planos" className="text-[14px] text-[#f7f7f7] px-5 py-[14px] rounded-[4px] transition-all duration-200 hover:brightness-110 hover:scale-[1.03] active:scale-[0.97] text-center" style={{ background: "#333", border: "1px solid rgba(255,255,255,0.08)", boxShadow: "0px 2px 5px rgba(31,31,31,0.25)", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 600 }}>
