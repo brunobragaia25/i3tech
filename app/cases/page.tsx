@@ -50,85 +50,46 @@ function Hero() {
 
 /* ─── Case Cards ─────────────────────────────────── */
 const cases = [
-  {
-    id: "01",
-    empresa: "Empresa Alpha",
-    solucao: "I3Gestão",
-    descricao: "Centralização de processos financeiros e administrativos com visibilidade total da operação em tempo real.",
-    resultado: "+130% eficiência",
-  },
-  {
-    id: "02",
-    empresa: "Empresa Beta",
-    solucao: "I3CRM",
-    descricao: "Gestão completa do funil comercial, automação de follow-ups e aumento expressivo na taxa de conversão.",
-    resultado: "+85% conversão",
-  },
-  {
-    id: "03",
-    empresa: "Empresa Gamma",
-    solucao: "I3MGA",
-    descricao: "Modernização da gestão de seguros com rastreabilidade de apólices e relatórios automatizados.",
-    resultado: "60% menos retrabalho",
-  },
-  {
-    id: "04",
-    empresa: "Empresa Delta",
-    solucao: "I3Track",
-    descricao: "Rastreamento de ativos em campo com alertas em tempo real e dashboards de desempenho da frota.",
-    resultado: "+200% visibilidade",
-  },
+  { id: "01", cliente: "Grupo Conor",  video: null as string | null },
+  { id: "02", cliente: "Álamo",        video: null as string | null },
+  { id: "03", cliente: "Proterbem",    video: null as string | null },
 ];
 
 function CaseCard({ c, index }: { c: typeof cases[0]; index: number }) {
-  const [hovered, setHovered] = useState(false);
   return (
     <motion.div
-      className="flex-1 flex flex-col rounded-[24px] overflow-hidden cursor-pointer"
-      style={{
-        background: "#141414",
-        border: "1px solid rgba(255,255,255,0.06)",
-        borderColor: hovered ? "rgba(255,255,255,0.14)" : "rgba(255,255,255,0.06)",
-        transition: "border-color 0.3s",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      className="flex flex-col rounded-[24px] overflow-hidden"
+      style={{ background: "#141414", border: "1px solid rgba(255,255,255,0.06)" }}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
     >
-      {/* Image area */}
-      <div className="relative w-full overflow-hidden" style={{ height: 220, background: "#0d1a33" }}>
+      {/* Área de vídeo */}
+      <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: "4/5", background: "#0d1a33" }}>
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 40%, #1956f333 0%, transparent 70%)" }} />
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <span className="absolute bottom-5 left-6 font-bold select-none" style={{ fontSize: 80, color: "rgba(255,255,255,0.07)", fontFamily: "var(--font-dm-sans), sans-serif", lineHeight: 1 }}>
+        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
+        {c.video ? (
+          <video src={c.video} className="absolute inset-0 w-full h-full object-cover" controls />
+        ) : (
+          <div className="relative flex flex-col items-center gap-3">
+            <div className="flex items-center justify-center rounded-full" style={{ width: 64, height: 64, background: "rgba(0,82,230,0.2)", border: "1px solid rgba(0,82,230,0.5)", backdropFilter: "blur(8px)" }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="#3385ff">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            <span style={{ color: "#555", fontSize: 12, fontFamily: "var(--font-roobert), sans-serif", letterSpacing: "0.1em", textTransform: "uppercase" }}>Em breve</span>
+          </div>
+        )}
+        <span className="absolute bottom-5 left-6 font-bold select-none" style={{ fontSize: 80, color: "rgba(255,255,255,0.05)", fontFamily: "var(--font-dm-sans), sans-serif", lineHeight: 1 }}>
           {c.id}
-        </span>
-        <span
-          className="absolute top-5 left-6 px-3 py-1 rounded-full text-[12px] font-semibold"
-          style={{ background: "rgba(25,86,243,0.15)", border: "1px solid rgba(25,86,243,0.4)", color: "#66a3ff", fontFamily: "var(--font-dm-sans), sans-serif", backdropFilter: "blur(8px)" }}
-        >
-          {c.solucao}
         </span>
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col gap-4 p-6 flex-1">
-        <div className="flex flex-col gap-1">
-          <span className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: "#555", fontFamily: "var(--font-dm-sans), sans-serif" }}>Cliente</span>
-          <h3 className="text-[20px] font-semibold" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>{c.empresa}</h3>
-        </div>
-        <p className="text-[14px] leading-relaxed flex-1" style={{ color: "#888", fontFamily: "var(--font-dm-sans), sans-serif" }}>{c.descricao}</p>
-        <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <span className="text-[18px] font-bold" style={{ color: "#1956f3", fontFamily: "var(--font-dm-sans), sans-serif" }}>{c.resultado}</span>
-        </div>
+      {/* Nome */}
+      <div className="px-6 py-5">
+        <span className="text-[12px] font-semibold uppercase tracking-widest" style={{ color: "#555", fontFamily: "var(--font-dm-sans), sans-serif" }}>Cliente</span>
+        <h3 className="text-[22px] font-semibold mt-1" style={{ color: "#f7f7f7", fontFamily: "var(--font-dm-sans), sans-serif" }}>{c.cliente}</h3>
       </div>
     </motion.div>
   );
@@ -138,7 +99,7 @@ function CasesGrid() {
   return (
     <section style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-12 md:pt-[108px] pb-16 md:pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {cases.map((c, i) => (
             <CaseCard key={c.id} c={c} index={i} />
           ))}
