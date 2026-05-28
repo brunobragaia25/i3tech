@@ -762,16 +762,16 @@ function Differentials() {
         <FadeUp>
           <div className="flex flex-col md:flex-row gap-[40px] items-center">
             {/* Left — image placeholder */}
-            <div className="flex-1 min-w-0 shrink-0 hidden md:block" style={{ background: "#d9d9d9", height: 640, borderRadius: 40 }} />
+            <div className="w-full md:flex-1 md:min-w-0 shrink-0 h-[400px] md:h-[640px]" style={{ background: "#d9d9d9", borderRadius: 40 }} />
 
             {/* Right — differentials list */}
             <div className="flex-1 min-w-0 flex flex-col gap-[28px]">
               {diffItems.map((item) => (
-                <div key={item.title} className="flex flex-col gap-[12px]">
-                  <div className="flex items-center gap-[10px]">
+                <div key={item.title} className="flex flex-col gap-[12px] items-center md:items-start text-center md:text-left">
+                  <div className="flex flex-col md:flex-row items-center gap-[10px]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={item.icon} alt="" style={{ width: 24, height: 24, flexShrink: 0 }} />
-                    <span className="text-[16px] font-semibold" style={{ color: "#e6f0ff", fontFamily: "var(--font-roobert), sans-serif" }}>
+                    <span className="text-[16px] font-semibold" style={{ color: "#66a3ff", fontFamily: "var(--font-roobert), sans-serif" }}>
                       {item.title}
                     </span>
                   </div>
