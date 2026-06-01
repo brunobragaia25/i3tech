@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import FadeUp from "../../components/FadeUp";
+import CountUp from "../../components/CountUp";
 
 const font = "var(--font-roobert), sans-serif";
 
@@ -38,9 +39,9 @@ const features = [
 ];
 
 const stats = [
-  { value: "PIX", label: "e boleto integrados" },
-  { value: "99%", label: "Disponibilidade na plataforma" },
-  { value: "24/7", label: "Suporte técnico especializado" },
+  { to: null as null, text: "PIX", suffix: "",   label: "e boleto integrados" },
+  { to: 99,           text: null,  suffix: "%",  label: "Disponibilidade na plataforma" },
+  { to: 24,           text: null,  suffix: "/7", label: "Suporte técnico especializado" },
 ];
 
 export default function IntegracoesPage() {
@@ -90,7 +91,9 @@ export default function IntegracoesPage() {
           <div className="max-w-[1280px] mx-auto px-5 py-12 flex flex-col md:flex-row gap-8 justify-between">
             {stats.map((s, i) => (
               <FadeUp key={s.label} delay={i * 0.1} className="flex-1 flex flex-col items-center text-center gap-2">
-                <span style={{ fontSize: 40, fontWeight: 700, color: "#3385ff", fontFamily: font, lineHeight: 1 }}>{s.value}</span>
+                <span style={{ fontSize: 40, fontWeight: 700, color: "#3385ff", fontFamily: font, lineHeight: 1 }}>
+                  {s.text ? s.text : <CountUp to={s.to!} suffix={s.suffix} duration={2} />}
+                </span>
                 <span style={{ fontSize: 16, color: "#a0a0a0", fontFamily: font }}>{s.label}</span>
               </FadeUp>
             ))}

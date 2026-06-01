@@ -95,6 +95,13 @@ export default function PlanosPage() {
   const canPrev = index > 0;
   const canNext = index < plans.length - visibleCount;
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((v) => (v < plans.length - visibleCount ? v + 1 : 0));
+    }, 2500);
+    return () => clearInterval(timer);
+  }, [visibleCount]);
+
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#0d0d0d" }}>
       <Topbar />

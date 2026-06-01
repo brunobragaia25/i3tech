@@ -133,14 +133,27 @@ export default function Navbar() {
                           <div style={{
                             background: "#0052E6",
                             borderRadius: 20,
-                            padding: 54,
+                            paddingRight: 40,
                             width: 547,
                             minWidth: 547,
                             display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            gap: 24,
+                            alignItems: "stretch",
                             minHeight: 220,
                           }}>
+                            {/* Foto placeholder */}
+                            <div style={{
+                              width: 260,
+                              minWidth: 260,
+                              borderTopLeftRadius: 12,
+                              borderBottomLeftRadius: 12,
+                              background: "rgba(0,0,0,0.25)",
+                              flexShrink: 0,
+                            }} />
+
+                            {/* Texto + botão */}
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 32, flex: 1, paddingTop: 40, paddingBottom: 40, width: "100%" }}>
                             <p style={{
                               color: "#f7f7f7",
                               fontSize: 22,
@@ -148,9 +161,9 @@ export default function Navbar() {
                               fontFamily: "var(--font-roobert), sans-serif",
                               fontWeight: 400,
                               margin: 0,
-                              width: 323,
+                              whiteSpace: "pre-line",
                             }}>
-                              Está interessado em alguma de nossas soluções?
+                              Está interessado{"\n"}em alguma de{"\n"}nossas soluções?
                             </p>
                             <div style={{ position: "relative", borderRadius: 6, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                               <motion.div
@@ -183,6 +196,7 @@ export default function Navbar() {
                               >
                                 Agende uma demonstração
                               </Link>
+                            </div>
                             </div>
                           </div>
 

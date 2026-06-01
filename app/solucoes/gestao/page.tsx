@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import FadeUp from "../../components/FadeUp";
+import CountUp from "../../components/CountUp";
 
 const font = "var(--font-roobert), sans-serif";
 
@@ -43,9 +44,9 @@ const features = [
 ];
 
 const stats = [
-  { value: "+10k", label: "Associados gerenciados" },
-  { value: "99%",  label: "Disponibilidade na plataforma" },
-  { value: "24/7", label: "Suporte técnico especializado" },
+  { to: 10000, prefix: "+", suffix: "",  label: "Associados gerenciados" },
+  { to: 99,    prefix: "",  suffix: "%", label: "Disponibilidade na plataforma" },
+  { to: 24,    prefix: "",  suffix: "/7", label: "Suporte técnico especializado" },
 ];
 
 export default function GestaoPage() {
@@ -95,7 +96,7 @@ export default function GestaoPage() {
           <div className="max-w-[1280px] mx-auto px-5 py-12 flex flex-col md:flex-row gap-8 justify-between">
             {stats.map((s, i) => (
               <FadeUp key={s.label} delay={i * 0.1} className="flex-1 flex flex-col items-center text-center gap-2">
-                <span style={{ fontSize: 40, fontWeight: 700, color: "#3385ff", fontFamily: font, lineHeight: 1 }}>{s.value}</span>
+                <span style={{ fontSize: 40, fontWeight: 700, color: "#3385ff", fontFamily: font, lineHeight: 1 }}><CountUp to={s.to} prefix={s.prefix} suffix={s.suffix} duration={2} /></span>
                 <span style={{ fontSize: 16, color: "#a0a0a0", fontFamily: font }}>{s.label}</span>
               </FadeUp>
             ))}

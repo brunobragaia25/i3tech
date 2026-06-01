@@ -175,14 +175,16 @@ export default function SobrePage() {
           <VideoPlayer />
 
           {/* Stats — 2×2 on mobile, 4 in a row on desktop */}
-          <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-[60px] w-full">
-            {[
-              { to: 2300,  prefix: "+ De ", suffix: "",     label: "entidade de proteção patrimonial mutualista;" },
-              { to: 60000, prefix: "+ De ", suffix: "",     label: "itens na gestão administrativa;" },
-              { to: 3,     prefix: "+ De ", suffix: " Mga", label: "atendidos;" },
-              { to: 45,    prefix: "+ De ", suffix: "",     label: "centrais utilizando nosso sistema." },
-            ].map((stat, i, arr) => (
-              <div key={i} className="flex items-center gap-8 md:gap-[60px]">
+          {(() => {
+            const stats = [
+              { to: 2300,   prefix: "+ De ", suffix: "",      label: "entidade de proteção patrimonial mutualista;" },
+              { to: 60000,  prefix: "+ De ", suffix: "",      label: "itens na gestão administrativa;" },
+              { to: 160000, prefix: "+ De ", suffix: "",      label: "cotações realizadas;" },
+              { to: 3,      prefix: "+ De ", suffix: " Mga",  label: "atendidos;" },
+              { to: 45,     prefix: "+ De ", suffix: "",      label: "Centrais de rastreamento utilizando o nosso sistema." },
+            ];
+            const StatItem = ({ stat, showDivider }: { stat: typeof stats[0]; showDivider: boolean }) => (
+              <div className="flex items-center gap-8 md:gap-[60px]">
                 <div className="flex flex-col gap-3 items-center text-center flex-1">
                   <span className="text-[26px] md:text-[34px]" style={{ color: "#f7f7f7", fontFamily: font, fontWeight: 700, lineHeight: 1 }}>
                     <CountUp to={stat.to} prefix={stat.prefix} suffix={stat.suffix} duration={2} />
@@ -191,13 +193,20 @@ export default function SobrePage() {
                     {stat.label}
                   </span>
                 </div>
-                {/* Divider only on desktop between items */}
-                {i < arr.length - 1 && (
-                  <div className="hidden md:block" style={{ width: 1, alignSelf: "stretch", background: "rgba(255,255,255,0.12)" }} />
-                )}
+                {showDivider && <div className="hidden md:block" style={{ width: 1, alignSelf: "stretch", background: "rgba(255,255,255,0.12)" }} />}
               </div>
-            ))}
-          </div>
+            );
+            return (
+              <div className="flex flex-col gap-8 w-full items-center">
+                <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-[60px] justify-center">
+                  {stats.slice(0, 3).map((stat, i) => <StatItem key={i} stat={stat} showDivider={i < 2} />)}
+                </div>
+                <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-[60px] md:justify-center">
+                  {stats.slice(3).map((stat, i) => <StatItem key={i} stat={stat} showDivider={i < 1} />)}
+                </div>
+              </div>
+            );
+          })()}
 
         </div>
       </div>

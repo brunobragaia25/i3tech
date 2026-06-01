@@ -394,7 +394,7 @@ function About() {
         {/* 3 columns */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-[52px] items-start">
           {aboutColumns.map((col, i) => (
-            <FadeUp key={col.title} delay={i * 0.1} className="flex flex-col gap-5 flex-1">
+            <FadeUp key={col.title} delay={i * 0.1} className="flex flex-col gap-5 flex-1 items-center text-center">
               <div style={{ width: 86, height: 86, position: "relative", flexShrink: 0 }}>
                 {/* Ellipse maior — node 0:285 — 86x86, inset 0 */}
                 <div style={{
@@ -765,19 +765,28 @@ function Differentials() {
             <div className="w-full md:flex-1 md:min-w-0 shrink-0 h-[400px] md:h-[640px]" style={{ background: "#d9d9d9", borderRadius: 40 }} />
 
             {/* Right — differentials list */}
-            <div className="flex-1 min-w-0 flex flex-col gap-[28px]">
-              {diffItems.map((item) => (
-                <div key={item.title} className="flex flex-col gap-[12px] items-center md:items-start text-center md:text-left">
-                  <div className="flex flex-col md:flex-row items-center gap-[10px]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.icon} alt="" style={{ width: 24, height: 24, flexShrink: 0 }} />
-                    <span className="text-[16px] font-semibold" style={{ color: "#66a3ff", fontFamily: "var(--font-roobert), sans-serif" }}>
-                      {item.title}
-                    </span>
+            <div className="flex-1 min-w-0 flex flex-col gap-0">
+              {diffItems.map((item, i) => (
+                <div key={item.title}>
+                  <div className="flex gap-[16px] items-start py-[24px]">
+                    {/* Icon */}
+                    <div className="flex items-center justify-center rounded-[10px] shrink-0" style={{ width: 40, height: 40, background: "rgba(25,86,243,0.15)", border: "1px solid rgba(25,86,243,0.3)" }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={item.icon} alt="" style={{ width: 20, height: 20 }} />
+                    </div>
+                    {/* Text */}
+                    <div className="flex flex-col gap-[6px]">
+                      <span className="text-[15px] font-semibold" style={{ color: "#66a3ff", fontFamily: "var(--font-roobert), sans-serif", lineHeight: 1.3 }}>
+                        {item.title}
+                      </span>
+                      <p className="text-[13px] leading-[1.7]" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-roobert), sans-serif", margin: 0 }}>
+                        {item.desc}
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-[14px] leading-[1.6] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "pre-line", maxWidth: 571 }}>
-                    {item.desc}
-                  </p>
+                  {i < diffItems.length - 1 && (
+                    <div style={{ height: 1, background: "rgba(255,255,255,0.06)" }} />
+                  )}
                 </div>
               ))}
             </div>
@@ -810,8 +819,12 @@ function TargetAudience() {
         <div className="flex flex-col md:flex-row gap-[20px]">
           {audiences.map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1} className="flex-1">
-              <div className="w-full rounded-[32px] overflow-hidden relative flex flex-col justify-between" style={{ background: "#1a1a1a", padding: 32, minHeight: 320, border: "1px solid rgba(255,255,255,0.06)" }}>
+              <div className="w-full rounded-[32px] overflow-hidden relative flex flex-col justify-between" style={{ background: "#1a1a1a", minHeight: 320, border: "1px solid rgba(255,255,255,0.06)" }}>
+                {/* Imagem placeholder */}
+                <div style={{ width: "100%", height: 320, background: "rgba(255,255,255,0.04)", flexShrink: 0 }} />
+
                 {/* Content */}
+                <div className="flex flex-col justify-between flex-1 gap-[8px]" style={{ padding: 32 }}>
                 <div className="flex items-center justify-center rounded-full" style={{ width: 56, height: 56, background: "#1956f3", flexShrink: 0 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={a.icon} alt="" width={30} height={30} />
@@ -823,6 +836,7 @@ function TargetAudience() {
                   <p className="text-[14px] leading-[1.6]" style={{ color: "rgba(255,255,255,0.7)", fontFamily: "var(--font-roobert), sans-serif" }}>
                     {a.desc}
                   </p>
+                </div>
                 </div>
               </div>
             </FadeUp>
@@ -836,24 +850,24 @@ function TargetAudience() {
 /* ─── FAQ ────────────────────────────────────────────────── */
 const faqs = [
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+    question: "Consigo ter uma tecnologia na minha PPM (Proteção Patrimonial Mutualista), 100% integrada e dentro de um único ambiente?",
+    answer: "Sim, esse inclusive é um dos nossos diferenciais, você pode optar por mais de 4 a 5 tecnologias todos dentro de um único módulo.",
   },
   {
-    question: "Ut enim ad minim veniam, quis nostrud exercitation?",
-    answer: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    question: "Quais tecnologias posso contratar da i3Tech?",
+    answer: "Temos clientes em todo brasil utilizando nossas 6 soluções. São elas; I3Gestão, i3Crm, i3Mga, i3Aplicativos, I3Track, I3Integrações.",
   },
   {
-    question: "Quis nostrud exercitation ullamco laboris nisi ut aliquip?",
-    answer: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.",
+    question: "Qual o segmento que a i3Tech atua?",
+    answer: "Desenvolvemos as nossas tecnologias para atendermos o mercado das PPM (Proteção Patrimonial Mutualista), (Centrais de Rastreamento) e (Seguradoras).",
   },
   {
-    question: "Duis aute irure dolor in reprehenderit in voluptate?",
-    answer: "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
+    question: "As implantações dessas tecnologias são rápidas?",
+    answer: "São, temos um time de especialistas em implantação que acompanhará a sua experiência com o software do início ao uso.",
   },
   {
-    question: "Excepteur sint occaecat cupidatat non proident deserunt?",
-    answer: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint.",
+    question: "A i3Tech é uma empresa que chegou agora no segmento?",
+    answer: "Não, somos uma empresa de tecnologia do Grupo Brasil Atuarial com mais de 20 anos de experiência no segmento em que atuamos.",
   },
 ];
 
