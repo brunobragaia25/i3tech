@@ -961,23 +961,23 @@ function CTABanner() {
           >
             {/* Inner white card */}
             <div
-              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
-              style={{ background: "white", minHeight: 400 }}
+              className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+              style={{ background: "white", minHeight: 480 }}
             >
               {/* Background pattern */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={IMG_HOME_CTA_BG} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
 
               {/* Content */}
-              <div className="relative flex flex-col gap-[40px] items-center w-full">
+              <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
                 <AnimatedHeading
                   as="h2"
-                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] text-center max-w-[848px]"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
                   style={{ color: "#0047cc", fontFamily: "var(--font-roobert), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
                 </AnimatedHeading>
-                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                   <motion.div
                     style={{
                       position: "absolute",
@@ -999,6 +999,11 @@ function CTABanner() {
                     Agende uma demonstração
                   </Link>
                 </div>
+              </div>
+
+              {/* Foto direita */}
+              <div className="hidden md:block relative w-[420px] shrink-0">
+                <img src="/foto-cta-home.png" alt="" style={{ position: "absolute", bottom: 0, left: "-20%", width: "130%", objectFit: "contain", objectPosition: "bottom" }} />
               </div>
             </div>
           </div>
