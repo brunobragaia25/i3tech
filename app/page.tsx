@@ -762,7 +762,9 @@ function Differentials() {
         <FadeUp>
           <div className="flex flex-col md:flex-row gap-[40px] items-center">
             {/* Left — image placeholder */}
-            <div className="w-full md:flex-1 md:min-w-0 shrink-0 h-[400px] md:h-[640px]" style={{ background: "#d9d9d9", borderRadius: 40 }} />
+            <div className="w-full shrink-0 h-[500px] md:h-[640px] md:w-[600px]" style={{ borderRadius: 40, overflow: "hidden" }}>
+              <img src="/foto-diferenciais.jpg" alt="Diferenciais" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+            </div>
 
             {/* Right — differentials list */}
             <div className="flex-1 min-w-0 flex flex-col gap-0">
@@ -801,9 +803,9 @@ function Differentials() {
 const IMG_SEGMENT_ICON = "https://www.figma.com/api/mcp/asset/c1b6d077-302b-4148-a871-0d1a41460d47";
 
 const audiences = [
-  { title: "Proteção patrimonial\nmutualista PPM", desc: "Associações de proteção veicular.",                                                               icon: "/shield-check-2.svg", image: null, titleWidth: 160 },
-  { title: "Centrais de Rastreamento",             desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados.",                    icon: "/map-pin.svg",         image: null },
-  { title: "Seguradoras",                          desc: "Mga que representam as seguradas parceiras e já homologadas.",                                  icon: "/building-2.svg",      image: null },
+  { title: "Proteção patrimonial\nmutualista PPM", desc: "Associações de proteção veicular.",                                                               icon: "/shield-check-2.svg", image: "/foto-ppm.png", titleWidth: 160 },
+  { title: "Centrais de Rastreamento",             desc: "Empresas de LBS que realizam a prevenção dos veículos furtados e roubados.",                    icon: "/map-pin.svg",         image: "/foto-centrais.jpeg" },
+  { title: "Seguradoras",                          desc: "Mga que representam as seguradas parceiras e já homologadas.",                                  icon: "/building-2.svg",      image: "/foto-seguradora.jpeg", imagePosition: "center 30%" },
 ];
 
 function TargetAudience() {
@@ -820,8 +822,10 @@ function TargetAudience() {
           {audiences.map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1} className="flex-1">
               <div className="w-full rounded-[32px] overflow-hidden relative flex flex-col" style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.06)" }}>
-                {/* Imagem placeholder */}
-                <div style={{ width: "100%", height: 320, background: "rgba(255,255,255,0.04)", flexShrink: 0 }} />
+                {/* Imagem */}
+                <div style={{ width: "100%", height: 320, background: "rgba(255,255,255,0.04)", flexShrink: 0, overflow: "hidden" }}>
+                  {a.image && <img src={a.image} alt={a.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: ("imagePosition" in a ? a.imagePosition : "center") as string, display: "block" }} />}
+                </div>
 
                 {/* Content */}
                 <div className="flex flex-col gap-[8px]" style={{ padding: 32, height: 226 }}>

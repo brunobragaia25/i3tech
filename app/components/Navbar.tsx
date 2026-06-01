@@ -142,15 +142,17 @@ export default function Navbar() {
                             alignItems: "stretch",
                             minHeight: 220,
                           }}>
-                            {/* Foto placeholder */}
+                            {/* Foto */}
                             <div style={{
                               width: 260,
                               minWidth: 260,
                               borderTopLeftRadius: 12,
                               borderBottomLeftRadius: 12,
-                              background: "rgba(0,0,0,0.25)",
+                              overflow: "hidden",
                               flexShrink: 0,
-                            }} />
+                            }}>
+                              <img src="/foto-cta-dropdown.jpeg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+                            </div>
 
                             {/* Texto + botão */}
                             <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 32, flex: 1, paddingTop: 40, paddingBottom: 40, width: "100%" }}>

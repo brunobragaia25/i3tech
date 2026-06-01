@@ -112,20 +112,28 @@ function CasesGrid() {
 /* ─── Testimonial Slider ─────────────────────────── */
 const testimonials = [
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius nisl sed odio consequat placerat pulvinar vitae nulla. Cras euismod interdum finibus. Praesent ullamcorper tincidunt mauris a semper",
-    company: "DEVZDESIGN",
-    author: "Bruno Bragaia, CEO of DevzDesign",
-    desafio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    solucao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    resultado: "Crescimento de 130%",
+    quote: "A i3Tech transformou completamente a forma como gerenciamos nossa operação. Tínhamos processos manuais que consumiam horas da nossa equipe todo dia — hoje tudo é automatizado e integrado em uma única plataforma.",
+    company: "GRUPO CONOR",
+    author: "Diretor Operacional, Grupo Conor",
+    desafio: "Operação descentralizada com múltiplos sistemas sem integração, gerando retrabalho e dificuldade no controle financeiro e comercial.",
+    solucao: "Implementação do i3Gestão e i3CRM integrados, centralizando toda a gestão administrativa, comercial e financeira em uma única plataforma.",
+    resultado: "Redução de 60% no tempo operacional",
   },
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam varius nisl sed odio consequat placerat pulvinar vitae nulla. Cras euismod interdum finibus. Praesent ullamcorper tincidunt mauris a semper",
-    company: "EMPRESA XYZ",
-    author: "João Silva, CEO of Empresa XYZ",
-    desafio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    solucao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    resultado: "Crescimento de 200%",
+    quote: "O suporte da i3Tech é diferente de tudo que já experimentamos. Não é um chatbot, é uma equipe real que entende o nosso negócio e resolve de verdade. Isso faz toda a diferença no dia a dia.",
+    company: "ÁLAMO",
+    author: "Gestor de TI, Álamo",
+    desafio: "Dificuldade em rastrear a frota de forma eficiente e integrar as informações com a área financeira e de sinistros.",
+    solucao: "Adoção do i3Track com integração nativa ao módulo financeiro, permitindo monitoramento em tempo real e gestão completa de sinistros.",
+    resultado: "+400 veículos monitorados",
+  },
+  {
+    quote: "Conseguimos escalar nossa carteira de associados sem precisar aumentar nossa equipe administrativa. A plataforma da i3Tech dá conta de tudo — do cadastro ao boleto — de forma simples e confiável.",
+    company: "PROTERBEM",
+    author: "CEO, Proterbem",
+    desafio: "Crescimento acelerado de associados sem estrutura tecnológica capaz de suportar o volume de cobranças, vistorias e contratos.",
+    solucao: "Implantação do i3Gestão com automação de cobranças via remessa bancária, fluxo de vistoria digital e assinatura eletrônica de contratos.",
+    resultado: "Crescimento de 3x na carteira",
   },
 ];
 
@@ -134,7 +142,7 @@ function TestimonialCard({ t, cardWidth }: { t: typeof testimonials[0]; cardWidt
   return (
     <div
       className="flex-shrink-0 w-full rounded-[32px] flex flex-col md:flex-row gap-8 md:gap-16 items-stretch"
-      style={{ background: "#f0f2ef", padding: isMobile ? 28 : 64 }}
+      style={{ background: "#f0f2ef", padding: isMobile ? 28 : 64, flex: 1 }}
     >
       {/* Quote + author */}
       <div className="flex-1 flex flex-col justify-between gap-8">
@@ -228,6 +236,7 @@ function TestimonialsSlider() {
           <div
             style={{
               display: "flex",
+              alignItems: "stretch",
               gap: 20,
               paddingLeft: 20,
               paddingRight: 20,
@@ -236,7 +245,7 @@ function TestimonialsSlider() {
             }}
           >
             {testimonials.map((t, i) => (
-              <div key={i} style={{ minWidth: cardWidth, width: cardWidth }}>
+              <div key={i} style={{ minWidth: cardWidth, width: cardWidth, display: "flex" }}>
                 <TestimonialCard t={t} cardWidth={cardWidth} />
               </div>
             ))}

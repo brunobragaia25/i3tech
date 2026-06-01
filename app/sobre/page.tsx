@@ -82,6 +82,45 @@ function VideoPlayer() {
   );
 }
 
+function EnricoCard({ font }: { font: string }) {
+  const [hovered, setHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  return (
+    <div style={{ flex: 1, background: "#262626", borderRadius: 16, padding: 12 }}>
+      <div style={{ background: "#171717", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+        <motion.div
+          animate={{ height: isMobile ? 300 : hovered ? 460 : 360 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          onMouseEnter={() => !isMobile && setHovered(true)}
+          onMouseLeave={() => !isMobile && setHovered(false)}
+          style={{ borderRadius: 4, overflow: "hidden", position: "relative", flexShrink: 0 }}
+        >
+          <img
+            src="/foto-enrico.png"
+            alt="Enrico Neto"
+            style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+          />
+        </motion.div>
+        <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 10 }}>
+          <span style={{ color: "#0066ff", fontSize: 22, fontFamily: font, fontWeight: 500, lineHeight: 1 }}>
+            Enrico Neto
+          </span>
+          <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, textTransform: "uppercase", lineHeight: 1 }}>
+            Sócio e fundador da i3Tech (Em Execução)
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ViniciusCard({ font }: { font: string }) {
   const [hovered, setHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -221,19 +260,7 @@ export default function SobrePage() {
         <div className="w-full rounded-[20px] p-4" style={{ background: "#171717" }}>
           <div className="flex flex-col md:flex-row gap-4">
             {/* Card 1 — Enrico Neto */}
-            <div style={{ flex: 1, background: "#262626", borderRadius: 16, padding: 12 }}>
-              <div style={{ background: "#171717", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-                <div style={{ height: 300, background: "#d9d9d9", borderRadius: 4 }} />
-                <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 10 }}>
-                  <span style={{ color: "#0066ff", fontSize: 22, fontFamily: font, fontWeight: 500, lineHeight: 1 }}>
-                    Enrico Neto
-                  </span>
-                  <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, textTransform: "uppercase", lineHeight: 1 }}>
-                    Sócio e fundador da i3Tech (Em Execução)
-                  </span>
-                </div>
-              </div>
-            </div>
+            <EnricoCard font={font} />
 
             {/* Card 2 — Vinicius da Costa */}
             <ViniciusCard font={font} />
