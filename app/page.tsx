@@ -819,12 +819,12 @@ function TargetAudience() {
         <div className="flex flex-col md:flex-row gap-[20px]">
           {audiences.map((a, i) => (
             <FadeUp key={a.title} delay={i * 0.1} className="flex-1">
-              <div className="w-full rounded-[32px] overflow-hidden relative flex flex-col justify-between" style={{ background: "#1a1a1a", minHeight: 320, border: "1px solid rgba(255,255,255,0.06)" }}>
+              <div className="w-full rounded-[32px] overflow-hidden relative flex flex-col" style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.06)" }}>
                 {/* Imagem placeholder */}
                 <div style={{ width: "100%", height: 320, background: "rgba(255,255,255,0.04)", flexShrink: 0 }} />
 
                 {/* Content */}
-                <div className="flex flex-col justify-between flex-1 gap-[8px]" style={{ padding: 32 }}>
+                <div className="flex flex-col gap-[8px]" style={{ padding: 32, height: 226 }}>
                 <div className="flex items-center justify-center rounded-full" style={{ width: 56, height: 56, background: "#1956f3", flexShrink: 0 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={a.icon} alt="" width={30} height={30} />

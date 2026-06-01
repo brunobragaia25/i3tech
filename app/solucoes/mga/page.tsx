@@ -44,9 +44,8 @@ const features = [
 ];
 
 const stats = [
-  { to: 100, prefix: "", suffix: "%",  label: "Integrado à seguradora" },
-  { to: 99,  prefix: "", suffix: "%",  label: "Disponibilidade na plataforma" },
-  { to: 24,  prefix: "", suffix: "/7", label: "Suporte técnico especializado" },
+  { to: 3,    prefix: "+", suffix: "", label: "MGAs já implantadas" },
+  { to: 6000, prefix: "+", suffix: "", label: "Apólices emitidas por mês" },
 ];
 
 export default function MgaPage() {

@@ -44,9 +44,9 @@ const features = [
 ];
 
 const stats = [
-  { to: 10000, prefix: "+", suffix: "",  label: "Associados gerenciados" },
-  { to: 99,    prefix: "",  suffix: "%", label: "Disponibilidade na plataforma" },
-  { to: 24,    prefix: "",  suffix: "/7", label: "Suporte técnico especializado" },
+  { to: 100,   prefix: "+",  suffix: "",      label: "Associações utilizando o i3Gestão" },
+  { to: 99.99, prefix: "",   suffix: "%",     label: "SLA de estabilidade e sistema no ar", decimals: 2 },
+  { to: null,  prefix: "",   suffix: "",      label: "Suporte totalmente humanizado", text: "Humanizado" },
 ];
 
 export default function GestaoPage() {
@@ -96,7 +96,9 @@ export default function GestaoPage() {
           <div className="max-w-[1280px] mx-auto px-5 py-12 flex flex-col md:flex-row gap-8 justify-between">
             {stats.map((s, i) => (
               <FadeUp key={s.label} delay={i * 0.1} className="flex-1 flex flex-col items-center text-center gap-2">
-                <span style={{ fontSize: 40, fontWeight: 700, color: "#3385ff", fontFamily: font, lineHeight: 1 }}><CountUp to={s.to} prefix={s.prefix} suffix={s.suffix} duration={2} /></span>
+                <span style={{ fontSize: 40, fontWeight: 700, color: "#3385ff", fontFamily: font, lineHeight: 1 }}>
+                  {"text" in s && s.text ? s.text : <CountUp to={s.to!} prefix={s.prefix} suffix={s.suffix} decimals={"decimals" in s ? s.decimals : 0} duration={2} />}
+                </span>
                 <span style={{ fontSize: 16, color: "#a0a0a0", fontFamily: font }}>{s.label}</span>
               </FadeUp>
             ))}

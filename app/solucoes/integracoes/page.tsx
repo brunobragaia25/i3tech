@@ -39,9 +39,9 @@ const features = [
 ];
 
 const stats = [
-  { to: null as null, text: "PIX", suffix: "",   label: "e boleto integrados" },
-  { to: 99,           text: null,  suffix: "%",  label: "Disponibilidade na plataforma" },
-  { to: 24,           text: null,  suffix: "/7", label: "Suporte técnico especializado" },
+  { to: 5,   text: null, prefix: "+", suffix: "", label: "Agentes de IA em funcionamento" },
+  { to: null, text: "Própria", prefix: "", suffix: "", label: "Tecnologia própria" },
+  { to: 20,  text: null, prefix: "+", suffix: "", label: "Empresas utilizando" },
 ];
 
 export default function IntegracoesPage() {

@@ -44,9 +44,8 @@ const features = [
 ];
 
 const stats = [
-  { to: 2,  prefix: "", suffix: "",   label: "Apps nativos (Android e iOS)" },
-  { to: 99, prefix: "", suffix: "%",  label: "Disponibilidade na plataforma" },
-  { to: 24, prefix: "", suffix: "/7", label: "Suporte técnico especializado" },
+  { to: 9000, prefix: "+", suffix: "", label: "Consultores cadastrados" },
+  { to: 300,  prefix: "+", suffix: "", label: "Aplicativos baixados" },
 ];
 
 export default function AplicativosPage() {

@@ -44,9 +44,9 @@ const features = [
 ];
 
 const stats = [
-  { to: 360, prefix: "", suffix: "°",  label: "Visão do processo comercial" },
-  { to: 99,  prefix: "", suffix: "%",  label: "Disponibilidade na plataforma" },
-  { to: 24,  prefix: "", suffix: "/7", label: "Suporte técnico especializado" },
+  { to: 80000, prefix: "+", suffix: "", label: "Cotações realizadas por mês" },
+  { to: 25000, prefix: "+", suffix: "", label: "Vistorias realizadas no i3CRM" },
+  { to: 10000, prefix: "+", suffix: "", label: "Consultores cadastrados no i3CRM" },
 ];
 
 export default function CrmPage() {
