@@ -21,8 +21,8 @@ const solutionCols = [
   ],
   [
     { label: "I3Aplicativos", desc: "Apps personalizados e customizados", href: "/solucoes/aplicativos", iconBg: ICON_BG_BLUE,   icon: IMG_ICON_APP },
-    { label: "I3Track",    desc: "Plataforma de rastreamento completa",   href: "/solucoes/track",       iconBg: ICON_BG_BLUE, icon: IMG_ICON_TRACK },
     { label: "I3Integrações", desc: "Integrações de chatbot e IA",         href: "/solucoes/integracoes",    iconBg: ICON_BG_BLUE,   icon: IMG_ICON_EXPANSAO },
+    { label: "I3Track",    desc: "Plataforma de rastreamento completa",   href: "/solucoes/track",       iconBg: ICON_BG_BLUE, icon: IMG_ICON_TRACK },
   ],
 ];
 
