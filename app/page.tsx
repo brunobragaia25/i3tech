@@ -380,7 +380,7 @@ function About() {
 
         {/* Headline */}
         <FadeUp>
-          <AnimatedHeading as="p" className="text-[20px] md:text-[32px] leading-[1.4] text-white" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
+          <AnimatedHeading as="p" className="text-[20px] md:text-[32px] leading-[1.4] text-white text-center mx-auto" style={{ fontFamily: "var(--font-roobert), sans-serif", fontWeight: 300, maxWidth: 1008 }}>
             A i3Tech é a 1º empresa do mercado brasileiro,{" "}
             <span style={{ fontWeight: 600, color: "#0052e6" }}>
               a desenvolver tecnologias de cálculo atuarial, para sua proteção patrimonial mutualista, central de rastreamento e seguradoras.
@@ -759,33 +759,36 @@ function Differentials() {
           </AnimatedHeading>
         </FadeUp>
 
-        <FadeUp>
-          <div className="flex flex-col md:flex-row gap-[40px] items-center">
-            {/* Left — image placeholder */}
-            <div className="w-full shrink-0 h-[500px] md:h-[640px] md:w-[600px]" style={{ borderRadius: 40, overflow: "hidden" }}>
-              <img src="/foto-diferenciais.jpg" alt="Diferenciais" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
-            </div>
+        <div className="flex flex-col md:flex-row gap-[40px] items-center">
+            {/* Left — image */}
+            <FadeUp className="w-full shrink-0 h-[500px] md:h-[640px] md:w-[600px]">
+              <div style={{ width: "100%", height: "100%", borderRadius: 40, overflow: "hidden" }}>
+                <img src="/foto-diferenciais.jpg" alt="Diferenciais" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+              </div>
+            </FadeUp>
 
             {/* Right — differentials list */}
             <div className="flex-1 min-w-0 flex flex-col gap-0">
               {diffItems.map((item, i) => (
                 <div key={item.title}>
-                  <div className="flex gap-[16px] items-start py-[24px]">
-                    {/* Icon */}
-                    <div className="flex items-center justify-center rounded-[10px] shrink-0" style={{ width: 40, height: 40, background: "rgba(25,86,243,0.15)", border: "1px solid rgba(25,86,243,0.3)" }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={item.icon} alt="" style={{ width: 20, height: 20 }} />
+                  <FadeUp delay={i * 0.1}>
+                    <div className="flex gap-[16px] items-start py-[24px]">
+                      {/* Icon */}
+                      <div className="flex items-center justify-center rounded-[10px] shrink-0" style={{ width: 40, height: 40, background: "rgba(25,86,243,0.15)", border: "1px solid rgba(25,86,243,0.3)" }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={item.icon} alt="" style={{ width: 20, height: 20 }} />
+                      </div>
+                      {/* Text */}
+                      <div className="flex flex-col gap-[6px]">
+                        <span className="text-[15px] font-semibold" style={{ color: "#66a3ff", fontFamily: "var(--font-roobert), sans-serif", lineHeight: 1.3 }}>
+                          {item.title}
+                        </span>
+                        <p className="text-[13px] leading-[1.7]" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-roobert), sans-serif", margin: 0 }}>
+                          {item.desc}
+                        </p>
+                      </div>
                     </div>
-                    {/* Text */}
-                    <div className="flex flex-col gap-[6px]">
-                      <span className="text-[15px] font-semibold" style={{ color: "#66a3ff", fontFamily: "var(--font-roobert), sans-serif", lineHeight: 1.3 }}>
-                        {item.title}
-                      </span>
-                      <p className="text-[13px] leading-[1.7]" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-roobert), sans-serif", margin: 0 }}>
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
+                  </FadeUp>
                   {i < diffItems.length - 1 && (
                     <div style={{ height: 1, background: "rgba(255,255,255,0.06)" }} />
                   )}
@@ -793,7 +796,6 @@ function Differentials() {
               ))}
             </div>
           </div>
-        </FadeUp>
       </div>
     </section>
   );
