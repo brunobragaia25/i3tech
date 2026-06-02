@@ -355,19 +355,19 @@ function CTABanner() {
           >
             {/* Inner white card */}
             <div
-              className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+              className="relative overflow-visible md:overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
               style={{ background: "#1956f3", minHeight: 560 }}
             >
               <img src={IMG_CTA_BG} alt="" className="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none" />
-              <div className="relative flex flex-col gap-[40px] justify-center items-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
+              <div className="relative flex flex-col gap-[40px] justify-center items-center md:items-start flex-1 px-6 md:px-[80px] pt-10 pb-0 md:py-0" style={{ zIndex: 1 }}>
                 <AnimatedHeading
                   as="h2"
-                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px] text-center md:text-left"
                   style={{ color: "white", fontFamily: "var(--font-dm-sans), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
                 </AnimatedHeading>
-                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
+                <div className="self-center md:self-start" style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
                   <motion.div
                     style={{
                       position: "absolute",
@@ -386,9 +386,9 @@ function CTABanner() {
                   </Link>
                 </div>
               </div>
-              <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
-                <img src="/foto-cta-funcionalidades.png" alt="" style={{ position: "absolute", bottom: 0, left: "-15%", width: "100%", height: "100%", objectFit: "contain", objectPosition: "left bottom", display: "block" }} />
-                <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 60, left: -80 }}>
+              <div className="block w-full h-[380px] md:h-auto md:w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                <img src="/foto-cta-funcionalidades.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-15%] md:translate-x-0" style={{ width: 480, objectFit: "contain", objectPosition: "bottom", display: "block", zIndex: 1 }} />
+                <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} className="absolute bottom-[60px] left-[16px] md:bottom-[60px] md:left-[-80px] scale-[0.75] md:scale-100 origin-bottom-left" style={{ zIndex: 2 }}>
                   <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
                     <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
                       <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -398,7 +398,7 @@ function CTABanner() {
                     </div>
                   </motion.div>
                 </motion.div>
-                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 200, right: 120 }}>
+                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} className="absolute top-[160px] md:top-[200px] right-[16px] md:right-[120px] scale-[0.75] md:scale-100 origin-bottom-right" style={{ zIndex: 2 }}>
                   <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
                     <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
