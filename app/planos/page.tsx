@@ -216,7 +216,7 @@ export default function PlanosPage() {
                   />
                 ) : (
                   <span style={{ color: "#f7f7f7", fontSize: isMobile ? 22 : 32, fontFamily: font, fontWeight: 700, letterSpacing: "-0.5px" }}>
-                    {"name" in plan ? plan.name : ""}
+                    {"name" in plan ? (plan.name as string) : ""}
                   </span>
                 )}
                 <p style={{ color: "#f7f7f7", fontSize: isMobile ? 15 : 20, fontFamily: font, fontWeight: 500, lineHeight: 1.4, letterSpacing: "-0.36px", margin: 0 }}>
