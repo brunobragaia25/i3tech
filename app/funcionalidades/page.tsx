@@ -139,6 +139,7 @@ const features = [
     id: "chatbot",
     imageLeft: false,
     hasCrmMockup: false,
+    image: "/img-chatbot.png",
   },
 ];
 
