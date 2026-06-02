@@ -155,50 +155,31 @@ export default function MgaPage() {
               }}
             >
               <div
-                className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+                className="relative overflow-visible md:overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
                 style={{ background: "white", minHeight: 480 }}
               >
                 <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
-                <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
-                  <h2
-                    className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
-                    style={{ color: "#0047cc", fontFamily: font, margin: 0 }}
-                  >
+                <div className="relative flex flex-col gap-[40px] justify-center items-center md:items-start flex-1 px-6 md:px-[80px] pt-10 pb-0 md:py-0">
+                  <h2 className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px] text-center md:text-left" style={{ color: "#0047cc", fontFamily: font, margin: 0 }}>
                     Pronto para modernizar a gestão da sua operação de seguros?
                   </h2>
-                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
-                    <motion.div
-                      style={{
-                        position: "absolute",
-                        inset: "-150%",
-                        background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)",
-                      }}
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                    />
-                    <Link
-                      href="/contato"
-                      className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
-                      style={{ background: "#1956f3", color: "#f7f7f7", fontFamily: font, textDecoration: "none" }}
-                    >
-                      Agende uma demonstração
-                    </Link>
+                  <div className="self-center md:self-start" style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                    <motion.div style={{ position: "absolute", inset: "-150%", background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)" }} animate={{ rotate: 360 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }} />
+                    <Link href="/contato" className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "#1956f3", color: "#f7f7f7", fontFamily: font, textDecoration: "none" }}>Agende uma demonstração</Link>
                   </div>
                 </div>
-                <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
-                  <img src="/logo-3d.png" alt="" style={{ position: "absolute", bottom: -60, left: "58%", transform: "translateX(-50%)", width: 700, minWidth: 700, height: "auto", display: "block", zIndex: 0 }} />
-                  <img src="/foto-cta-solucoes.png" alt="" style={{ position: "absolute", bottom: 0, left: "-15%", width: 480, objectFit: "contain", objectPosition: "bottom", display: "block", zIndex: 1 }} />
-                  <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 60, left: -80, zIndex: 2 }}>
+                <div className="block w-full h-[380px] md:h-auto md:w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                  <img src="/logo-3d.png" alt="" className="w-[600px] md:w-[700px] md:min-w-[700px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
+                  <img src="/foto-cta-solucoes.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-15%] md:translate-x-0" style={{ width: 480, objectFit: "contain", objectPosition: "bottom", display: "block", zIndex: 1 }} />
+                  <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} className="absolute bottom-[60px] left-[16px] md:left-[-80px] scale-[0.75] md:scale-100 origin-bottom-left" style={{ zIndex: 2 }}>
                     <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
                       <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
-                        <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                        </div>
+                        <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></div>
                         <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: font, whiteSpace: "nowrap" }}>Apólice emitida</span>
                       </div>
                     </motion.div>
                   </motion.div>
-                  <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 200, right: 140, zIndex: 2 }}>
+                  <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} className="absolute top-[160px] md:top-[200px] right-[16px] md:right-[140px] scale-[0.75] md:scale-100 origin-bottom-right" style={{ zIndex: 2 }}>
                     <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
                       <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>

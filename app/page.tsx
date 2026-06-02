@@ -761,7 +761,7 @@ function Differentials() {
 
         <div className="flex flex-col md:flex-row gap-[40px] items-center">
             {/* Left — image */}
-            <FadeUp className="w-full shrink-0 h-[500px] md:h-[640px] md:w-[600px]">
+            <FadeUp className="w-full shrink-0 h-[450px] md:h-[640px] md:w-[600px]">
               <div style={{ width: "100%", height: "100%", borderRadius: 40, overflow: "hidden" }}>
                 <img src="/foto-diferenciais.jpg" alt="Diferenciais" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
               </div>
@@ -963,7 +963,7 @@ function CTABanner() {
           >
             {/* Inner white card */}
             <div
-              className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+              className="relative overflow-visible md:overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
               style={{ background: "white", minHeight: 480 }}
             >
               {/* Background pattern */}
@@ -971,15 +971,15 @@ function CTABanner() {
               <img src={IMG_HOME_CTA_BG} alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
 
               {/* Content */}
-              <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0" style={{ zIndex: 1 }}>
+              <div className="relative flex flex-col gap-[40px] justify-center items-center md:items-start flex-1 px-6 md:px-[80px] pt-10 pb-0 md:py-0" style={{ zIndex: 1 }}>
                 <AnimatedHeading
                   as="h2"
-                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[530px]"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[530px] text-center md:text-left"
                   style={{ color: "#0047cc", fontFamily: "var(--font-roobert), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
                 </AnimatedHeading>
-                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
+                <div className="self-center md:self-start" style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
                   <motion.div
                     style={{
                       position: "absolute",
@@ -1004,13 +1004,14 @@ function CTABanner() {
               </div>
 
               {/* Foto direita */}
-              <div className="hidden md:block relative w-[420px] shrink-0">
+              <div className="block relative w-full h-[380px] md:h-auto md:w-[420px] shrink-0">
                 {/* Logo 3D atrás do personagem */}
-                <img src="/logo-3d.png" alt="" style={{ position: "absolute", bottom: -60, left: "58%", transform: "translateX(-50%)", width: 700, minWidth: 700, height: "auto", display: "block", zIndex: 0 }} />
+                <img src="/logo-3d.png" alt="" className="w-[600px] md:w-[700px] md:min-w-[700px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
                 <motion.img
                   src="/foto-cta-home.png"
                   alt=""
-                  style={{ position: "absolute", bottom: 0, left: "-20%", width: "130%", objectFit: "contain", objectPosition: "bottom", zIndex: 1 }}
+                  className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-20%] md:translate-x-0"
+                  style={{ width: "100%", objectFit: "contain", objectPosition: "bottom", zIndex: 1 }}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}
@@ -1023,7 +1024,8 @@ function CTABanner() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
-                  style={{ position: "absolute", bottom: 60, left: -160, zIndex: 2 }}
+                  className="absolute bottom-[60px] left-[16px] md:left-[-160px] scale-[0.75] md:scale-100 origin-bottom-left"
+                  style={{ zIndex: 2 }}
                 >
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
@@ -1047,7 +1049,8 @@ function CTABanner() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
-                  style={{ position: "absolute", top: 200, right: 140, zIndex: 2 }}
+                  className="absolute top-[160px] md:top-[200px] right-[16px] md:right-[140px] scale-[0.75] md:scale-100 origin-bottom-right"
+                  style={{ zIndex: 2 }}
                 >
                   <motion.div
                     animate={{ y: [0, 10, 0] }}
