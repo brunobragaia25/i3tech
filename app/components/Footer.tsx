@@ -27,12 +27,12 @@ const solutions = [
 ];
 
 const features = [
-  { label: "Gestão Comercial", href: "#" },
-  { label: "Automação de Vendas", href: "#" },
-  { label: "Gestão de Clientes", href: "#" },
-  { label: "Financeiro & Comissões", href: "#" },
-  { label: "Relatórios & Integrações", href: "#" },
-  { label: "ChatBot", href: "#" },
+  { label: "Gestão Comercial", href: "/funcionalidades#gestao-comercial" },
+  { label: "Automação de Vendas", href: "/funcionalidades#automacao-vendas" },
+  { label: "Gestão de Clientes", href: "/funcionalidades#gestao-clientes" },
+  { label: "Financeiro & Comissões", href: "/funcionalidades#financeiro" },
+  { label: "Relatórios & Integrações", href: "/funcionalidades#relatorios" },
+  { label: "ChatBot", href: "/funcionalidades#chatbot" },
 ];
 
 const empresasDoGrupo = [
