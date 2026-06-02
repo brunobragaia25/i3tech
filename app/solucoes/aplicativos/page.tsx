@@ -12,32 +12,32 @@ const font = "var(--font-roobert), sans-serif";
 
 const features = [
   {
-    icon: "/map-pin.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>,
     title: "App do Associado com rastreamento em tempo real",
     desc: "O associado acompanha a localização do seu veículo diretamente pelo app, com histórico de deslocamentos e alertas instantâneos.",
   },
   {
-    icon: "/chart-column.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
     title: "App do Consultor com comissionamento multinível",
     desc: "Consultores visualizam sua carteira, indicadores de desempenho e comissões em tempo real, com gestão de rede multinível.",
   },
   {
-    icon: "/scan.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>,
     title: "Vistoria digital com termo de aceite",
     desc: "Realize vistorias completas pelo celular com captura de fotos, preenchimento de dados e assinatura digital do associado.",
   },
   {
-    icon: "/radar.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>,
     title: "Notificações e alertas personalizados",
     desc: "Envie notificações push segmentadas para associados e consultores com mensagens relevantes no momento certo.",
   },
   {
-    icon: "/shield-check.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>,
     title: "Resumos diários de desempenho veicular",
     desc: "O associado recebe relatórios automáticos com dados de uso do veículo, km percorridos e comportamento ao volante.",
   },
   {
-    icon: "/lock.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="white"/><circle cx="17.5" cy="10.5" r=".5" fill="white"/><circle cx="8.5" cy="7.5" r=".5" fill="white"/><circle cx="6.5" cy="12.5" r=".5" fill="white"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>,
     title: "White label com identidade visual da empresa",
     desc: "Os aplicativos são publicados com o nome, logo e cores da sua associação nas lojas Android e iOS.",
   },
@@ -125,7 +125,7 @@ export default function AplicativosPage() {
                   <FadeUp key={f.title} delay={i * 0.07}>
                     <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                       <div style={{ width: 40, height: 40, background: "#0052e6", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <img src={f.icon} alt="" style={{ width: 20, height: 20, filter: "brightness(0) invert(1)" }} />
+                        {f.icon}
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         <h3 style={{ color: "#f7f7f7", fontSize: 16, fontWeight: 600, fontFamily: font, margin: 0 }}>{f.title}</h3>
@@ -153,18 +153,18 @@ export default function AplicativosPage() {
               }}
             >
               <div
-                className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
-                style={{ background: "white", minHeight: 400 }}
+                className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+                style={{ background: "white", minHeight: 480 }}
               >
                 <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
-                <div className="relative flex flex-col gap-[40px] items-center w-full text-center">
+                <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
                   <h2
                     className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
                     style={{ color: "#0047cc", fontFamily: font, margin: 0 }}
                   >
                     Pronto para levar sua associação para o celular dos seus associados?
                   </h2>
-                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                     <motion.div
                       style={{
                         position: "absolute",
@@ -182,6 +182,26 @@ export default function AplicativosPage() {
                       Agende uma demonstração
                     </Link>
                   </div>
+                </div>
+                <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                  <img src="/foto-cta-solucoes.png" alt="" style={{ position: "absolute", bottom: 0, left: "-15%", width: 480, objectFit: "contain", objectPosition: "bottom", display: "block" }} />
+                  <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 60, left: -80 }}>
+                    <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
+                        <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: font, whiteSpace: "nowrap" }}>App publicado</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 200, right: 140 }}>
+                    <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </div>

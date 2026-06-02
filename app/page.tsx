@@ -1003,7 +1003,61 @@ function CTABanner() {
 
               {/* Foto direita */}
               <div className="hidden md:block relative w-[420px] shrink-0">
-                <img src="/foto-cta-home.png" alt="" style={{ position: "absolute", bottom: 0, left: "-20%", width: "130%", objectFit: "contain", objectPosition: "bottom" }} />
+                <motion.img
+                  src="/foto-cta-home.png"
+                  alt=""
+                  style={{ position: "absolute", bottom: 0, left: "-20%", width: "130%", objectFit: "contain", objectPosition: "bottom" }}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+                />
+
+                {/* Badge 1 — Demonstração agendada */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
+                  style={{ position: "absolute", bottom: 60, left: -160 }}
+                >
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}
+                  >
+                    <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
+                      <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+                        </svg>
+                      </div>
+                      <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "nowrap" }}>Demonstração agendada</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Badge 2 — Mensagens */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
+                  style={{ position: "absolute", top: 200, right: 140 }}
+                >
+                  <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                    style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}
+                  >
+                    <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/>
+                        <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/>
+                      </svg>
+                    </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </div>

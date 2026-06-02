@@ -199,9 +199,6 @@ export default function SobrePage() {
             Somos uma empresa de tecnologia do Grupo Brasil Atuarial, com o{" "}
             <span style={{ fontWeight: 600, color: "#0066ff" }}>foco no desenvolvimento de inovações e produtos tecnológicos que envolvem a regra atuarial</span>.
           </AnimatedHeading>
-          <p className="text-[16px] md:text-[24px]" style={{ color: "#f7f7f7", fontFamily: font, fontWeight: 400, lineHeight: 1.4, maxWidth: 840, margin: 0 }}>
-            Desenvolvemos sistemas e aplicativos que conectam gestão empresarial, vendas e rastreamento inteligente para o nosso segmento.
-          </p>
         </div>
 
         {/* Divider */}
@@ -281,21 +278,19 @@ export default function SobrePage() {
           >
             {/* Inner white card */}
             <div
-              className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
-              style={{ background: "white", minHeight: 400 }}
+              className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+              style={{ background: "white", minHeight: 560 }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
-              <div className="relative flex flex-col gap-[40px] items-center w-full">
+              <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
                 <AnimatedHeading
                   as="h2"
-                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] text-center max-w-[848px]"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
                   style={{ color: "#0047cc", fontFamily: "var(--font-roobert), sans-serif" }}
                 >
                   Pronto para se conectar no que há de mais inovador no segmento.
                 </AnimatedHeading>
-                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                   <motion.div
                     style={{
                       position: "absolute",
@@ -313,6 +308,26 @@ export default function SobrePage() {
                     Agende uma demonstração
                   </Link>
                 </div>
+              </div>
+              <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                <img src="/foto-cta-sobre.png" alt="" style={{ position: "absolute", bottom: 0, left: 0, width: "90%", height: "90%", objectFit: "contain", objectPosition: "left bottom", display: "block" }} />
+                <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 220, left: -80 }}>
+                  <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                    <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
+                      <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                      </div>
+                      <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "nowrap" }}>Tecnologia própria</span>
+                    </div>
+                  </motion.div>
+                </motion.div>
+                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 380, right: 120 }}>
+                  <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                    <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                  </motion.div>
+                </motion.div>
               </div>
             </div>
           </div>

@@ -12,32 +12,32 @@ const font = "var(--font-roobert), sans-serif";
 
 const features = [
   {
-    icon: "/chart-column.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></svg>,
     title: "Rateio e precificação atuarial",
     desc: "Regras de rateio configuráveis com base atuarial, permitindo precificação justa e sustentável para cada perfil de associado.",
   },
   {
-    icon: "/scan.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>,
     title: "Faturamento com i3Pay",
     desc: "Gestão completa de cobranças integrada ao i3Pay, com controle de inadimplência, régua de cobrança e conciliação automática.",
   },
   {
-    icon: "/shield-check.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg>,
     title: "Remessa bancária automática",
     desc: "Geração e envio automático de arquivos de remessa para os principais bancos homologados, sem retrabalho manual.",
   },
   {
-    icon: "/map-pin.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>,
     title: "Gestão de associados, veículos e contratos",
     desc: "Cadastro centralizado de associados, veículos e contratos com histórico completo, documentos e status em tempo real.",
   },
   {
-    icon: "/radar.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>,
     title: "Relatórios gerenciais e dashboards",
     desc: "Painéis com indicadores de desempenho, inadimplência, cancelamentos e crescimento da base de associados.",
   },
   {
-    icon: "/lock.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>,
     title: "Módulo i3CRM integrado",
     desc: "CRM nativo para gestão do relacionamento com associados, acompanhamento de leads e automação do processo comercial.",
   },
@@ -130,7 +130,7 @@ export default function GestaoPage() {
                   <FadeUp key={f.title} delay={i * 0.07}>
                     <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                       <div style={{ width: 40, height: 40, background: "#0052e6", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <img src={f.icon} alt="" style={{ width: 20, height: 20, filter: "brightness(0) invert(1)" }} />
+                        {f.icon}
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         <h3 style={{ color: "#f7f7f7", fontSize: 16, fontWeight: 600, fontFamily: font, margin: 0 }}>{f.title}</h3>
@@ -158,18 +158,18 @@ export default function GestaoPage() {
               }}
             >
               <div
-                className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
-                style={{ background: "white", minHeight: 400 }}
+                className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+                style={{ background: "white", minHeight: 480 }}
               >
                 <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
-                <div className="relative flex flex-col gap-[40px] items-center w-full text-center">
+                <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
                   <h2
                     className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
                     style={{ color: "#0047cc", fontFamily: font, margin: 0 }}
                   >
                     Pronto para modernizar a gestão da sua associação?
                   </h2>
-                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                     <motion.div
                       style={{
                         position: "absolute",
@@ -187,6 +187,28 @@ export default function GestaoPage() {
                       Agende uma demonstração
                     </Link>
                   </div>
+                </div>
+                <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                  <img src="/foto-cta-solucoes.png" alt="" style={{ position: "absolute", bottom: 0, left: "-15%", width: 480, objectFit: "contain", objectPosition: "bottom", display: "block" }} />
+                  {/* Badge 1 */}
+                  <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 60, left: -80 }}>
+                    <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
+                        <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: font, whiteSpace: "nowrap" }}>Associado cadastrado</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                  {/* Badge 2 */}
+                  <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 200, right: 140 }}>
+                    <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </div>

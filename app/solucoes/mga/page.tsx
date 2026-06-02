@@ -12,32 +12,32 @@ const font = "var(--font-roobert), sans-serif";
 
 const features = [
   {
-    icon: "/scan.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>,
     title: "Emissão de apólice integrada à seguradora",
     desc: "Emita apólices diretamente pela plataforma, já integradas com as seguradoras parceiras e homologadas, sem retrabalho ou processos paralelos.",
   },
   {
-    icon: "/chart-column.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="18" y1="20" y2="10"/><line x1="12" x2="12" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="14"/></svg>,
     title: "Relatórios e auditoria online",
     desc: "Acompanhe indicadores de desempenho da operação com relatórios detalhados e auditoria online em tempo real.",
   },
   {
-    icon: "/shield-check.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>,
     title: "Gestão de pagamentos",
     desc: "Controle todos os pagamentos da operação com conciliação automática e visibilidade completa dos faturáveis.",
   },
   {
-    icon: "/map-pin.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>,
     title: "Cotações e planos pré-configurados",
     desc: "Configure planos e preços com antecedência e gere cotações rápidas para segurados com poucos cliques.",
   },
   {
-    icon: "/radar.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg>,
     title: "Gestão dos faturáveis",
     desc: "Centralize o controle de todos os itens faturáveis da operação, com visão consolidada e gestão simplificada.",
   },
   {
-    icon: "/lock.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>,
     title: "Operação 100% integrada com a seguradora",
     desc: "MGA totalmente alinhado às regras da seguradora, com indicadores facilitados e gestão efetiva da operação.",
   },
@@ -127,7 +127,7 @@ export default function MgaPage() {
                   <FadeUp key={f.title} delay={i * 0.07}>
                     <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                       <div style={{ width: 40, height: 40, background: "#0052e6", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <img src={f.icon} alt="" style={{ width: 20, height: 20, filter: "brightness(0) invert(1)" }} />
+                        {f.icon}
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         <h3 style={{ color: "#f7f7f7", fontSize: 16, fontWeight: 600, fontFamily: font, margin: 0 }}>{f.title}</h3>
@@ -155,18 +155,18 @@ export default function MgaPage() {
               }}
             >
               <div
-                className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
-                style={{ background: "white", minHeight: 400 }}
+                className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+                style={{ background: "white", minHeight: 480 }}
               >
                 <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
-                <div className="relative flex flex-col gap-[40px] items-center w-full text-center">
+                <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
                   <h2
                     className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
                     style={{ color: "#0047cc", fontFamily: font, margin: 0 }}
                   >
                     Pronto para modernizar a gestão da sua operação de seguros?
                   </h2>
-                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                     <motion.div
                       style={{
                         position: "absolute",
@@ -184,6 +184,26 @@ export default function MgaPage() {
                       Agende uma demonstração
                     </Link>
                   </div>
+                </div>
+                <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                  <img src="/foto-cta-solucoes.png" alt="" style={{ position: "absolute", bottom: 0, left: "-15%", width: 480, objectFit: "contain", objectPosition: "bottom", display: "block" }} />
+                  <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 60, left: -80 }}>
+                    <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
+                        <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: font, whiteSpace: "nowrap" }}>Apólice emitida</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 200, right: 140 }}>
+                    <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </div>

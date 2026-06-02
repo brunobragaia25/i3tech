@@ -12,32 +12,32 @@ const font = "var(--font-roobert), sans-serif";
 
 const features = [
   {
-    icon: "/chart-column.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>,
     title: "Funil de vendas",
     desc: "Visualize e gerencie todo o pipeline comercial da sua associação, do lead ao contrato assinado, em um funil de vendas intuitivo.",
   },
   {
-    icon: "/map-pin.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="7" x="3" y="3" rx="1"/><rect width="9" height="7" x="3" y="14" rx="1"/><rect width="5" height="7" x="16" y="14" rx="1"/></svg>,
     title: "Landing page e cotações rápidas",
     desc: "Crie páginas de captação e gere cotações personalizadas em segundos, com planos e preços configurados diretamente na plataforma.",
   },
   {
-    icon: "/scan.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>,
     title: "Pagamentos online e tabelas de preços",
     desc: "Aceite pagamentos online e configure tabelas de preços por regional, perfil de associado ou tipo de veículo.",
   },
   {
-    icon: "/shield-check.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m9 15 2 2 4-4"/></svg>,
     title: "Vistoria e assinatura de contrato integradas",
     desc: "Fluxo completo de vistoria digital e assinatura de contrato dentro do CRM, sem precisar sair da plataforma.",
   },
   {
-    icon: "/radar.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>,
     title: "Comissionamento e gestão de regionais",
     desc: "Controle comissões por nível de consultor e gerencie regionais com autonomia, tudo integrado ao fluxo comercial.",
   },
   {
-    icon: "/lock.svg",
+    icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="8" x2="16" y1="12" y2="12"/></svg>,
     title: "Módulo i3Gestão integrado",
     desc: "CRM e ERP unificados em um único ambiente, com regras de pagamento, remessa bancária e gestão administrativa interligadas.",
   },
@@ -128,7 +128,7 @@ export default function CrmPage() {
                   <FadeUp key={f.title} delay={i * 0.07}>
                     <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
                       <div style={{ width: 40, height: 40, background: "#0052e6", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <img src={f.icon} alt="" style={{ width: 20, height: 20, filter: "brightness(0) invert(1)" }} />
+                        {f.icon}
                       </div>
                       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
                         <h3 style={{ color: "#f7f7f7", fontSize: 16, fontWeight: 600, fontFamily: font, margin: 0 }}>{f.title}</h3>
@@ -156,18 +156,18 @@ export default function CrmPage() {
               }}
             >
               <div
-                className="relative overflow-hidden rounded-[8px] flex items-center justify-center px-6 md:px-[80px] py-16 md:py-0"
-                style={{ background: "white", minHeight: 400 }}
+                className="relative overflow-hidden rounded-[8px] flex flex-col md:flex-row items-stretch"
+                style={{ background: "white", minHeight: 480 }}
               >
                 <img src="/pattern-hero.png" alt="" className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none" />
-                <div className="relative flex flex-col gap-[40px] items-center w-full text-center">
+                <div className="relative flex flex-col gap-[40px] justify-center flex-1 px-6 md:px-[80px] py-16 md:py-0">
                   <h2
                     className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px]"
                     style={{ color: "#0047cc", fontFamily: font, margin: 0 }}
                   >
                     Pronto para modernizar a gestão comercial da sua associação?
                   </h2>
-                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                  <div style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden", alignSelf: "flex-start" }}>
                     <motion.div
                       style={{
                         position: "absolute",
@@ -185,6 +185,26 @@ export default function CrmPage() {
                       Agende uma demonstração
                     </Link>
                   </div>
+                </div>
+                <div className="hidden md:block w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
+                  <img src="/foto-cta-solucoes.png" alt="" style={{ position: "absolute", bottom: 0, left: "-15%", width: 480, objectFit: "contain", objectPosition: "bottom", display: "block" }} />
+                  <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} style={{ position: "absolute", bottom: 60, left: -80 }}>
+                    <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
+                        <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+                        </div>
+                        <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: font, whiteSpace: "nowrap" }}>Lead convertido</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                  <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} style={{ position: "absolute", top: 200, right: 140 }}>
+                    <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
+                      <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 </div>
               </div>
             </div>
