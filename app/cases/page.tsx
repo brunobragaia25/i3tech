@@ -50,9 +50,9 @@ function Hero() {
 
 /* ─── Case Cards ─────────────────────────────────── */
 const cases = [
-  { id: "01", cliente: "Grupo Conor",  video: null as string | null },
-  { id: "02", cliente: "Álamo",        video: null as string | null },
-  { id: "03", cliente: "Proterbem",    video: null as string | null },
+  { id: "01", cliente: "Proterbem",    video: "/video-proterbem.mp4" as string | null },
+  { id: "02", cliente: "Grupo Conor",  video: null as string | null },
+  { id: "03", cliente: "Álamo",        video: null as string | null },
 ];
 
 function CaseCard({ c, index }: { c: typeof cases[0]; index: number }) {
@@ -66,7 +66,7 @@ function CaseCard({ c, index }: { c: typeof cases[0]; index: number }) {
       transition={{ duration: 0.6, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
     >
       {/* Área de vídeo */}
-      <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: "4/5", background: "#0d1a33" }}>
+      <div className="relative w-full flex items-center justify-center" style={{ aspectRatio: "16/9", background: "#0d1a33" }}>
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 40%, #1956f333 0%, transparent 70%)" }} />
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
         {c.video ? (
@@ -99,7 +99,7 @@ function CasesGrid() {
   return (
     <section style={{ background: "#0d0d0d" }}>
       <div className="max-w-[1280px] mx-auto px-4 md:px-5 pt-12 md:pt-[108px] pb-16 md:pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-5">
           {cases.map((c, i) => (
             <CaseCard key={c.id} c={c} index={i} />
           ))}
