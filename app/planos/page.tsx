@@ -60,7 +60,7 @@ const plans = [
     ],
   },
   {
-    name: "i3Integrações",
+    logo: "/i3integracoes.svg", logoW: 200, logoH: 51,
     subtitle: "Para a sua associação (Valor mínimo dentro do combo) — Produto adicional",
     tiers: [
       { label: "Chatbot sem IA", price: "R$300,00" },
