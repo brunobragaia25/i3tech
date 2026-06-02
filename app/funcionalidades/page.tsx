@@ -121,6 +121,7 @@ const features = [
     id: "relatorios",
     imageLeft: true,
     hasCrmMockup: false,
+    image: "/img-relatorios.png",
   },
   {
     title: "ChatBot",

@@ -550,7 +550,7 @@ const funcCards = [
     logoH: 51.11, logoW: 282.17,
     desc: "Aplicativos desenvolvidos e customizados para: Associado, Consultor, Gestão Multinível de comissionamento, Vistoria, Termo de Aceite e Rastreamento Veicular.",
     mockup: "/image-app.png",
-    href: "/solucoes/aplicativos",
+    href: "/funcionalidades#chatbot",
   },
   {
     logo: "/i3integracoes.svg",
