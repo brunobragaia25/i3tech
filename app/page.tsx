@@ -305,7 +305,7 @@ function Hero() {
         {/* Text + buttons */}
         <div className="flex flex-col gap-[40px] items-center">
           <div className="flex flex-col gap-5 items-center text-center text-white">
-            <AnimatedHeading as="p" className="text-[22px] md:text-[40px] leading-[1.25]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 1004 }}>
+            <AnimatedHeading as="h1" className="text-[22px] md:text-[40px] leading-[1.25]" style={{ fontFamily: "var(--font-roobert), sans-serif", maxWidth: 1004 }}>
               <span style={{ fontWeight: 400 }}>Tecnologias inteligentes para a gestão e controle da sua </span>
               <span style={{ fontWeight: 600, color: "#0066ff" }}>entidade de proteção patrimonial mutualista, centrais de rastreamento e seguradoras.</span>
             </AnimatedHeading>

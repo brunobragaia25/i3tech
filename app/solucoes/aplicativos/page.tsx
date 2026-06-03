@@ -4,6 +4,7 @@ import Topbar from "../../components/Topbar";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import FadeUp from "../../components/FadeUp";
 import CountUp from "../../components/CountUp";
@@ -59,6 +60,7 @@ export default function AplicativosPage() {
         <section className="relative w-full overflow-hidden" style={{ background: "#0052e6", minHeight: 400 }}>
           <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/pattern-services.png')", backgroundRepeat: "repeat", backgroundSize: "auto" }} />
           <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full flex flex-col justify-center gap-6" style={{ minHeight: 400, paddingTop: 60, paddingBottom: 60 }}>
+            <h1 className="sr-only">i3 Aplicativos — Apps Mobile White Label</h1>
             <FadeUp>
               <img src="/i3app-white.svg" alt="i3 Aplicativos" style={{ height: 48, width: "auto", objectFit: "contain", objectPosition: "left" }} />
             </FadeUp>
@@ -117,8 +119,8 @@ export default function AplicativosPage() {
             {/* 2 colunas: imagem + lista */}
             <div className="flex flex-col md:flex-row gap-12 items-center">
               {/* Imagem */}
-              <div className="flex-1 min-w-0" style={{ alignSelf: "stretch" }}>
-                <img src="/inside-app.png" alt="i3 Aplicativos" style={{ width: "100%", height: "100%", minHeight: 360, objectFit: "cover", objectPosition: "bottom", borderRadius: 24, display: "block" }} />
+              <div className="flex-1 min-w-0 relative" style={{ alignSelf: "stretch", minHeight: 360, borderRadius: 24, overflow: "hidden" }}>
+                <Image src="/inside-app.png" alt="i3 Aplicativos" fill style={{ objectFit: "cover", objectPosition: "bottom" }} />
               </div>
 
               {/* Lista de funcionalidades */}

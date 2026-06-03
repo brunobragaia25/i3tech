@@ -3,6 +3,7 @@
 import Topbar from "../../components/Topbar";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
+import Image from "next/image";
 import FadeUp from "../../components/FadeUp";
 import CountUp from "../../components/CountUp";
 import Link from "next/link";
@@ -60,6 +61,7 @@ export default function TrackPage() {
         <section className="relative w-full overflow-hidden" style={{ background: "#0052e6", minHeight: 400 }}>
           <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: "url('/pattern-services.png')", backgroundRepeat: "repeat", backgroundSize: "auto" }} />
           <div className="relative z-10 max-w-[1280px] mx-auto px-5 w-full flex flex-col justify-center gap-6" style={{ minHeight: 400, paddingTop: 60, paddingBottom: 60 }}>
+            <h1 className="sr-only">i3 Track — Rastreamento Veicular para Centrais</h1>
             <FadeUp>
               <img src="/i3track-white.svg" alt="i3Track" style={{ height: 48, width: "auto", objectFit: "contain", objectPosition: "left" }} />
             </FadeUp>
@@ -110,8 +112,8 @@ export default function TrackPage() {
             </FadeUp>
 
             <div className="flex flex-col md:flex-row gap-12 items-stretch">
-              <div className="flex-1 min-w-0" style={{ alignSelf: "stretch" }}>
-                <img src="/inside-track.png" alt="i3Track" style={{ width: "100%", height: "100%", minHeight: 360, objectFit: "cover", objectPosition: "bottom", borderRadius: 24, display: "block" }} />
+              <div className="flex-1 min-w-0 relative" style={{ alignSelf: "stretch", minHeight: 360, borderRadius: 24, overflow: "hidden" }}>
+                <Image src="/inside-track.png" alt="i3Track" fill style={{ objectFit: "cover", objectPosition: "bottom" }} />
               </div>
               <div className="flex-1 min-w-0 flex flex-col gap-8">
                 {features.map((f, i) => (

@@ -8,6 +8,7 @@ import AnimatedHeading from "../components/AnimatedHeading";
 import CountUp from "../components/CountUp";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import MuxPlayer from "@mux/mux-player-react";
 import type MuxPlayerElement from "@mux/mux-player";
 
@@ -102,10 +103,11 @@ function EnricoCard({ font }: { font: string }) {
           onMouseLeave={() => !isMobile && setHovered(false)}
           style={{ borderRadius: 4, overflow: "hidden", position: "relative", flexShrink: 0 }}
         >
-          <img
+          <Image
             src="/foto-enrico.png"
             alt="Enrico Neto"
-            style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
+            fill
+            style={{ objectFit: "cover", objectPosition: "top" }}
           />
         </motion.div>
         <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 10 }}>
