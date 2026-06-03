@@ -21,7 +21,10 @@ const roobert = localFont({
   ],
 });
 
+const BASE_URL = "https://www.i3tech.digital";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "i3TECH — CRM Inteligente para Operações Veiculares",
     template: "%s | i3TECH",
@@ -48,16 +51,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "pt_BR",
+    url: BASE_URL,
     siteName: "i3TECH",
     title: "i3TECH — CRM Inteligente para Operações Veiculares",
     description:
       "Centralize vendas, clientes e processos em uma única plataforma. A i3TECH conecta sua operação comercial à gestão completa do negócio.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "i3TECH" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "i3TECH — CRM Inteligente para Operações Veiculares",
     description:
       "Centralize vendas, clientes e processos em uma única plataforma. A i3TECH conecta sua operação comercial à gestão completa do negócio.",
+    images: ["/og-image.png"],
   },
 };
 
@@ -77,6 +83,27 @@ export default function RootLayout({
       >
         {children}
         <WhatsAppButton />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "i3TECH",
+              url: "https://www.i3tech.digital",
+              logo: "https://www.i3tech.digital/logo.svg",
+              description:
+                "Plataforma de CRM e gestão criada para organizar, automatizar e escalar operações veiculares.",
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "sales",
+                availableLanguage: "Portuguese",
+                url: "https://www.i3tech.digital/contato",
+              },
+              sameAs: [],
+            }),
+          }}
+        />
       </body>
     </html>
   );
