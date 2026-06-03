@@ -12,15 +12,18 @@ export const metadata: Metadata = {
     "i3 Aplicativos",
     "app rastreamento veicular",
   ],
+  alternates: { canonical: "https://www.i3tech.digital/solucoes/aplicativos" },
   openGraph: {
     title: "i3 Aplicativos — Apps Mobile White Label | i3TECH",
     description:
       "Aplicativos mobile customizados para Android e iOS com a identidade da sua empresa. Apps para Associado, Consultor e Rastreamento Veicular.",
+    images: [{ url: "/inside-app.png", width: 1200, height: 630, alt: "i3 Aplicativos" }],
   },
   twitter: {
     title: "i3 Aplicativos — Apps Mobile White Label | i3TECH",
     description:
       "Aplicativos mobile customizados para Android e iOS com a identidade da sua empresa. Apps para Associado, Consultor e Rastreamento Veicular.",
+    images: ["/inside-app.png"],
   },
 };
 

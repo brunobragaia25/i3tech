@@ -11,15 +11,18 @@ export const metadata: Metadata = {
     "assinatura i3TECH",
     "planos gestão veicular",
   ],
+  alternates: { canonical: "https://www.i3tech.digital/planos" },
   openGraph: {
     title: "Planos e Preços | i3TECH",
     description:
       "Conheça os planos da i3TECH e encontre a solução ideal para o tamanho e as necessidades da sua operação veicular. Comece gratuitamente.",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Planos i3TECH" }],
   },
   twitter: {
     title: "Planos e Preços | i3TECH",
     description:
       "Conheça os planos da i3TECH e encontre a solução ideal para o tamanho e as necessidades da sua operação veicular. Comece gratuitamente.",
+    images: ["/og-image.jpg"],
   },
 };
 

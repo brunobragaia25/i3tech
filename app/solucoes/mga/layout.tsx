@@ -12,15 +12,18 @@ export const metadata: Metadata = {
     "sinistros seguros",
     "plataforma seguradora",
   ],
+  alternates: { canonical: "https://www.i3tech.digital/solucoes/mga" },
   openGraph: {
     title: "i3 MGA — Gestão para Seguradoras e MGAs | i3TECH",
     description:
       "Plataforma completa para seguradoras e MGAs: gestão de apólices, sinistros, comissões e relatórios integrados. Escale sua operação com o i3 MGA.",
+    images: [{ url: "/inside-mga.png", width: 1200, height: 630, alt: "i3 MGA" }],
   },
   twitter: {
     title: "i3 MGA — Gestão para Seguradoras e MGAs | i3TECH",
     description:
       "Plataforma completa para seguradoras e MGAs: gestão de apólices, sinistros, comissões e relatórios integrados. Escale sua operação com o i3 MGA.",
+    images: ["/inside-mga.png"],
   },
 };
 

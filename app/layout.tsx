@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     "i3TECH",
     "software veicular",
   ],
+  alternates: { canonical: "https://www.i3tech.digital" },
   authors: [{ name: "i3TECH" }],
   creator: "i3TECH",
   robots: {

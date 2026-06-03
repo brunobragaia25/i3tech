@@ -12,15 +12,18 @@ export const metadata: Metadata = {
     "i3 CRM",
     "software CRM associação",
   ],
+  alternates: { canonical: "https://www.i3tech.digital/solucoes/crm" },
   openGraph: {
     title: "i3 CRM — Gestão Comercial Inteligente | i3TECH",
     description:
       "O i3 CRM organiza toda a jornada comercial da sua associação: funil de vendas, gestão de leads, histórico de interações e acompanhamento de metas em tempo real.",
+    images: [{ url: "/inside-crm.png", width: 1200, height: 630, alt: "i3 CRM" }],
   },
   twitter: {
     title: "i3 CRM — Gestão Comercial Inteligente | i3TECH",
     description:
       "O i3 CRM organiza toda a jornada comercial da sua associação: funil de vendas, gestão de leads, histórico de interações e acompanhamento de metas em tempo real.",
+    images: ["/inside-crm.png"],
   },
 };
 
