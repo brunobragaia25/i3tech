@@ -56,14 +56,14 @@ export const metadata: Metadata = {
     title: "i3TECH — CRM Inteligente para Operações Veiculares",
     description:
       "Centralize vendas, clientes e processos em uma única plataforma. A i3TECH conecta sua operação comercial à gestão completa do negócio.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "i3TECH" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "i3TECH" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "i3TECH — CRM Inteligente para Operações Veiculares",
     description:
       "Centralize vendas, clientes e processos em uma única plataforma. A i3TECH conecta sua operação comercial à gestão completa do negócio.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
 };
 
