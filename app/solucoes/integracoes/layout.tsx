@@ -28,5 +28,19 @@ export const metadata: Metadata = {
 };
 
 export default function IntegracoesLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "i3 Integrações",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "ChatBot com IA integrado ao WhatsApp e outros canais para automatizar o atendimento e qualificar leads.",
+        url: "https://www.i3tech.digital/solucoes/integracoes",
+        offers: { "@type": "Offer", priceCurrency: "BRL", seller: { "@type": "Organization", name: "i3TECH" } },
+      }) }} />
+    </>
+  );
 }

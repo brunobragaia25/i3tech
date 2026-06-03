@@ -28,5 +28,19 @@ export const metadata: Metadata = {
 };
 
 export default function TrackLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "i3 Track",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "Software completo de rastreamento veicular com inteligência de dados para centrais de rastreamento.",
+        url: "https://www.i3tech.digital/solucoes/track",
+        offers: { "@type": "Offer", priceCurrency: "BRL", seller: { "@type": "Organization", name: "i3TECH" } },
+      }) }} />
+    </>
+  );
 }

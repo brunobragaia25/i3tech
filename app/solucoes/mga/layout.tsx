@@ -28,5 +28,19 @@ export const metadata: Metadata = {
 };
 
 export default function MgaLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "i3 MGA",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "Sistema completo de gestão de seguros para MGAs com emissão de apólice, cotações e faturamento integrados à seguradora.",
+        url: "https://www.i3tech.digital/solucoes/mga",
+        offers: { "@type": "Offer", priceCurrency: "BRL", seller: { "@type": "Organization", name: "i3TECH" } },
+      }) }} />
+    </>
+  );
 }

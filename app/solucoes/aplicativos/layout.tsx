@@ -28,5 +28,19 @@ export const metadata: Metadata = {
 };
 
 export default function AplicativosLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "i3 Aplicativos",
+        applicationCategory: "MobileApplication",
+        operatingSystem: "Android, iOS",
+        description: "Aplicativos mobile customizados para Associado, Consultor e Rastreamento Veicular publicados com a identidade da sua empresa.",
+        url: "https://www.i3tech.digital/solucoes/aplicativos",
+        offers: { "@type": "Offer", priceCurrency: "BRL", seller: { "@type": "Organization", name: "i3TECH" } },
+      }) }} />
+    </>
+  );
 }

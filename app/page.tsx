@@ -8,6 +8,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import AnimatedHeading from "./components/AnimatedHeading";
 import HeroDashboard from "./components/HeroDashboard";
+import Image from "next/image";
 
 /* ─── Mobile breakpoint hook ─────────────────────────────── */
 function useIsMobile() {
@@ -762,8 +763,8 @@ function Differentials() {
         <div className="flex flex-col md:flex-row gap-[40px] items-center">
             {/* Left — image */}
             <FadeUp className="w-full shrink-0 h-[450px] md:h-[640px] md:w-[600px]">
-              <div style={{ width: "100%", height: "100%", borderRadius: 40, overflow: "hidden" }}>
-                <img src="/foto-diferenciais.jpg" alt="Diferenciais" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+              <div style={{ width: "100%", height: "100%", borderRadius: 40, overflow: "hidden", position: "relative" }}>
+                <Image src="/foto-diferenciais.jpg" alt="Equipe i3TECH em reunião de planejamento" fill style={{ objectFit: "cover", objectPosition: "center" }} />
               </div>
             </FadeUp>
 

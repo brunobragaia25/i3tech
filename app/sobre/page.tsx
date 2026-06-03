@@ -143,10 +143,11 @@ function ViniciusCard({ font }: { font: string }) {
           onMouseLeave={() => !isMobile && setHovered(false)}
           style={{ borderRadius: 4, overflow: "hidden", position: "relative", background: "#d9d9d9", flexShrink: 0 }}
         >
-          <img
+          <Image
             src="/FOTO VINICIUS DA COSTA (3).jpeg"
             alt="Vinicius da Costa"
-            style={{ position: "absolute", width: "100%", top: "-20.57%", left: 0, maxWidth: "none" }}
+            fill
+            style={{ objectFit: "cover", objectPosition: "center 20%" }}
           />
         </motion.div>
         <div style={{ padding: 40, display: "flex", flexDirection: "column", gap: 10 }}>

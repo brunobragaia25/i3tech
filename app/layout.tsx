@@ -87,22 +87,29 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "i3TECH",
-              url: "https://www.i3tech.digital",
-              logo: "https://www.i3tech.digital/logo.svg",
-              description:
-                "Plataforma de CRM e gestão criada para organizar, automatizar e escalar operações veiculares.",
-              contactPoint: {
-                "@type": "ContactPoint",
-                contactType: "sales",
-                availableLanguage: "Portuguese",
-                url: "https://www.i3tech.digital/contato",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "i3TECH",
+                url: "https://www.i3tech.digital",
+                logo: "https://www.i3tech.digital/logo.svg",
+                description: "Plataforma de CRM e gestão criada para organizar, automatizar e escalar operações veiculares.",
+                contactPoint: {
+                  "@type": "ContactPoint",
+                  contactType: "sales",
+                  availableLanguage: "Portuguese",
+                  url: "https://www.i3tech.digital/contato",
+                },
               },
-              sameAs: [],
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "i3TECH",
+                url: "https://www.i3tech.digital",
+                description: "CRM e plataforma de gestão para operações veiculares — associações, centrais de rastreamento e seguradoras.",
+              },
+            ]),
           }}
         />
       </body>

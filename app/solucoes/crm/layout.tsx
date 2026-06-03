@@ -28,5 +28,19 @@ export const metadata: Metadata = {
 };
 
 export default function CrmLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "i3 CRM",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "Sistema de gestão comercial para proteção patrimonial mutualista com funil de vendas, cotações e comissionamento integrados.",
+        url: "https://www.i3tech.digital/solucoes/crm",
+        offers: { "@type": "Offer", priceCurrency: "BRL", seller: { "@type": "Organization", name: "i3TECH" } },
+      }) }} />
+    </>
+  );
 }

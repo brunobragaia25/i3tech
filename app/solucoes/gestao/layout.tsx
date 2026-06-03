@@ -28,5 +28,19 @@ export const metadata: Metadata = {
 };
 
 export default function GestaoLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        name: "i3 Gestão",
+        applicationCategory: "BusinessApplication",
+        operatingSystem: "Web",
+        description: "ERP completo para associações de proteção veicular com rateio atuarial, contratos, cobranças e faturamento integrado.",
+        url: "https://www.i3tech.digital/solucoes/gestao",
+        offers: { "@type": "Offer", priceCurrency: "BRL", seller: { "@type": "Organization", name: "i3TECH" } },
+      }) }} />
+    </>
+  );
 }

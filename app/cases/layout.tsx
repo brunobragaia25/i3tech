@@ -27,5 +27,20 @@ export const metadata: Metadata = {
 };
 
 export default function CasesLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        name: "Cases de Clientes i3TECH",
+        url: "https://www.i3tech.digital/cases",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Proterbem", description: "Crescimento de 3x na carteira de associados com i3Gestão." },
+          { "@type": "ListItem", position: 2, name: "Grupo Conor", description: "Redução de 60% no tempo operacional com i3Gestão e i3CRM." },
+          { "@type": "ListItem", position: 3, name: "Álamo", description: "+400 veículos monitorados com i3Track." },
+        ],
+      }) }} />
+    </>
+  );
 }
