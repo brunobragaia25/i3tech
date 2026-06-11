@@ -319,7 +319,7 @@ function Hero() {
           Funcionalidades
         </AnimatedHeading>
         <p className="text-[16px] md:text-[20px]" style={{ color: "#fff", fontFamily: "var(--font-roobert), sans-serif", fontWeight: 400, lineHeight: 1.4, maxWidth: 616, margin: 0 }}>
-          A i3TECH é uma plataforma completa de CRM e gestão criada para organizar, automatizar e escalar operações veiculares.
+          O futuro da proteção veicular, do rastreamento, e do seguro, é se tornar inteligente, conectado e digital.
         </p>
       </div>
     </section>
