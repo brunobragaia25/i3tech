@@ -26,7 +26,7 @@ const BASE_URL = "https://www.i3tech.digital";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: "i3TECH — CRM Inteligente para Operações Veiculares",
+    default: "i3TECH",
     template: "%s | i3TECH",
   },
   description:
