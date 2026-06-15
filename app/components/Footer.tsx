@@ -27,12 +27,12 @@ const solutions = [
 ];
 
 const features = [
-  { label: "Gestão Comercial", href: "/funcionalidades#gestao-comercial" },
-  { label: "Automação de Vendas", href: "/funcionalidades#automacao-vendas" },
-  { label: "Gestão de Clientes", href: "/funcionalidades#gestao-clientes" },
-  { label: "Financeiro & Comissões", href: "/funcionalidades#financeiro" },
-  { label: "Relatórios & Integrações", href: "/funcionalidades#relatorios" },
-  { label: "ChatBot", href: "/funcionalidades#chatbot" },
+  { label: "i3 Gestão", href: "/funcionalidades#gestao-comercial" },
+  { label: "i3 CRM", href: "/funcionalidades#automacao-vendas" },
+  { label: "i3 MGA", href: "/funcionalidades#gestao-clientes" },
+  { label: "i3 Aplicativos", href: "/funcionalidades#financeiro" },
+  { label: "i3 Integrações", href: "/funcionalidades#relatorios" },
+  { label: "i3 Track", href: "/funcionalidades#chatbot" },
 ];
 
 const empresasDoGrupo = [
