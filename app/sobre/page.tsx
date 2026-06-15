@@ -314,23 +314,6 @@ export default function SobrePage() {
               </div>
               <div className="block w-full h-[380px] md:h-auto md:w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
                 <img src="/foto-cta-sobre.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0" style={{ width: "90%", height: "90%", objectFit: "contain", objectPosition: "bottom", display: "block", zIndex: 1 }} />
-                <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.5 }} className="absolute bottom-[60px] left-[16px] md:bottom-[220px] md:left-[-80px] scale-[0.75] md:scale-100 origin-bottom-left" style={{ zIndex: 2 }}>
-                  <motion.div animate={{ y: [0, -8, 0] }} transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
-                    <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", gap: 12, padding: "12px 20px 12px 12px" }}>
-                      <div style={{ width: 44, height: 44, background: "#dae3ff", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                      </div>
-                      <span style={{ fontSize: 15, fontWeight: 600, color: "#0d0d0d", fontFamily: "var(--font-roobert), sans-serif", whiteSpace: "nowrap" }}>Tecnologia própria</span>
-                    </div>
-                  </motion.div>
-                </motion.div>
-                <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.7 }} className="absolute top-[160px] md:top-[380px] right-[16px] md:right-[120px] scale-[0.75] md:scale-100 origin-bottom-right" style={{ zIndex: 2 }}>
-                  <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(12px)", borderRadius: 16, padding: 8 }}>
-                    <div style={{ background: "white", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", padding: 14 }}>
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0052e6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                    </div>
-                  </motion.div>
-                </motion.div>
               </div>
             </div>
           </div>

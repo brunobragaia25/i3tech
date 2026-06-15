@@ -264,7 +264,6 @@ export default function CasesPage() {
       <main className="flex-1">
         <Hero />
         <CasesGrid />
-        <TestimonialsSlider />
       </main>
       <Footer />
     </div>
