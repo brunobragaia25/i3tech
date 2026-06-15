@@ -138,8 +138,9 @@ export default function Navbar() {
                             minWidth: 547,
                             display: "flex",
                             flexDirection: "row",
-                            gap: 24,
+                            gap: 0,
                             alignItems: "stretch",
+                            justifyContent: "space-between",
                             minHeight: 220,
                           }}>
                             {/* Foto */}
@@ -151,11 +152,11 @@ export default function Navbar() {
                               overflow: "hidden",
                               flexShrink: 0,
                             }}>
-                              <img src="/foto-cta-dropdown.jpeg" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", display: "block" }} />
+                              <img src="/foto-cta-dropdown.png" alt="" style={{ width: "100%", height: "100%", objectFit: "contain", objectPosition: "bottom", display: "block" }} />
                             </div>
 
                             {/* Texto + botão */}
-                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 32, flex: 1, paddingTop: 40, paddingBottom: 40, width: "100%" }}>
+                            <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", gap: 32, paddingTop: 40, paddingBottom: 40 }}>
                             <p style={{
                               color: "#f7f7f7",
                               fontSize: 22,
