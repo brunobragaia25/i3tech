@@ -216,7 +216,7 @@ export default function Footer() {
               ))}
             </ul>
             <div className="flex flex-col gap-2">
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Baixar na App Store"
+              <a href="https://apps.apple.com/br/app/i3-consultor/id6775567429" target="_blank" rel="noopener noreferrer" aria-label="Baixar na App Store"
                 className="flex items-center justify-center gap-2 px-3 py-2 rounded-[8px] transition-opacity hover:opacity-80"
                 style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)", width: "100%" }}
               >
