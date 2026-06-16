@@ -77,7 +77,7 @@ export default function TrackPage() {
                   animate={{ rotate: 360 }}
                   transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
                 />
-                <Link href="/contato" className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "white", color: "#0052e6", fontFamily: font, fontWeight: 600, textDecoration: "none" }}>
+                <Link href="/contato" className="relative z-10 inline-flex items-center justify-center px-[28px] py-[18px] rounded-[8px] text-[16px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "white", color: "#0052e6", fontFamily: font, fontWeight: 600, textDecoration: "none" }}>
                   Agendar uma demonstração
                 </Link>
               </div>
@@ -147,7 +147,7 @@ export default function TrackPage() {
                     </h2>
                     <div className="self-center md:self-start" style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
                       <motion.div style={{ position: "absolute", inset: "-150%", background: "conic-gradient(from 0deg, transparent 0%, transparent 65%, #66a3ff 78%, #ffffff 83%, #66a3ff 88%, transparent 100%)" }} animate={{ rotate: 360 }} transition={{ duration: 3, repeat: Infinity, ease: "linear" }} />
-                      <Link href="/contato" className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "#1956f3", color: "#f7f7f7", fontFamily: font, textDecoration: "none" }}>Agende uma demonstração</Link>
+                      <Link href="/contato" className="relative z-10 inline-flex items-center justify-center px-[28px] py-[18px] rounded-[8px] text-[16px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]" style={{ background: "#1956f3", color: "#f7f7f7", fontFamily: font, textDecoration: "none" }}>Agende uma demonstração</Link>
                     </div>
                   </div>
                   <div className="block w-full h-[380px] md:h-auto md:w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>

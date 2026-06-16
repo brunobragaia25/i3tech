@@ -992,7 +992,7 @@ function CTABanner() {
                   />
                   <Link
                     href="/contato"
-                    className="relative z-10 inline-flex items-center justify-center px-[20px] py-[14px] rounded-[8px] text-[14px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                    className="relative z-10 inline-flex items-center justify-center px-[28px] py-[18px] rounded-[8px] text-[16px] transition-all duration-200 hover:scale-[1.03] active:scale-[0.97]"
                     style={{
                       background: "#1956f3",
                       color: "#f7f7f7",

@@ -217,24 +217,16 @@ export default function Footer() {
             </ul>
             <div className="flex flex-col gap-2">
               <a href="https://apps.apple.com/br/app/i3-consultor/id6775567429" target="_blank" rel="noopener noreferrer" aria-label="Baixar na App Store"
-                className="flex items-center justify-center gap-2 px-3 py-2 rounded-[8px] transition-opacity hover:opacity-80"
-                style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)", width: "100%" }}
+                className="flex items-center justify-start transition-opacity hover:opacity-80"
+                style={{ width: "100%" }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                <div style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                  <div style={{ color: "#737373", fontSize: 9, lineHeight: 1 }}>Disponível na</div>
-                  <div style={{ color: "#f7f7f7", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>App Store</div>
-                </div>
+                <img src="/app-store-bagde.svg" alt="Disponível na App Store" style={{ width: "100%", height: "auto", display: "block", maxWidth: 180 }} />
               </a>
               <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Baixar no Google Play"
-                className="flex items-center justify-center gap-2 px-3 py-2 rounded-[8px] transition-opacity hover:opacity-80"
-                style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)", width: "100%" }}
+                className="flex items-center justify-start transition-opacity hover:opacity-80"
+                style={{ width: "100%" }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M3.18 23.76c.3.17.64.22.99.15l11.55-11.55-3.26-3.26L3.18 23.76zM20.56 10.4l-2.7-1.54-3.64 3.64 3.64 3.64 2.72-1.55c.78-.44.78-1.75-.02-2.19zM2.01 1.05C1.99 1.18 2 1.32 2 1.46v21.08c0 .14.01.28.03.41l11.42-11.42L2.01 1.05zM14.46 12.53l-11.3-11.3c-.17-.1-.35-.17-.54-.19l11.1 11.1.74-.74v.13z"/></svg>
-                <div style={{ fontFamily: "var(--font-dm-sans), sans-serif" }}>
-                  <div style={{ color: "#737373", fontSize: 9, lineHeight: 1 }}>Disponível no</div>
-                  <div style={{ color: "#f7f7f7", fontSize: 12, fontWeight: 600, lineHeight: 1.4 }}>Google Play</div>
-                </div>
+                <img src="/disponivel-google-play-badge.svg" alt="Disponível no Google Play" style={{ width: "100%", height: "auto", display: "block", maxWidth: 180 }} />
               </a>
             </div>
           </div>
