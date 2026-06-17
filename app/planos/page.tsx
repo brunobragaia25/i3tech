@@ -98,7 +98,7 @@ export default function PlanosPage() {
   useEffect(() => {
     const timer = setInterval(() => {
       setIndex((v) => (v < plans.length - visibleCount ? v + 1 : 0));
-    }, 2500);
+    }, 8000);
     return () => clearInterval(timer);
   }, [visibleCount]);
 

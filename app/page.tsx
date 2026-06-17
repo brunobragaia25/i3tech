@@ -1007,12 +1007,12 @@ function CTABanner() {
               {/* Foto direita */}
               <div className="block relative w-full h-[380px] md:h-auto md:w-[420px] shrink-0">
                 {/* Logo 3D atrás do personagem */}
-                <img src="/logo-3d.png" alt="" className="w-[600px] md:w-[700px] md:min-w-[700px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
+                <img src="/logo-3d.png" alt="" className="w-[700px] md:w-[850px] md:min-w-[850px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
                 <motion.img
                   src="/foto-cta-home.png"
                   alt=""
                   className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-20%] md:translate-x-0"
-                  style={{ width: "100%", objectFit: "contain", objectPosition: "bottom", zIndex: 1 }}
+                  style={{ width: "100%", objectFit: "contain", objectPosition: "bottom", zIndex: 1, display: "none" }}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-60px" }}

@@ -683,8 +683,8 @@ function CTABanner() {
                 </div>
               </div>
               <div className="block w-full h-[380px] md:h-auto md:w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
-                <img src="/logo-3d.png" alt="" className="w-[600px] md:w-[700px] md:min-w-[700px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
-                <img src="/foto-cta-funcionalidades.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-15%] md:translate-x-0" style={{ width: 420, objectFit: "contain", objectPosition: "bottom", display: "block", zIndex: 1 }} />
+                <img src="/logo-3d.png" alt="" className="w-[700px] md:w-[850px] md:min-w-[850px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
+                <img src="/foto-cta-funcionalidades.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-15%] md:translate-x-0" style={{ width: 420, objectFit: "contain", objectPosition: "bottom", display: "none", zIndex: 1 }} />
               </div>
             </div>
           </div>
