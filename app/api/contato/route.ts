@@ -12,8 +12,8 @@ export async function POST(req: NextRequest) {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   const { error } = await resend.emails.send({
-    from: "i3TECH Site <contato@i3tech.digital>",
-    to: ["vinicius@i3tech.digital"],
+    from: "i3TECH Site <notificacoes@devzdesign.com.br>",
+    to: ["comercial@i3tech.digital"],
     replyTo: email,
     subject: `Novo contato de ${nome} — ${produto || "Sem produto selecionado"}`,
     html: `
