@@ -655,15 +655,16 @@ function CTABanner() {
               style={{ background: "#1956f3", minHeight: 560 }}
             >
               <img src={IMG_CTA_BG} alt="" className="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none" />
-              <div className="relative flex flex-col gap-[40px] justify-center items-center md:items-start flex-1 px-6 md:px-[80px] pt-10 pb-0 md:py-0" style={{ zIndex: 1 }}>
+              <img src="/bg-circle.png" alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+              <div className="relative flex flex-col gap-[40px] justify-center items-center flex-1 px-6 md:px-[80px] pt-10 pb-10 md:py-0" style={{ zIndex: 1 }}>
                 <AnimatedHeading
                   as="h2"
-                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px] text-center md:text-left"
+                  className="text-[22px] md:text-[39px] font-semibold leading-[1.3] md:leading-[48px] max-w-[848px] text-center"
                   style={{ color: "white", fontFamily: "var(--font-dm-sans), sans-serif" }}
                 >
                   Entenda como podemos transformar a sua empresa com tecnologias que irão te colocar em outro patamar.
                 </AnimatedHeading>
-                <div className="self-center md:self-start" style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
+                <div className="self-center" style={{ position: "relative", borderRadius: 10, padding: 2, overflow: "hidden" }}>
                   <motion.div
                     style={{
                       position: "absolute",
@@ -681,10 +682,6 @@ function CTABanner() {
                     Agende uma demonstração
                   </Link>
                 </div>
-              </div>
-              <div className="block w-full h-[380px] md:h-auto md:w-[480px] shrink-0" style={{ position: "relative", overflow: "visible" }}>
-                <img src="/logo-3d.png" alt="" className="w-[700px] md:w-[850px] md:min-w-[850px] absolute bottom-[20px] md:bottom-[-60px] left-1/2 md:left-[58%]" style={{ transform: "translateX(-50%)", height: "auto", display: "block", zIndex: 0 }} />
-                <img src="/foto-cta-funcionalidades.png" alt="" className="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-[-15%] md:translate-x-0" style={{ width: 420, objectFit: "contain", objectPosition: "bottom", display: "none", zIndex: 1 }} />
               </div>
             </div>
           </div>

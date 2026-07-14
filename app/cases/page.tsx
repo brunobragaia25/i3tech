@@ -51,7 +51,7 @@ function Hero() {
 /* ─── Case Cards ─────────────────────────────────── */
 const cases = [
   { id: "01", cliente: "Proterbem",    video: "/video-proterbem.mp4" as string | null },
-  { id: "02", cliente: "Grupo Conor",  video: null as string | null },
+  { id: "02", cliente: "Grupo Conor",  video: "/video-grupo-conor.mp4" as string | null },
   { id: "03", cliente: "Álamo",        video: null as string | null },
 ];
 
