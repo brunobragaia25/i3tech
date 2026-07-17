@@ -222,7 +222,7 @@ export default function Footer() {
               >
                 <img src="/app-store-bagde.svg" alt="Disponível na App Store" style={{ width: "100%", height: "auto", display: "block", maxWidth: 180 }} />
               </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Baixar no Google Play"
+              <a href="https://play.google.com/store/apps/details?id=br.com.deltabit.i3_consultor" target="_blank" rel="noopener noreferrer" aria-label="Baixar no Google Play"
                 className="flex items-center justify-start transition-opacity hover:opacity-80"
                 style={{ width: "100%" }}
               >
