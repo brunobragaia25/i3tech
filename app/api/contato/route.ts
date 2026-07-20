@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
   const { error } = await resend.emails.send({
     from: "i3TECH Site <notificacoes@devzdesign.com.br>",
-    to: ["comercial@i3tech.digital"],
+    to: ["vinicius@i3tech.digital"],
     replyTo: email,
     subject: `Novo contato de ${nome} — ${produto || "Sem produto selecionado"}`,
     html: `
