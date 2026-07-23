@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Script from "next/script";
 import "./globals.css";
 import WhatsAppButton from "./components/WhatsAppButton";
+import { Analytics } from "@vercel/analytics/next";
 
 const roobert = localFont({
   variable: "--font-roobert",
@@ -86,6 +87,7 @@ export default function RootLayout({
         <Script src="https://mcp.figma.com/mcp/html-to-design/capture.js" strategy="afterInteractive" />
         {children}
         <WhatsAppButton />
+        <Analytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
