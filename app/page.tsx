@@ -530,28 +530,28 @@ const funcCards = [
     logoH: 51.11, logoW: 212,
     desc: "Rateio e precificação configurados em regra atuarial, Faturamento, Relatórios, Gestão de cobranças com i3Pay, Remessa automática com os Bancos, Regra atuarial e Módulo i3CRM habilitado dentro do sistema.",
     mockup: "/image-gestao.png",
-    href: "/funcionalidades#gestao-clientes",
+    href: "/funcionalidades#gestao-comercial",
   },
   {
     logo: IMG_I3_CRM,
     logoH: 49.4, logoW: 166.15,
     desc: "Mais Gestão comercial com: Funil de Vendas, Landing Page, Cotações Rápidas, Planos e preços configurados, Pagamentos online, Tabelas de preços, Relatórios, Regionais e Módulo i3Gestão habilitado dentro do sistema.",
     mockup: "/image-crm.png",
-    href: "/funcionalidades#gestao-comercial",
+    href: "/funcionalidades#automacao-vendas",
   },
   {
     logo: IMG_I3_MGA,
     logoH: 51.11, logoW: 166.15,
     desc: "Seu Mga conseguirá: Realizar emissões de apólice já integradas com a seguradora, Relatórios, Auditoria online, Pagamentos, Cotações e Planos pré configurados e Gestão dos Faturáveis.",
     mockup: "/image-mga.png",
-    href: "/funcionalidades#financeiro",
+    href: "/funcionalidades#gestao-clientes",
   },
   {
     logo: IMG_I3_APP,
     logoH: 51.11, logoW: 282.17,
     desc: "Aplicativos desenvolvidos e customizados para: Associado, Consultor, Gestão Multinível de comissionamento, Vistoria, Termo de Aceite e Rastreamento Veicular.",
     mockup: "/image-app.png",
-    href: "/funcionalidades#chatbot",
+    href: "/funcionalidades#financeiro",
   },
   {
     logo: "/i3integracoes.svg",
@@ -565,7 +565,7 @@ const funcCards = [
     logoH: 51.11, logoW: 186.824,
     desc: "Software completo de rastreamento com funcionalidades para prevenção de furto e roubo. Com i3Track, a sua central de rastreamento terá: Relatórios, Histórico, Geocerca, Gestão de sinistros, Alertas, Localização e Dashboard.",
     mockup: "/image-track.png",
-    href: "/funcionalidades#automacao-vendas",
+    href: "/funcionalidades#chatbot",
   },
 ];
 

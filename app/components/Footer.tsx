@@ -33,6 +33,7 @@ const features = [
   { label: "i3 Aplicativos", href: "/funcionalidades#financeiro" },
   { label: "i3 Integrações", href: "/funcionalidades#relatorios" },
   { label: "i3 Track", href: "/funcionalidades#chatbot" },
+
 ];
 
 const empresasDoGrupo = [

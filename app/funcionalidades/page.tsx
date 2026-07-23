@@ -363,7 +363,7 @@ const features = [
     imageLeft: false,
     imageTop: true,
     hasCrmMockup: false,
-    image: "/img-chatbot.png",
+    image: "/img-track.png",
   },
 ];
 
