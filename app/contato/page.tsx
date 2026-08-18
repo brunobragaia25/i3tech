@@ -148,7 +148,7 @@ export default function ContatoPage() {
                   <img src={IMG_DIVIDER} alt="" style={{ display: "block", width: "100%", height: "100%" }} />
                 </div>
               </div>
-              <span style={{ color: "#f7f7f7", fontSize: 13, fontFamily: font }}>comercial@i3tech.digital</span>
+              <span style={{ color: "#f7f7f7", fontSize: 13, fontFamily: font }}>vinicius@i3tech.digital</span>
             </div>
 
             {/* Location — hidden on mobile to save space */}
@@ -173,7 +173,7 @@ export default function ContatoPage() {
           {/* Right — form card */}
           <div className="flex-1 min-w-0 order-1 md:order-2" style={{ background: "#171717", border: "1px solid #333", borderRadius: 40, padding: 28, display: "flex", flexDirection: "column", gap: 24 }}>
             {status === "success" ? (
-              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 24, padding: "64px 0", textAlign: "center" }}>
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 24, padding: "64px 0", textAlign: "center", flex: 1, width: "100%" }}>
                 <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#1956f3", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12" />

@@ -178,7 +178,7 @@ export default function Footer() {
                 { text: "+55 (31) 2510-8536",   href: "tel:+553125108536" },
                 { text: "+55 (31) 99720-4995",  href: "tel:+5531997204995" },
                 { text: "R. Batista Santiago, 81 - Liberdade, Belo Horizonte - MG, 31270-230", href: "https://maps.google.com/?q=R.+Batista+Santiago,+81,+Belo+Horizonte" },
-                { text: "comercial@i3tech.digital", href: "mailto:comercial@i3tech.digital" },
+                { text: "vinicius@i3tech.digital", href: "mailto:vinicius@i3tech.digital" },
               ].map((c) => (
                 <li key={c.text}>
                   <a
