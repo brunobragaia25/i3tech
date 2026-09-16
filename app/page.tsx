@@ -874,7 +874,7 @@ const faqs = [
   },
   {
     question: "A i3Tech é uma empresa que chegou agora no segmento?",
-    answer: "Não, somos uma empresa de tecnologia do Grupo Brasil Atuarial com mais de 20 anos de experiência no segmento em que atuamos.",
+    answer: "Não, somos uma empresa de tecnologia com mais de 20 anos de experiência no segmento em que atuamos.",
   },
 ];
 

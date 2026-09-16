@@ -7,7 +7,7 @@ import Link from "next/link";
 import AnimatedHeading from "../components/AnimatedHeading";
 import CountUp from "../components/CountUp";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import MuxPlayer from "@mux/mux-player-react";
 import type MuxPlayerElement from "@mux/mux-player";
@@ -83,81 +83,24 @@ function VideoPlayer() {
   );
 }
 
-function EnricoCard({ font }: { font: string }) {
-  const [hovered, setHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  return (
-    <div style={{ flex: 1, background: "#262626", borderRadius: 16, padding: 12 }}>
-      <div style={{ background: "#171717", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-        <motion.div
-          animate={{ height: isMobile ? 300 : hovered ? 460 : 360 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          onMouseEnter={() => !isMobile && setHovered(true)}
-          onMouseLeave={() => !isMobile && setHovered(false)}
-          style={{ borderRadius: 4, overflow: "hidden", position: "relative", flexShrink: 0 }}
-        >
-          <Image
-            src="/foto-enrico.png"
-            alt="Enrico Neto"
-            fill
-            style={{ objectFit: "cover", objectPosition: "top" }}
-          />
-        </motion.div>
-        <div style={{ padding: 28, display: "flex", flexDirection: "column", gap: 10 }}>
-          <span style={{ color: "#0066ff", fontSize: 22, fontFamily: font, fontWeight: 500, lineHeight: 1 }}>
-            Enrico Neto
-          </span>
-          <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, textTransform: "uppercase", lineHeight: 1 }}>
-            Sócio e fundador da i3Tech (Em Execução)
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function ViniciusCard({ font }: { font: string }) {
-  const [hovered, setHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
   return (
-    <div style={{ flex: 1, background: "#262626", borderRadius: 16, padding: 12 }}>
-      <div style={{ background: "#171717", borderRadius: 8, display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
-        <motion.div
-          animate={{ height: isMobile ? 300 : hovered ? 460 : 360 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-          onMouseEnter={() => !isMobile && setHovered(true)}
-          onMouseLeave={() => !isMobile && setHovered(false)}
-          style={{ borderRadius: 4, overflow: "hidden", position: "relative", background: "#d9d9d9", flexShrink: 0 }}
-        >
-          <Image
-            src="/FOTO VINICIUS DA COSTA (3).jpeg"
-            alt="Vinicius da Costa"
-            fill
-            style={{ objectFit: "cover", objectPosition: "center 20%" }}
-          />
-        </motion.div>
-        <div style={{ padding: 40, display: "flex", flexDirection: "column", gap: 10 }}>
-          <span style={{ color: "#0066ff", fontSize: 24, fontFamily: font, fontWeight: 500, lineHeight: 1 }}>
-            Vinicius da Costa
-          </span>
-          <span style={{ color: "#f7f7f7", fontSize: 12, fontFamily: font, textTransform: "uppercase", lineHeight: 1 }}>
-            Sócio e Diretor Comercial da i3Tech (Em Execução)
-          </span>
-        </div>
+    <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-[64px]" style={{ width: "100%", background: "#171717", border: "1px solid #333", borderRadius: 16, padding: 20 }}>
+      <div className="w-full md:w-[600px]" style={{ height: 420, borderRadius: 8, overflow: "hidden", position: "relative", background: "#d9d9d9", flexShrink: 0 }}>
+        <Image
+          src="/FOTO VINICIUS DA COSTA (3).jpeg"
+          alt="Vinicius da Costa"
+          fill
+          style={{ objectFit: "cover", objectPosition: "center 20%" }}
+        />
+      </div>
+      <div className="flex flex-col items-center md:items-start text-center md:text-left" style={{ gap: 8, minWidth: 0 }}>
+        <span className="text-[16px] md:text-[26px]" style={{ color: "#0066ff", fontFamily: font, fontWeight: 600, textTransform: "uppercase", lineHeight: 1 }}>
+          Nosso fundador
+        </span>
+        <span className="text-[28px] md:text-[52px]" style={{ color: "#f7f7f7", fontFamily: font, fontWeight: 500, lineHeight: 1.2 }}>
+          Vinicius da Costa
+        </span>
       </div>
     </div>
   );
@@ -199,7 +142,7 @@ export default function SobrePage() {
         {/* Text block */}
         <div className="flex flex-col gap-6 md:gap-10 items-center text-center">
           <AnimatedHeading as="p" className="text-[20px] md:text-[32px]" style={{ color: "#f7f7f7", fontFamily: font, fontWeight: 400, lineHeight: "normal", maxWidth: 1008, margin: 0 }}>
-            Somos uma empresa de tecnologia do Grupo Brasil Atuarial, com o{" "}
+            Somos uma empresa de tecnologia com o{" "}
             <span style={{ fontWeight: 600, color: "#0066ff" }}>foco no desenvolvimento de inovações e produtos tecnológicos que envolvem a regra atuarial</span>.
           </AnimatedHeading>
         </div>
@@ -209,9 +152,6 @@ export default function SobrePage() {
 
         {/* Video + stats */}
         <div className="flex flex-col gap-12 md:gap-[72px] items-center w-full">
-
-          {/* Video placeholder */}
-          <VideoPlayer />
 
           {/* Stats — 2×2 on mobile, 4 in a row on desktop */}
           {(() => {
@@ -250,22 +190,10 @@ export default function SobrePage() {
         </div>
       </div>
 
-      {/* Nossa Diretoria */}
+      {/* Nosso fundador */}
       <div className="max-w-[1280px] mx-auto px-5 w-full flex flex-col gap-8 md:gap-10 items-center pt-10 md:pt-16 pb-10 md:pb-16">
 
-        <AnimatedHeading as="h2" className="text-[28px] md:text-[40px]" style={{ color: "#0052e6", fontFamily: font, fontWeight: 600, lineHeight: 1.2, textAlign: "center", margin: 0 }}>
-          Nossa Diretoria
-        </AnimatedHeading>
-
-        <div className="w-full rounded-[20px] p-4" style={{ background: "#171717" }}>
-          <div className="flex flex-col md:flex-row gap-4">
-            {/* Card 1 — Enrico Neto */}
-            <EnricoCard font={font} />
-
-            {/* Card 2 — Vinicius da Costa */}
-            <ViniciusCard font={font} />
-          </div>
-        </div>
+        <ViniciusCard font={font} />
 
         {/* CTA */}
         <div className="max-w-[1280px] mx-auto px-4 md:px-5 py-[64px] w-full">
